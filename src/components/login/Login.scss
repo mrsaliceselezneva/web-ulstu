@@ -1,0 +1,161 @@
+body {
+  background: rgba(90, 156, 255, 0.7);
+}
+
+.autinfication {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  %text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @mixin text-style($w, $s, $l, $c) {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: $w;
+    font-size: $s;
+    line-height: $l;
+    color: $c;
+  }
+
+  .text-logo {
+    display: inline-flex;
+    @extend %text;
+    vertical-align: middle;
+    @include text-style(900, 24px, 18px, #ffffff);
+
+    align-items: center;
+    letter-spacing: 0.2px;
+
+    transform: rotate(-0.32deg);
+  }
+
+  .text-hello {
+    @extend %text;
+
+    @include text-style(600, 34px, 50px, #ffffff);
+
+    letter-spacing: -0.5px;
+
+    transform: rotate(-0.32deg);
+  }
+
+  .text-info {
+    @extend %text;
+
+    @include text-style(400, 17px, 25px, #ffffff);
+
+    text-align: center;
+
+    mix-blend-mode: normal;
+    opacity: 0.7;
+    transform: rotate(-0.32deg);
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 3%;
+
+    $margin: 37%;
+
+    margin-top: 5vh;
+    margin-left: $margin;
+    margin-right: $margin;
+    background: #ffffff;
+    border: 1px solid rgba(183, 210, 229, 0.8);
+    box-shadow: 0px 1px 4px rgba(44, 64, 90, 0.209409), inset 0px -1px 0px #7e95a7;
+    border-radius: 8px;
+    transform: rotate(-0.32deg);
+
+    .text-title {
+      width: 100%;
+      @include text-style(600, 26px, 31px, #333951);
+      margin-bottom: 5%;
+    }
+
+    .text-bottom {
+      @include text-style(400, 14px, 17px, #798d96);
+    }
+
+    @mixin input-button($delt) {
+      height: 45px;
+      width: 100% + $delt;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .email {
+      @include input-button(-3%);
+      display: flex;
+      flex-direction: row;
+
+      background-color: rgba(245, 248, 254);
+      border: none;
+      margin-bottom: 5%;
+      padding: 2%;
+    }
+
+    .email:hover {
+      @include input-button(-2%);
+      outline: none !important;
+      border: 2px solid #5a9cff;
+    }
+
+    .img {
+      margin-top: 8%;
+      height: 50%;
+    }
+
+    input {
+      @include input-button(-2%);
+      @include text-style(400, 16px, 19px, #798d96);
+      background-color: rgba(245, 248, 254);
+      margin-bottom: 5%;
+    }
+
+    input:focus {
+      @include text-style(400, 16px, 19px, #5a9cff);
+      outline: none !important;
+      border: none;
+    }
+
+    button {
+      @include input-button(0%);
+      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+      color: #ffffff;
+      margin-bottom: 5%;
+    }
+
+    .password_show {
+      -webkit-mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconHideLarge.svg)
+        no-repeat;
+      mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconHideLarge.svg)
+        no-repeat;
+    }
+
+    .password {
+      width: 100%;
+      height: 100%;
+      -webkit-mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconShowLarge.svg)
+        no-repeat;
+      mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconShowLarge.svg)
+        no-repeat;
+      background: #888d94;
+    }
+
+    .href {
+      text-decoration: none;
+      @include text-style(400, 16px, 19px, #5a9cff);
+    }
+
+    .href:hover {
+      @include text-style(400, 16px, 19px, #88ddff);
+    }
+  }
+}
