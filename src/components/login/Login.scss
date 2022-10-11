@@ -61,12 +61,11 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     padding: 3%;
+    min-width: 200px;
 
-    $margin: 37%;
+    /*$margin: 37%;*/
 
-    margin-top: 5vh;
-    margin-left: $margin;
-    margin-right: $margin;
+    margin: 5vh auto;
     background: #ffffff;
     border: 1px solid rgba(183, 210, 229, 0.8);
     box-shadow: 0px 1px 4px rgba(44, 64, 90, 0.209409), inset 0px -1px 0px #7e95a7;
@@ -127,9 +126,16 @@ body {
 
     button {
       @include input-button(0%);
-      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
       color: #ffffff;
       margin-bottom: 5%;
+
+      background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+      background-size: 200% auto;
+      transition: 0.5s;
+    }
+
+    button:hover {
+      background-position: right center;
     }
 
     .password_show {

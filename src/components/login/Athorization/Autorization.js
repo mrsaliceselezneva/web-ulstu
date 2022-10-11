@@ -10,6 +10,10 @@ function Autorization() {
     setShow(!show);
   }
 
+  function Clack(){
+    console.log(300);
+  }
+
   return (
       <div className='autinfication'>
         <div className='text-logo'>
@@ -24,9 +28,11 @@ function Autorization() {
               <img src={emailImg} alt='email' className='img'/>
               <input placeholder='email@ulstu.ru'/>
             </div>
-            <input type={show?"text":"password"} placeholder='пароль'/>
+            <input type={show?"text":"password"} placeholder='пароль' 
+            
+            />
             <label onClick={passwordShow} className={show?"password_show":"password"}></label>
-            <button>Войти</button>
+            <button onClick={Clack}>Войти</button>
             <div className='text-bottom'>Нет аккаунта?<a href='#' className='href'>Создать</a></div>
         </div>
       </div>
