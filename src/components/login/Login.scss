@@ -61,7 +61,7 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     padding: 3%;
-    min-width: 200px;
+    min-width: 300px;
 
     /*$margin: 37%;*/
 
@@ -111,17 +111,42 @@ body {
       height: 50%;
     }
 
-    input {
-      @include input-button(-2%);
-      @include text-style(400, 16px, 19px, #798d96);
+    .input-block {
+      @include input-button(-3%);
+      display: flex;
+      flex-direction: row;
+
       background-color: rgba(245, 248, 254);
+      border: none;
       margin-bottom: 5%;
+      padding: 2%;
+
+      .input {
+        @include input-button(-2%);
+        @include text-style(400, 16px, 19px, #798d96);
+        background-color: rgba(245, 248, 254);
+        margin-bottom: 5%;
+      }
+
+      input:focus {
+        outline: none !important;
+        border: none;
+      }
+
+      .login-icon {
+        color: #798d96;
+        cursor: pointer;
+        margin-top: 6%;
+      }
     }
 
-    input:focus {
-      @include text-style(400, 16px, 19px, #5a9cff);
-      outline: none !important;
-      border: none;
+    .input-block:hover {
+      .login-icon {
+        color: #5a9cff;
+      }
+      .input {
+        @include text-style(400, 16px, 19px, #5a9cff);
+      }
     }
 
     button {
@@ -138,23 +163,6 @@ body {
       background-position: right center;
     }
 
-    .password_show {
-      -webkit-mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconHideLarge.svg)
-        no-repeat;
-      mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconHideLarge.svg)
-        no-repeat;
-    }
-
-    .password {
-      width: 100%;
-      height: 100%;
-      -webkit-mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconShowLarge.svg)
-        no-repeat;
-      mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconShowLarge.svg)
-        no-repeat;
-      background: #888d94;
-    }
-
     .href {
       text-decoration: none;
       @include text-style(400, 16px, 19px, #5a9cff);
@@ -162,6 +170,12 @@ body {
 
     .href:hover {
       @include text-style(400, 16px, 19px, #88ddff);
+    }
+
+    .question {
+      background: rgba(0, 0, 0, 0.0001);
+      box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.200747);
+      border-radius: 100px;
     }
   }
 }
