@@ -17,10 +17,14 @@ function Autorization() {
   function Check(){
     console.log(email);
     console.log(password);
-    axios
-      .get(`http://asus.russianitgroup.ru/api/login${email}/${password}`)
+      axios
+      .post(`http://asus.russianitgroup.ru/api/login`, {
+        login: email,
+        password: password,
+      })
       .then((response) => {
-        console.log(response.data);
+        if(response.data)
+        console.log('yes');
       });
   };
 

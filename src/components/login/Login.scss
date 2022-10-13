@@ -61,11 +61,12 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     padding: 3%;
-    min-width: 350px;
+    min-width: 25%;
+    // min-width: 350px;
 
-    @media screen and (max-width: 800px) {
-      min-width: 200px;
-    }
+    // @media screen and (max-width: 800px) {
+    //   min-width: 200px;
+    // }
     /*$margin: 37%;*/
 
     margin: 5vh auto;
