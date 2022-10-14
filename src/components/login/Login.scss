@@ -1,5 +1,7 @@
 body {
   background: rgba(90, 156, 255, 0.7);
+  background-image: url('../assets/images/repeat-background.png');
+  background-size: contain;
 }
 
 .autinfication {
@@ -164,7 +166,7 @@ body {
 
     button {
       @include input-button(0%);
-      color: #ffffff;
+      @include text-style(700, 18px, 22px, #ffffff);
       margin-bottom: 5%;
 
       background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);

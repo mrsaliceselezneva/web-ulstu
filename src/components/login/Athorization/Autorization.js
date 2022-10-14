@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
 import logoUlstu from '../../assets/images/logo-ulstu.png';
+import background from '../../assets/images/background.png';
 
 import '../Login.scss';
 
@@ -74,7 +75,7 @@ function Autorization() {
             </div>
             
             <button onClick={Check}>Войти</button>
-            <div className='text-bottom'>Нет аккаунта?<a href='/registration' className='href'>Создать</a></div>
+            <div className='text-bottom'>Нет аккаунта? <a href='/registration' className='href'>Создать</a></div>
         </div>
 
         {/* <div className='question'>
