@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
 import logoUlstu from '../../assets/images/logo-ulstu.png';
-import emailImg from '../../assets/images/email.png';
 
 import '../Login.scss';
 
@@ -46,10 +45,6 @@ function Autorization() {
         <div className='text-info'>Веб-приложение для автоматизации обучения в УлГТУ</div>
         <div className='login'>
           <div className='text-title'>Авторизация</div>
-            {/* <div className='email'>
-              <img src={emailImg} alt='email' className='img'/>
-              <input placeholder='email@ulstu.ru'/>
-            </div> */}
             <div className='input-block'>
               <input 
                 onChange={(event) => setEmail(event.target.value)} 
@@ -67,7 +62,7 @@ function Autorization() {
             </div>
             
             <button onClick={Check}>Войти</button>
-            <div className='text-bottom'>Нет аккаунта?<a href='#' className='href'>Создать</a></div>
+            <div className='text-bottom'>Нет аккаунта?<a href='/registration' className='href'>Создать</a></div>
         </div>
 
         {/* <div className='question'>
