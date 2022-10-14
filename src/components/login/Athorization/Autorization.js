@@ -6,6 +6,7 @@ import '../Login.scss';
 
 function Autorization() {
   const [show, setShow] = useState(false);
+  const [notSuccessLogin, setNotSuccessLogin] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,16 +15,18 @@ function Autorization() {
   }
 
   function Check(){
-    console.log(email);
-    console.log(password);
       axios
       .post(`http://asus.russianitgroup.ru/api/login`, {
         login: email,
         password: password,
       })
       .then((response) => {
-        if(response.data)
-        console.log('yes');
+          setNotSuccessLogin(false);
+          console.log('login success');
+      })
+      .catch((error) => {
+        setNotSuccessLogin(true);
+        console.log('email or password not correct');
       });
   };
 
@@ -45,9 +48,15 @@ function Autorization() {
         <div className='text-info'>Веб-приложение для автоматизации обучения в УлГТУ</div>
         <div className='login'>
           <div className='text-title'>Авторизация</div>
+            {notSuccessLogin && 
+              <div className="notSuccessLogin">Неверный email или пароль</div>
+            }
             <div className='input-block'>
               <input 
-                onChange={(event) => setEmail(event.target.value)} 
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  setNotSuccessLogin(false);
+                }} 
                 className="input" type="email" placeholder='email@ulstu.ru'
               />      
               <i className='fa fa-envelope login-icon' />
@@ -55,7 +64,10 @@ function Autorization() {
             
             <div className='input-block'>
               <input 
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                  setNotSuccessLogin(false);
+                }}
                 className="input" type={show?"text":"password"} placeholder='пароль'
               />      
               <i onClick={passwordShow} className={show?'fa fa-eye-slash login-icon':'fa fa-eye login-icon'} />
