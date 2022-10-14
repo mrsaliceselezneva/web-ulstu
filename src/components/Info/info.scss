@@ -1,0 +1,102 @@
+
+
+.content_info{
+    
+    padding: 20px 65px;
+    display: flex;
+    flex-direction: column;
+
+    .middle_container{
+
+        
+        border: 2px solid green;
+        .middle_group{
+            border: 2px solid purple;
+            display: flex;
+            flex-direction: column;
+            width: 66%;
+        }
+        .status{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: auto;
+            width: 100%;
+        }
+
+        img{
+            display: flex;
+            width: 100%;
+        }
+
+        .productive{
+            display: flex;
+            width: 27%;
+            border-radius: 10px;
+            background: white;
+            border: 2px solid yellow;
+        }
+    }
+    
+    .footer_container{
+
+        display: flex;
+        justify-content: space-between;
+
+        .answers{
+
+            margin-top: 20px;
+            border-radius: 10px;
+            background: white;
+            width: 44.2%;
+    
+            h1{ 
+                padding: 5px 50px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: 0.01em;
+                color: #333951;
+            }
+        }
+    
+        .visit{
+            margin-top: 20px;
+            border-radius: 10px;
+            background: white;
+            width: 21.3%;
+
+            h1{
+
+                padding: 5px 50px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 27px;
+                color: #333951;
+            }
+        }
+
+        .rating{
+
+            margin-top: 20px;
+            border-radius: 10px;
+            background: white;
+            width: 32%;
+
+            h1{
+                padding: 5px 50px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 27px;
+                color: #333951;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,39 @@
+.status_container{
+
+    width: 26%;
+    height: 80px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 3%;
+
+    .status_text{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        h2{ margin: 0;
+            padding: 10px;
+            letter-spacing: 0.01em;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 24px;
+        }
+
+        span{
+            margin: 10px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: 0.01em;
+            color: #A6ACBE;
+
+        }
+    }
+}
+
