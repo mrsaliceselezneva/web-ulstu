@@ -1,0 +1,124 @@
+
+header {
+
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    height: 82px;
+    min-width: 720px;
+
+    .search {
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        width: 40%;
+        margin-left: 5%;
+
+        img{
+            width: 5%;
+        }
+      
+        input {
+          border: 0;
+          padding: 13px;
+          font-size: 16px;
+          outline: none;
+        }
+      }
+
+    .header_info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 30%;
+
+        .info_main{
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin-left: 20%;
+            min-width: 20%;
+
+        }
+
+
+        .main_img{
+
+            border-radius: 50%;
+            height: 90%;
+        }
+
+        .action{
+            width: 30%;
+            height: 100%;
+            border-left: 2px solid #EFF4F6;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            img{
+                cursor: pointer;
+            }
+            
+        }
+    }
+
+    // .search{
+
+    //     display: flex;
+    //     align-items: center;
+    //     width: 50%;
+
+    //     input {
+
+    //         border: 0;
+    //         padding: 13px;
+    //         font-size: 16px;
+    //         outline: none;
+    //     }
+
+    // }
+
+    // .info{
+        
+    //     width: 20%;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: space-around;
+        
+    //     .mainImg{
+    //         border-radius: 50%;
+    //         padding: 0 30px;
+    //     }
+
+    //     span, p {
+    //         margin: 0;
+    //         text-align: right;
+    //         display: block;
+    //     }
+
+    // }
+
+    // .action{
+
+    //     border-left: 1px solid #EFF4F6;
+    //     width: 30%;
+    //     height: 85px;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: space-between;
+        
+
+
+    //     img{
+    //         padding: 0 20px;
+    //     }
+
+    // }
+
+}   
+
+
+
+

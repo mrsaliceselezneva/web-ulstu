@@ -1,8 +1,9 @@
-import { 
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Drawer from "./components/Drawer/Drawer";
+import MainPage from "./pages/MainPage/MainPage";
+import Subjects from "./pages/Subjects/Subjects";
+import Timetable from "./pages/Timetable/Timetable";
+
 
 import './App.css';
 import Autorization from './components/login/Athorization/Autorization';
@@ -12,12 +13,18 @@ import Registration from './components/login/Registration/Registration';
 function App() {
   return (
 
-    <BrowserRouter>
+    <Router>
+    
       <Routes>
-        <Route exact path="/" element={<Autorization />} />
+        <Route exact path="/login" element={<Autorization />} />
         <Route exact path="/registration" element={<Registration />} />
+          <Route path="/" element={<MainPage/>} />
+          <Route path="/timetable" element={<Timetable/>} />
+          <Route path="/subjects" element={<Subjects/>} />
+
+
       </Routes>
-    </BrowserRouter>
+  </Router>
 
   );
 }
