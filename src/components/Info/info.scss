@@ -8,10 +8,10 @@
 
     .middle_container{
 
-        
-        border: 2px solid green;
+        display: flex;
+        justify-content: space-between;
+
         .middle_group{
-            border: 2px solid purple;
             display: flex;
             flex-direction: column;
             width: 66%;
@@ -30,12 +30,30 @@
         }
 
         .productive{
+            margin-top: 20px;
             display: flex;
+            flex-direction: column;
             width: 27%;
             border-radius: 10px;
             background: white;
-            border: 2px solid yellow;
+            width: 32%;
+
+            .h1{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: 0.01em;
+                color: #000000;
+                text-align: center;
+                border-bottom: 1px solid #EEF0F6;
+                width: 100%;
+                padding: 20px 0;
+                
+            }
         }
+
     }
     
     .footer_container{
@@ -48,7 +66,7 @@
             margin-top: 20px;
             border-radius: 10px;
             background: white;
-            width: 44.2%;
+            width: 43.5%;
     
             h1{ 
                 padding: 5px 50px;
@@ -66,7 +84,7 @@
             margin-top: 20px;
             border-radius: 10px;
             background: white;
-            width: 21.3%;
+            width: 21%;
 
             h1{
 

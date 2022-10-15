@@ -15,14 +15,16 @@ a{
 .sidebar{
     background: #2C405A;
     color: white;
-    min-width: 300px;
+    min-width: 250px;
+    transition: width .5s ease-in-out;
 }
+
+
 .opened {
-    width: 100px;
-    min-width: 100px;
+    width: 90px;
+    min-width: 90px;
+    transition: width .5s ease-in-out;
 }
-
-
 
 .top_section{
 
@@ -30,7 +32,9 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: linear-gradient(237.26deg, #88DDFF 8.37%, #4364F7 95.2%);
+    background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+    background-size: 200% auto;
+    transition: 0.5s;
 
     img{
         height: 52px;
@@ -50,6 +54,10 @@ a{
 
 }
 
+.top_section:hover{
+    background-position: right center;
+}
+
 .logo{
     font-size: 18px;
     line-height: 0;
@@ -58,10 +66,6 @@ a{
 .routes{
     margin-top: 20px;
 }
-
-
-
-
 
 .icon{
     display: flex;
@@ -108,11 +112,13 @@ a{
 
 .children{
     width: 100%;
+
 }
 
 .children_opened{
     width: 100%;
     min-width: 300px;
+
 }
 
 

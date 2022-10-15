@@ -8,8 +8,7 @@ import Timetable from "./pages/Timetable/Timetable";
 
 
 function App() {
-  return (
-    
+  return (    
     <Router>
       <Drawer>
         <Routes>

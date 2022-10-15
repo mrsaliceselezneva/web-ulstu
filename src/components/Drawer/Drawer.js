@@ -41,7 +41,6 @@ const Drawer = ({children}) => {
 
                 <div className="top_section">
                     
-                    
                     <div className="drawerLogo"> 
                         <img src='/images/logo.svg' alt = "logo" onClick={toggle}/>
                     </div>
@@ -50,8 +49,6 @@ const Drawer = ({children}) => {
                         {isOpen && <p className="logo"><b>Learn</b>.Ulstu</p>}
                     </div>
                     
-                    
-
                 </div>
 
                 <section className="routes"> 
@@ -61,10 +58,8 @@ const Drawer = ({children}) => {
                         <NavLink to={route.path} key={route.name}className="link">
                            
                            <div className="icon">{route.icon}</div>
-                           <AnimatePresence>
+                           
                                {isOpen && <motion.div className="link_text">{route.name}</motion.div>}
-                           </AnimatePresence>
-                     
                         </NavLink>
         
                     ))}

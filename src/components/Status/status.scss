@@ -1,17 +1,17 @@
 .status_container{
 
-    width: 26%;
-    height: 80px;
+    width: 32%;
+    height: 150px;
     background: #FFFFFF;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    padding: 3%;
 
     .status_text{
         display: flex;
         flex-direction: column;
         padding: 10px;
+        width: 100%;
 
         h2{ margin: 0;
             padding: 10px;

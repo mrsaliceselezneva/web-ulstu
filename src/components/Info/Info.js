@@ -75,6 +75,7 @@ const Info = () => {
                 </div>
               
                 <div className="productive">
+                    <div className='h1'>Продуктивность обучения</div>
                     <Productive />
                 </div>
 
