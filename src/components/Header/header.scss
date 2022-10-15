@@ -5,6 +5,7 @@ header {
     justify-content: space-between;
     background: #ffffff;
     height: 82px;
+    min-width: 720px;
 
     .search {
         padding: 0 15px;
@@ -37,6 +38,7 @@ header {
             flex-direction: column;
             text-align: right;
             margin-left: 20%;
+            min-width: 20%;
 
         }
 

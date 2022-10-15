@@ -37,7 +37,9 @@ const Drawer = ({children}) => {
     return (
         <div className="container">
             
-            <div  className={`sidebar ${isOpen ? "" : "opened"}`}>
+            <motion.div 
+                animate={{width: isOpen ? "300px" : "90px"}} 
+                className={`sidebar ${isOpen ? "" : "opened"}`}>
 
                 <div className="top_section">
                     
@@ -48,7 +50,7 @@ const Drawer = ({children}) => {
                     <div className="drawer_span">
                         {isOpen && <p className="logo"><b>Learn</b>.Ulstu</p>}
                     </div>
-                    
+
                 </div>
 
                 <section className="routes"> 
@@ -65,11 +67,12 @@ const Drawer = ({children}) => {
                     ))}
 
                 </section>
-            </div> 
+            </motion.div> 
 
-            <div className={`children ${isOpen ? "children_opened" : ""}`}>
+            <motion.div
+                className={`children ${isOpen ? "children_opened" : ""}`}>
                 <main>{children}</main>
-            </div>
+            </motion.div>
         </div> 
     )
 }

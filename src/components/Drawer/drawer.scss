@@ -15,15 +15,12 @@ a{
 .sidebar{
     background: #2C405A;
     color: white;
-    min-width: 250px;
-    transition: width .5s ease-in-out;
+    min-width: 300px;
 }
 
 
 .opened {
-    width: 90px;
-    min-width: 90px;
-    transition: width .5s ease-in-out;
+    min-width: 90px;   
 }
 
 .top_section{
@@ -52,10 +49,6 @@ a{
     }
 
 
-}
-
-.top_section:hover{
-    background-position: right center;
 }
 
 .logo{
@@ -112,13 +105,11 @@ a{
 
 .children{
     width: 100%;
-
 }
 
 .children_opened{
     width: 100%;
-    min-width: 300px;
-
+    min-width: 720px;
 }
 
 
