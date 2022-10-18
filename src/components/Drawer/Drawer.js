@@ -27,7 +27,7 @@ const Drawer = ({children}) => {
         icon: <FiCheckSquare/>
        },
        {
-        path: "/",
+        path: "/login",
         name:"Ответы преподавателей",
         icon:<FiEdit/>
        }
