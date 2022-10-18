@@ -4,18 +4,18 @@
 body {
   margin: 0;
   font-family: 'Inter';
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-appearance: none;
   background: #F8F8FB;
   width: 100%;
   max-width: 100%;
-  overflow-y: hidden;
+  height: 100%;
+  // overflow-y: hidden;
 
 }
 
-*{
+* {
   font-family: 'Inter';
 }
-
