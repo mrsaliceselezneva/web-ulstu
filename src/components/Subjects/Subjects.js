@@ -5,6 +5,7 @@ const Subjects = () => {
 
     return(
         <div>
+            <style>{'body { background-color: #E5E5E5; background-image: none;}'}</style>
             <Drawer>
             <h1>
                 Предметы

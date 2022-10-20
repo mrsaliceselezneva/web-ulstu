@@ -1,8 +1,8 @@
-import styles from './drawer.scss'
-import {AnimatePresence, motion} from 'framer-motion'
-import { NavLink } from 'react-router-dom'
-import { FiBarChart2, FiCalendar, FiCheckSquare, FiEdit } from 'react-icons/fi'
-import { useState } from 'react'
+import styles from './drawer.scss';
+import {AnimatePresence, motion} from 'framer-motion';
+import { NavLink } from 'react-router-dom';
+import { FiBarChart2, FiCalendar, FiCheckSquare, FiEdit } from 'react-icons/fi';
+import { useState } from 'react';
 
 const Drawer = ({children}) => {
 
@@ -69,12 +69,11 @@ const Drawer = ({children}) => {
                 </section>
             </motion.div> 
 
-            <motion.div
-                className={`children ${isOpen ? "children_opened" : ""}`}>
+            <motion.div className={`children ${isOpen ? "children_opened" : ""}`}>
                 <main>{children}</main>
             </motion.div>
         </div> 
     )
 }
 
-export default Drawer
+export default Drawer;

@@ -1,66 +1,61 @@
 header {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  height: 82px;
+  width: 100%;
+  min-width: 720px;
 
+  .search {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    margin-left: 5%;
+
+    img {
+      width: 5%;
+    }
+
+    input {
+      border: 0;
+      padding: 13px;
+      font-size: 16px;
+      outline: none;
+    }
+  }
+
+  .header_info {
     display: flex;
     justify-content: space-between;
-    background: #ffffff;
-    height: 82px;
-    min-width: 720px;
+    align-items: center;
 
-    .search {
-        padding: 0 15px;
-        display: flex;
-        align-items: center;
-        width: 40%;
-        margin-left: 5%;
+    width: 30%;
 
-        img {
-            width: 5%;
-        }
-
-        input {
-            border: 0;
-            padding: 13px;
-            font-size: 16px;
-            outline: none;
-        }
+    .info_main {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      margin-right: 5%;
+      min-width: 20%;
     }
 
-    .header_info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        width: 30%;
-
-        .info_main {
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            margin-right: 5%;
-            min-width: 20%;
-
-        }
-
-
-        .main_img {
-
-            border-radius: 50%;
-            height: 90%;
-        }
-
-        .action {
-            width: 30%;
-            height: 80%;
-            border-left: 2px solid #EFF4F6;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-
-            img {
-                cursor: pointer;
-            }
-
-        }
+    .main_img {
+      border-radius: 50%;
+      height: 90%;
     }
 
+    .action {
+      width: 30%;
+      height: 80%;
+      border-left: 2px solid #eff4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
 }
