@@ -36,7 +36,7 @@ const Drawer = ({children}) => {
     
     return (
         <div className="container">
-            
+            <style>{'body { background-color: #E5E5E5; background-image: none;}'}</style>
             <motion.div 
                 animate={{width: isOpen ? "300px" : "90px"}} 
                 className={`sidebar ${isOpen ? "" : "opened"}`}>
