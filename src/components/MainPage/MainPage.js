@@ -7,7 +7,6 @@ const MainPage = () => {
     return(
        
     <div>
-        <style>{'body { background-color: #E5E5E5; background-image: none;}'}</style>
         <Drawer>
             <Header />
             <Info/>

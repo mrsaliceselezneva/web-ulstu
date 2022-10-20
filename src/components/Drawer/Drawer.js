@@ -41,10 +41,10 @@ const Drawer = ({children}) => {
                 animate={{width: isOpen ? "300px" : "90px"}} 
                 className={`sidebar ${isOpen ? "" : "opened"}`}>
 
-                <div className="top_section">
+                <div className="top_section" onClick={toggle}>
                     
                     <div className="drawerLogo"> 
-                        <img src='/images/logo.svg' alt = "logo" onClick={toggle}/>
+                        <img src='/images/logo.svg' alt = "logo" />
                     </div>
                     
                     <div className="drawer_span">

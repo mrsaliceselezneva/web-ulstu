@@ -6,6 +6,7 @@
 .container {
   display: flex;
   height: 100%;
+  background-color: #e5e5e5;
 }
 
 a {
@@ -17,7 +18,8 @@ a {
   color: white;
   min-width: 300px;
   height: 100vh;
-  border-radius: 12px;
+  transition: all 0.5s ease-out;
+  overflow: hidden;
 }
 
 .opened {
@@ -29,10 +31,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+  background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
   background-size: 200% auto;
   transition: 0.5s;
-  border-radius: 12px;
+  cursor: pointer;
 
   img {
     height: 52px;
