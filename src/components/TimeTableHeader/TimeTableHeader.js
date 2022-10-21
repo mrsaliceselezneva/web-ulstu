@@ -10,7 +10,7 @@ const TimeTableHeader = () => {
     const data = {
         month: "Октябрь",
         year: "2022",
-        group: "ИВТАСбд-31"
+        group: "ИВТАСбд-41"
     }
 
 

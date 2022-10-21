@@ -2,30 +2,30 @@ import './header.scss'
 import 'font-awesome/css/font-awesome.min.css';
 
 const Header = () => {
-    
-    const data =  {
-            "id": 2,
-            "login": "user1",
-            "email": "anton@email.com",
-            "firstName": "Антон",
-            "lastName": "Мамакин",
-            "patronymic": "Сергеевич",
-            "phone": "001",
-            "avatarId": null,
-            "userContactIds": [
-                1,
-                2
-            ],
-            "studyGroupId": 1,
-            "departmentId": null,
-            "role": "USER"
-        }
-    
+
+    const data = {
+        "id": 2,
+        "login": "user1",
+        "email": "anton@email.com",
+        "firstName": "Максим",
+        "lastName": "Дергунов",
+        "patronymic": "Сергеевич",
+        "phone": "001",
+        "avatarId": null,
+        "userContactIds": [
+            1,
+            2
+        ],
+        "studyGroupId": 1,
+        "departmentId": null,
+        "role": "USER"
+    }
+
 
 
     return (
 
-        <header className="header"> 
+        <header className="header">
 
             <div className="search">
                 <img className="search_icon" src="/images/search.svg" width={18} height={18} alt="Search" />
@@ -39,11 +39,11 @@ const Header = () => {
                     <p className="opacity-5">Студент</p>
                 </div>
 
-                <img className="main_img"  src="/images/main.png" alt="main" />
-    
+                <img className="main_img" src="/images/main.png" alt="main" />
+
 
                 <div className="action">
-        
+
                     <img height={30} width={30} src="/images/push.svg" alt="push" />
                     <img height={30} width={30} src="/images/logout.svg" alt="logout" />
 
@@ -73,11 +73,11 @@ const Header = () => {
                     </div>
 
             </div> */}
-          
 
-      
+
+
         </header>
-            
+
     )
 }
 

@@ -4,6 +4,7 @@ import BiUser from "react-icons/bi"
 const TimeTableCard = () => {
 
     const color = ["red", "green", "blue"]
+
     const data = {
         subject: "Исследование операций",
         type: "Лекция",
