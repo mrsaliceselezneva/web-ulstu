@@ -3,6 +3,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { FiBarChart2, FiCalendar, FiCheckSquare, FiEdit } from 'react-icons/fi';
 import { useState } from 'react';
+import repeatBackground from '../assets/images/repeat-background.png';
 
 const Drawer = ({children}) => {
 
@@ -32,11 +33,14 @@ const Drawer = ({children}) => {
         icon:<FiEdit/>
        }
     ]
-
     
     return (
         <div className="container">
-            <style>{'body { background-color: #E5E5E5; background-image: none;}'}</style>
+            <style>
+                {`body { background-color: #E5E5E5; 
+                background-image: url(${repeatBackground}); 
+                background-size: contain;}`}
+            </style>
             <motion.div 
                 animate={{width: isOpen ? "300px" : "90px"}} 
                 className={`sidebar ${isOpen ? "" : "opened"}`}>

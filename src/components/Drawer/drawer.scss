@@ -6,7 +6,6 @@
 .container {
   display: flex;
   height: 100%;
-  background-color: #e5e5e5;
 }
 
 a {
@@ -17,7 +16,7 @@ a {
   background: #2c405a;
   color: white;
   min-width: 300px;
-  height: 100vh;
+  height: 300vh;
   transition: all 0.5s ease-out;
   overflow: hidden;
 }
