@@ -29,12 +29,14 @@ function App() {
         {/*public routes*/}
         <Route exact path="/login" element={<Autorization />} />
         <Route exact path="/registration" element={<Registration />} />
+
         {/*privat routes*/}
-          <Route exact path="/" element={<MainPage/>} />
-          <Route exact path="/timetable" element={<Timetable/>} />
-          <Route exact path="/subjects" element={<Subjects/>} />
-      </Routes>
-  </Router>
+        <Route exact path="/" element={<MainPage />} />
+        <Route exact path="/timetable" element={<Timetable />} />
+        <Route exact path="/subjects" element={<Subjects />} />
+
+      </Routes >
+    </Router >
 
   );
 }

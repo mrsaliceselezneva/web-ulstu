@@ -1,13 +1,12 @@
 import Drawer from "../Drawer/Drawer";
 
-
 const Timetable = () => {
-    return(
+    return (
         <div className="timetable_container">
             <Drawer>
-                <h1>
-                    Расписание
-                </h1>
+                <Header />
+                <TimeTableHeader />
+                <TimeTableContent />
             </Drawer>
         </div>
     )

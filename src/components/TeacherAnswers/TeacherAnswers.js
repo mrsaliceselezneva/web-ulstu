@@ -1,5 +1,4 @@
 import "./teacherAnswers.scss"
-import { FiUserCheck } from 'react-icons/fi'
 
 const TeacherAnswers = (props) => {
     return (
@@ -12,10 +11,10 @@ const TeacherAnswers = (props) => {
             <div className="answer_date">{props.date}</div>
 
             <div className="answer_time">{props.time}</div>
-            
+
             <div className="answer_comment">{props.comment}</div>
 
-        </div>  
+        </div>
     )
 }
 
