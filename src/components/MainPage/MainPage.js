@@ -4,14 +4,14 @@ import Info from "../Info/Info";
 import './MainPage.scss';
 
 const MainPage = () => {
-    return(
-       
-    <div>
-        <Drawer>
-            <Header />
-            <Info/>
-       </Drawer>
-    </div>
+    return (
+
+        <div>
+            <Drawer>
+                <Header />
+                <Info />
+            </Drawer>
+        </div>
     )
 }
 
