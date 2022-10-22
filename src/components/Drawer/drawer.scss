@@ -29,7 +29,6 @@ a {
   height: 82px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
   background-size: 200% auto;
   transition: 0.5s;
@@ -38,10 +37,15 @@ a {
   img {
     height: 52px;
     width: 72px;
-    margin: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
   }
 
   p {
+    padding-left: 20px;
+    display: block;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 900;
@@ -52,52 +56,53 @@ a {
 
 .logo {
   font-size: 18px;
-  line-height: 0;
 }
 
 .routes {
   margin-top: 20px;
-}
-
-.icon {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border: 1px solid white;
-  border-radius: 12px;
-  width: 40px;
-  height: 40px;
-}
+  flex-direction: column;
 
-.link {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-}
+  .link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.link:hover {
-  opacity: 0.9;
-  background: #3a4f6e;
-  border-radius: 12px;
+    padding: 20px 20px;
 
-  .icon {
-    background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
-    border-radius: 12px;
+    .link_text {
+      display: block;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: #ffffff;
+      width: 70%;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      border: 1px solid white;
+      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+    }
   }
-}
 
-.link_text {
-  display: block;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 18px;
-  color: #ffffff;
-  width: 70%;
+  .link:hover {
+    opacity: 0.9;
+    background: #3a4f6e;
+    border-radius: 12px;
+
+    .icon {
+      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+      border-radius: 12px;
+    }
+  }
 }
 
 .children {

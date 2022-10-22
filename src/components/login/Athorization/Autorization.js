@@ -34,7 +34,6 @@ function Autorization() {
 
 
   return (
-    
       <div onKeyDown={event => {
           if (event.key == "Enter")
             Check();

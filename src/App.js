@@ -5,9 +5,23 @@ import Timetable from "./components/Timetable/Timetable";
 
 import Autorization from './components/login/Athorization/Autorization';
 import Registration from './components/login/Registration/Registration';
+import { useState } from "react";
 
 
 function App() {
+  // const [token, setToken] = useState();
+
+  // if (!token){
+  //   return (
+  //     <Router>
+  //     <Routes>
+  //       {/*public routes*/}
+  //       <Route exact path="/registration" element={<Registration />} />
+  //       <Route path="/*" element={<Autorization />} />
+  //     </Routes>
+  // </Router>
+  //   );
+  // }
   return (
 
     <Router>

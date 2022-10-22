@@ -46,10 +46,8 @@ const Drawer = ({children}) => {
                 className={`sidebar ${isOpen ? "" : "opened"}`}>
 
                 <div className="top_section" onClick={toggle}>
-                    
-                    <div className="drawerLogo"> 
+                     
                         <img src='/images/logo.svg' alt = "logo" />
-                    </div>
                     
                     <div className="drawer_span">
                         {isOpen && <p className="logo"><b>Learn</b>.Ulstu</p>}
