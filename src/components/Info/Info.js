@@ -1,7 +1,7 @@
 import Status from '../Status/Status'
 import TeacherAnswers from '../TeacherAnswers/TeacherAnswers'
 import { FiUserCheck } from 'react-icons/fi'
-import styles from './info.scss'
+import './info.scss'
 import Visit from '../Visit/Visit'
 import Productive from '../Productive/Productive'
 

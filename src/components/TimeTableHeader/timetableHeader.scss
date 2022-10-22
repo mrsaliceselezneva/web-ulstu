@@ -1,0 +1,105 @@
+.timetable_header {
+    height: 115px;
+    width: 100%;
+    background: #E5E5E5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .leftPart {
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+
+
+        .timeTableArrows {
+            margin-left: 30px;
+
+            img {
+                cursor: pointer;
+                opacity: .9;
+            }
+
+            img:hover {
+                color: #5A9CFF;
+                opacity: .7;
+            }
+
+            img:active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .rightPart {
+
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        width: 30%;
+        justify-content: space-between;
+        margin: 30px;
+
+        .timeTableGroup {
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 26px;
+            /* identical to box height, or 130% */
+
+            letter-spacing: 0.166667px;
+
+            color: #333539;
+        }
+
+
+
+        .dropDown {
+            position: relative;
+            cursor: pointer;
+            background: white;
+            width: 130px;
+            border-radius: 10px;
+            font-family: 'Heebo';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 22px;
+
+
+            .dropDownContent {
+
+                position: absolute;
+                background: white;
+                width: 130px;
+                box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.05);
+
+            }
+
+            .dropDownItem {
+                padding: 10px;
+
+
+                .dropDownItem:hover {
+                    background: #ECF5FD;
+                }
+            }
+
+            .dropDownBtn {
+                padding: 10px;
+
+                background: white;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+            }
+
+        }
+
+
+    }
+}
