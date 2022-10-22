@@ -22,11 +22,12 @@ function App() {
   // </Router>
   //   );
   // }
+
   return (
 
     <Router>
       <Routes>
-        {/*public routes*/}
+        {/*public routes */}
         <Route exact path="/login" element={<Autorization />} />
         <Route exact path="/registration" element={<Registration />} />
         {/*privat routes*/}
