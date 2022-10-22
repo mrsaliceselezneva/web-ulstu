@@ -1,4 +1,4 @@
-import './drawer.scss';
+import styles from './drawer.scss';
 import {AnimatePresence, motion} from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { FiBarChart2, FiCalendar, FiCheckSquare, FiEdit } from 'react-icons/fi';
@@ -42,6 +42,7 @@ const Drawer = ({children}) => {
                 background-size: contain;}`}
             </style>
             <motion.div 
+                animate={{width: isOpen ? "300px" : "90px"}} 
                 className={`sidebar ${isOpen ? "" : "opened"}`}>
 
                 <div className="top_section" onClick={toggle}>
