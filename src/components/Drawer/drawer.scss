@@ -1,10 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
+@mixin text($a, $b, $c) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -12,73 +16,143 @@ a {
   text-decoration: none;
 }
 
-.sidebar {
-  background: #2c405a;
-  color: white;
-  min-width: 300px;
-  height: 300vh;
-  transition: all 0.5s ease-out;
-  overflow: hidden;
-}
-
-.opened {
-  min-width: 90px;
-}
-
-.top_section {
-  height: 82px;
+.top-section {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
-  background-size: 200% auto;
-  transition: 0.5s;
-  cursor: pointer;
+  background-color: white;
+  width: 100vw;
+  height: 8vh;
 
-  img {
-    height: 52px;
-    width: 72px;
+  .logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding-left: 10px;
+    text-align: center;
+    background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
+    background-size: 200% auto;
+    border-radius: 18px;
+    width: 22vw;
+    height: 7vh;
+    margin: 5px;
+    cursor: pointer;
+
+    .logo-img {
+      height: 6vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px;
+    }
+    p {
+      display: flex;
+      align-items: center;
+      color: white;
+      margin-left: 8px;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 19px;
+      line-height: 18px;
+    }
   }
 
-  p {
-    padding-left: 20px;
-    display: block;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 18px;
+  .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+
+    .short-info {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      margin-right: 1vw;
+      .name {
+        @include text(500, 16px, 17px);
+      }
+      .group {
+        @include text(400, 12px, 15px);
+        color: #a6acbe;
+      }
+    }
+
+    .avatar {
+      height: 6vh;
+      border-radius: 100%;
+      margin-right: 1vw;
+    }
+
+    .notice-exit {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: 6vh;
+      border-left: 1px solid #c7cbd5;
+
+      .notice {
+        color: #c7cbd5;
+        height: 3vh;
+        width: 3vh;
+        margin-left: 1vw;
+      }
+
+      .notice:hover {
+        color: #5a9cff;
+      }
+
+      .exit {
+        color: #c7cbd5;
+        height: 3vh;
+        width: 3vh;
+        margin-left: 1vw;
+        margin-right: 1vw;
+      }
+      .exit:hover {
+        color: #5a9cff;
+      }
+    }
   }
 }
 
-.logo {
-  font-size: 18px;
+%general-sidebar {
+  margin: 5px;
+  background: #2c405a;
+  color: white;
+  max-width: 22vw;
+  border-radius: 18px;
 }
 
-.routes {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
+.sidebar-button {
+  @extend %general-sidebar;
+  border-radius: 18px;
+  width: 9vw;
+  height: 6vh;
+}
+.sidebar-button:hover {
+  opacity: 0.9;
+  background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+}
+
+.sidebar {
+  @extend %general-sidebar;
+  width: 100vw;
+  margin-top: 2vh;
 
   .link {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 20px 20px;
 
     .link_text {
       display: block;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 18px;
+      @include text(400, 15px, 18px);
       color: #ffffff;
-      width: 70%;
+      width: 64%;
     }
 
     .icon {
@@ -96,20 +170,10 @@ a {
   .link:hover {
     opacity: 0.9;
     background: #3a4f6e;
-    border-radius: 12px;
+    border-radius: 18px;
 
     .icon {
       background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
-      border-radius: 12px;
     }
   }
-}
-
-.children {
-  width: 100%;
-}
-
-.children_opened {
-  width: 100%;
-  min-width: 720px;
 }
