@@ -1,20 +1,14 @@
-import './drawer.scss';
-import {AnimatePresence, motion} from 'framer-motion';
+import './Drawer.scss';
 import { NavLink } from 'react-router-dom';
 import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
-import { useState } from 'react';
 import repeatBackground from '../assets/images/repeat-background.png';
 
-const Drawer = () => {
-    const [open, setOpen] = useState(true);
-
-    // const toggle = () => setIsOpen(!isOpen);
-    const sidebarOpen = () => {setOpen(!open);};
+function Drawer (props) {
 
     const routes = [
        {
         path: "/",
-        name:"Главаня",
+        name:"Главная",
         icon: <FiHome/>
        },
        {
@@ -28,7 +22,7 @@ const Drawer = () => {
         icon: <FiCheckSquare/>
        },
        {
-        path: "/login",
+        path: "/messangers",
         name:"Чаты",
         icon:<FiMessageSquare/>
        },
@@ -65,28 +59,13 @@ const Drawer = () => {
                     </div>
                     <img className='avatar' src='./images/avatar.png' alt = "avatar" />
                     <div className='notice-exit'>
-                        {/* <i className='fa fa-bell notice' aria-hidden="true"/> */}
                         <FiBell className='notice' />
-                        <FiLogOut className='exit' />
+                        <a href='/login'>
+                            <FiLogOut className='exit' />
+                        </a>
                     </div>
                 </div>
             </div>
-            {/* <div>
-            <button onClick={sidebarOpen} 
-            className={`${open ? "fa fa-angle-double-left" : "fa fa-angle-double-right"} sidebar-button`}
-             />
-            <div className={`sidebar-${open ? "open" : "close"}`}>
-
-                {routes.map((route) => (
-                    <NavLink to={route.path} key={route.name} className="link">
-                        
-                        <div className="icon">{route.icon}</div>
-                        
-                            {open && <div className="link_text">{route.name}</div>}
-                    </NavLink>
-        
-                ))}
-            </div> */}
              <div className={`sidebar`}>
 
                 {routes.map((route) => (
@@ -97,6 +76,7 @@ const Drawer = () => {
 
                 ))}
             </div>
+            {props.central}
         </div> 
     )
 };

@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import logoUlstu from '../../assets/images/logo-ulstu.png';
-import background from '../../assets/images/background.png';
 
 import '../Login.scss';
 
@@ -35,7 +34,7 @@ function Autorization() {
 
   return (
       <div onKeyDown={event => {
-          if (event.key == "Enter")
+          if (event.key === "Enter")
             Check();
           }} 
           className='autinfication'>

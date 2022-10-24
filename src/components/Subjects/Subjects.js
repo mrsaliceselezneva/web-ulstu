@@ -1,17 +1,9 @@
-import Drawer from "../../components/Drawer/Drawer"
+import './Subjects.scss';
 
-
-const Subjects = () => {
-
+function Subjects(){
     return(
-        <div>
-            <Drawer>
-            <h1>
-                Предметы
-            </h1>
-            </Drawer>
-        </div>
-    )
+        <div></div>
+    );
 }
 
-export default Subjects
+export default Subjects;

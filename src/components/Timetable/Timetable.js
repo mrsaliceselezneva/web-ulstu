@@ -1,19 +1,9 @@
-import Drawer from "../../components/Drawer/Drawer"
-import Header from "../../components/Header/Header"
-import TimeTableContent from "../../components/TimeTableContent/TimeTableContent"
-import TimeTableHeader from "../../components/TimeTableHeader/TimeTableHeader"
+import './Timetable.scss';
 
-
-const Timetable = () => {
-    return (
-        <div className="timetable_container">
-            <Drawer>
-                <Header />
-                <TimeTableHeader />
-                <TimeTableContent />
-            </Drawer>
-        </div>
-    )
+function Timetable(){
+    return(
+        <div></div>
+    );
 }
 
 export default Timetable;
