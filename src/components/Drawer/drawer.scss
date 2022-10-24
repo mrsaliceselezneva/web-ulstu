@@ -16,6 +16,12 @@ a {
   text-decoration: none;
 }
 
+$width: 215px;
+$logo-text: 19px;
+$sidebar-text: 15px;
+$logo-img: 6vh;
+$icon: 40px;
+
 .top-section {
   display: flex;
   flex-direction: row;
@@ -31,13 +37,13 @@ a {
     background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
     background-size: 200% auto;
     border-radius: 18px;
-    width: 22vw;
+    width: $width;
     height: 7vh;
     margin: 5px;
     cursor: pointer;
 
     .logo-img {
-      height: 6vh;
+      height: $logo-img;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -48,11 +54,7 @@ a {
       align-items: center;
       color: white;
       margin-left: 8px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 900;
-      font-size: 19px;
-      line-height: 18px;
+      @include text(900, $logo-text, 18px);
     }
   }
 
@@ -122,7 +124,7 @@ a {
   margin: 5px;
   background: #2c405a;
   color: white;
-  max-width: 22vw;
+  max-width: $width;
   border-radius: 18px;
 }
 
@@ -139,20 +141,19 @@ a {
 
 .sidebar {
   @extend %general-sidebar;
-  width: 100vw;
   margin-top: 2vh;
 
   .link {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 20px 20px;
 
     .link_text {
       display: block;
-      @include text(400, 15px, 18px);
+      @include text(400, $sidebar-text, 18px);
       color: #ffffff;
-      width: 64%;
+      width: 50%;
+      margin-left: 1vw;
     }
 
     .icon {
@@ -162,8 +163,8 @@ a {
       color: white;
       border: 1px solid white;
       border-radius: 12px;
-      width: 40px;
-      height: 40px;
+      width: $icon;
+      height: $icon;
     }
   }
 
