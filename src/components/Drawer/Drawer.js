@@ -1,7 +1,7 @@
 import './drawer.scss';
 import {AnimatePresence, motion} from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiCheckSquare, FiEdit, FiHome, FiMessageSquare, FiBell } from 'react-icons/fi';
+import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import { useState } from 'react';
 import repeatBackground from '../assets/images/repeat-background.png';
 
@@ -31,7 +31,12 @@ const Drawer = () => {
         path: "/login",
         name:"Чаты",
         icon:<FiMessageSquare/>
-       }
+       },
+       {
+        path: "/projects",
+        name:"Проекты",
+        icon:<FiLayout/>
+       },
     ];
     
     return (
