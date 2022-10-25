@@ -4,7 +4,7 @@ import Drawer from '../Drawer/Drawer';
 
 function Main(){
     return(
-        <div>лол</div>
+        <div></div>
     );
 }
 

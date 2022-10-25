@@ -1,0 +1,117 @@
+@mixin text($a, $b, $c) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+}
+
+.timetable {
+  margin-top: 5px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 8vh;
+
+    .reduction-date {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 18px;
+      height: 4vh;
+      padding-left: 1vw;
+      padding-right: 1vw;
+      @include text(600, 22px, 28px);
+    }
+
+    .select {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: absolute;
+      right: 2vw;
+
+      %general-select {
+        background-color: #ffffff;
+        border: none;
+        @include text(400, 15px, 18px);
+        border-radius: 18px;
+        height: 4vh;
+      }
+
+      .week {
+        @extend %general-select;
+        margin: 2vw;
+      }
+      .group {
+        @extend %general-select;
+      }
+    }
+  }
+
+  .desk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ecf5fd;
+    border: 3px solid #d0e9ff;
+    border-radius: 18px;
+    width: 80vw;
+    height: 100px;
+
+    .week-date {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 8vh;
+      flex-direction: row;
+
+      .clock {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10vw;
+        height: 8vh;
+        color: #d0e9ff;
+        border-bottom: 3px solid #d0e9ff;
+        border-right: 3px solid #d0e9ff;
+
+        .icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 10vw;
+        height: 8vh;
+        border-bottom: 3px solid #d0e9ff;
+        border-left: 1px solid #d0e9ff;
+        .number {
+          @include text(600, 32px, 40px);
+          color: #5c5c5c;
+        }
+        .weekday {
+          @include text(400, 14px, 17px);
+          color: #5c5c5c;
+        }
+      }
+    }
+    .body-desk {
+    }
+  }
+}
