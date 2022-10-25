@@ -47,6 +47,7 @@ const Drawer = ({ children }) => {
                 className={`sidebar ${isOpen ? "" : "opened"}`}>
 
                 <div className="top_section" onMouseEnter={toggle}>
+                    {/* onMouseLeave */}
 
                     <img src='/images/logo.svg' alt="logo" />
 
