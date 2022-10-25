@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 
-function Drawer (props) {
+function Drawer ({central, page}) {
 
     const routes = [
        {
@@ -68,15 +68,15 @@ function Drawer (props) {
             </div>
             <div className='body'>
                 <div className='sidebar'>
-                    {routes.map((route) => (
+                    {routes.map((route, id) => (
                         <NavLink to={route.path} key={route.name} className="link">
-                            <div className="icon">{route.icon}</div>
-                            <div className="link_text">{route.name}</div>
+                            <div className={id===page?'select-icon':'icon'}>{route.icon}</div>
+                            <div className={id===page?'select-link-text':'link-text'}>{route.name}</div>
                         </NavLink>
 
                     ))}
                 </div>
-                {props.central}
+                {central}
             </div>
         </div> 
     )

@@ -149,28 +149,48 @@ $icon: 40px;
   @extend %general-sidebar;
   width: 100%;
 
+  %general-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: $icon;
+    height: $icon;
+  }
+
+  %general-link-text {
+    display: block;
+    @include text(400, $sidebar-text, 18px);
+    width: 50%;
+    margin-left: 1vw;
+  }
+
   .link {
     display: flex;
     align-items: center;
-    padding: 20px 20px;
-
-    .link_text {
-      display: block;
-      @include text(400, $sidebar-text, 18px);
-      color: #ffffff;
-      width: 50%;
-      margin-left: 1vw;
-    }
+    height: 8vh;
+    padding-left: 1vw;
 
     .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      border: 1px solid white;
-      border-radius: 12px;
-      width: $icon;
-      height: $icon;
+      @extend %general-icon;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+    .link-text {
+      color: #ffffff;
+    }
+    .select-icon {
+      @extend %general-icon;
+      color: #5a9cff;
+      border: 1px solid #5a9cff;
+    }
+    .link-text {
+      @extend %general-link-text;
+      color: #ffffff;
+    }
+    .select-link-text {
+      @extend %general-link-text;
+      color: #5a9cff;
     }
   }
 
@@ -181,6 +201,14 @@ $icon: 40px;
 
     .icon {
       background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+    }
+    .select-icon {
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+    }
+    .select-link-text {
+      color: #ffffff;
     }
   }
 }
