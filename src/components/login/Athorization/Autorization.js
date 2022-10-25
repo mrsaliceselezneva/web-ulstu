@@ -2,9 +2,11 @@ import axios from "axios";
 import React, {useState} from 'react';
 import logoUlstu from '../../assets/images/logo-ulstu.png';
 
+import PropTypes from 'prop-types';
+
 import '../Login.scss';
 
-function Autorization() {
+function Autorization({setToken}) {
   const [show, setShow] = useState(false);
   const [notSuccessLogin, setNotSuccessLogin] = useState(false);
   const [email, setEmail] = useState('');
@@ -22,6 +24,7 @@ function Autorization() {
       })
       .then((response) => {
           setNotSuccessLogin(false);
+          setToken(response.data.token);
           console.log('login success');
       })
       .catch((error) => {
@@ -76,12 +79,9 @@ function Autorization() {
             <button onClick={Check}>Войти</button>
             <div className='text-bottom'>Нет аккаунта? <a href='/registration' className='href'>Создать</a></div>
         </div>
-
-        {/* <div className='question'>
-            <button className='question'></button>
-        </div> */}
       </div>
   );
 }
 
 export default Autorization;
+

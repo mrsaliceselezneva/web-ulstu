@@ -66,17 +66,18 @@ function Drawer (props) {
                     </div>
                 </div>
             </div>
-             <div className={`sidebar`}>
+            <div className='body'>
+                <div className='sidebar'>
+                    {routes.map((route) => (
+                        <NavLink to={route.path} key={route.name} className="link">
+                            <div className="icon">{route.icon}</div>
+                            <div className="link_text">{route.name}</div>
+                        </NavLink>
 
-                {routes.map((route) => (
-                    <NavLink to={route.path} key={route.name} className="link">
-                        <div className="icon">{route.icon}</div>
-                        <div className="link_text">{route.name}</div>
-                    </NavLink>
-
-                ))}
+                    ))}
+                </div>
+                {props.central}
             </div>
-            {props.central}
         </div> 
     )
 };

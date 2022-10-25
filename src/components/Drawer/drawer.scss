@@ -120,6 +120,12 @@ $icon: 40px;
   }
 }
 
+.body {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2vh;
+}
+
 %general-sidebar {
   margin: 5px;
   background: #2c405a;
@@ -141,7 +147,7 @@ $icon: 40px;
 
 .sidebar {
   @extend %general-sidebar;
-  margin-top: 2vh;
+  width: 100%;
 
   .link {
     display: flex;

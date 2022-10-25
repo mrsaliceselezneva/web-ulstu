@@ -7,16 +7,20 @@ import Subjects from "./components/Subjects/Subjects";
 import Messangers from "./components/Messangers/Messangers";
 import Projects from "./components/Projects/Projects";
 import Drawer from "./components/Drawer/Drawer";
+import useToken from "./useToken";
+import React, { useState } from 'react';
 
 
 function App() {
-  return (
+  
+  const { token, setToken } = useState();
+  // const [token, setToken] = useState();
 
+  
+
+  return (
     <Router>
       <Routes>
-        {/*public routes */}
-        <Route exact path="/login" element={<Autorization />} />
-        <Route exact path="/registration" element={<Registration />} />
         {/*privat routes*/}
           <Route exact path="/" element={<Drawer central={<Main/>} />} />
           <Route exact path="/timetable" element={<Drawer central={<Timetable/>} /> } />
