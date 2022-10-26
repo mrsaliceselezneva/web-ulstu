@@ -1,21 +1,30 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage/MainPage";
-import Subjects from "./pages/Subjects/Subjects";
-import Timetable from "./pages/Timetable/Timetable";
 import Autorization from './components/login/Athorization/Autorization';
 import Registration from './components/login/Registration/Registration';
+import Main from "./components/Main/main";
+import Timetable from "./components/Timetable/Timetable";
+import Subjects from "./components/Subjects/Subjects";
+import Messangers from "./components/Messangers/Messangers";
+import Projects from "./components/Projects/Projects";
+import Drawer from "./components/Drawer/Drawer";
+//import useToken from "./useToken";
+//import React, { useState } from 'react';
 
 
 function App() {
-  return (
 
+  return (
     <Router>
       <Routes>
-        <Route exact path="/login" element={<Autorization />} />
+        {/*public routes */}
         <Route exact path="/registration" element={<Registration />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/timetable" element={<Timetable />} />
-        <Route path="/subjects" element={<Subjects />} />
+        <Route exact path="/*" element={<Autorization />} />
+        {/*privat routes*/}
+        <Route exact path="/" element={<Drawer central={<Main />} page={0} />} />
+        <Route exact path="/timetable" element={<Drawer central={<Timetable />} page={1} />} />
+        <Route exact path="/subjects" element={<Drawer central={<Subjects />} page={2} />} />
+        <Route exact path="/messangers" element={<Drawer central={<Messangers />} page={3} />} />
+        <Route exact path="/projects" element={<Drawer central={<Projects />} page={4} />} />
       </Routes>
     </Router>
 
