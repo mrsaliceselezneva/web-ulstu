@@ -1,44 +1,156 @@
+import axios from "axios";
+import React, {useState, useEffect} from 'react';
+
 import './Timetable.scss';
 import { FiClock } from 'react-icons/fi';
+import Sleep from '../assets/images/sleep.svg';
 
-const days = [
+ const date = new Date();
+ const nowDate = date.getDate();
+ const today = date.getDay();
+ //const currentWeek = Math.ceil((nowDate + 6 - today) / 7);
+
+ const days = [
     {
-     number: 3,
+     number: 1 - today + nowDate,
      weekday: "понедельник",
     },
     {
-     number: 4,
+     number: 2 - today + nowDate,
      weekday: "вторник",
     },
     {
-     number: 5,
+     number: 3 - today + nowDate,
      weekday: "среда",
     },
     {
-     number: 6,
+     number: 4 - today + nowDate,
      weekday: "четверг",
     },
     {
-     number: 7,
+     number: 5 - today + nowDate,
      weekday: "пятница",
     },
     {
-     number: 8,
+     number: 6 - today + nowDate,
      weekday: "суббота",
     },
     {
-     number: 9,
+     number: 7 - today + nowDate,
      weekday: "воскресенье",
     },
     
  ];
 
+ const calls = [
+     {  
+         hourStart: 8,
+         minutStart: 30,
+         hourFinish: 9,
+         minutFinish: 50,
+         time: "08:30 - 09:50",
+         pair: "1 пара",
+     },
+     {
+        hourStart: 10,
+        minutStart: 0,
+        hourFinish: 11,
+        minutFinish: 20,
+         time: "10:00 - 11:20",
+         pair: "2 пара",
+     },
+     {
+        hourStart: 11,
+        minutStart: 30,
+        hourFinish: 12,
+        minutFinish: 50,
+         time: "11:30 - 12:50",
+         pair: "3 пара",
+     },
+     {
+        hourStart: 13,
+        minutStart: 30,
+        hourFinish: 14,
+        minutFinish: 50,
+         time: "13:30 - 14:50",
+         pair: "4 пара",
+     },
+     {
+        hourStart: 15,
+        minutStart: 0,
+        hourFinish: 16,
+        minutFinish: 20,
+         time: "15:00 - 16:20",
+         pair: "5 пара",
+     },
+     {
+        hourStart: 16,
+        minutStart: 30,
+        hourFinish: 17,
+        minutFinish: 50,
+         time: "16:30 - 17:50",
+         pair: "6 пара",
+     },
+     {
+        hourStart: 18,
+        minutStart: 0,
+        hourFinish: 19,
+        minutFinish: 20,
+         time: "18:00 - 19:20",
+         pair: "7 пара",
+     },
+     {
+        hourStart: 19,
+        minutStart: 30,
+        hourFinish: 20,
+        minutFinish: 50,
+         time: "19:30 - 20:50",
+         pair: "8 пара",
+     },
+ ];
+
+ const pairs = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+ ];
+
+ const nameMonth = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+ ];
+
 function Timetable(){
+    const [table, setTable] = React.useState(null);
+
+    React.useEffect(() => {
+        axios
+          .get(`http://asus.russianitgroup.ru/api/schedule?nameGroup=ИВТАСбд-41`)
+          .then((response) => {
+            setTable(response.data);
+          });
+      }, []);
+
+      console.log(table);
+
     return(
         <div className='timetable'>
             <div className='info'>
                 <div className='reduction-date'>
-                    Октябрь 2022
+                    {nameMonth[date.getMonth()]} {date.getFullYear()}
                 </div>
                 <div className='select'>
                     <select className='week'> 
@@ -53,10 +165,10 @@ function Timetable(){
             <div className='desk'>
                 <div className='week-date'>
                     <div className='clock'>
-                    <FiClock className='icon'/>
+                        <FiClock className='icon'/>
                     </div>
                     {days.map((day) => (
-                        <div className='date'>
+                        <div key={day.number} className={day.number === nowDate ? 'now-date' : 'date'}>
                             <div className='number'>
                                 {day.number}
                             </div>
@@ -68,13 +180,41 @@ function Timetable(){
                 </div>
                 <div className='body-desk'>
                     <div className='calls'>
-                        <div className='call'>
-                        </div>
+                        {calls.map((call) => (
+                            <div key={call.pair} 
+                            className=
+                            {call.hourStart * 60 + call.minutStart <= date.getHours() * 60 + date.getMinutes() &&
+                                call.hourFinish * 60 + call.minutFinish > date.getHours() * 60 + date.getMinutes() 
+                            ? 'now-call' : 'call'}>
+                                <div className='time'>
+                                    {call.time}
+                                </div>
+                                <div className='pair-number'>
+                                    {call.pair}
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className='day'>
-                        <div className='subject'>
+                    {pairs.map((pair, i) => (
+                        <div key={i} className='day'>
+                            {pair.map((p, j) => (
+                                <div key={i + " " + j} 
+                                className={
+                                    days[i].number === nowDate &&
+                                    calls[j].hourStart * 60 + calls[j].minutStart <= date.getHours() * 60 + date.getMinutes() &&
+                                    calls[j].hourFinish * 60 + calls[j].minutFinish > date.getHours() * 60 + date.getMinutes() ?
+                                    'now-pair' : 'pair'
+                                }>
 
+                                </div>
+                            ))}
                         </div>
+                    ))}
+                    <div className='weekend'>
+                        <div className='weekend-text'>
+                            выходной
+                        </div>
+                        <img src={Sleep} className='sleep' alt='sleep'/>
                     </div>
                 </div>
             </div>

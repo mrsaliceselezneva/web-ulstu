@@ -78,10 +78,6 @@ body {
     border-radius: 8px;
     transform: rotate(-0.32deg);
 
-    .notSuccessLogin {
-      margin-bottom: 3%;
-    }
-
     .text-title {
       width: 100%;
       @include text-style(600, 26px, 31px, #333951);

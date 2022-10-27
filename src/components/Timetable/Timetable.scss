@@ -43,14 +43,17 @@
         @include text(400, 15px, 18px);
         border-radius: 18px;
         height: 4vh;
+        text-align: center;
       }
 
       .week {
         @extend %general-select;
         margin: 2vw;
+        width: 7vw;
       }
       .group {
         @extend %general-select;
+        width: 9vw;
       }
     }
   }
@@ -63,7 +66,6 @@
     border: 3px solid #d0e9ff;
     border-radius: 18px;
     width: 80vw;
-    height: 100px;
 
     .week-date {
       display: flex;
@@ -110,8 +112,124 @@
           color: #5c5c5c;
         }
       }
+
+      .now-date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #5a9cff;
+        width: 10vw;
+        height: 8vh;
+        border-bottom: 3px solid #d0e9ff;
+        border-left: 1px solid #d0e9ff;
+        .number {
+          @include text(600, 32px, 40px);
+          color: #ffffff;
+        }
+        .weekday {
+          @include text(400, 14px, 17px);
+          color: #ffffff;
+        }
+      }
     }
+
     .body-desk {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: row;
+      .calls {
+        flex-direction: column;
+
+        .call {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+          min-height: 8vh;
+          width: 10vw;
+          border-bottom: 1px solid #d0e9ff;
+          border-right: 3px solid #d0e9ff;
+          .time {
+            @include text(600, 14px, 18px);
+          }
+          .pair-number {
+            @include text(300, 12px, 18px);
+          }
+        }
+
+        .now-call {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+          background: #5a9cff;
+          min-height: 8vh;
+          width: 9.7vw;
+          border-bottom: 1px solid #d0e9ff;
+          border-right: 3px solid #d0e9ff;
+          border-left: 3px solid #d0e9ff;
+          .time {
+            @include text(600, 14px, 18px);
+            color: #ffffff;
+          }
+          .pair-number {
+            @include text(300, 12px, 18px);
+            color: #ffffff;
+          }
+        }
+      }
+      .day {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        .pair {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          min-height: 8vh;
+          width: 10vw;
+          border-bottom: 1px solid #d0e9ff;
+          border-right: 1px solid #d0e9ff;
+        }
+
+        .now-pair {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          min-height: 8vh;
+          width: 10vw;
+          background-color: #d0e9ff;
+          border-bottom: 1px solid #d0e9ff;
+          border-right: 1px solid #d0e9ff;
+        }
+      }
+      .weekend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        width: 10vw;
+
+        .weekend-text {
+          @include text(400, 17px, 20px);
+          color: #5a9cff;
+          margin-bottom: 10px;
+        }
+        .sleep {
+          width: 12vw;
+          height: 10vh;
+        }
+      }
     }
   }
 }

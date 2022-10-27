@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import '../Login.scss';
 
-function Autorization({setToken}) {
+function Autorization() {
   const [show, setShow] = useState(false);
   const [notSuccessLogin, setNotSuccessLogin] = useState(false);
   const [email, setEmail] = useState('');
@@ -24,7 +24,6 @@ function Autorization({setToken}) {
       })
       .then((response) => {
           setNotSuccessLogin(false);
-          setToken(response.data.token);
           console.log('login success');
       })
       .catch((error) => {
