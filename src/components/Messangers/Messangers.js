@@ -1,4 +1,5 @@
 import DialogItem from './DialogItem/DialogItem';
+import Dialogs from './Dialogs/Dialogs';
 import Message from './Message/Message';
 import './Messangers.scss';
 
@@ -9,17 +10,44 @@ function Messangers() {
 
             <div className='dialogs'>
 
-                <DialogItem user={{
-                    fullname: "Кирилл Святов",
-                    isOnline: true
-                }}
-                    unreaded={99} />
+                <Dialogs
+                    userId={0}
+                    items={[
+                        {
+                            _id: Math.random(),
+                            text: "Последнее сообщение",
+                            //isReaded: false,
+                            created_at: new Date(),
+                            user: {
+                                _id: 1,
+                                fullname: "Кирилл Святов",
+                                avatar: null
+                            }
+                        },
+                        {
+                            _id: Math.random(),
+                            text: "Последнее сообщение",
+                            //isReaded: false,
+                            created_at: "Mon July 11 2019 21:23:21",
+                            user: {
+                                _id: 1,
+                                fullname: "Максим Дергунов",
+                                avatar: "https://randomwordgenerator.com/img/picture-generator/54e1d7444c51ab14f1dc8460962e33791c3ad6e04e507441722a72d39f45c5_640.jpg"
+                            }
+                        },
+                        {
+                            _id: Math.random(),
+                            text: "Последнее сообщение",
+                            //isReaded: false,
+                            created_at: new Date(),
+                            user: {
+                                _id: 1,
+                                fullname: "Максим Дергу",
+                                avatar: "https://randomwordgenerator.com/img/picture-generator/54e1d7444c51ab14f1dc8460962e33791c3ad6e04e507441722a72d39f45c5_640.jpg"
+                            }
+                        }
 
-                <DialogItem user={{
-                    fullname: "Максим Дергунов",
-                    isOnline: false
-                }} />
-
+                    ]} />
             </div>
 
             {/* <Dialogs items={[
@@ -80,10 +108,6 @@ function Messangers() {
 
             />
 
-            <Message
-                avatar="https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg"
-                isTyping
-            />
 
             <Message
                 avatar="https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg"
