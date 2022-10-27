@@ -63,8 +63,8 @@
         font-size: 14px;
         line-height: 20px;
         color: white;
-        padding: 10px;
-        margin-bottom: 5px;
+        padding: 5px;
+        margin-bottom: 3px;
 
     }
 
@@ -149,8 +149,17 @@
                 margin-right: 0;
             }
         }
+    }
 
-
+    &--image {
+        .message__attachments {
+            &-item {
+                img {
+                    height: 150px;
+                    width: 150px;
+                }
+            }
+        }
     }
 
 }

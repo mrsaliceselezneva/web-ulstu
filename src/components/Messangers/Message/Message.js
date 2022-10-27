@@ -1,10 +1,8 @@
 import './message.scss'
 import PropTypes from "prop-types"
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
-import ruLocale from "date-fns/locale/ru"
 import classNames from "classnames"
-import readed from "../../assets/images/readed.svg"
-import noreaded from "../../assets/images/noreaded.svg"
+import Time from '../../Time/Time'
+import IconReaded from '../IconReaded/IconReaded'
 
 
 const Message = ({
@@ -13,7 +11,7 @@ const Message = ({
     text,
     date,
     isMe,
-    isChecked,
+    isReaded,
     attachments,
     isTyping
 }) => {
@@ -23,7 +21,7 @@ const Message = ({
             {
                 'message--isme': isMe,
                 "message--is-typing": isTyping,
-                // "message--image": attachments.lenght === 1
+                "message--image": attachments && attachments.length === 1
             })}>
 
             <div className='message__content'>
@@ -44,16 +42,8 @@ const Message = ({
                         </div>}
 
                         {date && <div className='message__date'>
-                            {formatDistanceToNow(date, { addSuffix: true, locale: ruLocale })}
-
-                            {isMe && isChecked ? (
-                                <img src={readed} alt="readed" />
-                            ) :
-                                (
-                                    <img src={noreaded} alt="readed" />
-                                )
-                            }
-
+                            <Time date={date} />
+                            <IconReaded isMe={isMe} isReaded={isReaded} />
                         </div>}
                     </div>}
 
@@ -87,7 +77,9 @@ Message.propTypes = {
     date: PropTypes.string,
     user: PropTypes.object,
     attachments: PropTypes.array,
-    isTyping: PropTypes.bool
+    isTyping: PropTypes.bool,
+    isMe: PropTypes.bool,
+    isReaded: PropTypes.bool
 }
 
 export default Message

@@ -1,3 +1,4 @@
+import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import './Messangers.scss';
 
@@ -5,9 +6,39 @@ function Messangers() {
 
     return (
         <div className='messangers'>
-            <Message
+
+            <div className='dialogs'>
+
+                <DialogItem user={{
+                    fullname: "Кирилл Святов",
+                    isOnline: true
+                }}
+                    unreaded={99} />
+
+                <DialogItem user={{
+                    fullname: "Максим Дергунов",
+                    isOnline: false
+                }} />
+
+            </div>
+
+            {/* <Dialogs items={[
+                {
+                    user: {
+                        fullname: "Кирилл Святов",
+                        avatar: null
+                    },
+                    message: {
+                        text: "За выдающиеся успехи в программировании, Вам назначена стипендия. Классно? Классно!",
+                        isReaded: false,
+                        created_at: new Date()
+                    }
+
+                }
+            ]} /> */}
+            {/* <Message
                 avatar="https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg"
-                text=" Тестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщение"
+                text=" Тестовое сообщение"
                 date={new Date()}
                 isMe={false}
                 attachments={[
@@ -28,10 +59,10 @@ function Messangers() {
 
             <Message
                 avatar="https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg"
-                text="Тестовое сообщение Тестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщениеТестовое сообщение"
+                text="Тестовое сообщение"
                 date={new Date()}
                 isMe={true}
-                isChecked={true}
+                isReaded={true}
                 attachments={[
                     {
                         filename: "test.doc",
@@ -62,7 +93,7 @@ function Messangers() {
                         url: "https://randompicturegenerator.com/img/cat-generator/ge7ff6fe5d501da774950bdc29dbec73fa02b97c29256ed12aa9a34f0a15b2f5402611fb6fe459d65da603547e312e3e2_640.jpg"
                     }
                 ]}
-            />
+            /> */}
 
 
         </div>
