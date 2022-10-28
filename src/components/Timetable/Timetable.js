@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, {useState, useEffect} from 'react';
+import Subject from "./Subject/Subject";
 
 import './Timetable.scss';
 import { FiClock } from 'react-icons/fi';
@@ -132,19 +133,31 @@ import Sleep from '../assets/images/sleep.svg';
     'Ноябрь',
     'Декабрь',
  ];
+let subjects = [
+
+];
 
 function Timetable(){
     const [table, setTable] = React.useState(null);
+    const [currentWeek, setCurrentWeek] = React.useState(1);
+    const [group, setGroup] = React.useState('ИВТАСбд-41');
 
     React.useEffect(() => {
         axios
-          .get(`http://asus.russianitgroup.ru/api/schedule?nameGroup=ИВТАСбд-41`)
+          .get(`http://asus.russianitgroup.ru/api/schedule?nameGroup=${group}`)
           .then((response) => {
             setTable(response.data);
+            setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
+            table.map((t, i) => {
+                if (t.numberWeek === currentWeek){
+                  subjects.push([]);
+                  t.map((tt, j) => {
+                      subjects[i].push(1);
+                  });
+              }
+            });
           });
       }, []);
-
-      console.log(table);
 
     return(
         <div className='timetable'>
@@ -154,11 +167,11 @@ function Timetable(){
                 </div>
                 <div className='select'>
                     <select className='week'> 
-                        <option>Неделя 1</option>
-                        <option>Неделя 2</option>
+                        <option>Неделя {currentWeek % 2 ? 1 : 2}</option>
+                        <option>Неделя {currentWeek % 2 ? 2 : 1}</option>
                     </select>
                     <select className='group'>
-                        <option>ИВТАСбд-41</option>
+                        <option>{group}</option>
                     </select>
                 </div>
             </div>
@@ -205,7 +218,7 @@ function Timetable(){
                                     calls[j].hourFinish * 60 + calls[j].minutFinish > date.getHours() * 60 + date.getMinutes() ?
                                     'now-pair' : 'pair'
                                 }>
-
+                                    <Subject />  
                                 </div>
                             ))}
                         </div>
@@ -218,6 +231,7 @@ function Timetable(){
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 }

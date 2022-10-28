@@ -16,9 +16,9 @@ a {
   text-decoration: none;
 }
 
-$width: 215px;
-$logo-text: 19px;
-$sidebar-text: 15px;
+$width: 15vw;
+$logo-text: 1.3vw;
+$sidebar-text: 1.1vw;
 $logo-img: 6vh;
 $icon: 40px;
 
@@ -44,6 +44,7 @@ $icon: 40px;
 
     .logo-img {
       height: $logo-img;
+      width: 5vw;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -178,16 +179,13 @@ $icon: 40px;
       border: 1px solid #ffffff;
     }
     .link-text {
+      @extend %general-link-text;
       color: #ffffff;
     }
     .select-icon {
       @extend %general-icon;
       color: #5a9cff;
       border: 1px solid #5a9cff;
-    }
-    .link-text {
-      @extend %general-link-text;
-      color: #ffffff;
     }
     .select-link-text {
       @extend %general-link-text;
