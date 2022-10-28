@@ -6,6 +6,11 @@
   line-height: $c;
 }
 
+$lab: #25ced1;
+$lec: #ffa45a;
+
+$lab-background: #f1fcfc;
+$lec-background: #fef6f0;
 .card {
   display: flex;
   align-items: center;
@@ -16,17 +21,24 @@
   border-radius: 5px;
   background-color: #ffffff;
 
-  .color {
+  %general-color {
     display: flex;
-    // position: absolute;
-    // right: 0;
-    background-color: #25ced1;
     border: none;
     $radius: 20px;
     border-top-left-radius: $radius;
     border-bottom-left-radius: $radius;
     height: 9vh;
     width: 0.4vw;
+  }
+
+  .color-lab {
+    @extend %general-color;
+    background-color: $lab;
+  }
+
+  .color-lec {
+    @extend %general-color;
+    background-color: $lec;
   }
 
   .main {
@@ -61,15 +73,23 @@
         flex-direction: column;
         text-align: left;
         height: 4vh;
+        margin-right: 0.2vw;
 
-        .icon {
+        %general-icon {
           display: flex;
           align-items: center;
           justify-content: center;
           height: 1vw;
           width: 1vw;
-          color: #25ced1;
           margin-right: 0.2vw;
+        }
+
+        .icon-lab {
+          color: $lab;
+        }
+
+        .icon-lec {
+          color: $lec;
         }
       }
 
@@ -108,7 +128,7 @@
             @extend %info-text;
           }
 
-          .type {
+          %general-type {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -116,11 +136,25 @@
             width: 3vw;
             height: 1.8vh;
             border-radius: 4px;
-            background-color: #f1fcfc;
+          }
 
-            .type-text {
+          .type-lab {
+            @extend %general-type;
+            background-color: $lab-background;
+
+            .type-text-lab {
               @include text(400, 0.7vw, 14px);
-              color: #25ced1;
+              color: $lab;
+            }
+          }
+
+          .type-lec {
+            @extend %general-type;
+            background-color: $lec-background;
+
+            .type-text-lec {
+              @include text(400, 0.7vw, 14px);
+              color: $lec;
             }
           }
         }

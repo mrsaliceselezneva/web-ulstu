@@ -148,16 +148,20 @@ function Timetable(){
           .then((response) => {
             setTable(response.data);
             setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
-            table.map((t, i) => {
+            
+            console.log(table);
+
+            table.days.map((t, i) => {
                 if (t.numberWeek === currentWeek){
-                  subjects.push([]);
-                  t.map((tt, j) => {
-                      subjects[i].push(1);
+                  subjects.push([{}, {}, {}, {}, {}, {}]);
+                  t.couples.map((tt, j) => {
+                      subjects[i][tt.pair_number - 1] = tt;
                   });
               }
             });
           });
       }, []);
+
 
     return(
         <div className='timetable'>
@@ -218,7 +222,8 @@ function Timetable(){
                                     calls[j].hourFinish * 60 + calls[j].minutFinish > date.getHours() * 60 + date.getMinutes() ?
                                     'now-pair' : 'pair'
                                 }>
-                                    <Subject />  
+                                    <Subject subject={'Исследование операций'} teacher={'Горшков Д.А.'}
+                                    location={'3 - 306'} type={'Лаб'} /> 
                                 </div>
                             ))}
                         </div>
