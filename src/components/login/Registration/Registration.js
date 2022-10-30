@@ -35,9 +35,11 @@ function Autorization() {
             Check();
           }} 
           className='autinfication'>
+            {/* это должно быть в index.html */}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
         <div className='text-logo'>
+          {/* в качестве альтернативного текста для изображения лучше не использовать строку "альтернативный текст", и использовать текст который покажет что за картинку тут должна быть если она не подгрузилась */}
           <img src={logoUlstu} alt="альтернативный текст" />
           <div>Learn.Ulstu</div>
         </div>

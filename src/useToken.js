@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+// для таких хуков лучше сделать папку src/hooks
+// токен лучше хранить в куках а не в localStorage (но в целом можно и тут, но правильней в куках)
+// для работы с куками есть библиотека которая дает возможность использовать хуки для куков, ими и лучше пользоваться чем делать свои) 
+
 export default function useToken() {
   const getToken = () => {
     const tokenString = localStorage.getItem('token');
