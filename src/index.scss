@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-@import "../node_modules/normalize.css/normalize.css";
+@import '../node_modules/normalize.css/normalize.css';
+// Такой файл стилей лучше перенести в папке src/styles где будут храниться глобавльные стили, переменные цветов, шрифты и т д
+// для сброса стилей браузера лучше установить в проект normolize.css
 
 body {
   margin: 0;
@@ -8,12 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-appearance: none;
-  background: #F8F8FB;
+  background: #f8f8fb;
   width: 100%;
   max-width: 100%;
   height: 100%;
   // overflow-y: hidden;
-
 }
 
 * {

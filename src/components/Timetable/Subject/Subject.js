@@ -1,6 +1,6 @@
 import './Subject.scss';
 import { FiMapPin, FiUser } from 'react-icons/fi';
-
+// не хорошо хранить папку с компонентой в папке с компонентой - их лучше все хранить на одном уровне (или если их много разделять на папки по названию страницы, так например компоненты для страницы логин будут лежать в папке src/components/Login, а общие компоненты в папке src/components/common)
 function Subject(props) {
 
   return (

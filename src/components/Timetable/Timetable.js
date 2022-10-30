@@ -10,7 +10,7 @@ import Sleep from '../assets/images/sleep.svg';
  const nowDate = date.getDate();
  const today = date.getDay();
  //const currentWeek = Math.ceil((nowDate + 6 - today) / 7);
-
+// такие массивы или объекты лучше вынести в папку с константами что бы их не искать по компонентам
  const days = [
     {
      number: 1 - today + nowDate,
@@ -109,7 +109,7 @@ import Sleep from '../assets/images/sleep.svg';
          pair: "8 пара",
      },
  ];
-
+// интересное решение :)
  const pairs = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
@@ -138,11 +138,15 @@ let subjects = [
 ];
 
 function Timetable(){
+    // можно писать import {useState} from 'React' что бы не писать всюду React.
     const [table, setTable] = React.useState(null);
     const [currentWeek, setCurrentWeek] = React.useState(1);
     const [group, setGroup] = React.useState('ИВТАСбд-41');
 
     React.useEffect(() => {
+        // надо победить redux и делать это через него - потом меньше будете проблем решать
+        // ну и запросы лучше вынести в файлик в папке src/api
+        // а URL http://asus.russianitgroup.ru/api лучше вынести в env переменную
         axios
           .get(`http://asus.russianitgroup.ru/api/schedule?nameGroup=${group}`)
           .then((response) => {
@@ -153,6 +157,7 @@ function Timetable(){
 
             table.days.map((t, i) => {
                 if (t.numberWeek === currentWeek){
+                    // этот код явно надо переписать что бы он хотя бы понимался :)
                   subjects.push([{}, {}, {}, {}, {}, {}]);
                   t.couples.map((tt, j) => {
                       subjects[i][tt.pair_number - 1] = tt;

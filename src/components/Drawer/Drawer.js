@@ -35,6 +35,7 @@ function Drawer ({central, page}) {
     
     return (
         <div className="container">
+            {/* style или link вообще не должно быть не в <head></head> */}
             <style>
                 {`body { background-color: #E5E5E5; 
                 background-image: url(${repeatBackground}); 

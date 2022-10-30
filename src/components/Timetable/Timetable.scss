@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 8vh;
+    height: 8vh; // vh - опасно использовать может поехать - лучше пиксели
 
     .reduction-date {
       text-align: center;
@@ -63,7 +63,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #ecf5fd;
-    border: 3px solid #d0e9ff;
+    border: 3px solid #d0e9ff; // цвета лучше вынести в переменные
     border-radius: 18px;
     width: 80vw;
 

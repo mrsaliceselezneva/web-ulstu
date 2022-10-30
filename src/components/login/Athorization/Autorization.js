@@ -76,6 +76,7 @@ function Autorization() {
             </div>
             
             <button onClick={Check}>Войти</button>
+            {/* для перемещение внутри приложения с react-router-dom лучше использовать его механизмы <Link/> или NavLink */}
             <div className='text-bottom'>Нет аккаунта? <a href='/registration' className='href'>Создать</a></div>
         </div>
       </div>
