@@ -1,0 +1,67 @@
+@mixin text($a, $b, $c) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+}
+
+$width: 15vw;
+$height: 320px;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: $height;
+  width: $width;
+  $card-margin: 0.8vw;
+  margin: 5px $card-margin 5px $card-margin;
+  background: white;
+  border-radius: 18px;
+
+  .image {
+    width: $width;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    $info-margin: 12px;
+    margin-left: $info-margin;
+    margin-left: $info-margin;
+    .name {
+      text-align: left;
+      @include text(600, 1.2vw, 12px);
+      color: #333539;
+    }
+    .fio {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      margin-top: 10px;
+      @include text(400, 1vw, 12px);
+      color: #585268;
+      .icon {
+        color: #585268;
+        border-radius: 100%;
+        border: 1px solid #585268;
+        margin-right: 7px;
+      }
+    }
+
+    .description {
+      text-align: left;
+      display: flex;
+      margin-top: 20px;
+      @include text(400, 1vw, 12px);
+      color: #a6acbe;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}
