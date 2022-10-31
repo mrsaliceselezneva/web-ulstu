@@ -11,6 +11,7 @@ import Sleep from '../assets/images/sleep.svg';
  const today = date.getDay();
  //const currentWeek = Math.ceil((nowDate + 6 - today) / 7);
 
+ console.log(today);
  const days = [
     {
      number: 1 - today + nowDate,
@@ -133,18 +134,31 @@ import Sleep from '../assets/images/sleep.svg';
     'Ноябрь',
     'Декабрь',
  ];
-let subjects = [
 
+ const typeSubject = [
+    'Лекция',
+    'Практика',
+    'Лаб',
+ ];
+
+let subjects = [
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
+    [{'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}, {'be':false}],
 ];
 
 function Timetable(){
     const [table, setTable] = React.useState(null);
-    const [currentWeek, setCurrentWeek] = React.useState(1);
+    const [currentWeek, setCurrentWeek] = React.useState(0);
     const [group, setGroup] = React.useState('ИВТАСбд-41');
-
     React.useEffect(() => {
         axios
-          .get(`http://asus.russianitgroup.ru/api/schedule?nameGroup=${group}`)
+          .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
           .then((response) => {
             setTable(response.data);
             setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
@@ -152,16 +166,22 @@ function Timetable(){
             console.log(table);
 
             table.days.map((t, i) => {
-                if (t.numberWeek === currentWeek){
-                  subjects.push([{}, {}, {}, {}, {}, {}]);
+                if (t.numberWeek === table.currentWeek){
                   t.couples.map((tt, j) => {
-                      subjects[i][tt.pair_number - 1] = tt;
+                      subjects[tt.pair_number - 1][t.numberDay - 1] = {
+                        'be': true,
+                        'subject': tt.subject,
+                        'teacher': tt.teacher,
+                        'location': tt.place,
+                        'type': typeSubject[tt.typeSubject - 1],
+                      };
                   });
               }
             });
           });
       }, []);
 
+      console.log(subjects);
 
     return(
         <div className='timetable'>
@@ -201,7 +221,8 @@ function Timetable(){
                             <div key={call.pair} 
                             className=
                             {call.hourStart * 60 + call.minutStart <= date.getHours() * 60 + date.getMinutes() &&
-                                call.hourFinish * 60 + call.minutFinish > date.getHours() * 60 + date.getMinutes() 
+                                call.hourFinish * 60 + call.minutFinish > date.getHours() * 60 + date.getMinutes() &&
+                                today !== 0
                             ? 'now-call' : 'call'}>
                                 <div className='time'>
                                     {call.time}
@@ -220,10 +241,9 @@ function Timetable(){
                                     days[i].number === nowDate &&
                                     calls[j].hourStart * 60 + calls[j].minutStart <= date.getHours() * 60 + date.getMinutes() &&
                                     calls[j].hourFinish * 60 + calls[j].minutFinish > date.getHours() * 60 + date.getMinutes() ?
-                                    'now-pair' : 'pair'
+                                    'pair' : 'pair'
                                 }>
-                                    <Subject subject={'Исследование операций'} teacher={'Горшков Д.А.'}
-                                    location={'3 - 306'} type={'Лаб'} /> 
+                                    {subjects[j][i].be ? <Subject subject={subjects[j][i].subject} teacher={subjects[j][i].teacher}location={subjects[j][i].location} type={subjects[j][i].type} /> : <></>}
                                 </div>
                             ))}
                         </div>

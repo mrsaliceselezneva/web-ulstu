@@ -1,6 +1,6 @@
 import './Drawer.scss';
 import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
+import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout, FiFolder } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 
 function Drawer ({central, page}) {
@@ -30,6 +30,11 @@ function Drawer ({central, page}) {
         path: "/projects",
         name:"Проекты",
         icon:<FiLayout/>
+       },
+       {
+        path: "/my-projects",
+        name:"Мои проекты",
+        icon:<FiFolder/>
        },
     ];
     

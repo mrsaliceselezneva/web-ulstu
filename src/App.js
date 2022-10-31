@@ -6,6 +6,7 @@ import Timetable from "./components/Timetable/Timetable";
 import Subjects from "./components/Subjects/Subjects";
 import Messangers from "./components/Messangers/Messangers";
 import Projects from "./components/Projects/Projects";
+import MyProjects from "./components/MyProjects/MyProjects";
 import Drawer from "./components/Drawer/Drawer";
 //import useToken from "./useToken";
 //import React, { useState } from 'react';
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/subjects" element={<Drawer central={<Subjects/>} page={2} />} />
           <Route exact path="/messangers" element={<Drawer central={<Messangers />} page={3} />} />
           <Route exact path="/projects" element={<Drawer central={<Projects/>} page={4} />} />
+          <Route exact path="/my-projects" element={<Drawer central={<MyProjects/>} page={5} />} />
       </Routes>
   </Router>
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useState} from 'react';
 import logoUlstu from '../../assets/images/logo-ulstu.png';
+import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
 
 import PropTypes from 'prop-types';
 
@@ -18,7 +19,7 @@ function Autorization() {
 
   function Check(){
       axios
-      .post(`http://asus.russianitgroup.ru/api/login`, {
+      .post(`${process.env.REACT_APP_API_URL}/login`, {
         login: email,
         password: password,
       })
@@ -40,8 +41,6 @@ function Autorization() {
             Check();
           }} 
           className='autinfication'>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
         <div className='text-logo'>
           <img src={logoUlstu} alt="альтернативный текст" />
           <div>Learn.Ulstu</div>
@@ -61,7 +60,7 @@ function Autorization() {
                 }} 
                 className="input" type="email" placeholder='email@ulstu.ru'
               />      
-              <i className='fa fa-envelope login-icon' />
+              <FiMail className='login-icon' />
             </div>
             
             <div className='input-block'>
@@ -71,8 +70,9 @@ function Autorization() {
                   setNotSuccessLogin(false);
                 }}
                 className="input" type={show?"text":"password"} placeholder='пароль'
-              />      
-              <i onClick={passwordShow} className={show?'fa fa-eye-slash login-icon':'fa fa-eye login-icon'} />
+              /> 
+              {show? <FiEye onClick={passwordShow} className='login-icon' /> :
+              <FiEyeOff onClick={passwordShow} className='login-icon' /> }
             </div>
             
             <button onClick={Check}>Войти</button>
