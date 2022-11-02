@@ -17,9 +17,10 @@ $height: 320px;
   height: $height;
   width: $width;
   $card-margin: 0.8vw;
-  margin: 5px $card-margin 5px $card-margin;
+  margin: 5px $card-margin 15px $card-margin;
   background: white;
   border-radius: 18px;
+  cursor: pointer;
 
   .image {
     width: $width;
@@ -62,6 +63,15 @@ $height: 320px;
       -webkit-line-clamp: 6;
       -webkit-box-orient: vertical;
       overflow: hidden;
+    }
+
+    .date {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      margin-top: 5px;
+      @include text(600, 0.9vw, 12px);
+      color: #585268;
     }
   }
 }

@@ -19,8 +19,10 @@ a {
 $width: 15vw;
 $logo-text: 1.3vw;
 $sidebar-text: 1.1vw;
-$logo-img: 6vh;
+$logo-img: 48px;
 $icon: 40px;
+
+$sidebar-height: 320px;
 
 .top-section {
   display: flex;
@@ -28,7 +30,7 @@ $icon: 40px;
   align-items: center;
   background-color: white;
   width: 100vw;
-  height: 8vh;
+  height: 64px;
 
   .logo {
     display: flex;
@@ -38,7 +40,7 @@ $icon: 40px;
     background-size: 200% auto;
     border-radius: 18px;
     width: $width;
-    height: 7vh;
+    height: 56px;
     margin: 5px;
     cursor: pointer;
 
@@ -82,7 +84,7 @@ $icon: 40px;
     }
 
     .avatar {
-      height: 6vh;
+      height: 48px;
       border-radius: 100%;
       margin-right: 1vw;
     }
@@ -93,13 +95,13 @@ $icon: 40px;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      height: 6vh;
+      height: 48px;
       border-left: 1px solid #c7cbd5;
 
       .notice {
         color: #c7cbd5;
-        height: 3vh;
-        width: 3vh;
+        height: 24px;
+        width: 24px;
         margin-left: 1vw;
       }
 
@@ -109,8 +111,8 @@ $icon: 40px;
 
       .exit {
         color: #c7cbd5;
-        height: 3vh;
-        width: 3vh;
+        height: 24px;
+        width: 24px;
         margin-left: 1vw;
         margin-right: 1vw;
       }
@@ -124,7 +126,7 @@ $icon: 40px;
 .body {
   display: flex;
   flex-direction: row;
-  padding-top: 2vh;
+  padding-top: 16px;
 }
 
 %general-sidebar {
@@ -139,7 +141,7 @@ $icon: 40px;
   @extend %general-sidebar;
   border-radius: 18px;
   width: 9vw;
-  height: 6vh;
+  height: 48px;
 }
 .sidebar-button:hover {
   opacity: 0.9;
@@ -149,7 +151,7 @@ $icon: 40px;
 .sidebar {
   @extend %general-sidebar;
   width: 100%;
-  max-height: 40vh;
+  height: $sidebar-height;
 
   %general-icon {
     display: flex;
@@ -170,7 +172,7 @@ $icon: 40px;
   .link {
     display: flex;
     align-items: center;
-    height: 8vh;
+    height: $sidebar-height / 5;
     padding-left: 1vw;
 
     .icon {

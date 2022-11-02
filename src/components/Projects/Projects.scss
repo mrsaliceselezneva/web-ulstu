@@ -1,6 +1,87 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.8vw;
+  margin-top: 5px;
+}
+
+.projects-menu {
+  display: flex;
+  align-items: top;
+  flex-direction: row;
+  margin-left: 0.8vw;
+  margin-right: 1.2vw;
+  height: 48px;
+
+  .choose {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+
+    .choose-projects {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+      width: 4vw;
+      background-color: white;
+      height: 32px;
+    }
+
+    .choose-projects:hover {
+      color: white;
+      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+    }
+
+    .select-choose-projects {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+      // border-top-left-radius: 10px;
+      // border-top-right-radius: 10px;
+      width: 4vw;
+      height: 32px;
+      //background-color: white;
+      color: white;
+      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+    }
+
+    .add-project {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 18px;
+      background-color: white;
+      width: 4vw;
+      height: 32px;
+
+      .add-project-icon {
+        width: 1.7vw;
+        height: 1.7vw;
+        color: #c7cbd5;
+      }
+      .add-project:hover {
+        color: #5a9cff;
+      }
+    }
+    .add-project:hover {
+      .add-project-icon {
+        color: #5a9cff;
+      }
+    }
+  }
+}
+
 .list-projects {
   display: flex;
   flex-direction: row;
-  margin-left: 0.8vw;
   flex-wrap: wrap;
 }
