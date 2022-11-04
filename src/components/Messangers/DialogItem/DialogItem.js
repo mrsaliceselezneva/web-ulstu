@@ -1,8 +1,12 @@
 import classNames from "classnames"
-import "./dialogItem.scss"
+
 import IconReaded from '../IconReaded/IconReaded'
 import { format } from 'date-fns'
-import isToday from 'date-fns/isToday';
+import isToday from 'date-fns/isToday'
+import { AvatarGenerator } from 'random-avatar-generator';
+
+
+const generator = new AvatarGenerator();
 
 const getMessageTime = (created_at) => {
     if (isToday(new Date(created_at))) {
@@ -15,11 +19,9 @@ const getMessageTime = (created_at) => {
 const getAvatar = avatar => {
     if (avatar) {
         return (
-            <img src="https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg"
+            <img src={generator.generateRandomAvatar()}
                 alt="avatar" />
         )
-    } else {
-        //make avatar
     }
 }
 
@@ -48,7 +50,7 @@ const DialogItem = ({ user, message, unreaded, isMe }) => {
 
                     <p>{message && message.text}</p>
 
-                    {isMe && <IconReaded isMe={true} isReaded={true} />}
+                    {isMe && <IconReaded isMe={true} isReaded={false} />}
                     {unreaded > 0 &&
                         <div className="dialogs__item-info-bottom-count">
                             {unreaded > 9 ? "+9" : unreaded}

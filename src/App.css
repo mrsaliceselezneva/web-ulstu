@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   background-color: #8db0f1;
-}
+  scrollbar-width: thin;
 
-.App-header {
 }

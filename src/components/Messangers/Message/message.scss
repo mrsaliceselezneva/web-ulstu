@@ -104,11 +104,13 @@
         .message__bubble {
 
             background: white;
-            box-shadow: 0 5px 5px rba(54, 116, 255, 0.19);
+            box-shadow: 0 5px 5px rba(54, 116, 255, 0.8);
             border-radius: 12px 0 12px 12px;
 
+
             p {
-                color: black
+                color: black;
+                opacity: 1;
             }
 
             .message__date {
