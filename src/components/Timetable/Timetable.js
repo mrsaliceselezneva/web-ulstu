@@ -162,7 +162,7 @@ function Timetable(){
           .then((response) => {
             setTable(response.data);
             setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
-            
+            const s = 1;
             console.log(table);
 
             table.days.map((t, i) => {

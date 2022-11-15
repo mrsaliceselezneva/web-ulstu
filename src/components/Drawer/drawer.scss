@@ -127,6 +127,12 @@ $sidebar-height: 320px;
   display: flex;
   flex-direction: row;
   padding-top: 16px;
+
+  .central {
+    margin-top: 5px;
+    margin-left: 16px;
+    margin-right: 21px;
+  }
 }
 
 %general-sidebar {

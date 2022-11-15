@@ -60,9 +60,11 @@ function Drawer ({central, page}) {
                     <img className='avatar' src='./images/avatar.png' alt = "avatar" />
                     <div className='notice-exit'>
                         <FiBell className='notice' />
-                        <a href='/login'>
-                            <FiLogOut className='exit' />
-                        </a>
+                        <FiLogOut className='exit' onClick={() => {
+                            window.location.assign(
+                                `${process.env.REACT_APP_URL}/login`
+                            );
+                        }}/>
                     </div>
                 </div>
             </div>
@@ -76,7 +78,9 @@ function Drawer ({central, page}) {
 
                     ))}
                 </div>
-                {central}
+                <div className='central'>
+                    {central}
+                </div>
             </div>
         </div> 
     )
