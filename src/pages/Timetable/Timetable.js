@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, {useState, useEffect} from 'react';
-import Subject from "./Subject/Subject";
+import Subject from "../../components/Subject/Subject";
 
 import './Timetable.scss';
 import { FiClock } from 'react-icons/fi';
-import Sleep from '../assets/images/sleep.svg';
+import Sleep from '../../components/assets/images/sleep.svg';
 
  const date = new Date();
  const nowDate = date.getDate();
@@ -162,7 +162,7 @@ function Timetable(){
           .then((response) => {
             setTable(response.data);
             setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
-            const s = 1;
+            
             console.log(table);
 
             table.days.map((t, i) => {
@@ -181,7 +181,6 @@ function Timetable(){
           });
       }, []);
 
-      console.log(subjects);
 
     return(
         <div className='timetable'>

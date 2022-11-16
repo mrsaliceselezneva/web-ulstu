@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, {useState} from 'react';
-import logoUlstu from '../../assets/images/logo-ulstu.png';
+import logoUlstu from '../../components/assets/images/logo-ulstu.png';
 
-import '../Login.scss';
+import '../../components/Login/Login.scss';
 
 function Autorization() {
   const [show, setShow] = useState(false);

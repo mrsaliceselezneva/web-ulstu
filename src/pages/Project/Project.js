@@ -1,8 +1,8 @@
 import './Project.scss';
-import Requirement from '../Requirement/Requirement';
-import ListBlock from '../ListBlock/ListBlock';
-import Commit from '../Commit/Commit';
-import defaultBackground from '../assets/images/default_project_background.svg';
+import Requirement from '../../components/Requirement/Requirement';
+import ListBlock from '../../components/ListBlock/ListBlock';
+import Commit from '../../components/Commit/Commit';
+import defaultBackground from '../../components/assets/images/default_project_background.svg';
 import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare } from 'react-icons/fi';
 
 function Project(){

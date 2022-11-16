@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, {useState} from 'react';
-import logoUlstu from '../../assets/images/logo-ulstu.png';
+import logoUlstu from '../../components/assets/images/logo-ulstu.png';
 import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
 
 import PropTypes from 'prop-types';
 
-import '../Login.scss';
+import '../../components/Login/Login.scss';
 
-function Autorization() {
+function Authorization() {
   const [show, setShow] = useState(false);
   const [notSuccessLogin, setNotSuccessLogin] = useState(false);
   const [email, setEmail] = useState('');
@@ -82,5 +82,5 @@ function Autorization() {
   );
 }
 
-export default Autorization;
+export default Authorization;
 

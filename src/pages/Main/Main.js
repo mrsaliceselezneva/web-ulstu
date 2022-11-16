@@ -1,5 +1,4 @@
 import './Main.scss';
-import Drawer from '../Drawer/Drawer';
 
 
 function Main(){

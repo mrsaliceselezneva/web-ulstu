@@ -1,7 +1,7 @@
 import './Projects.scss';
-import ViewProject from '../ViewProject/ViewProject';
-import Event from '../Event/Event';
-import Search from '../Search/Search';
+import ViewProject from '../../components/ViewProject/ViewProject';
+import Event from '../../components/Event/Event';
+import Search from '../../components/Search/Search';
 import React, {useState} from 'react';
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
 
