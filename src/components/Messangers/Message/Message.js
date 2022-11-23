@@ -27,7 +27,7 @@ const Message = ({
             <div className='message__content'>
 
                 <div className='message__avatar'>
-                    <img src={avatar} alt="avatar" />
+                    <img src={user.avatar} alt="avatar" />
                 </div>
 
                 <div className='message__info'>

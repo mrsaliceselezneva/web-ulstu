@@ -56,19 +56,7 @@
 
             &__dialogs {
                 .dialogs {
-
                     height: 80vh;
-
-
-                    &__item {
-
-
-                        &.active,
-                        &:hover {
-                            background-color: #ECF5FD;
-                            cursor: pointer;
-                        }
-                    }
                 }
             }
         }
@@ -98,20 +86,17 @@
             }
 
             &-messages {
-                padding: 15px;
+
                 margin: 0 5px 0 0;
-                height: 50vh;
+                padding: 20px 0 0;
                 background-size: contain;
                 background-image: url('../assets/images/repeat-background.png');
                 background-color: #F8F8FB;
-                overflow: auto;
                 height: calc(100% - 20vh);
                 min-width: 400px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
-                .ant-empty {}
             }
 
 

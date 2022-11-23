@@ -4,7 +4,7 @@ import orderBy from 'lodash/orderBy'
 import { SearchOutlined } from "@ant-design/icons"
 import { Input, Empty } from "antd"
 
-const Dialogs = ({ items, userId, inputValue, onSearch }) => (
+const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelectDialog }) => (
 
     <div className='dialogs'>
 
@@ -21,12 +21,15 @@ const Dialogs = ({ items, userId, inputValue, onSearch }) => (
             {items.length ? (
                 orderBy(items, ["created_at"], ["desc"]).map(item => (
                     <DialogItem
+                        onSelect={onSelectDialog}
                         key={item._id}
                         isMe={item.user._id === userId}
                         userId={userId}
                         message={item}
                         unreaded={0}
                         user={item.user}
+                        currentDialogId={currentDialogId}
+                        {...item}
                     />
                 ))) :
                 (

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { connect } from 'react-redux'
+import { dialogsActions } from '../redux/actions'
 import Dialogs from "../components/Messangers/Dialogs/Dialogs";
 
 
-const DialogsCont = ({ items, userId }) => {
+const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items, userId }) => {
 
     const [inputValue, setValue] = useState("")
     const [filtered, setFiltredItems] = useState(Array.from(items))
@@ -15,15 +17,26 @@ const DialogsCont = ({ items, userId }) => {
         setValue(value)
     }
 
+    useEffect(() => {
+        if (!items.length) {
+            fetchDialogs()
+        } else {
+            setFiltredItems(items)
+        }
+
+    }, [items])
+
     return (
         <Dialogs
             userId={userId}
             items={filtered}
             inputValue={inputValue}
             onSearch={onChangeInput}
+            onSelectDialog={setCurrentDialogId}
+            currentDialogId={currentDialogId}
 
         />
     )
 }
 
-export default DialogsCont
+export default connect(({ dialogs }) => dialogs, dialogsActions)(DialogsCont)

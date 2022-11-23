@@ -5,10 +5,7 @@ import ChatInput from './ChatInput/ChatInput';
 import './Messangers.scss';
 import { TeamOutlined, FormOutlined, EllipsisOutlined } from "@ant-design/icons"
 import DialogsCont from '../../containers/DialogsCont';
-
-import dialogsJSON from '../../dialogs.json'
-
-
+import MessagesCont from '../../containers/MessagesCont';
 
 
 function Messangers() {
@@ -34,7 +31,7 @@ function Messangers() {
                     <div className='chat__sidebar__dialogs'>
                         <DialogsCont
                             userId={0}
-                            items={dialogsJSON} />
+                        />
 
                     </div>
 
@@ -59,8 +56,7 @@ function Messangers() {
                     </div>
 
                     <div className='chat__dialog-messages'>
-                        <Messages />
-
+                        <MessagesCont />
                     </div>
 
                     <div className='chat__dialog-input'>
