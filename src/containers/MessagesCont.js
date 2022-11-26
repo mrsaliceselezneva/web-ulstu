@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
-import { messagesActions } from "../redux/actions"
+import { messagesActions } from "../reduxMessage/actions"
 import Messages from "../components/Messangers/Messages/Messages";
 
 const MessagesCont = ({ currentDialogId, fetchMessages, items, isLoading }) => {

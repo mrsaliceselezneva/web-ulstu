@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { connect } from 'react-redux'
-import { dialogsActions } from '../redux/actions'
+import { dialogsActions } from '../reduxMessage/actions'
 import Dialogs from "../components/Messangers/Dialogs/Dialogs";
 
 
