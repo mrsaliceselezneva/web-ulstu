@@ -1,0 +1,168 @@
+@mixin text($a, $b, $c) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+}
+
+$lab: #25ced1;
+$lec: #ffa45a;
+
+$lab-background: #f1fcfc;
+$lec-background: #fef6f0;
+
+$width: 9.8vw;
+$height: 11vh;
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: $height;
+  width: $width;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+
+  %general-color {
+    display: flex;
+    border: none;
+    $radius: 20px;
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    height: $height;
+    width: 0.4vw;
+  }
+
+  .color-lab {
+    @extend %general-color;
+    background-color: $lab;
+  }
+
+  .color-lec {
+    @extend %general-color;
+    background-color: $lec;
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0.5vh 0.5vw 0.5vh 0.5vw;
+    height: $height - 0.5vh * 2;
+    width: $width - 0.4vw - 0.5vw * 2;
+
+    .name {
+      display: flex;
+      text-align: left;
+      height: ($height - 0.5vh * 2) / 2;
+      width: 7.6vw;
+      @include text(400, 0.8vw, 10px);
+      color: #333951;
+    }
+
+    .body {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      height: ($height - 0.5vh * 2) / 2;
+      margin: 0;
+      padding: 0;
+
+      .icons {
+        display: flex;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: left;
+        height: ($height - 0.5vh * 2) / 2;
+        margin-right: 0.2vw;
+
+        %general-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 1vw;
+          width: 1vw;
+          margin-right: 0.2vw;
+        }
+
+        .icon-lab {
+          color: $lab;
+        }
+
+        .icon-lec {
+          color: $lec;
+        }
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 7.6vw;
+        height: ($height - 0.5vh * 2) / 2;
+
+        %info-text {
+          display: flex;
+          align-items: center;
+          height: ($height - 0.5vh * 2) / 4;
+          text-align: left;
+          @include text(400, 0.7vw, 0px);
+          color: #9598a8;
+        }
+
+        .teacher {
+          width: 6.6vw;
+          height: ($height - 0.5vh * 2) / 4;
+          @extend %info-text;
+        }
+
+        .location-type {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          width: 6.6vw;
+          height: ($height - 0.5vh * 2) / 4;
+
+          .location {
+            width: 3.6vw;
+            height: ($height - 0.5vh * 2) / 4;
+            @extend %info-text;
+          }
+
+          %general-type {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 3vw;
+            height: 1.8vh;
+            border-radius: 4px;
+          }
+
+          .type-lab {
+            @extend %general-type;
+            background-color: $lab-background;
+
+            .type-text-lab {
+              @include text(400, 0.7vw, 14px);
+              color: $lab;
+            }
+          }
+
+          .type-lec {
+            @extend %general-type;
+            background-color: $lec-background;
+
+            .type-text-lec {
+              @include text(400, 0.7vw, 14px);
+              color: $lec;
+            }
+          }
+        }
+      }
+    }
+  }
+}

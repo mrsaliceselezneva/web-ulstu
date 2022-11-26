@@ -1,22 +1,43 @@
-import './drawer.scss'
-import { motion } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
-import { FiBarChart2, FiCalendar, FiCheckSquare, FiEdit } from 'react-icons/fi'
-import { useState } from 'react'
+import React from "react";
+import axios from "axios";
+import './Drawer.scss';
+import { NavLink } from 'react-router-dom';
+import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 
 
-const Drawer = ({ children }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup } from "../../redux/slices/userSlice";
 
-    const [isOpen, setIsOpen] = useState(false)
+function Drawer({ central, page }) {
+    const dispatch = useDispatch();
+    const { token, firstName, lastName, futherName, group } = useSelector(state => state.userReducer);
 
-    const toggle = () => setIsOpen(!isOpen)
+    React.useEffect(() => {
+        console.log('token', token);
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+        };
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
+            .then((response) => {
+                dispatch(loginFirstName(response.data.firstName));
+                dispatch(loginLastName(response.data.lastName));
+                dispatch(loginFutherName(response.data.patronymic));
+                dispatch(loginGroup(response.data.studyGroupId));
+                console.log('get fio success');
+            })
+            .catch((error) => {
+                console.log('get fio not success');
+            });
+    }, []);
 
     const routes = [
+
         {
             path: "/",
-            name: "Главаня",
-            icon: <FiBarChart2 />
+            name: "Главная",
+            icon: <FiHome />
         },
         {
             path: "/timetable",
@@ -29,11 +50,16 @@ const Drawer = ({ children }) => {
             icon: <FiCheckSquare />
         },
         {
-            path: "/login",
-            name: "Ответы преподавателей",
-            icon: <FiEdit />
-        }
-    ]
+            path: "/messangers",
+            name: "Чаты",
+            icon: <FiMessageSquare />
+        },
+        {
+            path: "/projects",
+            name: "Проекты",
+            icon: <FiLayout />
+        },
+    ];
 
     return (
         <div className="container">
@@ -42,42 +68,54 @@ const Drawer = ({ children }) => {
                 background-image: url(${repeatBackground}); 
                 background-size: contain;}`}
             </style>
-            <motion.div
-                animate={{ width: isOpen ? "300px" : "90px" }}
-                className={`sidebar ${isOpen ? "" : "opened"}`}>
 
-                <div className="top_section" onMouseEnter={toggle}>
-                    {/* onMouseLeave */}
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
+            <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
 
-                    <img src='/images/logo.svg' alt="logo" />
-
-                    <div className="drawer_span">
-                        {isOpen && <p className="logo"><b>Learn</b>.Ulstu</p>}
+            <div className='top-section'>
+                <a href='/' className='logo'>
+                    <img className='logo-img' src='/images/logo.svg' alt="logo" />
+                    <p>learn.UlSTU</p>
+                </a>
+                <div className='profile'>
+                    <div className='short-info'>
+                        <div className='name'>
+                            {firstName} {lastName}
+                        </div>
+                        <div className='group'>
+                            {group}
+                        </div>
                     </div>
+                    <img className='avatar' src='./images/avatar.png' alt="avatar" />
+                    <div className='notice-exit'>
+                        <FiBell className='notice' />
+                        <FiLogOut className='exit' onClick={() => {
+                            dispatch(loginFirstName('unauthorized'));
+                            dispatch(loginLastName('unauthorized'));
+                            dispatch(loginFutherName('unauthorized'));
+                            dispatch(loginGroup('unauthorized'));
+                            window.location.assign(`${process.env.REACT_APP_URL}/`);
+                        }} />
 
+                    </div>
                 </div>
-
-                <section className="routes">
-
-                    {routes.map((route) => (
-
+            </div>
+            <div className='body'>
+                <div className='sidebar'>
+                    {routes.map((route, id) => (
                         <NavLink to={route.path} key={route.name} className="link">
-
-                            <div className="icon">{route.icon}</div>
-
-                            {isOpen && <motion.div className="link_text">{route.name}</motion.div>}
+                            <div className={id === page ? 'select-icon' : 'icon'}>{route.icon}</div>
+                            <div className={id === page ? 'select-link-text' : 'link-text'}>{route.name}</div>
                         </NavLink>
 
                     ))}
-
-                </section>
-            </motion.div>
-
-            <motion.div className={`children ${isOpen ? "children_opened" : ""}`}>
-                <main>{children}</main>
-            </motion.div>
-        </div >
+                </div>
+                <div className='central'>
+                    {central}
+                </div>
+            </div>
+        </div>
     )
-}
+};
 
 export default Drawer;

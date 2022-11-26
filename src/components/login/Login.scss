@@ -1,9 +1,7 @@
 body {
-
   background: rgba(90, 156, 255, 0.7);
   background-image: url('../assets/images/repeat-background.png');
   background-size: contain;
-
 }
 
 .autinfication {
@@ -80,10 +78,6 @@ body {
     border-radius: 8px;
     transform: rotate(-0.32deg);
 
-    .notSuccessLogin {
-      margin-bottom: 3%;
-    }
-
     .text-title {
       width: 100%;
       @include text-style(600, 26px, 31px, #333951);
@@ -151,9 +145,14 @@ body {
       }
 
       .login-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #798d96;
         cursor: pointer;
-        margin-top: 6%;
+        width: 22px;
+        height: 22px;
+        margin-top: 5%;
       }
     }
 
