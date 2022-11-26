@@ -1,5 +1,5 @@
 import './ViewProject.scss';
-import defaultBackground from '../assets/images/default_project_background.svg';
+import defaultBackground from '../assets/images/default_project_background.png';
 import { FiUser } from 'react-icons/fi';
 
 function Project(){

@@ -1,5 +1,5 @@
 import './Event.scss';
-import defaultBackground from '../assets/images/default_project_background.svg';
+import defaultBackground from '../assets/images/default_project_background.png';
 import { FiCalendar } from 'react-icons/fi';
 
 function Project(){

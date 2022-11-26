@@ -3,11 +3,16 @@ import React, {useState} from 'react';
 import logoUlstu from '../../components/assets/images/logo-ulstu.png';
 import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
 
+import { useSelector, useDispatch } from "react-redux";
+import { loginToken, loginFirstName, loginLastName, loginFutherName, loginGroup } from "../../redux/slices/userSlice";
 import PropTypes from 'prop-types';
 
 import '../../components/Login/Login.scss';
 
 function Authorization() {
+  const dispatch = useDispatch();
+  const {token, firstName, lastName, futherName, group} = useSelector(state => state.userReducer);
+
   const [show, setShow] = useState(false);
   const [notSuccessLogin, setNotSuccessLogin] = useState(false);
   const [email, setEmail] = useState('');
@@ -17,17 +22,21 @@ function Authorization() {
     setShow(!show);
   }
 
+
   function Check(){
       axios
       .post(`${process.env.REACT_APP_API_URL}/login`, {
-        login: email,
+        email: email,
         password: password,
       })
       .then((response) => {
           setNotSuccessLogin(false);
+          dispatch(loginToken(response.data.token));
           console.log('login success');
+          // window.location.assign(`${process.env.REACT_APP_URL}/`);
       })
       .catch((error) => {
+        console.log(error);
         setNotSuccessLogin(true);
         console.log('email or password not correct');
       });
