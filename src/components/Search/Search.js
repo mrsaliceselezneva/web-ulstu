@@ -2,7 +2,6 @@ import './Search.scss';
 import { FiSearch } from 'react-icons/fi';
 
 function Search(props){
-    console.log(props.width);
     return(
         <>
             <style>

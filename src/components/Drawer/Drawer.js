@@ -6,7 +6,7 @@ import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, F
 import repeatBackground from '../assets/images/repeat-background.png';
 
 import { useSelector, useDispatch } from "react-redux";
-import { loginFirstName, loginLastName, loginFutherName, loginGroup } from "../../redux/slices/userSlice";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginToken } from "../../redux/slices/userSlice";
 
 function Drawer ({central, page}) {
     const dispatch = useDispatch();
@@ -91,7 +91,9 @@ function Drawer ({central, page}) {
                             dispatch(loginLastName('unauthorized'));
                             dispatch(loginFutherName('unauthorized'));
                             dispatch(loginGroup('unauthorized'));
-                            window.location.assign(`${process.env.REACT_APP_URL}/`);
+                            dispatch(loginToken('unauthorized'));
+                            localStorage.clear();
+                            //window.location.assign(`${process.env.REACT_APP_URL}/`);
                         }}/>
                     </div>
                 </div>
