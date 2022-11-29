@@ -13,6 +13,7 @@ import Drawer from "./components/Drawer/Drawer";
 
 import { useSelector } from "react-redux";
 import { loginToken } from "./redux/slices/userSlice";
+
 //import useToken from "./useToken";
 //import React, { useState } from 'react';
 
@@ -26,6 +27,7 @@ function App() {
         {/*public routes */}
           <Route exact path="/registration" element={<Registration />} />
           <Route exact path="/*" element={<Authorization />} />
+
       </Routes>
 
     );
