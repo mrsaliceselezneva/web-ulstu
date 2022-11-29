@@ -1,0 +1,106 @@
+.messangers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    margin: 5px 5px 5px 0;
+
+    .chat {
+        background: white;
+        width: 100%;
+        min-width: 720px;
+        height: 89vh;
+        border-radius: 18px;
+        padding: 5px;
+        display: flex;
+
+        &__sidebar {
+            width: 320px;
+            min-width: 320px;
+            height: 100%;
+            border-right: 2px solid #ECF5FD;
+
+            &__header {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px;
+                border-bottom: 2px solid #ECF5FD;
+
+                span {
+                    opacity: .7;
+                    transition: opacity 0.15s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    &:active {
+                        opacity: .8;
+                    }
+                }
+
+                &-info {
+
+                    span {
+                        display: inline-block;
+                        margin-right: 10px;
+                        opacity: .7
+                    }
+
+                }
+            }
+
+
+            &__dialogs {
+                .dialogs {
+                    height: 80vh;
+                }
+            }
+        }
+
+
+        &__dialog {
+
+            flex: 1;
+            min-width: 360px;
+
+            &-haeder {
+                display: flex;
+                padding: 10px;
+                border-bottom: 2px solid #ECF5FD;
+                justify-content: space-between;
+                align-items: center;
+
+                &-center {
+                    text-align: center;
+
+                    &-username {
+                        font-weight: bold;
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            &-messages {
+
+                margin: 0 5px 0 0;
+                padding: 20px 0 0;
+                background-size: contain;
+                background-image: url('../assets/images/repeat-background.png');
+                background-color: #F8F8FB;
+                height: calc(100% - 20vh);
+                min-width: 400px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+        }
+    }
+
+}
