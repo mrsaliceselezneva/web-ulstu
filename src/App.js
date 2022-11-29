@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Autorization from './components/login/Athorization/Autorization';
-import Registration from './components/login/Registration/Registration';
+// import Autorization from './components/login/Athorization/Autorization';
+// import Registration from './components/login/Registration/Registration';
 import Main from "./components/Main/main";
 import Timetable from "./components/Timetable/Timetable";
 import Subjects from "./components/Subjects/Subjects";
@@ -16,10 +16,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/*public routes */}
-        <Route exact path="/registration" element={<Registration />} />
-        <Route exact path="/*" element={<Autorization />} />
-        {/*privat routes*/}
+        {/* public routes */}
+        {/* <Route exact path="/registration" element={<Registration />} />
+        <Route exact path="/*" element={<Autorization />} /> */}
+        {/*privat routes */}
         <Route exact path="/" element={<Drawer central={<Main />} page={0} />} />
         <Route exact path="/timetable" element={<Drawer central={<Timetable />} page={1} />} />
         <Route exact path="/subjects" element={<Drawer central={<Subjects />} page={2} />} />
