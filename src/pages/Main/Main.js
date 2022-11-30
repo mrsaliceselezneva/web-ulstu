@@ -2,11 +2,11 @@ import './Main.scss';
 import Base from '../../components/assets/images/Base.png';
 
 
-import Status from '../Status/Status'
-import TeacherAnswers from '../TeacherAnswers/TeacherAnswers'
-import { FiUserCheck } from 'react-icons/fi'
-import Visit from '../Visit/Visit'
-import Productive from '../Productive/Productive'
+import Status from '../../components/Status/Status';
+import TeacherAnswers from '../../components/TeacherAnswers/TeacherAnswers';
+import { FiUserCheck } from 'react-icons/fi';
+import Visit from '../../components/Visit/Visit';
+import Productive from '../../components/Productive/Productive';
 
 function Main() {
 
