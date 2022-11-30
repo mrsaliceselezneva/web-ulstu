@@ -59,7 +59,7 @@ function Main() {
 
                     <div className="middle_image">
 
-                        <img src='/images/mainImage.png' alt = "main"/>
+                        <img src={Base} alt = "main"/>
 
                     </div>
 
