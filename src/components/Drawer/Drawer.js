@@ -65,7 +65,6 @@ function Drawer ({central, page}) {
        },
     ];
     
-    
     return (
         <div className="container">
             <style>
