@@ -1,5 +1,7 @@
 body {
   background: rgba(90, 156, 255, 0.7);
+  background-image: url('../assets/images/repeat-background.png');
+  background-size: contain;
 }
 
 .autinfication {
@@ -61,12 +63,15 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     padding: 3%;
+    min-width: 25%;
+    // min-width: 350px;
 
-    $margin: 37%;
+    // @media screen and (max-width: 800px) {
+    //   min-width: 200px;
+    // }
+    /*$margin: 37%;*/
 
-    margin-top: 5vh;
-    margin-left: $margin;
-    margin-right: $margin;
+    margin: 5vh auto;
     background: #ffffff;
     border: 1px solid rgba(183, 210, 229, 0.8);
     box-shadow: 0px 1px 4px rgba(44, 64, 90, 0.209409), inset 0px -1px 0px #7e95a7;
@@ -77,6 +82,11 @@ body {
       width: 100%;
       @include text-style(600, 26px, 31px, #333951);
       margin-bottom: 5%;
+    }
+
+    .notSuccessLogin {
+      margin-bottom: 4%;
+      @include text-style(400, 17px, 17px, #eb6d77);
     }
 
     .text-bottom {
@@ -112,41 +122,61 @@ body {
       height: 50%;
     }
 
-    input {
-      @include input-button(-2%);
-      @include text-style(400, 16px, 19px, #798d96);
+    .input-block {
+      @include input-button(-13%);
+      display: flex;
+      flex-direction: row;
+
       background-color: rgba(245, 248, 254);
+      border: none;
       margin-bottom: 5%;
+      padding: 2% 7% 2% 7%;
+
+      .input {
+        @include input-button(-2%);
+        @include text-style(400, 16px, 19px, #798d96);
+        background-color: rgba(245, 248, 254);
+        margin-bottom: 5%;
+      }
+
+      input:focus {
+        outline: none !important;
+        border: none;
+      }
+
+      .login-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #798d96;
+        cursor: pointer;
+        width: 22px;
+        height: 22px;
+        margin-top: 5%;
+      }
     }
 
-    input:focus {
-      @include text-style(400, 16px, 19px, #5a9cff);
-      outline: none !important;
-      border: none;
+    .input-block:hover {
+      .login-icon {
+        color: #5a9cff;
+      }
+      .input {
+        @include text-style(400, 16px, 19px, #5a9cff);
+      }
     }
 
     button {
       @include input-button(0%);
-      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
-      color: #ffffff;
+      @include text-style(700, 18px, 22px, #ffffff);
       margin-bottom: 5%;
+
+      background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+      background-size: 200% auto;
+      transition: 0.5s;
     }
 
-    .password_show {
-      -webkit-mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconHideLarge.svg)
-        no-repeat;
-      mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconHideLarge.svg)
-        no-repeat;
-    }
-
-    .password {
-      width: 100%;
-      height: 100%;
-      -webkit-mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconShowLarge.svg)
-        no-repeat;
-      mask: url(https://sso-forms-prod.cdn-tinkoff.ru/client/releases/2.6.0/assets/ui/icons/tuiIconShowLarge.svg)
-        no-repeat;
-      background: #888d94;
+    button:hover {
+      background-position: right center;
     }
 
     .href {
@@ -156,6 +186,12 @@ body {
 
     .href:hover {
       @include text-style(400, 16px, 19px, #88ddff);
+    }
+
+    .question {
+      background: rgba(0, 0, 0, 0.0001);
+      box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.200747);
+      border-radius: 100px;
     }
   }
 }
