@@ -16,6 +16,7 @@ a {
   text-decoration: none;
 }
 
+$max-width: 220px;
 $width: 15vw;
 $logo-text: 1.3vw;
 $sidebar-text: 1.1vw;
@@ -40,6 +41,7 @@ $sidebar-height: 320px;
     background-size: 200% auto;
     border-radius: 18px;
     width: $width;
+    max-width: $max-width;
     height: 56px;
     margin: 5px;
     cursor: pointer;
@@ -132,6 +134,7 @@ $sidebar-height: 320px;
     margin-top: 5px;
     margin-left: 16px;
     margin-right: 21px;
+    max-width: 80vw;
   }
 }
 
@@ -139,7 +142,8 @@ $sidebar-height: 320px;
   margin: 5px;
   background: #2c405a;
   color: white;
-  max-width: $width;
+  width: $width;
+  max-width: $max-width;
   border-radius: 18px;
 }
 

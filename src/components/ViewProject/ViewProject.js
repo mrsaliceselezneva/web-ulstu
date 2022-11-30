@@ -2,7 +2,7 @@ import './ViewProject.scss';
 import defaultBackground from '../assets/images/default_project_background.png';
 import { FiUser } from 'react-icons/fi';
 
-function Project(){
+function Project(props){
     return(
         <div className='card'  onClick={() => {
             window.location.assign(
@@ -12,7 +12,7 @@ function Project(){
             <img src={defaultBackground} className='image' alt='defaultBackground'/>
             <div className='info'>
                 <div className='name'>
-                    Умный велосипед
+                    {props.name}
                 </div>
                 <div className='fio'>
                     <FiUser className='icon'/>

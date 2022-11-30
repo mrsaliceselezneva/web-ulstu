@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Authorization from "./pages/Authorization/Authorization";
 import Registration from "./pages/Registration/Registration";
 import Main from "./pages/Main/Main";
@@ -12,7 +12,6 @@ import CreateInvestor from "./pages/CreateInvestor/CreateInvestor";
 import Drawer from "./components/Drawer/Drawer";
 
 import { useSelector } from "react-redux";
-import { loginToken } from "./redux/slices/userSlice";
 
 //import useToken from "./useToken";
 //import React, { useState } from 'react';

@@ -7,7 +7,6 @@ import { Input, Empty } from "antd"
 const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelectDialog }) => (
 
     <div className='dialogs'>
-
         <div className="dialogs__search">
             <Input
                 placeholder="Поиск чата"
@@ -39,4 +38,5 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
     </div>
 )
 
-export default Dialogs
+
+export default Dialogs;

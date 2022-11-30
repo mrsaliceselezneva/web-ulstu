@@ -10,10 +10,9 @@ import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginToken 
 
 function Drawer ({central, page}) {
     const dispatch = useDispatch();
-    const {token, firstName, lastName, futherName, group} = useSelector(state => state.userReducer);
+    const {token, firstName, lastName, group} = useSelector(state => state.userReducer);
 
     React.useEffect(() => {
-        console.log('token', token);
         const headers = {
           'Authorization': `Bearer ${token}`,
         };
@@ -23,8 +22,15 @@ function Drawer ({central, page}) {
             dispatch(loginFirstName(response.data.firstName));
             dispatch(loginLastName(response.data.lastName));
             dispatch(loginFutherName(response.data.patronymic));
-            dispatch(loginGroup(response.data.studyGroupId));
-            console.log('get fio success');
+            axios
+            .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
+            .then((response) => {
+                dispatch(loginGroup(response.data.name));
+                console.log('get fio success');
+            })
+            .catch((error) => {
+                console.log('get fio not success');
+            });
         })
         .catch((error) => {
           console.log('get fio not success');

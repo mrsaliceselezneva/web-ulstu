@@ -9,16 +9,29 @@ function Projects(){
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
     const [showProjects, setShowProjects] = useState(true);
+    const [searchValue, setSearchValue] = useState('');
 
     const projects = [
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
+        {
+            name: 'Умный велосипед',
+        },
+        {
+            name: 'Машина на квадратных колёсах',
+        },
+        {
+            name: 'Машина не машина',
+        },
+        {
+            name: 'Умный плед',
+        },
     ]
+
+    const searchProjects = 
+        projects.filter((value) => 
+            { return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
+        }).map((value) =>  <ViewProject name={value.name}/>);
+    
+        console.log(searchProjects);
 
     const events = [
         <Event />,
@@ -28,7 +41,13 @@ function Projects(){
     return(
         <div className='projects'>
             <div className='projects-menu'>
-                <Search width={20} heigth={20} placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"}/>
+                <Search 
+                    width={20} 
+                    heigth={20} 
+                    placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"} 
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                />
                 <div className='switch'>
                     { showProjects ? 
                         <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
@@ -87,7 +106,7 @@ function Projects(){
             </div>
             <div className='list'>
                     { showProjects ? 
-                        projects.map((project, id) => (project))
+                        searchProjects.map((project, id) => (project))
                         :
                         events.map((ev, id) => (ev))
                     }

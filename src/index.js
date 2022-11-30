@@ -6,14 +6,14 @@ import 'macro-css'
 import { Provider } from 'react-redux';
 
 import App from './App';
-import storeMax from "./reduxMessage/store"
+import storeMax from "./reduxMessage/storeMax"
 
 import {store} from './redux/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store} store={storeMax}>
+  <Provider store={store} sroreMax={storeMax}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
