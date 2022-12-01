@@ -24,9 +24,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middleware = [thunk];
 
-const store = createStore(
+const messagesStore = createStore(
     rootReducer,
     composeEnhancers(applyMiddleware(...middleware))
 );
 
-export default store;
+export default messagesStore;

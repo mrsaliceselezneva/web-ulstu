@@ -1,6 +1,7 @@
 import Messages from './Messages/Messages';
 import Status from './Status/Status';
 import ChatInput from './ChatInput/ChatInput';
+import { useSelector, useDispatch } from "react-redux";
 
 import './Messangers.scss';
 import { TeamOutlined, FormOutlined, EllipsisOutlined } from "@ant-design/icons"
@@ -9,6 +10,8 @@ import MessagesCont from '../../containers/MessagesCont';
 
 
 function Messangers() {
+
+    const { firstName, lastName } = useSelector(state => state.userReducer);
 
     return (
         <div className='messangers'>
@@ -46,7 +49,7 @@ function Messangers() {
                         <div className='chat__dialog-haeder-center'>
 
                             <b className='chat__dialog-haeder-username'>
-                                Максим Дергунов
+                                {firstName} {lastName}
                             </b>
                             <div className='chat__dialog-haeder-status'>
                                 <Status online />

@@ -5,8 +5,6 @@
     width: 100%;
     height: 100%;
 
-    margin: 5px 5px 5px 0;
-
     .chat {
         background: white;
         width: 100%;
@@ -53,7 +51,6 @@
                 }
             }
 
-
             &__dialogs {
                 .dialogs {
                     height: 80vh;
@@ -90,7 +87,7 @@
                 margin: 0 5px 0 0;
                 padding: 20px 0 0;
                 background-size: contain;
-                background-image: url('../assets/images/repeat-background.png');
+                //background-image: url('../assets/images/repeat-background.png');
                 background-color: #F8F8FB;
                 height: calc(100% - 20vh);
                 min-width: 400px;
