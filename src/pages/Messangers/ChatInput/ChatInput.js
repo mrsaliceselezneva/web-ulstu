@@ -9,28 +9,26 @@ const uploader = Uploader({
     apiKey: "free"
 });
 
-const ChatInput = props => (
+const ChatInput = (props) => {
+    return (
+        <div className="chat-input">
+            <SmileOutlined />
+            <input placeholder="Введите сообщение" />
+            <div className="chat-input__actions">
 
+                <UploadButton uploader={uploader}
+                    options={{ multi: true }}
+                    onComplete={files => console.log(files)}>
+                    {({ onClick }) =>
+                        <CameraOutlined onClick={onClick} />
 
-    <div className="chat-input">
-        <SmileOutlined />
-        <input placeholder="Введите сообщение" />
-        <div className="chat-input__actions">
+                    }
+                </UploadButton>
 
-            <UploadButton uploader={uploader}
-                options={{ multi: true }}
-                onComplete={files => console.log(files)}>
-                {({ onClick }) =>
-                    <CameraOutlined onClick={onClick} />
-
-                }
-            </UploadButton>
-
-            <SendOutlined />
-        </div>
-    </div>
-
-)
+                <SendOutlined />
+            </div>
+        </div>)
+}
 
 ChatInput.propTypes = {
     className: PropTypes.string

@@ -1,7 +1,7 @@
 import './message.scss'
 import PropTypes from "prop-types"
 import classNames from "classnames"
-import Time from "../../../components/Time/Time"
+import Time from '../../../components/Time/Time'
 import IconReaded from '../IconReaded/IconReaded'
 
 

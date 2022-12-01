@@ -54,6 +54,7 @@ $sidebar-height: 320px;
       justify-content: center;
       margin-left: 10px;
     }
+
     p {
       display: flex;
       align-items: center;
@@ -76,9 +77,11 @@ $sidebar-height: 320px;
       flex-direction: column;
       text-align: right;
       margin-right: 1vw;
+
       .name {
         @include text(500, 16px, 17px);
       }
+
       .group {
         @include text(400, 12px, 15px);
         color: #a6acbe;
@@ -118,6 +121,7 @@ $sidebar-height: 320px;
         margin-left: 1vw;
         margin-right: 1vw;
       }
+
       .exit:hover {
         color: #5a9cff;
       }
@@ -131,6 +135,7 @@ $sidebar-height: 320px;
   padding-top: 16px;
 
   .central {
+    width: 100%;
     margin-top: 5px;
     margin-left: 16px;
     margin-right: 21px;
@@ -153,6 +158,7 @@ $sidebar-height: 320px;
   width: 9vw;
   height: 48px;
 }
+
 .sidebar-button:hover {
   opacity: 0.9;
   background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
@@ -190,15 +196,18 @@ $sidebar-height: 320px;
       color: #ffffff;
       border: 1px solid #ffffff;
     }
+
     .link-text {
       @extend %general-link-text;
       color: #ffffff;
     }
+
     .select-icon {
       @extend %general-icon;
       color: #5a9cff;
       border: 1px solid #5a9cff;
     }
+
     .select-link-text {
       @extend %general-link-text;
       color: #5a9cff;
@@ -213,11 +222,13 @@ $sidebar-height: 320px;
     .icon {
       background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
     }
+
     .select-icon {
       color: #ffffff;
       border: 1px solid #ffffff;
       background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
     }
+
     .select-link-text {
       color: #ffffff;
     }

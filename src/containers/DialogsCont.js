@@ -5,7 +5,6 @@ import Dialogs from "../pages/Messangers/Dialogs/Dialogs";
 
 
 const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items, userId }) => {
-
     const [inputValue, setValue] = useState("")
     const [filtered, setFiltredItems] = useState(Array.from(items))
 

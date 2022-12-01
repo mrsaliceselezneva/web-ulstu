@@ -6,6 +6,7 @@ const initialState = {
     lastName: 'unauthorized',
     futherName: 'unauthorized',
     group: 'unauthorized',
+
 };
 
 const userSlice = createSlice({
@@ -27,9 +28,10 @@ const userSlice = createSlice({
         loginGroup(state, action) {
             state.group = action.payload;
         },
+
     },
 });
 
-export const { loginToken, loginFirstName, loginLastName, loginFutherName, loginGroup } = userSlice.actions;
+export const { loginToken, loginFirstName, loginLastName, loginFutherName, loginGroup, messagesSetItems } = userSlice.actions;
 
 export default userSlice.reducer;

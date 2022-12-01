@@ -24,9 +24,17 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middleware = [thunk];
 
+<<<<<<< HEAD:src/reduxMessage/storeMax.js
 const storeMax = createStore(
+=======
+const messagesStore = createStore(
+>>>>>>> max:src/reduxMessage/store.js
     rootReducer,
     composeEnhancers(applyMiddleware(...middleware))
 );
 
+<<<<<<< HEAD:src/reduxMessage/storeMax.js
 export default storeMax;
+=======
+export default messagesStore;
+>>>>>>> max:src/reduxMessage/store.js

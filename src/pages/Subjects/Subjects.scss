@@ -1,0 +1,53 @@
+.sudjects {
+    &__container {
+        margin: 0;
+        height: 100%;
+        max-width: 79vw
+    }
+
+    &__header {
+        h1 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 26px;
+            letter-spacing: 0.166667px;
+            color: black;
+        }
+
+        &__info {
+
+            width: 20%;
+            min-width: 280px;
+            display: flex;
+            justify-content: space-between;
+            margin-right: 30px;
+
+            span {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 26px;
+                letter-spacing: 0.166667px;
+                color: black;
+            }
+        }
+
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &__body {
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0;
+
+    }
+}
