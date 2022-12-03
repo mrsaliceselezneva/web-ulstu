@@ -5,13 +5,17 @@ import Requirement from '../../components/Requirement/Requirement';
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
 import defaultBackground from '../../components/assets/images/default_project_background.png';
-import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare } from 'react-icons/fi';
+import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare, FiPlusCircle, FiXCircle } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function Project(){
+    const {email} = useSelector(state => state.userReducer);
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [author, setAuthor] = useState('');
+    const [authorEmail, setAuthorEmail] = useState('');
     const [requirementsList, setRequirementsList] = useState([]);
     const [participants, setParticipants] = useState([]);
     const [commits, setCommits] = useState([]);
@@ -50,8 +54,7 @@ function Project(){
     //     },
     //  ];
 
-     let { search } = useLocation();
-
+    let { search } = useLocation();
     const params = new URLSearchParams(search);
     const projectId = params.get('id');
 
@@ -59,17 +62,39 @@ function Project(){
         axios
         .get(`${process.env.REACT_APP_API_URL}/project/?id=${projectId}`)
         .then((response) => {
-            console.log(response.data);
             setName(response.data.name);
             setDescription(response.data.description);
             setAuthor(`${response.data.author.lastName} ${response.data.author.firstName[0]}.${response.data.author.patronymic[0]}.`);
-
+            setAuthorEmail(response.data.author.email);
             setRequirementsList(response.data.competences);
             setParticipants(response.data.projectParticipants);
             setCommits(response.data.projectStates);
-            console.log(participants);
         });
       }, []);
+
+    function addRequirement(){
+        console.log('add-requirement');
+    }
+
+    function addCommit(){
+        console.log('add-commit');
+    }
+
+    function addParticipant(){
+        console.log('add-participant');
+    }
+
+    function deleteRequirement(){
+        console.log('delete-requirement');
+    }
+
+    function deleteCommit(){
+        console.log('delete-commit');
+    }
+
+    function deleteParticipant(){
+        console.log('delete-participant');
+    }
 
     return(
         <div className='project'>
@@ -100,11 +125,21 @@ function Project(){
                     <div className='requirements-section'>
                         <div className='requirements-title'>
                             Требования
+                            {authorEmail === email ? 
+                                <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> : 
+                                <></>
+                            }
                         </div>
                         <div className='requirements-list'>
                             {
                                 requirementsList.map((requirement, id) => (  
-                                    <Requirement requirementText={requirement} />
+                                    <Requirement 
+                                        requirementText={requirement}
+                                        del={authorEmail === email ? 
+                                            <FiXCircle className='icon-delete' onClick={() => deleteRequirement()} /> : 
+                                        <></>
+                                        }
+                                     />
                                 ))
                             }
                         </div>
@@ -112,10 +147,21 @@ function Project(){
                     <div className='commits-list'>
                         <div className='commits-title'>
                             Состояние проекта
+                            {authorEmail === email ? 
+                                <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} /> : 
+                                <></>
+                            }
                         </div>
                         {
                             commits.map((commit, id) => (  
-                                <Commit icon={<FiCheckSquare className='commit-icon'/>} listBlockText={commit} />
+                                <Commit 
+                                    icon={<FiCheckSquare className='commit-icon'/>} 
+                                    listBlockText={commit} 
+                                    del={authorEmail === email ? 
+                                        <FiXCircle className='icon-delete' onClick={() => deleteCommit()} /> : 
+                                    <></>
+                                    }
+                                />
                             ))
                         }
                     </div>
@@ -125,14 +171,20 @@ function Project(){
                 <div className='participants-title'>
                     {/* <FiUsers className='project-icon-participants'/> */}
                     Участники
-                    <FiUserPlus className='icon-add-participant' onClick={() => {
-                                console.log('add-participant');
-                    }} />
+                    {authorEmail === email ? 
+                    <></> : 
+                        <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
+                    }
+                    
                 </div>
                 <div className='participants-list'>
                     <ListBlock 
                         icon={<FiUser className='list-block-icon'/>} 
                         listBlockText={author} 
+                        del={authorEmail === email ? 
+                            <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> : 
+                            <></>
+                        }
                     />
                     {
                         participants.map((participant, id) => (  
@@ -143,10 +195,15 @@ function Project(){
                                     ${participant.firstName[0]}.
                                     ${participant.patronymic[0]}.
                                 `} 
+                                del={authorEmail === email ? 
+                                    <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> : 
+                                    <></>
+                                }
                             />
                         ))
                     }
                 </div>
+
             </div>
         </div>
     );

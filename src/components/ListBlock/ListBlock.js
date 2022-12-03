@@ -1,10 +1,11 @@
 import './ListBlock.scss';
 
-function ListBlock ({icon, listBlockText}) { 
+function ListBlock ({icon, listBlockText, del}) { 
     return (
        <div className='list-block'>
            {icon}
            {listBlockText}
+           {del}
        </div> 
     )
 };

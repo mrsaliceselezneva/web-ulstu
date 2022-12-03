@@ -7,6 +7,26 @@
   color: $d;
 }
 
+.icon-delete {
+  display: flex;
+  align-items: center;
+  color: #fd6374;
+  border-radius: 100%;
+  background-color: rgba(253, 99, 116, 0.1);
+}
+
+%icon-add {
+  color: #c7cbd5;
+  width: 2vw;
+  height: 2vw;
+  margin-left: auto;
+  margin-right: 0;
+  cursor: pointer;
+}
+%icon-add-hover {
+  color: #5a9cff;
+}
+
 .project {
   display: flex;
   flex-direction: row;
@@ -19,6 +39,8 @@
   }
 
   %project-title {
+    display: flex;
+    align-items: center;
     @include text(700, 24px, 26px, #333539);
   }
 
@@ -83,6 +105,13 @@
 
         .requirements-title {
           @extend %project-title;
+
+          .icon-add-block {
+            @extend %icon-add;
+          }
+          .icon-add-block:hover {
+            @extend %icon-add-hover;
+          }
         }
 
         .requirements-list {
@@ -99,6 +128,13 @@
 
         .commits-title {
           @extend %project-title;
+
+          .icon-add-block {
+            @extend %icon-add;
+          }
+          .icon-add-block:hover {
+            @extend %icon-add-hover;
+          }
         }
       }
     }
@@ -125,15 +161,10 @@
       }
 
       .icon-add-participant {
-        color: #c7cbd5;
-        width: 2vw;
-        height: 2vw;
-        margin-left: auto;
-        margin-right: 0;
-        cursor: pointer;
+        @extend %icon-add;
       }
       .icon-add-participant:hover {
-        color: #5a9cff;
+        @extend %icon-add-hover;
       }
     }
 

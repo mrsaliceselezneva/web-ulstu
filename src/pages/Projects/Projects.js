@@ -7,8 +7,12 @@ import Search from '../../components/Search/Search';
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
 import format from "date-fns/format";
 
+import { useSelector } from "react-redux";
+
 
 function Projects(){
+    const {email} = useSelector(state => state.userReducer);
+
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
     const [showProjects, setShowProjects] = useState(true);
@@ -22,10 +26,21 @@ function Projects(){
             setProjects(response.data);
         });
       }, []);
-
+      
     const searchProjects = 
         projects.filter((value) => 
             { return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
+        }).map((value) =>  <ViewProject 
+                name = {value.name} 
+                author = {`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+                description = {value.description}
+                date = {format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+                id = {value.id}
+            />);
+
+    const myProjects = 
+        projects.filter((value) => 
+            { return (value.author.email.includes(email))
         }).map((value) =>  <ViewProject 
                 name = {value.name} 
                 author = {`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
@@ -50,13 +65,13 @@ function Projects(){
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                 />
-                <div className='switch'>
+                {/* <div className='switch'>
                     { showProjects ? 
                         <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
                         :
                         <FiToggleRight onClick={(event) => {setShowProjects(!showProjects)}} className="switch-icon" />
                     }
-                </div>
+                </div> */}
                 <div className='choose'>
                     { showProjects ? 
                         <>
@@ -74,6 +89,7 @@ function Projects(){
                                     setMy(!my);
                                     setAll(!all);
                                 }
+
                             }} className={my ? 'select-choose-projects' : 'choose-projects'}>
                                 {/* сортировка по создателю */}
                                 Мои
@@ -107,10 +123,10 @@ function Projects(){
                 </div>
             </div>
             <div className='list'>
-                    { showProjects ? 
-                        searchProjects.map((project, id) => (project))
+                    { my ? 
+                        myProjects.map((project, id) => (project))
                         :
-                        events.map((ev, id) => (ev))
+                        searchProjects.map((project, id) => (project))
                     }
             </div>
         </div>

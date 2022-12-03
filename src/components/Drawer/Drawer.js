@@ -2,11 +2,11 @@ import React from "react";
 import axios from "axios";
 import './Drawer.scss';
 import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
+import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 
 import { useSelector, useDispatch } from "react-redux";
-import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginToken } from "../../redux/slices/userSlice";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
 
 function Drawer ({central, page}) {
     const dispatch = useDispatch();
@@ -19,9 +19,14 @@ function Drawer ({central, page}) {
         axios
         .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
         .then((response) => {
+            localStorage.setItem('firstName', response.data.firstName);
+            localStorage.setItem('lastName', response.data.lastName);
+            localStorage.setItem('futherName', response.data.patronymic);
+            localStorage.setItem('email', response.data.email);
             dispatch(loginFirstName(response.data.firstName));
             dispatch(loginLastName(response.data.lastName));
             dispatch(loginFutherName(response.data.patronymic));
+            dispatch(loginEmail(response.data.email));
             axios
             .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
             .then((response) => {
@@ -58,6 +63,11 @@ function Drawer ({central, page}) {
         path: "/projects",
         name:"Проекты",
         icon:<FiLayout/>
+       },
+       {
+        path: "/events",
+        name:"Мероприятия",
+        icon:<FiBriefcase/>
        },
     ];
     
