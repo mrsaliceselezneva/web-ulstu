@@ -23,7 +23,8 @@ $sidebar-text: 1.1vw;
 $logo-img: 48px;
 $icon: 40px;
 
-$sidebar-height: 320px;
+$sidebar-height: 256px;
+$sidebar-cnt: 4;
 
 .top-section {
   display: flex;
@@ -188,7 +189,7 @@ $sidebar-height: 320px;
   .link {
     display: flex;
     align-items: center;
-    height: $sidebar-height / 5;
+    height: $sidebar-height / $sidebar-cnt;
     padding-left: 1vw;
 
     .icon {

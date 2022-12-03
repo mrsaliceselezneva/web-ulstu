@@ -169,26 +169,30 @@ function Timetable(){
     const {token, group} = useSelector(state => state.userReducer);
     
     React.useEffect(() => {
-        axios
-          .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
-          .then((response) => {
-            setTable(response.data);
-            setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
-            table.days.map((t, i) => {
-                if (t.numberWeek === table.currentWeek){
-                  t.couples.map((tt, j) => {
-                      subjects[tt.pair_number - 1][t.numberDay - 1] = {
-                        'be': true,
-                        'subject': tt.subject,
-                        'teacher': tt.teacher,
-                        'location': tt.place,
-                        'type': typeSubject[tt.typeSubject - 1],
-                      };
-                  });
-              }
+        if (group !== 'unauthorized'){
+            axios
+            .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
+            .then((response) => {
+                console.log(response.data);
+                console.log('timetable');
+                setTable(response.data);
+                setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
+                table.days.map((t, i) => {
+                    if (t.numberWeek === table.currentWeek){
+                    t.couples.map((tt, j) => {
+                        subjects[tt.pair_number - 1][t.numberDay - 1] = {
+                            'be': true,
+                            'subject': tt.subject,
+                            'teacher': tt.teacher,
+                            'location': tt.place,
+                            'type': typeSubject[tt.typeSubject - 1],
+                        };
+                    });
+                }
+                });
             });
-          });
-      }, []);
+        };
+      }, [group]);
 
 
     return(

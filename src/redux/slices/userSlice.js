@@ -5,7 +5,7 @@ const initialState = {
     firstName: 'unauthorized',
     lastName: 'unauthorized',
     futherName: 'unauthorized',
-    group: 'unauthorized',
+    group: localStorage.getItem('group') || 'unauthorized',
 
 };
 

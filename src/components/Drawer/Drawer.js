@@ -14,7 +14,7 @@ function Drawer ({central, page}) {
 
     React.useEffect(() => {
         const headers = {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         };
         axios
         .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
@@ -26,6 +26,7 @@ function Drawer ({central, page}) {
             .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
             .then((response) => {
                 dispatch(loginGroup(response.data.name));
+                localStorage.setItem('group', response.data.name);
                 console.log('get fio success');
             })
             .catch((error) => {
@@ -47,11 +48,6 @@ function Drawer ({central, page}) {
         path: "/timetable",
         name:"Расписание",
         icon: <FiCalendar/>
-       },
-       {
-        path: "/subjects",
-        name:"Предметы",
-        icon: <FiCheckSquare/>
        },
        {
         path: "/messangers",

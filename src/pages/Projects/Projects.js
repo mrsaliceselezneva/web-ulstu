@@ -1,37 +1,39 @@
+import axios from "axios";
+import React, {useState} from 'react';
 import './Projects.scss';
 import ViewProject from '../../components/ViewProject/ViewProject';
 import Event from '../../components/Event/Event';
 import Search from '../../components/Search/Search';
-import React, {useState} from 'react';
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
+import format from "date-fns/format";
+
 
 function Projects(){
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
     const [showProjects, setShowProjects] = useState(true);
     const [searchValue, setSearchValue] = useState('');
+    const [projects, setProjects] = useState([]);
 
-    const projects = [
-        {
-            name: 'Умный велосипед',
-        },
-        {
-            name: 'Машина на квадратных колёсах',
-        },
-        {
-            name: 'Машина не машина',
-        },
-        {
-            name: 'Умный плед',
-        },
-    ]
+    React.useEffect(() => {
+        axios
+        .get(`${process.env.REACT_APP_API_URL}/project/list`)
+        .then((response) => {
+            setProjects(response.data);
+        });
+      }, []);
 
     const searchProjects = 
         projects.filter((value) => 
             { return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
-        }).map((value) =>  <ViewProject name={value.name}/>);
-    
-        console.log(searchProjects);
+        }).map((value) =>  <ViewProject 
+                name = {value.name} 
+                author = {`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+                description = {value.description}
+                date = {format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+                id = {value.id}
+            />);
+
 
     const events = [
         <Event />,
