@@ -1,19 +1,19 @@
 @mixin text($a, $b, $c) {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: $a;
-  font-size: $b;
-  line-height: $c;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: $a;
+    font-size: $b;
+    line-height: $c;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 $max-width: 220px;
@@ -26,210 +26,210 @@ $icon: 40px;
 $sidebar-height: 320px;
 
 .top-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: white;
-  width: 100vw;
-  height: 64px;
-
-  .logo {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
-    background-size: 200% auto;
-    border-radius: 18px;
-    width: $width;
-    max-width: $max-width;
-    height: 56px;
-    margin: 5px;
-    cursor: pointer;
-
-    .logo-img {
-      height: $logo-img;
-      width: 5vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 10px;
-    }
-
-    p {
-      display: flex;
-      align-items: center;
-      color: white;
-      margin-left: 8px;
-      @include text(900, $logo-text, 18px);
-    }
-  }
-
-  .profile {
     display: flex;
     flex-direction: row;
     align-items: center;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
+    background-color: white;
+    width: 100vw;
+    height: 64px;
 
-    .short-info {
-      display: flex;
-      flex-direction: column;
-      text-align: right;
-      margin-right: 1vw;
+    .logo {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
+        background-size: 200% auto;
+        border-radius: 18px;
+        width: $width;
+        max-width: $max-width;
+        height: 56px;
+        margin: 5px;
+        cursor: pointer;
 
-      .name {
-        @include text(500, 16px, 17px);
-      }
+        .logo-img {
+            height: $logo-img;
+            width: 5vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
 
-      .group {
-        @include text(400, 12px, 15px);
-        color: #a6acbe;
-      }
+        p {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-left: 8px;
+            @include text(900, $logo-text, 18px);
+        }
     }
 
-    .avatar {
-      height: 48px;
-      border-radius: 100%;
-      margin-right: 1vw;
+    .profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+
+        .short-info {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin-right: 1vw;
+
+            .name {
+                @include text(500, 16px, 17px);
+            }
+
+            .group {
+                @include text(400, 12px, 15px);
+                color: #a6acbe;
+            }
+        }
+
+        .avatar {
+            height: 48px;
+            border-radius: 100%;
+            margin-right: 1vw;
+        }
+
+        .notice-exit {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            height: 48px;
+            border-left: 1px solid #c7cbd5;
+
+            .notice {
+                color: #c7cbd5;
+                height: 24px;
+                width: 24px;
+                margin-left: 1vw;
+            }
+
+            .notice:hover {
+                color: #5a9cff;
+            }
+
+            .exit {
+                color: #c7cbd5;
+                height: 24px;
+                width: 24px;
+                margin-left: 1vw;
+                margin-right: 1vw;
+            }
+
+            .exit:hover {
+                color: #5a9cff;
+            }
+        }
     }
-
-    .notice-exit {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      height: 48px;
-      border-left: 1px solid #c7cbd5;
-
-      .notice {
-        color: #c7cbd5;
-        height: 24px;
-        width: 24px;
-        margin-left: 1vw;
-      }
-
-      .notice:hover {
-        color: #5a9cff;
-      }
-
-      .exit {
-        color: #c7cbd5;
-        height: 24px;
-        width: 24px;
-        margin-left: 1vw;
-        margin-right: 1vw;
-      }
-
-      .exit:hover {
-        color: #5a9cff;
-      }
-    }
-  }
 }
 
 .body {
-  display: flex;
-  flex-direction: row;
-  padding-top: 16px;
+    display: flex;
+    flex-direction: row;
+    padding-top: 16px;
 
-  .central {
-    margin-top: 5px;
-    margin-left: 16px;
-    margin-right: 21px;
-    max-width: 80vw;
-  }
+    .central {
+        margin-top: 5px;
+        margin-left: 16px;
+        margin-right: 21px;
+        max-width: 80vw;
+    }
 }
 
 %general-sidebar {
-  margin: 5px;
-  background: #2c405a;
-  color: white;
-  width: $width;
-  max-width: $max-width;
-  border-radius: 18px;
+    margin: 5px;
+    background: #2c405a;
+    color: white;
+    width: $width;
+    max-width: $max-width;
+    border-radius: 18px;
 }
 
 .sidebar-button {
-  @extend %general-sidebar;
-  border-radius: 18px;
-  width: 9vw;
-  height: 48px;
+    @extend %general-sidebar;
+    border-radius: 18px;
+    width: 9vw;
+    height: 48px;
 }
 
 .sidebar-button:hover {
-  opacity: 0.9;
-  background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+    opacity: 0.9;
+    background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
 }
 
 .sidebar {
-  @extend %general-sidebar;
-  width: 100%;
-  height: $sidebar-height;
+    @extend %general-sidebar;
+    width: 100%;
+    height: $sidebar-height;
 
-  %general-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    width: $icon;
-    height: $icon;
-  }
-
-  %general-link-text {
-    display: block;
-    @include text(400, $sidebar-text, 18px);
-    width: 50%;
-    margin-left: 1vw;
-  }
-
-  .link {
-    display: flex;
-    align-items: center;
-    height: $sidebar-height / 5;
-    padding-left: 1vw;
-
-    .icon {
-      @extend %general-icon;
-      color: #ffffff;
-      border: 1px solid #ffffff;
+    %general-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        width: $icon;
+        height: $icon;
     }
 
-    .link-text {
-      @extend %general-link-text;
-      color: #ffffff;
+    %general-link-text {
+        display: block;
+        @include text(400, $sidebar-text, 18px);
+        width: 50%;
+        margin-left: 1vw;
     }
 
-    .select-icon {
-      @extend %general-icon;
-      color: #5a9cff;
-      border: 1px solid #5a9cff;
+    .link {
+        display: flex;
+        align-items: center;
+        height: $sidebar-height / 5;
+        padding-left: 1vw;
+
+        .icon {
+            @extend %general-icon;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+
+        .link-text {
+            @extend %general-link-text;
+            color: #ffffff;
+        }
+
+        .select-icon {
+            @extend %general-icon;
+            color: #5a9cff;
+            border: 1px solid #5a9cff;
+        }
+
+        .select-link-text {
+            @extend %general-link-text;
+            color: #5a9cff;
+        }
     }
 
-    .select-link-text {
-      @extend %general-link-text;
-      color: #5a9cff;
-    }
-  }
+    .link:hover {
+        opacity: 0.9;
+        background: #3a4f6e;
+        border-radius: 18px;
 
-  .link:hover {
-    opacity: 0.9;
-    background: #3a4f6e;
-    border-radius: 18px;
+        .icon {
+            background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+        }
 
-    .icon {
-      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
-    }
+        .select-icon {
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+        }
 
-    .select-icon {
-      color: #ffffff;
-      border: 1px solid #ffffff;
-      background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+        .select-link-text {
+            color: #ffffff;
+        }
     }
-
-    .select-link-text {
-      color: #ffffff;
-    }
-  }
 }
