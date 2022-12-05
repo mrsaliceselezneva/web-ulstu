@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import './CreateProject.scss';
-import { useSelector, useDispatch } from "react-redux";
-import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight } from 'react-icons/fi';
+import { useSelector } from "react-redux";
 import format from "date-fns/format";
 
 function create(name, description, token){
-    console.log();
     const headers = {
         Authorization: `Bearer ${token}`,
     };

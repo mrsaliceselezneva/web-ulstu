@@ -27,12 +27,6 @@ function Autorization() {
     });
   }, []);
 
-
-
-  const passwordShow=()=>{
-    setShow(!show);
-  }
-
   function Check(){
       axios
       .post(`http://asus.russianitgroup.ru/api//registration`, {

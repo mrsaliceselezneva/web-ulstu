@@ -7,12 +7,64 @@
   color: $d;
 }
 
+@mixin input-button($delt) {
+  height: 45px;
+  width: 100% + $delt;
+  border-radius: 8px;
+  border: none;
+}
+
+@mixin input-block() {
+  @include input-button(-13%);
+  display: flex;
+  flex-direction: row;
+
+  background-color: rgba(245, 248, 254);
+  border: none;
+  margin-bottom: 5%;
+  padding: 2% 7% 2% 7%;
+
+  .input {
+    @include input-button(-2%);
+    @include text(400, 16px, 19px, #798d96);
+    background-color: rgba(245, 248, 254);
+    margin-bottom: 5%;
+  }
+
+  input:focus {
+    outline: none !important;
+    border: none;
+  }
+
+  .login-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #798d96;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+    margin-top: 5%;
+  }
+}
+
+@mixin input-block-hover() {
+  .login-icon {
+    color: #5a9cff;
+  }
+
+  .input {
+    @include text(400, 16px, 19px, #5a9cff);
+  }
+}
+
 .icon-delete {
   display: flex;
   align-items: center;
   color: #fd6374;
   border-radius: 100%;
   background-color: rgba(253, 99, 116, 0.1);
+  cursor: pointer;
 }
 
 %icon-add {
@@ -106,6 +158,14 @@
         .requirements-title {
           @extend %project-title;
 
+          .input-block {
+            @include input-block();
+          }
+
+          .input-block:hover {
+            @include input-block-hover();
+          }
+
           .icon-add-block {
             @extend %icon-add;
           }
@@ -128,6 +188,13 @@
 
         .commits-title {
           @extend %project-title;
+          .input-block {
+            @include input-block();
+          }
+
+          .input-block:hover {
+            @include input-block-hover();
+          }
 
           .icon-add-block {
             @extend %icon-add;

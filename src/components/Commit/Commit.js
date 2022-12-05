@@ -2,7 +2,7 @@ import './Commit.scss';
 
 function Commit ({icon, listBlockText, del}) { 
     return (
-       <div className='commit'>
+       <div className='commit' key={listBlockText}>
            {icon}
            {listBlockText}
            {del}

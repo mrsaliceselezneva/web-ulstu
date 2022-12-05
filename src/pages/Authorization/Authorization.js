@@ -29,7 +29,6 @@ function Authorization() {
           dispatch(loginToken(response.data.token));
           localStorage.setItem('token', response.data.token);
           console.log('login success');
-          // window.location.assign(`${process.env.REACT_APP_URL}/`);
       })
       .catch((error) => {
         console.log(error);

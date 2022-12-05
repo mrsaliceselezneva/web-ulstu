@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 function Project(){
-    const {email} = useSelector(state => state.userReducer);
+    const {email, token} = useSelector(state => state.userReducer);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -19,6 +19,8 @@ function Project(){
     const [requirementsList, setRequirementsList] = useState([]);
     const [participants, setParticipants] = useState([]);
     const [commits, setCommits] = useState([]);
+    const [requirementInput, setRequirementInput] = useState('');
+    const [commitInput, setCommitInput] = useState('');
 
 
     // const requirementsList = [
@@ -72,12 +74,32 @@ function Project(){
         });
       }, []);
 
+
+    console.log(commits);
+
     function addRequirement(){
         console.log('add-requirement');
+        
     }
 
     function addCommit(){
         console.log('add-commit');
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            completed: true,
+            isCompleted: true,
+            pointTitle: commitInput,
+            projectId: projectId,
+        };
+        axios
+        .post(`${process.env.REACT_APP_API_URL}/project/state`, data, { headers })
+        .then((response) => {
+            window.location.reload();
+        })
+        .catch((error) => {
+        });
     }
 
     function addParticipant(){
@@ -88,8 +110,19 @@ function Project(){
         console.log('delete-requirement');
     }
 
-    function deleteCommit(){
+    function deleteCommit(commit){
         console.log('delete-commit');
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        const data = {ids: commit.id}
+        axios
+        .delete(`${process.env.REACT_APP_API_URL}/project/state?ids=${commit.id}`, { headers })
+        .then((response) => {
+            window.location.reload();
+        })
+        .catch((error) => {
+        });
     }
 
     function deleteParticipant(){
@@ -126,7 +159,15 @@ function Project(){
                         <div className='requirements-title'>
                             Требования
                             {authorEmail === email ? 
-                                <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> : 
+                                <div className='input-block'>
+                                    <input 
+                                        onChange={(event) => {
+                                        setRequirementInput(event.target.value);
+                                        }}
+                                        className="input" type="text" placeholder='требование'
+                                    /> 
+                                    <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> 
+                                </div>: 
                                 <></>
                             }
                         </div>
@@ -136,8 +177,9 @@ function Project(){
                                     <Requirement 
                                         requirementText={requirement}
                                         del={authorEmail === email ? 
-                                            <FiXCircle className='icon-delete' onClick={() => deleteRequirement()} /> : 
-                                        <></>
+                                            <FiXCircle className='icon-delete' onClick={() => deleteRequirement()} />      
+                                             : 
+                                            <></>
                                         }
                                      />
                                 ))
@@ -148,7 +190,15 @@ function Project(){
                         <div className='commits-title'>
                             Состояние проекта
                             {authorEmail === email ? 
-                                <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} /> : 
+                                <div className='input-block'>
+                                    <input 
+                                        onChange={(event) => {
+                                        setCommitInput(event.target.value);
+                                        }}
+                                        className="input" type="text" placeholder='статус'
+                                    /> 
+                                    <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} /> 
+                                </div>: 
                                 <></>
                             }
                         </div>
@@ -156,9 +206,9 @@ function Project(){
                             commits.map((commit, id) => (  
                                 <Commit 
                                     icon={<FiCheckSquare className='commit-icon'/>} 
-                                    listBlockText={commit} 
+                                    listBlockText={commit.pointTitle} 
                                     del={authorEmail === email ? 
-                                        <FiXCircle className='icon-delete' onClick={() => deleteCommit()} /> : 
+                                        <FiXCircle className='icon-delete' onClick={() => deleteCommit(commit)} /> : 
                                     <></>
                                     }
                                 />
@@ -181,10 +231,7 @@ function Project(){
                     <ListBlock 
                         icon={<FiUser className='list-block-icon'/>} 
                         listBlockText={author} 
-                        del={authorEmail === email ? 
-                            <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> : 
-                            <></>
-                        }
+                        del={<></>}
                     />
                     {
                         participants.map((participant, id) => (  
