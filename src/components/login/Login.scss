@@ -160,8 +160,16 @@ body {
       .login-icon {
         color: #5a9cff;
       }
+
       .input {
         @include text-style(400, 16px, 19px, #5a9cff);
+      }
+    }
+
+    .list {
+      position: absolute;
+      .list-block {
+        cursor: pointer;
       }
     }
 

@@ -11,7 +11,6 @@ $width: 80vw;
 $call-width: 8vw;
 
 .timetable {
-  margin-top: 5px;
   margin-left: 2vw;
   margin-right: 2vw;
 
@@ -58,6 +57,7 @@ $call-width: 8vw;
         padding-right: 1vw;
         margin-right: 2vw;
       }
+
       .group {
         @extend %general-select;
       }
@@ -109,10 +109,12 @@ $call-width: 8vw;
         height: $height;
         border-bottom: 3px solid #d0e9ff;
         border-left: 1px solid #d0e9ff;
+
         .number {
           @include text(600, 32px, 40px);
           color: #5c5c5c;
         }
+
         .weekday {
           @include text(400, 14px, 17px);
           color: #5c5c5c;
@@ -129,10 +131,12 @@ $call-width: 8vw;
         height: $height;
         border-bottom: 3px solid #d0e9ff;
         border-left: 1px solid #d0e9ff;
+
         .number {
           @include text(600, 32px, 40px);
           color: #ffffff;
         }
+
         .weekday {
           @include text(400, 14px, 17px);
           color: #ffffff;
@@ -146,6 +150,7 @@ $call-width: 8vw;
       justify-content: center;
       text-align: center;
       flex-direction: row;
+
       .calls {
         flex-direction: column;
 
@@ -159,9 +164,11 @@ $call-width: 8vw;
           width: $call-width;
           border-bottom: 1px solid #d0e9ff;
           border-right: 3px solid #d0e9ff;
+
           .time {
             @include text(600, 14px, 18px);
           }
+
           .pair-number {
             @include text(300, 12px, 18px);
           }
@@ -179,16 +186,19 @@ $call-width: 8vw;
           border-bottom: 1px solid #d0e9ff;
           border-right: 3px solid #d0e9ff;
           border-left: 3px solid #d0e9ff;
+
           .time {
             @include text(600, 14px, 18px);
             color: #ffffff;
           }
+
           .pair-number {
             @include text(300, 12px, 18px);
             color: #ffffff;
           }
         }
       }
+
       .day {
         display: flex;
         align-items: center;
@@ -219,6 +229,7 @@ $call-width: 8vw;
           border-right: 1px solid #d0e9ff;
         }
       }
+
       .weekend {
         display: flex;
         align-items: center;
@@ -232,6 +243,7 @@ $call-width: 8vw;
           color: #5a9cff;
           margin-bottom: 10px;
         }
+
         .sleep {
           width: 6vw;
           height: $height;

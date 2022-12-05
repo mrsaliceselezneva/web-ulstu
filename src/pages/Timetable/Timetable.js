@@ -1,44 +1,55 @@
 import axios from "axios";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Subject from "../../components/Subject/Subject";
+import { useSelector } from "react-redux";
 
 import './Timetable.scss';
 import { FiClock } from 'react-icons/fi';
 import Sleep from '../../components/assets/images/sleep.svg';
 
+function dateWeekDay(daysInMonth, today, nowDate, div) {
+    return daysInMonth < div - today + nowDate ?
+        div - today + nowDate - daysInMonth :
+        (1 > div - today + nowDate ?
+            new Date(date.getFullYear(), date.getMonth(), 0).getDate() + div - today + nowDate
+            : div - today + nowDate
+        );
+}
+
 const date = new Date();
 const nowDate = date.getDate();
 const today = date.getDay();
+const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 //const currentWeek = Math.ceil((nowDate + 6 - today) / 7);
 
-console.log(today);
+
 const days = [
     {
-        number: 1 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 1),
         weekday: "понедельник",
     },
     {
-        number: 2 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 2),
         weekday: "вторник",
     },
     {
-        number: 3 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 3),
         weekday: "среда",
     },
     {
-        number: 4 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 4),
         weekday: "четверг",
     },
     {
-        number: 5 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 5),
         weekday: "пятница",
     },
     {
-        number: 6 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 6),
         weekday: "суббота",
     },
     {
-        number: 7 - today + nowDate,
+        number: dateWeekDay(daysInMonth, today, nowDate, 7),
         weekday: "воскресенье",
     },
 
@@ -155,31 +166,33 @@ let subjects = [
 function Timetable() {
     const [table, setTable] = React.useState(null);
     const [currentWeek, setCurrentWeek] = React.useState(0);
-    const [group, setGroup] = React.useState('ИВТАСбд-41');
-    React.useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
-            .then((response) => {
-                setTable(response.data);
-                setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
-                const s = 1;
-                console.log(table);
+    const { token, group } = useSelector(state => state.userReducer);
 
-                table.days.map((t, i) => {
-                    if (t.numberWeek === table.currentWeek) {
-                        t.couples.map((tt, j) => {
-                            subjects[tt.pair_number - 1][t.numberDay - 1] = {
-                                'be': true,
-                                'subject': tt.subject,
-                                'teacher': tt.teacher,
-                                'location': tt.place,
-                                'type': typeSubject[tt.typeSubject - 1],
-                            };
-                        });
-                    }
+    React.useEffect(() => {
+        if (group !== 'unauthorized') {
+            axios
+                .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
+                .then((response) => {
+                    console.log(response.data);
+                    console.log('timetable');
+                    setTable(response.data);
+                    setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
+                    table.days.map((t, i) => {
+                        if (t.numberWeek === table.currentWeek) {
+                            t.couples.map((tt, j) => {
+                                subjects[tt.pair_number - 1][t.numberDay - 1] = {
+                                    'be': true,
+                                    'subject': tt.subject,
+                                    'teacher': tt.teacher,
+                                    'location': tt.place,
+                                    'type': typeSubject[tt.typeSubject - 1],
+                                };
+                            });
+                        }
+                    });
                 });
-            });
-    }, []);
+        };
+    }, [group]);
 
 
     return (

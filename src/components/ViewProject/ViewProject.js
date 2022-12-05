@@ -2,27 +2,28 @@ import './ViewProject.scss';
 import defaultBackground from '../assets/images/default_project_background.png';
 import { FiUser } from 'react-icons/fi';
 
-function Project(){
-    return(
-        <div className='card'  onClick={() => {
+function Project(props) {
+    return (
+        <div className='card' onClick={() => {
             window.location.assign(
-                `${process.env.REACT_APP_URL}/projects/project/12345`
-            );}}
-            >
-            <img src={defaultBackground} className='image' alt='defaultBackground'/>
+                `${process.env.REACT_APP_URL}/projects/project/?id=${props.id}`
+            );
+        }}
+        >
+            <img src={defaultBackground} className='image' alt='defaultBackground' />
             <div className='info'>
                 <div className='name'>
-                    Умный велосипед
+                    {props.name}
                 </div>
                 <div className='fio'>
-                    <FiUser className='icon'/>
-                    Васечкин В.В.
+                    <FiUser className='icon' />
+                    {props.author}
                 </div>
                 <div className='description'>
-                    Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет.
+                    {props.description}
                 </div>
                 <div className='date'>
-                    01.11.2022
+                    {props.date}
                 </div>
             </div>
         </div>

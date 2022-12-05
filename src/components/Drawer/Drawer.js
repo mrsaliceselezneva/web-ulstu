@@ -2,30 +2,41 @@ import React from "react";
 import axios from "axios";
 import './Drawer.scss';
 import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiCheckSquare, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
+import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 
-
 import { useSelector, useDispatch } from "react-redux";
-import { loginFirstName, loginLastName, loginFutherName, loginGroup } from "../../redux/slices/userSlice";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
 
 function Drawer({ central, page }) {
     const dispatch = useDispatch();
-    const { token, firstName, lastName, futherName, group } = useSelector(state => state.userReducer);
+    const { token, firstName, lastName, group } = useSelector(state => state.userReducer);
 
     React.useEffect(() => {
-        console.log('token', token);
         const headers = {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         };
         axios
             .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
             .then((response) => {
+                localStorage.setItem('firstName', response.data.firstName);
+                localStorage.setItem('lastName', response.data.lastName);
+                localStorage.setItem('futherName', response.data.patronymic);
+                localStorage.setItem('email', response.data.email);
                 dispatch(loginFirstName(response.data.firstName));
                 dispatch(loginLastName(response.data.lastName));
                 dispatch(loginFutherName(response.data.patronymic));
-                dispatch(loginGroup(response.data.studyGroupId));
-                console.log('get fio success');
+                dispatch(loginEmail(response.data.email));
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
+                    .then((response) => {
+                        dispatch(loginGroup(response.data.name));
+                        localStorage.setItem('group', response.data.name);
+                        console.log('get fio success');
+                    })
+                    .catch((error) => {
+                        console.log('get fio not success');
+                    });
             })
             .catch((error) => {
                 console.log('get fio not success');
@@ -33,7 +44,6 @@ function Drawer({ central, page }) {
     }, []);
 
     const routes = [
-
         {
             path: "/",
             name: "Главная",
@@ -45,11 +55,6 @@ function Drawer({ central, page }) {
             icon: <FiCalendar />
         },
         {
-            path: "/subjects",
-            name: "Предметы",
-            icon: <FiCheckSquare />
-        },
-        {
             path: "/messangers",
             name: "Чаты",
             icon: <FiMessageSquare />
@@ -58,6 +63,11 @@ function Drawer({ central, page }) {
             path: "/projects",
             name: "Проекты",
             icon: <FiLayout />
+        },
+        {
+            path: "/events",
+            name: "Мероприятия",
+            icon: <FiBriefcase />
         },
     ];
 
@@ -68,7 +78,6 @@ function Drawer({ central, page }) {
                 background-image: url(${repeatBackground}); 
                 background-size: contain;}`}
             </style>
-
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
             <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
 
@@ -94,9 +103,10 @@ function Drawer({ central, page }) {
                             dispatch(loginLastName('unauthorized'));
                             dispatch(loginFutherName('unauthorized'));
                             dispatch(loginGroup('unauthorized'));
-                            window.location.assign(`${process.env.REACT_APP_URL}/`);
+                            dispatch(loginToken('unauthorized'));
+                            localStorage.clear();
+                            //window.location.assign(`${process.env.REACT_APP_URL}/`);
                         }} />
-
                     </div>
                 </div>
             </div>
