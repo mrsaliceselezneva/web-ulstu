@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, {useState} from 'react';
 import logoUlstu from '../../components/assets/images/logo-ulstu.png';
-import { FiMail, FiEye, FiEyeOff, FiPhone } from 'react-icons/fi';
+import { FiMail, FiEye, FiEyeOff, FiPhone, FiUser, FiList } from 'react-icons/fi';
 
 import '../../components/Login/Login.scss';
 
@@ -14,7 +14,20 @@ function Autorization() {
   const [password, setPassword] = useState('');
   const [futherName, setFutherName] = useState('');
   const [phone, setPhone] = useState('');
+  const [listGroup, setListGroup] = useState([]);
+  const [showListGroup, setShowListGroup] = useState(false);
   const [groupId, setGroupId] = useState(0);
+  const [groupName, setGroupName] = useState('Группа');
+
+  React.useEffect(() => {
+    axios
+    .get(`${process.env.REACT_APP_API_URL}//study-group/list`)
+    .then((response) => {
+        setListGroup(response.data);
+    });
+  }, []);
+
+
 
   const passwordShow=()=>{
     setShow(!show);
@@ -34,6 +47,7 @@ function Autorization() {
       })
       .then((response) => {
         console.log('registration success');
+        window.location.assign(`${process.env.REACT_APP_URL}/`);
       });
   };
 
@@ -61,6 +75,7 @@ function Autorization() {
                 onChange={(event) => setLastName(event.target.value)} 
                 className="input" type="text" placeholder='Фамилия'
               /> 
+              <FiUser className='login-icon' />
             </div>
 
             <div className='input-block'>
@@ -68,6 +83,7 @@ function Autorization() {
                 onChange={(event) => setFirstName(event.target.value)} 
                 className="input" type="text" placeholder='Имя'
               /> 
+              <FiUser className='login-icon' />
             </div>
 
             <div className='input-block'>
@@ -75,6 +91,7 @@ function Autorization() {
                 onChange={(event) => setFutherName(event.target.value)} 
                 className="input" type="text" placeholder='Отчество'
               /> 
+              <FiUser className='login-icon' />
             </div>
 
             <div className='input-block'>
@@ -84,6 +101,28 @@ function Autorization() {
               /> 
               <FiPhone className='login-icon' />
             </div>
+
+            <div className='input-block'>
+              <div 
+                onChange={(event) => setGroupId(event.target.value)} 
+                className="input"
+              >{groupName}</div>
+              <FiList className='login-icon' onClick={() => setShowListGroup(!showListGroup)} />
+            </div>
+
+            {showListGroup ? 
+                <div className="list">
+                  {listGroup.map((group, id) => 
+                  (<div 
+                    className='list-block' 
+                    key={group.name} 
+                    onClick={() => {setGroupId(group.id); setGroupName(group.name)}}
+                  >
+                    {group.name}
+                  </div>))}
+                </div> :
+                <></>
+              }
 
             <div className='input-block'>
               <input 
@@ -102,8 +141,8 @@ function Autorization() {
                 }}
                 className="input" type={show?"text":"password"} placeholder='пароль'
               /> 
-              {show? <FiEye onClick={passwordShow} className='login-icon' /> :
-              <FiEyeOff onClick={passwordShow} className='login-icon' /> }
+              {show? <FiEye onClick={() => setShow(!show)} className='login-icon' /> :
+              <FiEyeOff onClick={() => setShow(!show)} className='login-icon' /> }
             </div>
 
             <button onClick={Check}>Создать</button>

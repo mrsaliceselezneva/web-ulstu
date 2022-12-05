@@ -166,6 +166,13 @@ body {
       }
     }
 
+    .list {
+      position: absolute;
+      .list-block {
+        cursor: pointer;
+      }
+    }
+
     button {
       @include input-button(0%);
       @include text-style(700, 18px, 22px, #ffffff);

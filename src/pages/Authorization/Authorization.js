@@ -18,11 +18,6 @@ function Authorization() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const passwordShow=()=>{
-    setShow(!show);
-  }
-
-
   function Check(){
       axios
       .post(`${process.env.REACT_APP_API_URL}/login`, {
@@ -81,8 +76,8 @@ function Authorization() {
                 }}
                 className="input" type={show?"text":"password"} placeholder='пароль'
               /> 
-              {show? <FiEye onClick={passwordShow} className='login-icon' /> :
-              <FiEyeOff onClick={passwordShow} className='login-icon' /> }
+              {show? <FiEye onClick={() => setShow(!show)} className='login-icon' /> :
+              <FiEyeOff onClick={() => setShow(!show)} className='login-icon' /> }
             </div>
             
             <button onClick={Check}>Войти</button>
