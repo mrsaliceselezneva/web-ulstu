@@ -1,8 +1,8 @@
-.projects {
-  display: flex;
-  flex-direction: column;
-  margin-left: 0.8vw;
-  margin-top: 5px;
+.projects__container {
+  margin: 0;
+  height: 100%;
+  max-width: 70vw;
+  width: 70vw;
 }
 
 .projects-menu {
@@ -30,6 +30,7 @@
       color: #c7cbd5;
     }
   }
+
   .switch:hover {
     .switch-icon {
       color: #5a9cff;
@@ -92,6 +93,7 @@
         color: #c7cbd5;
       }
     }
+
     .add:hover {
       .add-icon {
         color: #5a9cff;
@@ -101,8 +103,9 @@
 }
 
 .list {
+
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  min-width: 83.5vw;
+  margin: 0;
+  width: 100%;
 }

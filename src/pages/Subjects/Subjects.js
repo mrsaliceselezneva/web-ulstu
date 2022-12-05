@@ -1,7 +1,7 @@
-import SubjectsCard from '../../components/SubjectsCard/SubjectsCard';
+import SubjectsCard from '../../components/ProjectCard/ProjectCard';
 import './Subjects.scss';
-import img from '../../components/assets/images/subject.svg'
-import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare } from 'react-icons/fi';
+import img from '../../components/assets/images/default_project_background.png'
+import { FiUser } from 'react-icons/fi';
 
 const data = [
     {
@@ -10,7 +10,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Экзамен"
+
 
     },
     {
@@ -19,7 +19,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Зачет"
+
     },
     {
         subject: "Геометрическое моделирование",
@@ -27,7 +27,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Зачет"
+
     },
     {
         subject: "Операционные системы",
@@ -35,7 +35,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Экзамен"
+
     },
     {
         subject: "Средства электронного обучения",
@@ -43,7 +43,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Экзамен"
+
     },
     {
         subject: "Исследование операций",
@@ -51,7 +51,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Зачет"
+
     },
     {
         subject: "Основы автоматики",
@@ -59,7 +59,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Зачет"
+
     },
     {
         subject: "Геометрическое моделирование",
@@ -67,7 +67,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Экзамен"
+
     },
     {
         subject: "Операционные системы",
@@ -75,7 +75,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Экзамен"
+
     },
     {
         subject: "Средства электронного обучения",
@@ -83,7 +83,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Зачет"
+
     },
     {
         subject: "Исследование операций",
@@ -91,7 +91,7 @@ const data = [
         icon: <FiUser />,
         teacher: "Горшков Д.А.",
         content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-        type: "Экзамен"
+
     },]
 
 

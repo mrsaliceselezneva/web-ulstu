@@ -1,55 +1,106 @@
 import './Projects.scss';
-import ViewProject from '../../components/ViewProject/ViewProject';
 import Event from '../../components/Event/Event';
 import Search from '../../components/Search/Search';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
+import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import img from '../../components/assets/images/default_project_background.png'
+import { FiUser } from 'react-icons/fi';
 
-function Projects(){
+function Projects() {
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
     const [showProjects, setShowProjects] = useState(true);
 
-    const projects = [
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-        <ViewProject />,
-    ]
+
+    const data = [
+        {
+            subject: "Исследование операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },
+        {
+            subject: "Исследование операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },
+        {
+            subject: "Определение операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },
+        {
+            subject: "Исследование операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },
+        {
+            subject: "Исследование операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },
+        {
+            subject: "Исследование операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },
+        {
+            subject: "Исследование операций",
+            image: img,
+            icon: <FiUser />,
+            teacher: "Горшков Д.А.",
+            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+
+        },]
 
     const events = [
         <Event />,
         <Event />,
     ]
 
-    return(
-        <div className='projects'>
+    return (
+        <div className='projects__container'>
             <div className='projects-menu'>
-                <Search width={20} heigth={20} placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"}/>
+                <Search width={20} heigth={20} placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"} />
                 <div className='switch'>
-                    { showProjects ? 
-                        <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
+                    {showProjects ?
+                        <FiToggleLeft onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
                         :
-                        <FiToggleRight onClick={(event) => {setShowProjects(!showProjects)}} className="switch-icon" />
+                        <FiToggleRight onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
                     }
                 </div>
                 <div className='choose'>
-                    { showProjects ? 
+                    {showProjects ?
                         <>
                             <div onClick={(event) => {
-                                if(!all){
+                                if (!all) {
                                     setMy(!my);
                                     setAll(!all);
                                 }
                             }}
-                            className={all ? 'select-choose-projects' : 'choose-projects'}>
+                                className={all ? 'select-choose-projects' : 'choose-projects'}>
                                 Все
                             </div>
                             <div onClick={(event) => {
-                                if(!my){
+                                if (!my) {
                                     setMy(!my);
                                     setAll(!all);
                                 }
@@ -60,9 +111,9 @@ function Projects(){
                         </>
                         :
                         <></>
-                    }    
+                    }
 
-                    { showProjects ? 
+                    {showProjects ?
                         <div className='add' onClick={() => {
                             window.location.assign(
                                 `${process.env.REACT_APP_URL}/projects/create-project`
@@ -86,11 +137,11 @@ function Projects(){
                 </div>
             </div>
             <div className='list'>
-                    { showProjects ? 
-                        projects.map((project, id) => (project))
-                        :
-                        events.map((ev, id) => (ev))
-                    }
+                {showProjects ?
+                    data.map((item) => <ProjectCard {...item} />)
+                    :
+                    events.map((ev, id) => (ev))
+                }
             </div>
         </div>
     );
