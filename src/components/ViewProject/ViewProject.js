@@ -2,28 +2,37 @@ import './ViewProject.scss';
 import defaultBackground from '../assets/images/default_project_background.png';
 import { FiUser } from 'react-icons/fi';
 
-function Project(){
-    return(
-        <div className='card'  onClick={() => {
+function Project(props) {
+    return (
+        <div className='card__container' onClick={() => {
             window.location.assign(
-                `${process.env.REACT_APP_URL}/projects/project/12345`
-            );}}
-            >
-            <img src={defaultBackground} className='image' alt='defaultBackground'/>
-            <div className='info'>
-                <div className='name'>
-                    Умный велосипед
+                `${process.env.REACT_APP_URL}/projects/project/?id=${props.id}`
+            );
+        }}
+        >
+            <div className='card__header'>
+                <img src={defaultBackground} className='image' alt='defaultBackground' />
+            </div>
+
+            <div className='card__body'>
+
+                <div className='card__body__title'>
+                    <span>{props.name}</span>
                 </div>
-                <div className='fio'>
-                    <FiUser className='icon'/>
-                    Васечкин В.В.
+
+                <div className='card__body__teacher'>
+                    <FiUser className='card__body__teacher__icon' />
+                    <span>{props.author}</span>
                 </div>
-                <div className='description'>
-                    Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет. Даже велосипед умный, а ты - нет.
+
+                <div className='card__body__content'>
+                    <p>{props.description}</p>
                 </div>
+
                 <div className='date'>
-                    01.11.2022
+                    {props.date}
                 </div>
+
             </div>
         </div>
     );

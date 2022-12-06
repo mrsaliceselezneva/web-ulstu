@@ -66,4 +66,4 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
 
 
 
-export default Dialogs
+export default Dialogs;

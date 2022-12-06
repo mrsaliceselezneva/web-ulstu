@@ -1,6 +1,7 @@
 import Messages from './Messages/Messages';
 import Status from './Status/Status';
 import ChatInput from './ChatInput/ChatInput';
+
 import { useSelector, useDispatch } from "react-redux";
 
 import './Messangers.scss';
@@ -10,9 +11,7 @@ import MessagesCont from '../../containers/MessagesCont';
 
 
 function Messangers() {
-
     const { firstName, lastName } = useSelector(state => state.userReducer);
-
     return (
         <div className='messangers'>
 

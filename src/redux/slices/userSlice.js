@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     token: localStorage.getItem('token') || 'unauthorized',
-    firstName: 'unauthorized',
-    lastName: 'unauthorized',
-    futherName: 'unauthorized',
-    group: 'unauthorized',
+    firstName: localStorage.getItem('firstName') || 'unauthorized',
+    lastName: localStorage.getItem('lastName') || 'unauthorized',
+    futherName: localStorage.getItem('futherName') || 'unauthorized',
+    email: localStorage.getItem('email') || 'unauthorized',
+    group: localStorage.getItem('group') || 'unauthorized',
 
 };
 
@@ -25,6 +26,9 @@ const userSlice = createSlice({
         loginFutherName(state, action) {
             state.futherName = action.payload;
         },
+        loginEmail(state, action) {
+            state.email = action.payload;
+        },
         loginGroup(state, action) {
             state.group = action.payload;
         },
@@ -32,6 +36,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { loginToken, loginFirstName, loginLastName, loginFutherName, loginGroup, messagesSetItems } = userSlice.actions;
+export const { loginToken, loginFirstName, loginLastName, loginFutherName, loginEmail, loginGroup, messagesSetItems } = userSlice.actions;
 
 export default userSlice.reducer;

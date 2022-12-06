@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import readedSvg from "../../../components/assets/images/readed.svg";
 import noReadedSvg from "../../../components/assets/images/noreaded.svg";
 
-
 const IconReaded = ({ isMe, isReaded }) =>
     (isMe &&
         (isReaded ? (

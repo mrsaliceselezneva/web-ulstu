@@ -1,75 +1,55 @@
+import axios from "axios";
+import React, { useState } from 'react';
 import './Projects.scss';
 import Event from '../../components/Event/Event';
 import Search from '../../components/Search/Search';
-import React, { useState } from 'react';
+import ViewProject from '../../components/ViewProject/ViewProject'
+
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
-import ProjectCard from '../../components/ProjectCard/ProjectCard';
-import img from '../../components/assets/images/default_project_background.png'
-import { FiUser } from 'react-icons/fi';
+import format from "date-fns/format";
+
+import { useSelector } from "react-redux";
+
 
 function Projects() {
+    const { email } = useSelector(state => state.userReducer);
+
+
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
     const [showProjects, setShowProjects] = useState(true);
+    const [searchValue, setSearchValue] = useState('');
+    const [projects, setProjects] = useState([]);
 
+    React.useEffect(() => {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/project/list`)
+            .then((response) => {
+                setProjects(response.data);
+            });
+    }, []);
 
-    const data = [
-        {
-            subject: "Исследование операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
+    const searchProjects =
+        projects.filter((value) => {
+            return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+        />);
 
-        },
-        {
-            subject: "Исследование операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-
-        },
-        {
-            subject: "Определение операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-
-        },
-        {
-            subject: "Исследование операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-
-        },
-        {
-            subject: "Исследование операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-
-        },
-        {
-            subject: "Исследование операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-
-        },
-        {
-            subject: "Исследование операций",
-            image: img,
-            icon: <FiUser />,
-            teacher: "Горшков Д.А.",
-            content: "Решить 25 задач по программированию. Сдать письменный зачет.",
-
-        },]
+    const myProjects =
+        projects.filter((value) => {
+            return (value.author.email.includes(email))
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+        />);
 
     const events = [
         <Event />,
@@ -77,16 +57,24 @@ function Projects() {
     ]
 
     return (
-        <div className='projects__container'>
+
+        <div className='projects'>
             <div className='projects-menu'>
-                <Search width={20} heigth={20} placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"} />
-                <div className='switch'>
-                    {showProjects ?
-                        <FiToggleLeft onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
+                <Search
+                    width={20}
+                    heigth={20}
+                    placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"}
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                />
+                {/* <div className='switch'>
+                    { showProjects ?
+                        <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
+>>>>>>> 81e3203980928c14fc844a0073bf603fcad19670
                         :
                         <FiToggleRight onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
                     }
-                </div>
+                </div> */}
                 <div className='choose'>
                     {showProjects ?
                         <>
@@ -104,6 +92,7 @@ function Projects() {
                                     setMy(!my);
                                     setAll(!all);
                                 }
+
                             }} className={my ? 'select-choose-projects' : 'choose-projects'}>
                                 {/* сортировка по создателю */}
                                 Мои
@@ -137,10 +126,12 @@ function Projects() {
                 </div>
             </div>
             <div className='list'>
-                {showProjects ?
-                    data.map((item) => <ProjectCard {...item} />)
+
+                {my ?
+                    myProjects.map((project, id) => (project))
                     :
-                    events.map((ev, id) => (ev))
+                    searchProjects.map((project, id) => (project))
+
                 }
             </div>
         </div>
