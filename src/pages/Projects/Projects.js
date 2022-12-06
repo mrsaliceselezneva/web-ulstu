@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import './Projects.scss';
-import ViewProject from '../../components/ViewProject/ViewProject';
 import Event from '../../components/Event/Event';
 import Search from '../../components/Search/Search';
+import ViewProject from '../../components/ViewProject/ViewProject'
+
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
 import format from "date-fns/format";
 
@@ -12,6 +13,7 @@ import { useSelector } from "react-redux";
 
 function Projects() {
     const { email } = useSelector(state => state.userReducer);
+
 
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
@@ -49,13 +51,13 @@ function Projects() {
             id={value.id}
         />);
 
-
     const events = [
         <Event />,
         <Event />,
     ]
 
     return (
+
         <div className='projects'>
             <div className='projects-menu'>
                 <Search
@@ -66,10 +68,11 @@ function Projects() {
                     setSearchValue={setSearchValue}
                 />
                 {/* <div className='switch'>
-                    { showProjects ? 
+                    { showProjects ?
                         <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
+>>>>>>> 81e3203980928c14fc844a0073bf603fcad19670
                         :
-                        <FiToggleRight onClick={(event) => {setShowProjects(!showProjects)}} className="switch-icon" />
+                        <FiToggleRight onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
                     }
                 </div> */}
                 <div className='choose'>
@@ -123,10 +126,12 @@ function Projects() {
                 </div>
             </div>
             <div className='list'>
+
                 {my ?
                     myProjects.map((project, id) => (project))
                     :
                     searchProjects.map((project, id) => (project))
+
                 }
             </div>
         </div>

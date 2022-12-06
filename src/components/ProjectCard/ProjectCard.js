@@ -1,8 +1,13 @@
-import './SubjectsCard.scss';
+import './ProjectCard.scss';
 
-const SubjectsCard = ({ subject, image, icon, teacher, content, type }) => {
+const ProjectCard = ({ subject, image, icon, teacher, content }) => {
     return (
-        <div className='card__container'>
+        <div className='card__container'
+            onClick={() => {
+                window.location.assign(
+                    `${process.env.REACT_APP_URL}/projects/project/12345`
+                );
+            }}>
             <div className='card__header'>
                 <img src={image} alt="Subjects" />
             </div>
@@ -27,12 +32,12 @@ const SubjectsCard = ({ subject, image, icon, teacher, content, type }) => {
                 <div className='card__body__content'>
                     {content}
                 </div>
-
+                {/* 
                 <div className='card__body__type'>
-                    <div className={type == "Экзамен" ? 'card__body__type__examen' : 'card__body__type__zachet'}>
+                    <div className={type === "Экзамен" ? 'card__body__type__examen' : 'card__body__type__zachet'}>
                         <span>{type}</span>
                     </div>
-                </div>
+                </div> */}
 
             </div>
 
@@ -40,4 +45,4 @@ const SubjectsCard = ({ subject, image, icon, teacher, content, type }) => {
     );
 }
 
-export default SubjectsCard;
+export default ProjectCard;

@@ -16,10 +16,10 @@ a {
     text-decoration: none;
 }
 
-$max-width: 220px;
-$width: 15vw;
-$logo-text: 1.3vw;
-$sidebar-text: 1.1vw;
+$max-width: 250px;
+$width: 250px;
+$logo-text: 1vw;
+$sidebar-text: 1vw;
 $logo-img: 48px;
 $icon: 40px;
 
@@ -136,19 +136,17 @@ $sidebar-height: 320px;
 
     .central {
         margin-top: 5px;
-        margin-left: 16px;
-        margin-right: 21px;
         max-width: 80vw;
     }
 }
 
 %general-sidebar {
-    margin: 5px;
     background: #2c405a;
     color: white;
     width: $width;
     max-width: $max-width;
     border-radius: 18px;
+    margin-left: 5px;
 }
 
 .sidebar-button {
