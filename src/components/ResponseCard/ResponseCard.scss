@@ -1,0 +1,156 @@
+.response__card {
+
+
+    &__container {
+        height: 68px;
+        width: 70vw;
+        min-width: 1080px;
+        padding: 5px 20px;
+        background: white;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    &__avatar {
+        width: 3vw;
+        min-width: 60px;
+        margin-right: 20px;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+
+    &__user {
+        width: 8vw;
+        min-width: 150px;
+        margin-right: 20px;
+
+        span {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 20px;
+            letter-spacing: 0.214286px;
+            color: #333539;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+        }
+    }
+
+    &__project {
+        width: 10vw;
+        min-width: 10vw;
+        height: 20px;
+        max-height: 20px;
+        background: #5A9CFF;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        margin: 0 20px;
+
+
+        span {
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.108333px;
+            color: #FFFFFF;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+        }
+    }
+
+    &__message {
+        width: 25vw;
+        margin: 0 20px;
+        max-width: 20vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        span {
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 26px;
+            letter-spacing: 0.116667px;
+            color: #787F8D;
+
+
+        }
+    }
+
+    &__accept {
+        background: green;
+        margin-right: 20px;
+        width: 10%;
+        min-width: 10%;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        span {
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.108333px;
+            color: #FFFFFF;
+        }
+    }
+
+    &__reject {
+        background: red;
+        margin-right: 20px;
+        width: 10%;
+        min-width: 10%;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        span {
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.108333px;
+            color: #FFFFFF;
+        }
+    }
+
+    &__date {
+        margin-left: 40px;
+
+        span {
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: #787F8D;
+        }
+    }
+}
