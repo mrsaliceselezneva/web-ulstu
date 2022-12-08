@@ -136,6 +136,7 @@ $sidebar-height: 320px;
 
     .central {
         margin-top: 5px;
+        width: 80vw;
         max-width: 80vw;
     }
 }
@@ -145,6 +146,7 @@ $sidebar-height: 320px;
     color: white;
     width: $width;
     max-width: $max-width;
+    min-width: $max-width;
     border-radius: 18px;
     margin-left: 5px;
 }
@@ -187,6 +189,7 @@ $sidebar-height: 320px;
         align-items: center;
         height: $sidebar-height / 5;
         padding-left: 1vw;
+
 
         .icon {
             @extend %general-icon;

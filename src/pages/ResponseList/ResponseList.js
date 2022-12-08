@@ -7,26 +7,7 @@ import axios from "axios"
 
 const ResponseList = () => {
 
-    const data = [
-        {
-            name: "Максим",
-            surname: "Дергунов",
-            avatar: img,
-            project: "Умный велосипедУмный велосипедУмный велосипедУмный велосипед",
-            message: "тестовое сообщениетестовое сообщениетестовое сообщениетестовое сообщениетестовое сообщениетестовое сообщение",
-            date: "06.12.22"
 
-        },
-        {
-            name: "Максим",
-            surname: "Дергунов",
-            avatar: img,
-            project: "Умный велосипедУмный велосипедУмный велосипедУмный велосипед",
-            message: "тестовое сообщениетестовое сообщениетестовое сообщениетестовое сообщениетестовое сообщениетестовое сообщение",
-            date: "06.12.22"
-
-        }
-    ]
     const { token } = useSelector(state => state.userReducer);
     const [response, setResponse] = useState([])
 
@@ -39,6 +20,7 @@ const ResponseList = () => {
             .then((response) => {
                 setResponse(response.data)
             })
+
     }, [])
 
     return (
