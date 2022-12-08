@@ -9,7 +9,7 @@ import repeatBackground from '../assets/images/repeat-background.png';
 import { useSelector, useDispatch } from "react-redux";
 import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
 
-function Drawer({ central, page, user }) {
+function Drawer({ central, page }) {
     const dispatch = useDispatch();
     const { token, firstName, lastName, group } = useSelector(state => state.userReducer);
     const [avatar, setAvatar] = useState("")
@@ -40,7 +40,7 @@ function Drawer({ central, page, user }) {
                         console.log('get fio not success');
                     });
                 axios
-                    .get(`${process.env.REACT_APP_API_URL}/files?id=${user.avatarId}`, { headers, responseType: 'blob' })
+                    .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
                     .then((response) => {
                         const url = window.URL.createObjectURL(response.data);
                         setAvatar(url);

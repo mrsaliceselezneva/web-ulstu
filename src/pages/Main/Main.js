@@ -1,5 +1,9 @@
 import './Main.scss';
 import Base from '../../components/assets/images/Base.png';
+import emoji from '../../components/assets/images/emoji.png';
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux";
+import axios from "axios"
 
 
 import Status from '../../components/Status/Status';
@@ -19,34 +23,21 @@ function Main() {
     ]
 
 
-    const answers = [
-
-        {
-            "image": <FiUserCheck />,
-            "teacher": "Лылова Анна Вячеслвавовна",
-            "date": "22.10.2022",
-            "time": "14:40",
-            "comment": "Работа №2 принята, исправьте в отчете п.1 и вышлите еще раз."
-        },
-
-        {
-            "image": <FiUserCheck />,
-            "teacher": "Лылова Анна Вячеслвавовна",
-            "date": "22.10.2022",
-            "time": "14:40",
-            "comment": "Работа №2 принята, исправьте в отчете п.1 и вышлите еще раз."
-        },
-
-        {
-            "image": <FiUserCheck />,
-            "teacher": "Лылова Анна Вячеслвавовна",
-            "date": "22.10.2022",
-            "time": "14:40",
-            "comment": "Работа №2 принята, исправьте в отчете п.1 и вышлите еще раз."
-        }
-    ]
+    const { token } = useSelector(state => state.userReducer);
+    const [rating, setRating] = useState([])
 
 
+    useEffect(() => {
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/project/top-views`, { headers })
+            .then((response) => {
+                setRating(response.data)
+            })
+
+    }, [])
 
     return (
         <div className="content_info">
@@ -88,18 +79,20 @@ function Main() {
 
                 <div className="answers">
 
-                    <h1>Ответы по сданным работам</h1>
-                    {
-                        answers.map(answer => (
-                            <TeacherAnswers
-                                image={answer.image}
-                                teacher={answer.teacher}
-                                date={answer.date}
-                                time={answer.time}
-                                comment={answer.comment}
-                            />
-                        ))
-                    }
+                    <h1>Рейтинг проектов</h1>
+                    <div className={rating.length > 0 ? "top_views" : "no_projects"}>
+
+                        {
+                            rating.length > 0 ?
+                                rating.map((item) => <TeacherAnswers
+                                    {...item} />)
+                                :
+                                <>
+                                    <img src={emoji} />
+                                    <span>У Вас нет своих проектов</span>
+                                </>
+                        }
+                    </div>
 
                 </div>
 
