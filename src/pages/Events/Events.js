@@ -52,7 +52,7 @@ function Events(){
                 <Search 
                     width={20} 
                     heigth={20} 
-                    placeholder= "Поиск проектов"
+                    placeholder= "Поиск мероприятий"
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                 />

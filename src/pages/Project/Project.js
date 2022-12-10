@@ -219,7 +219,6 @@ function Project(){
             </div>
             <div className='participants'>
                 <div className='participants-title'>
-                    {/* <FiUsers className='project-icon-participants'/> */}
                     Участники
                     {authorEmail === email ? 
                     <></> : 

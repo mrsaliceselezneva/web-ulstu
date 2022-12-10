@@ -60,7 +60,7 @@ function Projects(){
                 />
                 <div className='choose'>
                     <>
-                        <div onClick={(event) => {
+                        <div onClick={() => {
                             if(!all){
                                 setMy(!my);
                                 setAll(!all);
@@ -69,7 +69,7 @@ function Projects(){
                         className={all ? 'select-choose-projects' : 'choose-projects'}>
                             Все
                         </div>
-                        <div onClick={(event) => {
+                        <div onClick={() => {
                             if(!my){
                                 setMy(!my);
                                 setAll(!all);
