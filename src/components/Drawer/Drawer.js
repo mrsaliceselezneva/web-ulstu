@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import './Drawer.scss';
+import './style.scss';
 import { NavLink } from 'react-router-dom';
 import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
