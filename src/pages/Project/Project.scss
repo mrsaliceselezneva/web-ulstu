@@ -75,6 +75,7 @@
   margin-right: 0;
   cursor: pointer;
 }
+
 %icon-add-hover {
   color: #5a9cff;
 }
@@ -105,8 +106,7 @@
       flex-direction: row;
       @extend %block;
 
-      .image {
-      }
+      .image {}
 
       .info {
         display: flex;
@@ -145,6 +145,7 @@
         }
       }
     }
+
     .main-bottom-section {
       display: flex;
       flex-direction: column;
@@ -169,6 +170,7 @@
           .icon-add-block {
             @extend %icon-add;
           }
+
           .icon-add-block:hover {
             @extend %icon-add-hover;
           }
@@ -199,6 +201,7 @@
           .icon-add-block {
             @extend %icon-add;
           }
+
           .icon-add-block:hover {
             @extend %icon-add-hover;
           }
@@ -206,6 +209,7 @@
       }
     }
   }
+
   .participants {
     display: flex;
     flex-direction: column;
@@ -230,6 +234,7 @@
       .icon-add-participant {
         @extend %icon-add;
       }
+
       .icon-add-participant:hover {
         @extend %icon-add-hover;
       }

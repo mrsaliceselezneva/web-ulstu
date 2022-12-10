@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Projects.scss';
 import ViewProject from '../../components/ViewProject/ViewProject';
 import Search from '../../components/Search/Search';
@@ -9,8 +9,8 @@ import format from "date-fns/format";
 import { useSelector } from "react-redux";
 
 
-function Projects(){
-    const {email} = useSelector(state => state.userReducer);
+function Projects() {
+    const { email } = useSelector(state => state.userReducer);
 
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
@@ -19,33 +19,33 @@ function Projects(){
 
     React.useEffect(() => {
         axios
-        .get(`${process.env.REACT_APP_API_URL}/project/list`)
-        .then((response) => {
-            setProjects(response.data);
-        });
-      }, []);
-      
-    const searchProjects = 
-        projects.filter((value) => 
-            { return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
-        }).map((value) =>  <ViewProject 
-                name = {value.name} 
-                author = {`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
-                description = {value.description}
-                date = {format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
-                id = {value.id}
-            />);
+            .get(`${process.env.REACT_APP_API_URL}/project/list`)
+            .then((response) => {
+                setProjects(response.data);
+            });
+    }, []);
 
-    const myProjects = 
-        projects.filter((value) => 
-            { return (value.author.email.includes(email))
-        }).map((value) =>  <ViewProject 
-                name = {value.name} 
-                author = {`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
-                description = {value.description}
-                date = {format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
-                id = {value.id}
-            />);
+    const searchProjects =
+        projects.filter((value) => {
+            return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+        />);
+
+    const myProjects =
+        projects.filter((value) => {
+            return (value.author.email.includes(email))
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+        />);
 
 
     return(
@@ -95,11 +95,11 @@ function Projects(){
                 </div>
             </div>
             <div className='list'>
-                    { my ? 
-                        myProjects.map((project, id) => (project))
-                        :
-                        searchProjects.map((project, id) => (project))
-                    }
+                {my ?
+                    myProjects.map((project, id) => (project))
+                    :
+                    searchProjects.map((project, id) => (project))
+                }
             </div>
         </div>
     );

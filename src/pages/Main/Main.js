@@ -12,9 +12,9 @@ function Main() {
 
     const data = [
 
-    {"count": 9 ,"status": "Просроченных работ" , "imgUrl": "../images/statusImg1.svg"},
-    {"count": 25 ,"status": "Тестов и лекций пройдено", "imgUrl": "/images/statusImg2.svg" },
-    {"count": "83%" ,"status": "Сдано работ за семестр", "imgUrl": "/images/statusImg3.svg" }
+        { "count": 9, "status": "Просроченных работ", "imgUrl": "../images/statusImg1.svg" },
+        { "count": 25, "status": "Тестов и лекций пройдено", "imgUrl": "/images/statusImg2.svg" },
+        { "count": "83%", "status": "Сдано работ за семестр", "imgUrl": "/images/statusImg3.svg" }
 
     ]
 
@@ -22,23 +22,23 @@ function Main() {
     const answers = [
 
         {
-            "image": <FiUserCheck/>,
+            "image": <FiUserCheck />,
             "teacher": "Лылова Анна Вячеслвавовна",
             "date": "22.10.2022",
             "time": "14:40",
             "comment": "Работа №2 принята, исправьте в отчете п.1 и вышлите еще раз."
-        }, 
+        },
 
         {
-            "image": <FiUserCheck/>,
+            "image": <FiUserCheck />,
             "teacher": "Лылова Анна Вячеслвавовна",
             "date": "22.10.2022",
             "time": "14:40",
             "comment": "Работа №2 принята, исправьте в отчете п.1 и вышлите еще раз."
-        }, 
+        },
 
         {
-            "image": <FiUserCheck/> ,
+            "image": <FiUserCheck />,
             "teacher": "Лылова Анна Вячеслвавовна",
             "date": "22.10.2022",
             "time": "14:40",
@@ -47,7 +47,7 @@ function Main() {
     ]
 
 
-    
+
     return (
         <div className="content_info">
 
@@ -59,55 +59,55 @@ function Main() {
 
                     <div className="middle_image">
 
-                        <img src={Base} alt = "main"/>
+                        <img src={Base} alt="main" />
 
                     </div>
 
                     <div className="status">
-                    {
-                        data.map(val =>(
-                            <Status 
-                            count={val.count}
-                            status={val.status}
-                            imgUrl={val.imgUrl}
-                            />
-                        ))
-                    }
+                        {
+                            data.map(val => (
+                                <Status
+                                    count={val.count}
+                                    status={val.status}
+                                    imgUrl={val.imgUrl}
+                                />
+                            ))
+                        }
                     </div>
 
                 </div>
-              
+
                 <div className="productive">
                     <div className='h1'>Продуктивность обучения</div>
                     <Productive />
                 </div>
 
             </div>
-            
+
             <div className="footer_container">
 
                 <div className="answers">
 
                     <h1>Ответы по сданным работам</h1>
                     {
-                        answers.map(answer =>(
-                            <TeacherAnswers 
-                            image={answer.image}
-                            teacher={answer.teacher}
-                            date={answer.date}
-                            time={answer.time}
-                            comment={answer.comment}
+                        answers.map(answer => (
+                            <TeacherAnswers
+                                image={answer.image}
+                                teacher={answer.teacher}
+                                date={answer.date}
+                                time={answer.time}
+                                comment={answer.comment}
                             />
                         ))
                     }
-            
-                </div> 
+
+                </div>
 
                 <div className="visit">
                     <h1>Посещаемость</h1>
-                    <Visit/>
+                    <Visit />
                 </div>
-                
+
                 <div className="rating">
                     <h1>Рейтинг</h1>
                 </div>
@@ -116,7 +116,7 @@ function Main() {
 
 
 
-         
+
 
         </div>
     )

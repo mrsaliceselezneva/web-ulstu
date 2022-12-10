@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import './CreateProject.scss';
 import { useSelector } from "react-redux";
@@ -25,28 +25,28 @@ function create(name, description, token){
       });
 }
 
-function CreateProject(){
-    const {token, firstName, lastName, futherName} = useSelector(state => state.userReducer);
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+function CreateProject() {
+  const { token, firstName, lastName, futherName } = useSelector(state => state.userReducer);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
-    return(
-       <div className='create'>
-           <input className='name' placeholder='Название проекта' 
-                onChange={(event) => {
-                  setName(event.target.value);
-                }} />
-           <input className='description' placeholder='Описание проекта' 
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}/>
-           <div className='requirements'>
-           </div>
-           <button className='create' onClick={() => {
-               create(name, description, token, firstName, lastName, futherName)
-               }}>Создать</button>
-       </div>
-    );
+  return (
+    <div className='create'>
+      <input className='name' placeholder='Название проекта'
+        onChange={(event) => {
+          setName(event.target.value);
+        }} />
+      <input className='description' placeholder='Описание проекта'
+        onChange={(event) => {
+          setDescription(event.target.value);
+        }} />
+      <div className='requirements'>
+      </div>
+      <button className='create' onClick={() => {
+        create(name, description, token, firstName, lastName, futherName)
+      }}>Создать</button>
+    </div>
+  );
 }
 
 export default CreateProject;
