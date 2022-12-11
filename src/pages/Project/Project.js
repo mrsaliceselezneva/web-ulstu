@@ -9,13 +9,8 @@ import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare, FiPlusCircle, FiXCircle 
 import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
-<<<<<<< HEAD
 function Project(){
     const {email, token} = useSelector(state => state.userReducer);
-=======
-function Project() {
-    const { email } = useSelector(state => state.userReducer);
->>>>>>> 81e3203980928c14fc844a0073bf603fcad19670
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -26,40 +21,6 @@ function Project() {
     const [commits, setCommits] = useState([]);
     const [requirementInput, setRequirementInput] = useState('');
     const [commitInput, setCommitInput] = useState('');
-
-
-    // const requirementsList = [
-    //     {
-    //         requirementText: "Python",
-    //         block: <Requirement requirementText={"Python"} />,
-    //     },
-    //     {
-    //         requirementText: "React",
-    //         block: <Requirement requirementText={"React"} />,
-    //     },
-    //  ];
-
-    //  const participants = [
-    //     {
-    //         listBlockText: "Андрей",
-    //         block: <ListBlock icon={<FiUser className='list-block-icon'/>} listBlockText={"Андрей"} />,
-    //     },
-    //     {
-    //         listBlockText: "Дима",
-    //         block: <ListBlock icon={<FiUser className='list-block-icon'/>} listBlockText={"Дима"} />,
-    //     },
-    //  ];
-
-    //  const commits = [
-    //     {
-    //         blockText: "поиск команды",
-    //         block: <Commit icon={<FiCheckSquare className='commit-icon'/>} listBlockText={"поиск команды"} />,
-    //     },
-    //     {
-    //         blockText: "мы сделали много чего.",
-    //         block: <Commit icon={<FiCheckSquare className='commit-icon'/>} listBlockText={"мы сделали много чего."} />,
-    //     },
-    //  ];
 
     let { search } = useLocation();
     const params = new URLSearchParams(search);
@@ -112,7 +73,7 @@ function Project() {
         console.log('delete-requirement');
     }
 
-    function deleteCommit() {
+    function deleteCommit(commit) {
         console.log('delete-commit');
         const headers = {
             Authorization: `Bearer ${token}`,
@@ -232,10 +193,7 @@ function Project() {
                     <ListBlock
                         icon={<FiUser className='list-block-icon' />}
                         listBlockText={author}
-                        del={authorEmail === email ?
-                            <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> :
-                            <></>
-                        }
+                        del={<></>}
                     />
                     {
                         participants.map((participant, id) => (
