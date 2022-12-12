@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import axios from 'axios'
 import userSlice from "../../redux/slices/userSlice";
+import format from "date-fns/format";
 
 const ResponseCard = ({ comment, project, user, createDate }) => {
 
@@ -77,7 +78,7 @@ const ResponseCard = ({ comment, project, user, createDate }) => {
             </div>
 
             <div className="response__card__date">
-                <span>{createDate}</span>
+                <span>{format(new Date(createDate * 1000).getTime(), 'dd.MM.yyyy')}</span>
             </div>
 
         </div>
