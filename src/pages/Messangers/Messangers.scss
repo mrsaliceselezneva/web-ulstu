@@ -2,14 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 78vw;
+  min-width: 720px;
+  padding: 0 20px;
 
   .chat {
     background: white;
     width: 100%;
     min-width: 720px;
-    height: 89vh;
+    height: 83vh;
     border-radius: 18px;
     padding: 5px;
     display: flex;
@@ -51,7 +52,7 @@
 
       &__dialogs {
         .dialogs {
-          height: 80vh;
+          height: 75vh;
         }
       }
     }

@@ -25,6 +25,7 @@ function Projects() {
         axios
             .get(`${process.env.REACT_APP_API_URL}/project/list`)
             .then((response) => {
+                console.log(response.data)
                 setProjects(response.data);
             });
     }, []);

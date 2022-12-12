@@ -1,8 +1,26 @@
 import './ViewProject.scss';
 import defaultBackground from '../assets/images/default_project_background.png';
-import { FiUser } from 'react-icons/fi';
+import { FiUser } from 'react-icons/fi'; import { useEffect, useState } from "react"
+import { useSelector } from "react-redux";
+import axios from 'axios'
 
 function Project(props) {
+
+    const { token } = useSelector(state => state.userReducer);
+    const [avatar, setAvatar] = useState("")
+
+    // useEffect(() => {
+    //     const headers = {
+    //         Authorization: `Bearer ${token}`,
+    //     };
+    //     axios
+    //         .get(`${process.env.REACT_APP_API_URL}/files?id=${props.author.previewId}`, { headers, responseType: 'blob' })
+    //         .then((response) => {
+    //             const url = window.URL.createObjectURL(response.data);
+    //             setAvatar(url);
+    //         })
+
+    // }, [])
     return (
         <div className='card__container' onClick={() => {
             window.location.assign(
