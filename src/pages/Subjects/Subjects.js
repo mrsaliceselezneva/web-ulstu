@@ -1,8 +1,10 @@
+
 import './Subjects.scss';
 
-function Subjects(){
-    return(
+function Subjects() {
+    return (
         <div></div>
+
     );
 }
 

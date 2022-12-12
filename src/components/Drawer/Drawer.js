@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
+
+import { useEffect, useState } from "react"
 import './Drawer.scss';
+
 import { NavLink } from 'react-router-dom';
 import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
@@ -13,7 +16,7 @@ function Drawer({ central, page }) {
     const dispatch = useDispatch();
     const { token, firstName, lastName, group } = useSelector(state => state.userReducer);
     const { notifications } = useSelector(state => state.notificationsReducer);
-
+    const [avatar, setAvatar] = useState("");
     React.useEffect(() => {
         const headers = {
             Authorization: `Bearer ${token}`,
@@ -39,6 +42,13 @@ function Drawer({ central, page }) {
                     .catch((error) => {
                         console.log('get fio not success');
                     });
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
+                    .then((response) => {
+                        const url = window.URL.createObjectURL(response.data);
+                        setAvatar(url);
+                        console.log(url)
+                    })
             })
             .catch((error) => {
                 console.log('get fio not success');
@@ -53,7 +63,7 @@ function Drawer({ central, page }) {
         },
         {
             path: "/timetable",
-            name: "Расписание",
+            name: "Ответы",
             icon: <FiCalendar />
         },
         {
@@ -72,6 +82,8 @@ function Drawer({ central, page }) {
             icon: <FiBriefcase />
         },
     ];
+
+
 
     return (
         <div className="container">
@@ -104,6 +116,7 @@ function Drawer({ central, page }) {
                     <div className='notice-exit'>
                         <FiBell className={notifications.length > 0 ? 'red-notice' : 'notice'}
                         onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
+
                         />
                         <FiLogOut className='exit' onClick={() => {
                             dispatch(loginFirstName('unauthorized'));

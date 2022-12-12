@@ -4,6 +4,9 @@ import IconReaded from '../IconReaded/IconReaded'
 import { format } from 'date-fns'
 import isToday from 'date-fns/isToday'
 import { AvatarGenerator } from 'random-avatar-generator';
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux";
+import axios from 'axios'
 
 
 const generator = new AvatarGenerator();
@@ -16,42 +19,35 @@ const getMessageTime = (created_at) => {
     }
 }
 
-const getAvatar = avatar => {
-    if (avatar) {
-        return (
-            <img src={generator.generateRandomAvatar()}
-                alt="avatar" />
-        )
-    }
-}
 
-const DialogItem = ({ _id, user, message, unreaded, isMe, onSelect, currentDialogId }) => {
+
+
+const DialogItem = ({ id, user, message, unreaded, isMe, onSelect, currentDialogId, last_name, first_name, avatar_name }) => {
+
 
     return (
-        <div className={classNames('dialogs__item', {
-            'dialogs__item--online': user.isOnline,
-            'dialogs__item--selected': currentDialogId === _id
-        })}
-            onClick={onSelect.bind(this, _id)}
+        <div className={classNames('dialogs__item')}
+            // <div className={classNames('dialogs__item', {
+            //     'dialogs__item--online': user.isOnline,
+            //     'dialogs__item--selected': currentDialogId === id
+            // })}
+            onClick={onSelect.bind(this, id)}
         >
 
             <div className="dialogs__item-avatar">
-                {
-                    getAvatar(user.avatar)
-                }
-
+                {avatar_name}
             </div>
 
             <div className="dialogs__item-info">
 
                 <div className="dialogs__item-info-top">
-                    <b className='dialogs__item-info-top-name'>{user.fullname}</b>
-                    <span>
+                    <b className='dialogs__item-info-top-name'>{first_name}{last_name}</b>
+                    {/* <span>
                         {getMessageTime(message.created_at)}
-                    </span>
+                    </span> */}
                 </div>
 
-                <div className="dialogs__item-info-bottom">
+                {/* <div className="dialogs__item-info-bottom">
 
                     <p>{message && message.text}</p>
 
@@ -62,7 +58,7 @@ const DialogItem = ({ _id, user, message, unreaded, isMe, onSelect, currentDialo
                         </div>
                     }
 
-                </div>
+                </div> */}
             </div>
         </div >
     )

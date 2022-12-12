@@ -13,20 +13,6 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
 
     const { token, firstName, lastName, futherName, group } = useSelector(state => state.userReducer);
 
-    React.useEffect(() => {
-        console.log('token', token);
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-        };
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
-            .then((response) => {
-                console.log('get fio success');
-            })
-            .catch((error) => {
-                console.log('get fio not success');
-            });
-    }, []);
 
     return (
         <div className='dialogs'>
@@ -45,8 +31,8 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
                     orderBy(items, ["created_at"], ["desc"]).map(item => (
                         <DialogItem
                             onSelect={onSelectDialog}
-                            key={item._id}
-                            isMe={item.user._id === userId}
+                            key={item.id}
+                            // isMe={item.user.id === userId}
                             userId={userId}
                             message={item}
                             unreaded={0}

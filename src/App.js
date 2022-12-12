@@ -14,6 +14,7 @@ import CreateProject from "./pages/CreateProject/CreateProject";
 import Drawer from "./components/Drawer/Drawer";
 
 import { useSelector } from "react-redux";
+import ResponseList from "./pages/ResponseList/ResponseList";
 
 function App() {
   const token = useSelector(state => state.userReducer.token);
@@ -31,7 +32,7 @@ function App() {
     return (
       <Routes>
         {/*privat routes*/}
-        <Route exact path="/timetable" element={<Drawer central={<Timetable />} page={1} />} />
+        <Route exact path="/timetable" element={<Drawer central={<ResponseList />} page={1} />} />
 
         <Route exact path="/messangers" element={<Drawer central={<Messangers />} page={2} />} />
 
