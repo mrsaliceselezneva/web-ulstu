@@ -1,13 +1,6 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import './Projects.scss';
-
-import Event from '../../components/Event/Event';
-import Search from '../../components/Search/Search';
-import ViewProject from '../../components/ViewProject/ViewProject'
-
-import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
-
 import ViewProject from '../../components/ViewProject/ViewProject';
 import Search from '../../components/Search/Search';
 import { FiPlusCircle, FiLayout } from 'react-icons/fi';
