@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import './Projects.scss';
-<<<<<<< HEAD
+
 import Event from '../../components/Event/Event';
 import Search from '../../components/Search/Search';
 import ViewProject from '../../components/ViewProject/ViewProject'
 
 import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
-=======
+
 import ViewProject from '../../components/ViewProject/ViewProject';
 import Search from '../../components/Search/Search';
 import { FiPlusCircle, FiLayout } from 'react-icons/fi';
->>>>>>> refs/remotes/origin/main
+
+
 import format from "date-fns/format";
 
 import { useSelector } from "react-redux";
@@ -57,28 +58,18 @@ function Projects() {
             id={value.id}
         />);
 
-<<<<<<< HEAD
-    const events = [
-        <Event />,
-        <Event />,
-    ]
 
     return (
 
-=======
-
-    return(
->>>>>>> refs/remotes/origin/main
         <div className='projects'>
             <div className='projects-menu'>
-                <Search 
-                    width={20} 
-                    heigth={20} 
-                    placeholder= "Поиск проектов"
+                <Search
+                    width={20}
+                    heigth={20}
+                    placeholder="Поиск проектов"
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                 />
-<<<<<<< HEAD
                 {/* <div className='switch'>
                     { showProjects ?
                         <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
@@ -87,21 +78,20 @@ function Projects() {
                         <FiToggleRight onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
                     }
                 </div> */}
-=======
->>>>>>> refs/remotes/origin/main
+
                 <div className='choose'>
                     <>
                         <div onClick={() => {
-                            if(!all){
+                            if (!all) {
                                 setMy(!my);
                                 setAll(!all);
                             }
                         }}
-                        className={all ? 'select-choose-projects' : 'choose-projects'}>
+                            className={all ? 'select-choose-projects' : 'choose-projects'}>
                             Все
                         </div>
                         <div onClick={() => {
-                            if(!my){
+                            if (!my) {
                                 setMy(!my);
                                 setAll(!all);
                             }
@@ -111,7 +101,7 @@ function Projects() {
                             Мои
                         </div>
                     </>
-   
+
 
                     <div className='add' onClick={() => {
                         window.location.assign(

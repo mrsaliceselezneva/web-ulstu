@@ -1,15 +1,38 @@
 import "./teacherAnswers.scss"
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux";
+import axios from 'axios'
 import { FiUserCheck } from 'react-icons/fi'
 
-const TeacherAnswers = (props) => {
+const TeacherAnswers = ({ name, countViews, previewId }) => {
+
+
+    const { token } = useSelector(state => state.userReducer);
+    const [avatar, setAvatar] = useState("")
+
+    useEffect(() => {
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/files?id=${previewId}`, { headers, responseType: 'blob' })
+            .then((response) => {
+                const url = window.URL.createObjectURL(response.data);
+                setAvatar(url);
+            })
+
+    }, [])
+
     return (
         <div className="answers_item">
 
-            <div className="answer_icon">{props.image}</div>
+            <div className="answer_icon">
+                <img src={avatar} alt="avatar" />
+            </div>
 
-            <div className="answer_teacher">{props.name}</div>
+            <div className="answer_teacher">{name}</div>
 
-            <div className="answer_date">{props.countViews}</div>
+            <div className="answer_date">{countViews}</div>
 
 
         </div>

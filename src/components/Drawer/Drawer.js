@@ -1,11 +1,9 @@
 import React from "react";
 import axios from "axios";
-<<<<<<< HEAD
+
 import { useEffect, useState } from "react"
 import './styles.scss';
-=======
-import './Drawer.scss';
->>>>>>> refs/remotes/origin/main
+
 import { NavLink } from 'react-router-dom';
 import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
@@ -111,14 +109,11 @@ function Drawer({ central, page }) {
                             {group}
                         </div>
                     </div>
-<<<<<<< HEAD
                     <img className='avatar' src={avatar} alt="avatar" />
-=======
-                    <img className='avatar' src={avatar} alt = "avatar" />
->>>>>>> refs/remotes/origin/main
+
                     <div className='notice-exit'>
-                        <FiBell className='notice' 
-                        onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
+                        <FiBell className='notice'
+                            onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
                         />
                         <FiLogOut className='exit' onClick={() => {
                             dispatch(loginFirstName('unauthorized'));

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from 'axios'
 import userSlice from "../../redux/slices/userSlice";
 
-const ResponseCard = ({ comment, project, user, date }) => {
+const ResponseCard = ({ comment, project, user, createDate }) => {
 
     const { token } = useSelector(state => state.userReducer);
     const [avatar, setAvatar] = useState("")
@@ -77,7 +77,7 @@ const ResponseCard = ({ comment, project, user, date }) => {
             </div>
 
             <div className="response__card__date">
-                <span>{date}</span>
+                <span>{createDate}</span>
             </div>
 
         </div>
