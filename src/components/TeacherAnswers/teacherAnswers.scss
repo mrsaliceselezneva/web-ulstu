@@ -8,14 +8,21 @@
     height: 30px;
 
     .answer_icon {
-        border-radius: 14px;
+
         width: 70px;
         height: 50px;
-        border: 2px solid #5A9CFF;
+
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 10px;
+
+        img {
+            border-radius: 10px;
+            object-fit: cover;
+            width: 72px;
+            height: 50px;
+        }
     }
 
     .answer_teacher {

@@ -25,11 +25,10 @@ function Authorization() {
         password: password,
       })
       .then((response) => {
-        setNotSuccessLogin(false);
-        dispatch(loginToken(response.data.token));
-        localStorage.setItem('token', response.data.token);
-        console.log('login success');
-        // window.location.assign(`${process.env.REACT_APP_URL}/`);
+          setNotSuccessLogin(false);
+          dispatch(loginToken(response.data.token));
+          localStorage.setItem('token', response.data.token);
+          console.log('login success');
       })
       .catch((error) => {
         console.log(error);

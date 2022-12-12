@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useState } from 'react';
-import './Project.scss';
+import React, {useState} from 'react';
+import './Event.scss';
 import Requirement from '../../components/Requirement/Requirement';
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
@@ -9,7 +9,7 @@ import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare, FiPlusCircle, FiXCircle 
 import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
-function Project(){
+function Event(){
     const {email, token} = useSelector(state => state.userReducer);
 
     const [name, setName] = useState('');
@@ -28,24 +28,27 @@ function Project(){
 
     React.useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_API_URL}/project/?id=${projectId}`)
-            .then((response) => {
-                setName(response.data.name);
-                setDescription(response.data.description);
-                setAuthor(`${response.data.author.lastName} ${response.data.author.firstName[0]}.${response.data.author.patronymic[0]}.`);
-                setAuthorEmail(response.data.author.email);
-                setRequirementsList(response.data.competences);
-                setParticipants(response.data.projectParticipants);
-                setCommits(response.data.projectStates);
-            });
-    }, []);
+        .get(`${process.env.REACT_APP_API_URL}/project/?id=${projectId}`)
+        .then((response) => {
+            setName(response.data.name);
+            setDescription(response.data.description);
+            setAuthor(`${response.data.author.lastName} ${response.data.author.firstName[0]}.${response.data.author.patronymic[0]}.`);
+            setAuthorEmail(response.data.author.email);
+            setRequirementsList(response.data.competences);
+            setParticipants(response.data.projectParticipants);
+            setCommits(response.data.projectStates);
+        });
+      }, []);
 
-    function addRequirement() {
+
+    console.log(commits);
+
+    function addRequirement(){
         console.log('add-requirement');
         
     }
 
-    function addCommit() {
+    function addCommit(){
         console.log('add-commit');
         const headers = {
             Authorization: `Bearer ${token}`,
@@ -65,15 +68,15 @@ function Project(){
         });
     }
 
-    function addParticipant() {
+    function addParticipant(){
         console.log('add-participant');
     }
 
-    function deleteRequirement() {
+    function deleteRequirement(){
         console.log('delete-requirement');
     }
 
-    function deleteCommit(commit) {
+    function deleteCommit(commit){
         console.log('delete-commit');
         const headers = {
             Authorization: `Bearer ${token}`,
@@ -88,27 +91,27 @@ function Project(){
         });
     }
 
-    function deleteParticipant() {
+    function deleteParticipant(){
         console.log('delete-participant');
     }
 
-    return (
+    return(
         <div className='project'>
             <div className='main'>
                 <div className='main-top-section'>
-                    <img src={defaultBackground} className='image' alt='defaultBackground' />
+                    <img src={defaultBackground} className='image' alt='defaultBackground'/>
                     <div className='info'>
                         <div className='name'>{name}</div>
                         <div className='fio'>
-                            <Requirement
-                                icon={<FiUser className='project-icon-user' />}
+                            <Requirement 
+                                icon={<FiUser className='project-icon-user'/>} 
                                 requirementText={author}
                             />
-
-                        </div>
+                            
+                            </div>
                         <div className='date'>
-                            <Requirement
-                                icon={<FiCalendar className='project-icon-date' />}
+                            <Requirement 
+                                icon={<FiCalendar className='project-icon-date'/>} 
                                 requirementText={"01.01.2023"}
                             />
                         </div>
@@ -136,15 +139,15 @@ function Project(){
                         </div>
                         <div className='requirements-list'>
                             {
-                                requirementsList.map((requirement, id) => (
-                                    <Requirement
+                                requirementsList.map((requirement, id) => (  
+                                    <Requirement 
                                         requirementText={requirement}
-
-                                        del={authorEmail === email ?
-                                            <FiXCircle className='icon-delete' onClick={() => deleteRequirement()} /> :
+                                        del={authorEmail === email ? 
+                                            <FiXCircle className='icon-delete' onClick={() => deleteRequirement()} />      
+                                             : 
                                             <></>
                                         }
-                                    />
+                                     />
                                 ))
                             }
                         </div>
@@ -172,7 +175,7 @@ function Project(){
                                     listBlockText={commit.pointTitle} 
                                     del={authorEmail === email ? 
                                         <FiXCircle className='icon-delete' onClick={() => deleteCommit(commit)} /> : 
-                                    <></>                  
+                                    <></>
                                     }
                                 />
                             ))
@@ -182,30 +185,31 @@ function Project(){
             </div>
             <div className='participants'>
                 <div className='participants-title'>
+                    {/* <FiUsers className='project-icon-participants'/> */}
                     Участники
-                    {authorEmail === email ?
-                        <></> :
+                    {authorEmail === email ? 
+                    <></> : 
                         <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
                     }
-
+                    
                 </div>
                 <div className='participants-list'>
-                    <ListBlock
-                        icon={<FiUser className='list-block-icon' />}
-                        listBlockText={author}
+                    <ListBlock 
+                        icon={<FiUser className='list-block-icon'/>} 
+                        listBlockText={author} 
                         del={<></>}
                     />
                     {
-                        participants.map((participant, id) => (
-                            <ListBlock
-                                icon={<FiUser className='list-block-icon' />}
+                        participants.map((participant, id) => (  
+                            <ListBlock 
+                                icon={<FiUser className='list-block-icon'/>} 
                                 listBlockText={`
                                     ${participant.lastName} 
                                     ${participant.firstName[0]}.
                                     ${participant.patronymic[0]}.
-                                `}
-                                del={authorEmail === email ?
-                                    <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> :
+                                `} 
+                                del={authorEmail === email ? 
+                                    <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> : 
                                     <></>
                                 }
                             />
@@ -218,4 +222,4 @@ function Project(){
     );
 }
 
-export default Project;
+export default Event;

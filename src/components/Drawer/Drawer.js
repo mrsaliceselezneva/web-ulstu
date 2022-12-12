@@ -1,10 +1,13 @@
 import React from "react";
 import axios from "axios";
+
 import { useEffect, useState } from "react"
 import './styles.scss';
+
 import { NavLink } from 'react-router-dom';
 import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
+import avatar from '../assets/images/avatar.png';
 
 import { useSelector, useDispatch } from "react-redux";
 import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
@@ -106,9 +109,13 @@ function Drawer({ central, page }) {
                             {group}
                         </div>
                     </div>
+
                     <img className='avatar' src={avatar} alt="avatar" />
+
                     <div className='notice-exit'>
-                        <FiBell className='notice' />
+                        <FiBell className='notice'
+                            onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
+                        />
                         <FiLogOut className='exit' onClick={() => {
                             dispatch(loginFirstName('unauthorized'));
                             dispatch(loginLastName('unauthorized'));

@@ -173,8 +173,6 @@ function Timetable() {
             axios
                 .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
                 .then((response) => {
-                    console.log(response.data);
-                    console.log('timetable');
                     setTable(response.data);
                     setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);
                     table.days.map((t, i) => {

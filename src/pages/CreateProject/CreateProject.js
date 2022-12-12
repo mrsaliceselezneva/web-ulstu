@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import './CreateProject.scss';
-import { useSelector, useDispatch } from "react-redux";
-import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight } from 'react-icons/fi';
+import { useSelector } from "react-redux";
 import format from "date-fns/format";
 
-function create(name, description, token) {
-  console.log();
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
-  var data = {
-    description: description,
-    // developmentStartDate: format(new Date().getTime(), 'dd.mm.yyyy'),
-    documentId: null,
-    name: name,
-    previewId: null,
-    requiredInvestment: true,
-  };
-  axios
-    .post(`${process.env.REACT_APP_API_URL}/project`, data, { headers })
-    .then((response) => {
-      window.location.assign(`${process.env.REACT_APP_URL}/projects`);
-    })
-    .catch((error) => {
-    });
+function create(name, description, token){
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    };
+    var data = {
+        description: description,
+        // developmentStartDate: format(new Date().getTime(), 'dd.mm.yyyy'),
+        documentId: null,
+        name: name,
+        previewId: null,
+        requiredInvestment: true,
+    };
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/project`, data, { headers })
+      .then((response) => {
+        window.location.assign(`${process.env.REACT_APP_URL}/projects`);
+      })
+      .catch((error) => {
+      });
 }
 
 function CreateProject() {

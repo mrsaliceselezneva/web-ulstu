@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import './Projects.scss';
-import Event from '../../components/Event/Event';
-import Search from '../../components/Search/Search';
-import ViewProject from '../../components/ViewProject/ViewProject'
 
-import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
+import ViewProject from '../../components/ViewProject/ViewProject';
+import Search from '../../components/Search/Search';
+import { FiPlusCircle, FiLayout } from 'react-icons/fi';
+
 import format from "date-fns/format";
 
 import { useSelector } from "react-redux";
@@ -17,7 +17,6 @@ function Projects() {
 
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
-    const [showProjects, setShowProjects] = useState(true);
     const [searchValue, setSearchValue] = useState('');
     const [projects, setProjects] = useState([]);
 
@@ -52,10 +51,7 @@ function Projects() {
             id={value.id}
         />);
 
-    const events = [
-        <Event />,
-        <Event />,
-    ]
+
 
     return (
 
@@ -64,10 +60,11 @@ function Projects() {
                 <Search
                     width={20}
                     heigth={20}
-                    placeholder={showProjects ? "Поиск проектов" : "Поиск мероприятий"}
+                    placeholder="Поиск проектов"
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                 />
+
                 {/* <div className='switch'>
                     { showProjects ?
                         <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
@@ -76,52 +73,39 @@ function Projects() {
                         <FiToggleRight onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
                     }
                 </div> */}
+
                 <div className='choose'>
-                    {showProjects ?
-                        <>
-                            <div onClick={(event) => {
-                                if (!all) {
-                                    setMy(!my);
-                                    setAll(!all);
-                                }
-                            }}
-                                className={all ? 'select-choose-projects' : 'choose-projects'}>
-                                Все
-                            </div>
-                            <div onClick={(event) => {
-                                if (!my) {
-                                    setMy(!my);
-                                    setAll(!all);
-                                }
-
-                            }} className={my ? 'select-choose-projects' : 'choose-projects'}>
-                                {/* сортировка по создателю */}
-                                Мои
-                            </div>
-                        </>
-                        :
-                        <></>
-                    }
-
-                    {showProjects ?
-                        <div className='add' onClick={() => {
-                            window.location.assign(
-                                `${process.env.REACT_APP_URL}/projects/create-project`
-                            );
-                        }}>
-                            <FiLayout className='add-icon' />
-                            <FiPlusCircle className='add-icon' />
+                    <>
+                        <div onClick={() => {
+                            if (!all) {
+                                setMy(!my);
+                                setAll(!all);
+                            }
+                        }}
+                            className={all ? 'select-choose-projects' : 'choose-projects'}>
+                            Все
                         </div>
-                        :
-                        <div className='add' onClick={() => {
-                            window.location.assign(
-                                `${process.env.REACT_APP_URL}/projects/create-investor`
-                            );
-                        }}>
-                            <FiBriefcase className='add-icon' />
-                            <FiPlusCircle className='add-icon' />
+                        <div onClick={() => {
+                            if (!my) {
+                                setMy(!my);
+                                setAll(!all);
+                            }
+
+                        }} className={my ? 'select-choose-projects' : 'choose-projects'}>
+                            {/* сортировка по создателю */}
+                            Мои
                         </div>
-                    }
+                    </>
+
+
+                    <div className='add' onClick={() => {
+                        window.location.assign(
+                            `${process.env.REACT_APP_URL}/projects/create-project`
+                        );
+                    }}>
+                        <FiLayout className='add-icon' />
+                        <FiPlusCircle className='add-icon' />
+                    </div>
 
 
                 </div>

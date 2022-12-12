@@ -6,8 +6,10 @@ import Timetable from "./pages/Timetable/Timetable";
 import Messangers from "./pages/Messangers/Messangers";
 import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
+import Events from "./pages/Events/Events";
+import Event from "./pages/Event/Event";
+import Notifications from "./pages/Notifications/Notifications";
 import CreateProject from "./pages/CreateProject/CreateProject";
-import CreateInvestor from "./pages/CreateInvestor/CreateInvestor";
 
 import Drawer from "./components/Drawer/Drawer";
 
@@ -38,9 +40,10 @@ function App() {
         <Route exact path="/projects/project/*" element={<Drawer central={<Project />} page={3} />} />
         <Route exact path="/projects/create-project" element={<Drawer central={<CreateProject />} page={3} />} />
 
-        <Route exact path="/events" element={<Drawer central={<Projects />} page={4} />} />
-        <Route exact path="/events/event/*" element={<Drawer central={<Project />} page={4} />} />
-        <Route exact path="/events/create-event" element={<Drawer central={<CreateInvestor />} page={4} />} />
+        <Route exact path="/events" element={<Drawer central={<Events />} page={4} />} />
+        <Route exact path="/events/event/*" element={<Drawer central={<Event />} page={4} />} />
+
+        <Route exact path="/notifications" element={<Drawer central={<Notifications />} page={5} />} />
 
         <Route exact path="/*" element={<Drawer central={<Main />} page={0} />} />
       </Routes>
