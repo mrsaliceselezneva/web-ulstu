@@ -24,8 +24,12 @@
   margin-bottom: 5%;
   padding: 2% 7% 2% 7%;
 
-  .input {
-    @include input-button(-2%);
+  .input-add {
+    position: absolute;
+    height: 45px;
+    width: 150px;
+    border-radius: 8px;
+    border: none;
     @include text(400, 16px, 19px, #798d96);
     background-color: rgba(245, 248, 254);
     margin-bottom: 5%;
@@ -53,7 +57,7 @@
     color: #5a9cff;
   }
 
-  .input {
+  .input-add {
     @include text(400, 16px, 19px, #5a9cff);
   }
 }
@@ -75,7 +79,6 @@
   margin-right: 0;
   cursor: pointer;
 }
-
 %icon-add-hover {
   color: #5a9cff;
 }
@@ -106,7 +109,8 @@
       flex-direction: row;
       @extend %block;
 
-      .image {}
+      .image {
+      }
 
       .info {
         display: flex;
@@ -145,7 +149,6 @@
         }
       }
     }
-
     .main-bottom-section {
       display: flex;
       flex-direction: column;
@@ -170,7 +173,6 @@
           .icon-add-block {
             @extend %icon-add;
           }
-
           .icon-add-block:hover {
             @extend %icon-add-hover;
           }
@@ -201,7 +203,6 @@
           .icon-add-block {
             @extend %icon-add;
           }
-
           .icon-add-block:hover {
             @extend %icon-add-hover;
           }
@@ -209,7 +210,6 @@
       }
     }
   }
-
   .participants {
     display: flex;
     flex-direction: column;
@@ -221,6 +221,8 @@
       flex-direction: row;
       align-items: center;
       @extend %project-title;
+
+      @include input-block();
 
       .project-icon-participants {
         color: #5a9cff;
@@ -234,7 +236,6 @@
       .icon-add-participant {
         @extend %icon-add;
       }
-
       .icon-add-participant:hover {
         @extend %icon-add-hover;
       }

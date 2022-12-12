@@ -4,7 +4,7 @@ const initialState = {
     notifications: localStorage.getItem('notifications') || 
     [{
         name: 'Левый Чувак',
-        
+        body: 'пжлст',
     }],
 
 };
