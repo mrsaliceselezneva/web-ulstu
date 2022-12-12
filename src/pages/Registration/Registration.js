@@ -28,13 +28,8 @@ function Autorization() {
   }, []);
 
 
-
-  const passwordShow = () => {
-    setShow(!show);
-  }
-
-  function Check() {
-    axios
+  function Check(){
+      axios
       .post(`http://asus.russianitgroup.ru/api//registration`, {
         email: email,
         firstName: firstName,
@@ -70,12 +65,108 @@ function Autorization() {
       <div className='login'>
         <div className='text-title'>Создание аккаунта</div>
 
-        <div className='input-block'>
-          <input
-            onChange={(event) => setLastName(event.target.value)}
-            className="input" type="text" placeholder='Фамилия'
-          />
+          {/* фамилия */}
+          <div className='input-block'>
+              <input 
+                onChange={(event) => setLastName(event.target.value)} 
+                className="input" type="text" placeholder='Фамилия'
+              /> 
+              <FiUser className='login-icon' />
+          </div>
+
+          {/* имя */}
+          <div className='input-block'>
+          <input 
+            onChange={(event) => setFirstName(event.target.value)} 
+            className="input" type="text" placeholder='Имя'
+          /> 
           <FiUser className='login-icon' />
+          </div>
+
+          {/* отчество */}
+          <div className='input-block'>
+            <input 
+              onChange={(event) => setFutherName(event.target.value)} 
+              className="input" type="text" placeholder='Отчество'
+            /> 
+            <FiUser className='login-icon' />
+          </div>
+
+          {/* пол */}
+          <div className='input-block'>
+            <input 
+              onChange={() => setGender('MALE')} 
+              type="radio"  
+              name="radio"
+            />
+            <label className="input">муж</label>
+            <input 
+              onChange={() => setGender('FEMALE')} 
+              type="radio"  
+              name="radio"
+            />
+            <label className="input">жен</label>
+            <FiUser className='login-icon' />
+          </div>
+
+          {/* телефон */}
+          <div className='input-block'>
+            <input 
+              onChange={(event) => setPhone(event.target.value)} 
+              className="input" type="text" placeholder='8 (888) 888-88-88'
+            /> 
+            <FiPhone className='login-icon' />
+          </div>
+
+          {/* группа */}
+          <div className='input-block'>
+            <div 
+              onChange={(event) => setGroupId(event.target.value)} 
+              className="input"
+            >{groupName}</div>
+            <FiList className='login-icon' onClick={() => setShowListGroup(!showListGroup)} />
+          </div>
+
+          {/* список групп */}
+          {showListGroup ? 
+              <div className="list">
+                {listGroup.map((group, id) => 
+                (<div 
+                  className='list-block' 
+                  key={group.name} 
+                  onClick={() => {setGroupId(group.id); setGroupName(group.name); setShowListGroup(!showListGroup)}}
+                >
+                  {group.name}
+                </div>))}
+              </div> :
+              <></>
+            }
+
+          {/* почта */}
+          <div className='input-block'>
+            <input 
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }} 
+              className="input" type="email" placeholder='email@ulstu.ru'
+            />      
+            <FiMail className='login-icon' />
+          </div>
+          
+          {/* пароль */}
+          <div className='input-block'>
+            <input 
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+              className="input" type={show?"text":"password"} placeholder='пароль'
+            /> 
+            {show? <FiEye onClick={() => setShow(!show)} className='login-icon' /> :
+            <FiEyeOff onClick={() => setShow(!show)} className='login-icon' /> }
+          </div>
+
+          <button onClick={Check}>Создать</button>
+          <div className='text-bottom'>Есть аккаунт?<a href='/' className='href'>Войти</a></div>
         </div>
 
         <div className='input-block'>
@@ -147,11 +238,6 @@ function Autorization() {
 
         <button onClick={Check}>Создать</button>
         <div className='text-bottom'>Есть аккаунт?<a href='/' className='href'>Войти</a></div>
-      </div>
-
-      {/* <div className='question'>
-            <button className='question'></button>
-        </div> */}
     </div>
   );
 }

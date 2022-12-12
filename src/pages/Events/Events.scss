@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   margin-left: 0.8vw;
-  margin-top: 5px;
 }
 
 .projects-menu {
@@ -75,7 +74,7 @@
       background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
     }
 
-    .add-project {
+    .add {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -86,14 +85,14 @@
       width: 4vw;
       height: 32px;
 
-      .add-project-icon {
+      .add-icon {
         width: 1.7vw;
         height: 1.7vw;
         color: #c7cbd5;
       }
     }
-    .add-project:hover {
-      .add-project-icon {
+    .add:hover {
+      .add-icon {
         color: #5a9cff;
       }
     }
