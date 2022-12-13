@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    notifications: localStorage.getItem('notifications') || 
-    [{
-        name: 'Левый Чувак',
-        body: 'пжлст',
-    }],
+    notifications: localStorage.getItem('notifications') || 0,
 
 };
 

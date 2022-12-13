@@ -245,7 +245,7 @@ function Project(){
                                 setParticipantInput(event.target.value);
                                 }}
                                 className="input-add" type="text" placeholder={participantInput}
-                            /> :
+                                /> :
                             <></>
                             }
                             <FiEdit className='icon-add-participant' onClick={() => setShowParticipantInput(!showParticipantInput)} />

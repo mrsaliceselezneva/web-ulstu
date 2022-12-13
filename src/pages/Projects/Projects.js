@@ -1,11 +1,6 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import './Projects.scss';
-
-import Event from '../../components/Event/Event';
-
-import { FiPlusCircle, FiLayout, FiToggleLeft, FiToggleRight, FiBriefcase } from 'react-icons/fi';
-
 import ViewProject from '../../components/ViewProject/ViewProject';
 import Search from '../../components/Search/Search';
 import { FiPlusCircle, FiLayout } from 'react-icons/fi';
@@ -41,7 +36,7 @@ function Projects() {
             name={value.name}
             author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
             description={value.description}
-            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
             id={value.id}
         />);
 
