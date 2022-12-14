@@ -5,22 +5,28 @@ import Requirement from '../../components/Requirement/Requirement';
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
 import defaultBackground from '../../components/assets/images/default_project_background.png';
-import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare, FiPlusCircle, FiXCircle } from 'react-icons/fi';
+import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare, FiPlusCircle, FiXCircle, FiEdit } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 function Project(){
     const {email, token} = useSelector(state => state.userReducer);
-
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [author, setAuthor] = useState('');
     const [authorEmail, setAuthorEmail] = useState('');
+
     const [requirementsList, setRequirementsList] = useState([]);
     const [participants, setParticipants] = useState([]);
     const [commits, setCommits] = useState([]);
-    const [requirementInput, setRequirementInput] = useState('');
-    const [commitInput, setCommitInput] = useState('');
+
+    const [requirementInput, setRequirementInput] = useState('требование');
+    const [commitInput, setCommitInput] = useState('статус');
+    const [participantInput, setParticipantInput] = useState('почему вас стоит взять в проект?');
+
+    const [showRequirementInput, setShowRequirementInput] = useState(false);
+    const [showCommitInput, setShowCommitInput] = useState(false);
+    const [showParticipantInput, setShowParticipantInput] = useState(false);
 
     let { search } = useLocation();
     const params = new URLSearchParams(search);
@@ -67,6 +73,21 @@ function Project(){
 
     function addParticipant() {
         console.log('add-participant');
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            comment: "пжлст",
+            projectId: projectId,
+        };
+        axios
+        .post(`${process.env.REACT_APP_API_URL}/project/response`, data, { headers })
+        .then((response) => {
+            
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     function deleteRequirement() {
@@ -92,6 +113,23 @@ function Project(){
         console.log('delete-participant');
     }
 
+    function deleteProject(){
+        console.log('delete-project');
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            ids: projectId,
+        };
+        axios
+          .delete(`${process.env.REACT_APP_API_URL}/project?ids=${projectId}`, { headers })
+          .then((response) => {
+            window.location.assign(`${process.env.REACT_APP_URL}/projects`);
+          })
+          .catch((error) => {
+          });
+    }
+
     return (
         <div className='project'>
             <div className='main'>
@@ -112,6 +150,12 @@ function Project(){
                                 requirementText={"01.01.2023"}
                             />
                         </div>
+                        <div className='fio' onClick={() => deleteProject()}>
+                            <Requirement
+                                icon={<FiXCircle className='project-icon-date' />}
+                                requirementText={"удалить проект"}
+                            />
+                        </div>
                         <div className='description'>
                             {description}
                         </div>
@@ -123,12 +167,17 @@ function Project(){
                             Требования
                             {authorEmail === email ? 
                                 <div className='input-block'>
+                                    {showRequirementInput ?
                                     <input 
                                         onChange={(event) => {
                                         setRequirementInput(event.target.value);
                                         }}
-                                        className="input" type="text" placeholder='требование'
+                                        className="input-add" type="text" placeholder={requirementInput}
                                     /> 
+                                    :
+                                    <></>
+                                    }
+                                    <FiEdit className='icon-add-block' onClick={() => setShowRequirementInput(!showRequirementInput)}/>
                                     <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> 
                                 </div>: 
                                 <></>
@@ -154,12 +203,16 @@ function Project(){
                             Состояние проекта
                             {authorEmail === email ? 
                                 <div className='input-block'>
+                                    {showCommitInput ? 
                                     <input 
                                         onChange={(event) => {
                                         setCommitInput(event.target.value);
                                         }}
-                                        className="input" type="text" placeholder='статус'
-                                    /> 
+                                        className="input-add" type="text" placeholder={commitInput}
+                                    /> :
+                                    <></>
+                                    }
+                                    <FiEdit className='icon-add-block' onClick={() => setShowCommitInput(!showCommitInput)}/>
                                     <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} /> 
                                 </div>: 
                                 <></>
@@ -185,7 +238,19 @@ function Project(){
                     Участники
                     {authorEmail === email ?
                         <></> :
-                        <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
+                        <>  
+                            {showParticipantInput ? 
+                                <input 
+                                onChange={(event) => {
+                                setParticipantInput(event.target.value);
+                                }}
+                                className="input-add" type="text" placeholder={participantInput}
+                                /> :
+                            <></>
+                            }
+                            <FiEdit className='icon-add-participant' onClick={() => setShowParticipantInput(!showParticipantInput)} />
+                            <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
+                        </>
                     }
 
                 </div>

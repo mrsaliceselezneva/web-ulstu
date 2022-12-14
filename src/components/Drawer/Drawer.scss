@@ -95,6 +95,15 @@ $sidebar-cnt: 5;
       margin-right: 1vw;
     }
 
+    .no-avatar {
+      color: #5a9cff;
+      background-color: rgba(90, 156, 255, 0.2);
+      height: 36px;
+      width: 36px;
+      border-radius: 100%;
+      margin-right: 1vw;
+    }
+
     .notice-exit {
       display: flex;
       flex-direction: row;
@@ -112,6 +121,17 @@ $sidebar-cnt: 5;
       }
 
       .notice:hover {
+        color: #5a9cff;
+      }
+
+      .red-notice {
+        color: #fd6374;
+        height: 24px;
+        width: 24px;
+        margin-left: 1vw;
+      }
+
+      .red-notice:hover {
         color: #5a9cff;
       }
 

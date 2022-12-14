@@ -32,7 +32,7 @@ function App() {
     return (
       <Routes>
         {/*privat routes*/}
-        <Route exact path="/timetable" element={<Drawer central={<ResponseList />} page={1} />} />
+        <Route exact path="/timetable" element={<Drawer central={<Timetable />} page={1} />} />
 
         <Route exact path="/messangers" element={<Drawer central={<Messangers />} page={2} />} />
 

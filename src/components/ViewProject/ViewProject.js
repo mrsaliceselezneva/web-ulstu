@@ -4,7 +4,7 @@ import { FiUser } from 'react-icons/fi'; import { useEffect, useState } from "re
 import { useSelector } from "react-redux";
 import axios from 'axios'
 
-function Project({ previewId, id, name, author, description, date }) {
+function ViewProject({ previewId, id, name, author, description, date }) {
 
     const { token } = useSelector(state => state.userReducer);
     const [avatar, setAvatar] = useState("")
@@ -56,4 +56,4 @@ function Project({ previewId, id, name, author, description, date }) {
     );
 }
 
-export default Project;
+export default ViewProject;

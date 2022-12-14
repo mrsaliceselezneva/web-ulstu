@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import './Projects.scss';
-
 import ViewProject from '../../components/ViewProject/ViewProject';
 import Search from '../../components/Search/Search';
 import { FiPlusCircle, FiLayout } from 'react-icons/fi';
+
 
 import format from "date-fns/format";
 
@@ -52,7 +52,6 @@ function Projects() {
         />);
 
 
-
     return (
 
         <div className='projects'>
@@ -64,15 +63,6 @@ function Projects() {
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                 />
-
-                {/* <div className='switch'>
-                    { showProjects ?
-                        <FiToggleLeft onClick={(event) => {setShowProjects(!showProjects)}}  className="switch-icon" />
->>>>>>> 81e3203980928c14fc844a0073bf603fcad19670
-                        :
-                        <FiToggleRight onClick={(event) => { setShowProjects(!showProjects) }} className="switch-icon" />
-                    }
-                </div> */}
 
                 <div className='choose'>
                     <>

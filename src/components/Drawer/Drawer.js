@@ -1,21 +1,23 @@
 import React from "react";
 import axios from "axios";
 
-import { useEffect, useState } from "react"
-import './styles.scss';
+import { useEffect, useState } from "react";
+import './Drawer.scss';
 
 import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout } from 'react-icons/fi';
+import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 import avatar from '../assets/images/avatar.png';
 
 import { useSelector, useDispatch } from "react-redux";
 import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
+import { getNotifications} from "../../redux/slices/notificationsSlice";
 
 function Drawer({ central, page }) {
     const dispatch = useDispatch();
     const { token, firstName, lastName, group } = useSelector(state => state.userReducer);
-    const [avatar, setAvatar] = useState("")
+    const { notifications } = useSelector(state => state.notificationsReducer);
+    const [avatar, setAvatar] = useState("");
 
     React.useEffect(() => {
         const headers = {
@@ -45,10 +47,56 @@ function Drawer({ central, page }) {
                 axios
                     .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
                     .then((response) => {
-                        const url = window.URL.createObjectURL(response.data);
-                        setAvatar(url);
-                        console.log(url)
+                        // const url = window.URL.createObjectURL(response.data);
+                        // setAvatar(url);
                     })
+            })
+            .catch((error) => {
+                console.log('get fio not success');
+            });
+
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
+            .then((response) => {
+                localStorage.setItem('firstName', response.data.firstName);
+                localStorage.setItem('lastName', response.data.lastName);
+                localStorage.setItem('futherName', response.data.patronymic);
+                localStorage.setItem('email', response.data.email);
+                dispatch(loginFirstName(response.data.firstName));
+                dispatch(loginLastName(response.data.lastName));
+                dispatch(loginFutherName(response.data.patronymic));
+                dispatch(loginEmail(response.data.email));
+
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
+                    .then((response) => {
+                        dispatch(loginGroup(response.data.name));
+                        localStorage.setItem('group', response.data.name);
+                        console.log('get fio success');
+                    })
+                    .catch((error) => {
+                        console.log('get fio not success');
+                    });
+
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
+                    .then((response) => {
+                        // const url = window.URL.createObjectURL(response.data);
+                        // setAvatar(url);
+                    })
+                    .catch((error) => {
+                        console.log('get avatar not success');
+                    });
+
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
+                    .then((response) => {
+                        localStorage.setItem('notifications', response.data.length);
+                        dispatch(getNotifications(response.data.length));
+                    })
+                    .catch((error) => {
+                        console.log('get responce not success');
+                    });
             })
             .catch((error) => {
                 console.log('get fio not success');
@@ -63,7 +111,7 @@ function Drawer({ central, page }) {
         },
         {
             path: "/timetable",
-            name: "Ответы",
+            name: "Расписание",
             icon: <FiCalendar />
         },
         {
@@ -109,12 +157,14 @@ function Drawer({ central, page }) {
                             {group}
                         </div>
                     </div>
-
-                    <img className='avatar' src={avatar} alt="avatar" />
-
+                    {true ? 
+                        <FiUser className="no-avatar"/> : 
+                        <img className='avatar' src={avatar} alt = "avatar" />
+                    }
                     <div className='notice-exit'>
-                        <FiBell className='notice'
-                            onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
+                        <FiBell className={notifications > 0 ? 'red-notice' : 'notice'}
+                        onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
+
                         />
                         <FiLogOut className='exit' onClick={() => {
                             dispatch(loginFirstName('unauthorized'));
@@ -123,7 +173,6 @@ function Drawer({ central, page }) {
                             dispatch(loginGroup('unauthorized'));
                             dispatch(loginToken('unauthorized'));
                             localStorage.clear();
-                            //window.location.assign(`${process.env.REACT_APP_URL}/`);
                         }} />
                     </div>
                 </div>
