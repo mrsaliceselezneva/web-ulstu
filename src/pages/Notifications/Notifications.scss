@@ -1,4 +1,7 @@
 .notifications-list {
+  display: flex;
+  flex-direction: column;
+
   @mixin user($color) {
     color: $color;
     height: 24px;

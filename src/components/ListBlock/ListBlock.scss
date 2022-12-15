@@ -25,4 +25,17 @@
     width: 27px;
     height: 27px;
   }
+
+  .icon-delete {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(253, 99, 116, 0.1);
+    color: #fd6374;
+    border-radius: 100%;
+    cursor: pointer;
+  }
 }

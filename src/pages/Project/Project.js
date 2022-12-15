@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from 'react';
 import './Project.scss';
 import Requirement from '../../components/Requirement/Requirement';
+import DeleteProject from '../../components/DeleteProject/DeleteProject';
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
 import defaultBackground from '../../components/assets/images/default_project_background.png';
@@ -20,13 +21,9 @@ function Project(){
     const [participants, setParticipants] = useState([]);
     const [commits, setCommits] = useState([]);
 
-    const [requirementInput, setRequirementInput] = useState('требование');
-    const [commitInput, setCommitInput] = useState('статус');
-    const [participantInput, setParticipantInput] = useState('почему вас стоит взять в проект?');
-
-    const [showRequirementInput, setShowRequirementInput] = useState(false);
-    const [showCommitInput, setShowCommitInput] = useState(false);
-    const [showParticipantInput, setShowParticipantInput] = useState(false);
+    const [requirementInput, setRequirementInput] = useState('');
+    const [commitInput, setCommitInput] = useState('');
+    const [participantInput, setParticipantInput] = useState('');
 
     let { search } = useLocation();
     const params = new URLSearchParams(search);
@@ -77,7 +74,7 @@ function Project(){
             Authorization: `Bearer ${token}`,
         };
         var data = {
-            comment: "пжлст",
+            comment: participantInput,
             projectId: projectId,
         };
         axios
@@ -118,9 +115,6 @@ function Project(){
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        var data = {
-            ids: projectId,
-        };
         axios
           .delete(`${process.env.REACT_APP_API_URL}/project?ids=${projectId}`, { headers })
           .then((response) => {
@@ -150,12 +144,16 @@ function Project(){
                                 requirementText={"01.01.2023"}
                             />
                         </div>
-                        <div className='fio' onClick={() => deleteProject()}>
-                            <Requirement
-                                icon={<FiXCircle className='project-icon-date' />}
-                                requirementText={"удалить проект"}
-                            />
-                        </div>
+                        {authorEmail === email ? 
+                            <div className='date' onClick={() => deleteProject()}>
+                                <DeleteProject
+                                    icon={<FiXCircle className='project-icon-date' />}
+                                    deleteText={"удалить проект"}
+                                />
+                            </div>
+                            :
+                            <></>
+                        }
                         <div className='description'>
                             {description}
                         </div>
@@ -166,18 +164,13 @@ function Project(){
                         <div className='requirements-title'>
                             Требования
                             {authorEmail === email ? 
-                                <div className='input-block'>
-                                    {showRequirementInput ?
+                                <div className='input-block-project'>
                                     <input 
                                         onChange={(event) => {
                                         setRequirementInput(event.target.value);
                                         }}
-                                        className="input-add" type="text" placeholder={requirementInput}
-                                    /> 
-                                    :
-                                    <></>
-                                    }
-                                    <FiEdit className='icon-add-block' onClick={() => setShowRequirementInput(!showRequirementInput)}/>
+                                        className="input" type="text" placeholder='требования'
+                                    />
                                     <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> 
                                 </div>: 
                                 <></>
@@ -190,7 +183,7 @@ function Project(){
                                         requirementText={requirement}
 
                                         del={authorEmail === email ?
-                                            <FiXCircle className='icon-delete' onClick={() => deleteRequirement()} /> :
+                                            <FiXCircle  onClick={() => deleteRequirement()} /> :
                                             <></>
                                         }
                                     />
@@ -202,17 +195,13 @@ function Project(){
                         <div className='commits-title'>
                             Состояние проекта
                             {authorEmail === email ? 
-                                <div className='input-block'>
-                                    {showCommitInput ? 
+                                <div className='input-block-project'>
                                     <input 
                                         onChange={(event) => {
                                         setCommitInput(event.target.value);
                                         }}
-                                        className="input-add" type="text" placeholder={commitInput}
-                                    /> :
-                                    <></>
-                                    }
-                                    <FiEdit className='icon-add-block' onClick={() => setShowCommitInput(!showCommitInput)}/>
+                                        className="input" type="text" placeholder='статус'
+                                    /> 
                                     <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} /> 
                                 </div>: 
                                 <></>
@@ -234,26 +223,24 @@ function Project(){
                 </div>
             </div>
             <div className='participants'>
-                <div className='participants-title'>
-                    Участники
-                    {authorEmail === email ?
-                        <></> :
-                        <>  
-                            {showParticipantInput ? 
-                                <input 
-                                onChange={(event) => {
-                                setParticipantInput(event.target.value);
-                                }}
-                                className="input-add" type="text" placeholder={participantInput}
-                                /> :
-                            <></>
-                            }
-                            <FiEdit className='icon-add-participant' onClick={() => setShowParticipantInput(!showParticipantInput)} />
+                {
+                    authorEmail !== email ?
+                    <div className='participants-title2'>
+                        <div className="add-title">
+                            Участники
                             <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
-                        </>
-                    }
-
-                </div>
+                        </div>
+                        <textarea 
+                            onChange={(event) => {
+                                setParticipantInput(event.target.value);
+                            }}
+                            className="participant-input" type="text" placeholder='почему вас стоит взять проект?'
+                        />
+                    </div> :
+                    <div className='participants-title'>
+                        Участники
+                    </div> 
+                }
                 <div className='participants-list'>
                     <ListBlock
                         icon={<FiUser className='list-block-icon' />}
