@@ -1,4 +1,5 @@
 import { dialogsAPI } from "../../utils/api";
+import { lastmessAPI } from "../../utils/api";
 
 const actions = {
 
@@ -6,6 +7,11 @@ const actions = {
         type: 'DIALOGS:SET_ITEMS',
         payload: items
     }),
+
+    // setLastMess: items => ({
+    //     type: 'DIALOGS:LAST_MESS',
+    //     payload: items
+    // }),
 
     setCurrentDialogId: id => ({
 
@@ -18,7 +24,13 @@ const actions = {
         dialogsAPI.getAll().then(({ data }) => {
             dispatch(actions.setDialogs(data))
         })
-    }
+    },
+
+    // fetchLastMess: () => dispatch => {
+    //     lastmessAPI.getLastMessage().then(({ data }) => {
+    //         dispatch(actions.setLastMess(data))
+    //     })
+    // }
 }
 
 export default actions

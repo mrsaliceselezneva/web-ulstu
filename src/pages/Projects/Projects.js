@@ -9,6 +9,7 @@ import { FiPlusCircle, FiLayout } from 'react-icons/fi';
 import format from "date-fns/format";
 
 import { useSelector } from "react-redux";
+import Pagination from "../../components/Pagination/Pagination";
 
 
 function Projects() {
@@ -20,6 +21,13 @@ function Projects() {
     const [searchValue, setSearchValue] = useState('');
     const [projects, setProjects] = useState([]);
 
+    const [dairyPage, setDairyPage] = useState(1)
+    const [dairyPerPage] = useState(8)
+    const lastDairyIndex = dairyPage * dairyPerPage
+    const firstDairyPage = lastDairyIndex - dairyPerPage
+    const currentDairy = projects.slice(firstDairyPage, lastDairyIndex)
+    const paginate = pageNumber => setDairyPage(pageNumber)
+
     React.useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API_URL}/project/list`)
@@ -30,7 +38,7 @@ function Projects() {
     }, []);
 
     const searchProjects =
-        projects.filter((value) => {
+        currentDairy.filter((value) => {
             return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
         }).map((value) => <ViewProject
             name={value.name}
@@ -109,6 +117,8 @@ function Projects() {
 
                 }
             </div>
+
+            <Pagination />
         </div>
     );
 }

@@ -1,7 +1,7 @@
 .projects {
   display: flex;
   flex-direction: column;
-  margin-left: 0.8vw;
+  margin-left: 10px;
 }
 
 .projects-menu {
@@ -29,6 +29,7 @@
       color: #c7cbd5;
     }
   }
+
   .switch:hover {
     .switch-icon {
       color: #5a9cff;
@@ -91,6 +92,7 @@
         color: #c7cbd5;
       }
     }
+
     .add:hover {
       .add-icon {
         color: #5a9cff;
@@ -103,5 +105,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  min-width: 83.5vw;
+
+  width: 100%;
+  max-width: 1280px;
+  height: 730px;
+  max-height: 730px;
 }

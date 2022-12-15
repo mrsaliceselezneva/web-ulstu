@@ -1,8 +1,7 @@
 .projects {
   display: flex;
   flex-direction: column;
-  margin-left: 0.8vw;
-
+  margin-left: 10px;
 }
 
 .projects-menu {
@@ -10,7 +9,7 @@
   align-items: top;
   flex-direction: row;
   margin-left: 0.8vw;
-
+  margin-right: 1.2vw;
   height: 48px;
 
   .switch {
@@ -103,10 +102,12 @@
 }
 
 .list {
-
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  margin: 0;
-  width: 100%;
 
+  width: 100%;
+  max-width: 1280px;
+  height: 730px;
+  max-height: 730px;
 }

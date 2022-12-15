@@ -1,13 +1,12 @@
 .card {
 
   &__container {
-    width: 280px;
-    min-width: 280px;
-    height: 360px;
-    min-height: 360px;
+    width: 2400px;
+    min-width: 240px;
+    height: 340px;
+    min-height: 340px;
     border-radius: 14px;
     background: white;
-    margin: 10px;
     cursor: pointer;
   }
 
@@ -20,7 +19,7 @@
   }
 
   &__body {
-    width: 250px;
+    width: 220px;
     height: 38%;
     padding: 0 15px;
     max-width: 260px;

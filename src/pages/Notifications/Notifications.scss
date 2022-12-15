@@ -1,9 +1,25 @@
 .notifications-list {
+  display: flex;
+  flex-direction: column;
+
+  .notification-block {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin-top: 10px;
+    height: 50px;
+    border-radius: 12px;
+
+  }
+
   @mixin user($color) {
     color: $color;
     height: 24px;
     width: 24px;
     margin-left: 1vw;
+
+
+
   }
 
   .del-user {

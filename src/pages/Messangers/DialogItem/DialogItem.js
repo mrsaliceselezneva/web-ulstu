@@ -22,7 +22,7 @@ const getMessageTime = (created_at) => {
 
 
 
-const DialogItem = ({ id, user, message, unreaded, isMe, onSelect, currentDialogId, last_name, first_name, avatar_name }) => {
+const DialogItem = ({ id, user, message, unreaded, isMe, onSelect, currentDialogId, last_name, first_name, avatar_name, lastmess }) => {
 
 
     return (
@@ -49,7 +49,7 @@ const DialogItem = ({ id, user, message, unreaded, isMe, onSelect, currentDialog
                 {/* 
                 <div className="dialogs__item-info-bottom">
 
-                    <p>{message && message.text}</p>
+                    <p>{lastmess && lastmess.text}</p>
 
                     {isMe && <IconReaded isMe={true} isReaded={false} />}
                     {unreaded > 0 &&

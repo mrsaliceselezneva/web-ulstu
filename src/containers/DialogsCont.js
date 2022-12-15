@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { connect } from 'react-redux'
-import { dialogsActions } from '../reduxMessage/actions'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import { dialogsActions, lastmessActions } from '../reduxMessage/actions'
 import Dialogs from "../pages/Messangers/Dialogs/Dialogs";
 
 
-const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items, userId }) => {
+const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items, userId, fetchLastMessage }) => {
     const [inputValue, setValue] = useState("")
     const [filtered, setFiltredItems] = useState(Array.from(items))
+    // const [lastmess, setLastmess] = useState(Array.from(items))
+    const lastmessage = useSelector(state => state.lastmess)
 
     const onChangeInput = value => {
 
@@ -24,6 +26,16 @@ const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items,
         }
 
     }, [items])
+
+    // useEffect(() => {
+    //     if (!lastmessage.length) {
+    //         lastmessActions.fetchLastMessage()
+    //     } else {
+    //         lastmessActions.setLastMessage(lastmessage)
+    //     }
+    // }, [lastmessage])
+
+
 
     return (
         <Dialogs

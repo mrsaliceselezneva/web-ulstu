@@ -1,56 +1,48 @@
-import './Event.scss';
-import img from '../../components/assets/images/default_project_background.png'
+
 import { FiUser } from 'react-icons/fi';
+import './Event.scss'
 
-function Project() {
+function Event({ previewUrl, name, investorSite, beginningDate, endingDate, description }) {
 
-    const data =
-    {
-        subject: "Геометрическое моделирование",
-        image: img,
-        icon: <FiUser />,
-        teacher: "Горшков Д.А.",
-        content: "Решить 25 задач по программированию. Сдать письменный зачет.",
 
-    }
 
     return (
         <div className='card__container'
-            onClick={() => {
-                window.location.assign(
-                    `${process.env.REACT_APP_URL}/projects/project/12345`
-                );
-            }}>
+        // onClick={() => {
+        //     window.location.assign(
+        //         `${process.env.REACT_APP_URL}/projects/project/12345`
+        //     );
+        // }}
+        >
             <div className='card__header'>
-                <img src={data.image} alt="Subjects" />
+                <img src={previewUrl} alt="Subjects" />
             </div>
 
             <div className='card__body'>
 
                 <div className='card__body__title'>
-                    <span>{data.subject}</span>
+                    <span>{name}</span>
                 </div>
 
                 <div className='card__body__teacher'>
 
                     <div className='card__body__teacher__icon'>
-                        <span>{data.icon}</span>
+                        <span>{<FiUser />}</span>
                     </div >
 
                     <div className='card__body__teacher__span'>
-                        <span>{data.teacher}</span>
+                        <a href={investorSite}>Cсылка на источник</a>
                     </div >
                 </div>
 
                 <div className='card__body__content'>
-                    {data.content}
+                    {description}
                 </div>
-                {/* 
-            <div className='card__body__type'>
-                <div className={type === "Экзамен" ? 'card__body__type__examen' : 'card__body__type__zachet'}>
-                    <span>{type}</span>
+
+                <div className='card__body__data'>
+                    {`Даты проведения ${beginningDate.length > 1 ? beginningDate : ""}-${endingDate}`}
+
                 </div>
-            </div> */}
 
             </div>
 
@@ -58,4 +50,4 @@ function Project() {
     );
 }
 
-export default Project;
+export default Event;

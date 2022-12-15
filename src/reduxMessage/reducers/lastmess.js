@@ -1,5 +1,5 @@
 const initialState = {
-    items: [],
+    lastmess: [],
     isLoading: false
 
 }
@@ -9,7 +9,7 @@ export default (state = initialState, { type, payload }) => {
         case 'DIALOGS:SET_LASTMESSAGE':
             return {
                 ...state,
-                items: payload
+                lastmess: payload
             }
         default:
             return state

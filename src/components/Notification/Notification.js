@@ -1,16 +1,23 @@
 import './Notification.scss';
 
-function Notification({ icon, notificationName, projectName, notificationText, add, del}) {
+function Notification({ icon, notificationName, projectName, notificationText, add, del }) {
     return (
         <div className='notification-block'>
-            {projectName}
+            <div className=''>
+                {projectName}
+            </div>
+
             <div className='notification-user'>
                 {icon}
                 {notificationName}
                 {add}
                 {del}
             </div>
-            {notificationText}
+
+            <div>
+                {notificationText}
+            </div>
+
         </div>
     )
 };
