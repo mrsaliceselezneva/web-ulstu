@@ -9,8 +9,8 @@ import { FiUser, FiCalendar, FiUserPlus, FiCheckSquare, FiPlusCircle, FiXCircle,
 import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
-function Project(){
-    const {email, token} = useSelector(state => state.userReducer);
+function Project() {
+    const { email, token } = useSelector(state => state.userReducer);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [author, setAuthor] = useState('');
@@ -48,7 +48,7 @@ function Project(){
 
     function addRequirement() {
         console.log('add-requirement');
-        
+
     }
 
     function addCommit() {
@@ -63,12 +63,12 @@ function Project(){
             projectId: projectId,
         };
         axios
-        .post(`${process.env.REACT_APP_API_URL}/project/state`, data, { headers })
-        .then((response) => {
-            window.location.reload();
-        })
-        .catch((error) => {
-        });
+            .post(`${process.env.REACT_APP_API_URL}/project/state`, data, { headers })
+            .then((response) => {
+                window.location.reload();
+            })
+            .catch((error) => {
+            });
     }
 
     function addParticipant() {
@@ -81,13 +81,13 @@ function Project(){
             projectId: projectId,
         };
         axios
-        .post(`${process.env.REACT_APP_API_URL}/project/response`, data, { headers })
-        .then((response) => {
-            
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .post(`${process.env.REACT_APP_API_URL}/project/response`, data, { headers })
+            .then((response) => {
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     function deleteRequirement() {
@@ -99,21 +99,21 @@ function Project(){
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        const data = {ids: commit.id}
+        const data = { ids: commit.id }
         axios
-        .delete(`${process.env.REACT_APP_API_URL}/project/state?ids=${commit.id}`, { headers })
-        .then((response) => {
-            window.location.reload();
-        })
-        .catch((error) => {
-        });
+            .delete(`${process.env.REACT_APP_API_URL}/project/state?ids=${commit.id}`, { headers })
+            .then((response) => {
+                window.location.reload();
+            })
+            .catch((error) => {
+            });
     }
 
     function deleteParticipant() {
         console.log('delete-participant');
     }
 
-    function deleteProject(){
+    function deleteProject() {
         console.log('delete-project');
         const headers = {
             Authorization: `Bearer ${token}`,
@@ -122,12 +122,12 @@ function Project(){
             ids: projectId,
         };
         axios
-          .delete(`${process.env.REACT_APP_API_URL}/project?ids=${projectId}`, { headers })
-          .then((response) => {
-            window.location.assign(`${process.env.REACT_APP_URL}/projects`);
-          })
-          .catch((error) => {
-          });
+            .delete(`${process.env.REACT_APP_API_URL}/project?ids=${projectId}`, { headers })
+            .then((response) => {
+                window.location.assign(`${process.env.REACT_APP_URL}/projects`);
+            })
+            .catch((error) => {
+            });
     }
 
     return (
@@ -165,21 +165,21 @@ function Project(){
                     <div className='requirements-section'>
                         <div className='requirements-title'>
                             Требования
-                            {authorEmail === email ? 
+                            {authorEmail === email ?
                                 <div className='input-block'>
                                     {showRequirementInput ?
-                                    <input 
-                                        onChange={(event) => {
-                                        setRequirementInput(event.target.value);
-                                        }}
-                                        className="input-add" type="text" placeholder={requirementInput}
-                                    /> 
-                                    :
-                                    <></>
+                                        <input
+                                            onChange={(event) => {
+                                                setRequirementInput(event.target.value);
+                                            }}
+                                            className="input-add" type="text" placeholder={requirementInput}
+                                        />
+                                        :
+                                        <></>
                                     }
-                                    <FiEdit className='icon-add-block' onClick={() => setShowRequirementInput(!showRequirementInput)}/>
-                                    <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> 
-                                </div>: 
+                                    <FiEdit className='icon-add-block' onClick={() => setShowRequirementInput(!showRequirementInput)} />
+                                    <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} />
+                                </div> :
                                 <></>
                             }
                         </div>
@@ -201,31 +201,31 @@ function Project(){
                     <div className='commits-list'>
                         <div className='commits-title'>
                             Состояние проекта
-                            {authorEmail === email ? 
+                            {authorEmail === email ?
                                 <div className='input-block'>
-                                    {showCommitInput ? 
-                                    <input 
-                                        onChange={(event) => {
-                                        setCommitInput(event.target.value);
-                                        }}
-                                        className="input-add" type="text" placeholder={commitInput}
-                                    /> :
-                                    <></>
+                                    {showCommitInput ?
+                                        <input
+                                            onChange={(event) => {
+                                                setCommitInput(event.target.value);
+                                            }}
+                                            className="input-add" type="text" placeholder={commitInput}
+                                        /> :
+                                        <></>
                                     }
-                                    <FiEdit className='icon-add-block' onClick={() => setShowCommitInput(!showCommitInput)}/>
-                                    <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} /> 
-                                </div>: 
+                                    <FiEdit className='icon-add-block' onClick={() => setShowCommitInput(!showCommitInput)} />
+                                    <FiPlusCircle className='icon-add-block' onClick={() => addCommit()} />
+                                </div> :
                                 <></>
                             }
                         </div>
                         {
-                            commits.map((commit, id) => (  
-                                <Commit 
-                                    icon={<FiCheckSquare className='commit-icon'/>} 
-                                    listBlockText={commit.pointTitle} 
-                                    del={authorEmail === email ? 
-                                        <FiXCircle className='icon-delete' onClick={() => deleteCommit(commit)} /> : 
-                                    <></>                  
+                            commits.map((commit, id) => (
+                                <Commit
+                                    icon={<FiCheckSquare className='commit-icon' />}
+                                    listBlockText={commit.pointTitle}
+                                    del={authorEmail === email ?
+                                        <FiXCircle className='icon-delete' onClick={() => deleteCommit(commit)} /> :
+                                        <></>
                                     }
                                 />
                             ))
@@ -238,15 +238,15 @@ function Project(){
                     Участники
                     {authorEmail === email ?
                         <></> :
-                        <>  
-                            {showParticipantInput ? 
-                                <input 
-                                onChange={(event) => {
-                                setParticipantInput(event.target.value);
-                                }}
-                                className="input-add" type="text" placeholder={participantInput}
+                        <>
+                            {showParticipantInput ?
+                                <input
+                                    onChange={(event) => {
+                                        setParticipantInput(event.target.value);
+                                    }}
+                                    className="input-add" type="text" placeholder={participantInput}
                                 /> :
-                            <></>
+                                <></>
                             }
                             <FiEdit className='icon-add-participant' onClick={() => setShowParticipantInput(!showParticipantInput)} />
                             <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
@@ -267,8 +267,9 @@ function Project(){
                                 listBlockText={`
                                     ${participant.lastName} 
                                     ${participant.firstName[0]}.
-                                    ${participant.patronymic[0]}.
+                                    
                                 `}
+                                //${participant.patronymic[0]}.
                                 del={authorEmail === email ?
                                     <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> :
                                     <></>

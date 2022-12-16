@@ -61,7 +61,7 @@ function Autorization() {
         <div>Learn.Ulstu</div>
       </div>
       <div className='text-hello'>Добро пожаловать в Learn.Ulstu! </div>
-      <div className='text-info'>Веб-приложение для автоматизации обучения в УлГТУ</div>
+      <div className='text-info'>Веб-приложение для стартаперов</div>
       <div className='login'>
         <div className='text-title'>Создание аккаунта</div>
 

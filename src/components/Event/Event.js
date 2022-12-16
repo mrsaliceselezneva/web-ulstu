@@ -2,17 +2,17 @@
 import { FiUser } from 'react-icons/fi';
 import './Event.scss'
 
-function Event({ previewUrl, name, investorSite, beginningDate, endingDate, description }) {
+function Event({ id, previewUrl, name, investorSite, beginningDate, endingDate, description }) {
 
 
 
     return (
         <div className='card__container'
-        // onClick={() => {
-        //     window.location.assign(
-        //         `${process.env.REACT_APP_URL}/projects/project/12345`
-        //     );
-        // }}
+            onClick={() => {
+                window.location.assign(
+                    `${process.env.REACT_APP_URL}/events/event/?id=${id}`
+                );
+            }}
         >
             <div className='card__header'>
                 <img src={previewUrl} alt="Subjects" />
@@ -40,7 +40,11 @@ function Event({ previewUrl, name, investorSite, beginningDate, endingDate, desc
                 </div>
 
                 <div className='card__body__data'>
-                    {`Даты проведения ${beginningDate.length > 1 ? beginningDate : ""}-${endingDate}`}
+                    {`${beginningDate != '01.01.1970' ?
+                        beginningDate != '01.01.1970' && endingDate == '01.01.1970'
+                            ? "Дата проведения " + beginningDate
+                            : "Даты проведения " + beginningDate : ""} 
+                    ${endingDate != '01.01.1970' ? "- " + endingDate : ""}`}
 
                 </div>
 

@@ -8,9 +8,8 @@ import axios from "axios"
 
 import Status from '../../components/Status/Status';
 import TeacherAnswers from '../../components/TeacherAnswers/TeacherAnswers';
-import { FiUserCheck } from 'react-icons/fi';
-import Visit from '../../components/Visit/Visit';
 import Productive from '../../components/Productive/Productive';
+import Progress from "../../components/Progress/Progress";
 
 function Main() {
 
@@ -35,7 +34,7 @@ function Main() {
             .get(`${process.env.REACT_APP_API_URL}/project/top-views`, { headers })
             .then((response) => {
                 setRating(response.data)
-            })
+            });
 
     }, [])
 
@@ -78,6 +77,11 @@ function Main() {
             <div className="footer_container">
 
                 <div className="answers">
+                    <h1>Прогресс</h1>
+                    <Progress/>
+                </div>
+
+                <div className="rating">
 
                     <h1>Рейтинг проектов</h1>
                     <div className={rating.length > 0 ? "top_views" : "no_projects"}>
@@ -88,21 +92,12 @@ function Main() {
                                     {...item} />)
                                 :
                                 <>
-                                    <img src={emoji} />
+                                    <img alt="emoji" src={emoji} />
                                     <span>У Вас нет своих проектов</span>
                                 </>
                         }
                     </div>
 
-                </div>
-
-                <div className="visit">
-                    <h1>Посещаемость</h1>
-                    <Visit />
-                </div>
-
-                <div className="rating">
-                    <h1>Рейтинг</h1>
                 </div>
 
             </div>

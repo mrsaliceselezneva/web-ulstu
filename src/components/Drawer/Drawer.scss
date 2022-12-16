@@ -17,7 +17,7 @@ a {
 }
 
 $max-width: 220px;
-$width: 15vw;
+$width: 220px;
 $logo-text: 1.3vw;
 $sidebar-text: 1.1vw;
 $logo-img: 48px;
@@ -156,8 +156,8 @@ $sidebar-cnt: 5;
   padding: 5px;
 
   .central {
-    width: 100%;
-    max-width: 80vw;
+    width: 85vw;
+    max-width: 85vw;
   }
 }
 

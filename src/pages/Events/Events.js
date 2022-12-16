@@ -19,7 +19,7 @@ function Events() {
     const [projects, setProjects] = useState([]);
 
     const [dairyPage, setDairyPage] = useState(1)
-    const [dairyPerPage] = useState(8)
+    const [dairyPerPage] = useState(10)
     const lastDairyIndex = dairyPage * dairyPerPage
     const firstDairyPage = lastDairyIndex - dairyPerPage
     const currentDairy = projects.slice(firstDairyPage, lastDairyIndex)
@@ -45,8 +45,7 @@ function Events() {
             beginningDate={format(new Date(value.beginningDate * 1000).getTime(), 'dd.MM.yyyy')}
             endingDate={format(new Date(value.endingDate * 1000).getTime(), 'dd.MM.yyyy')}
             description={convert(value.description)}
-
-
+            id={value.id}
         />);
 
     // const myProjects = 

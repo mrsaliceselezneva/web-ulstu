@@ -19,7 +19,6 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: auto;
       width: 100%;
     }
 
@@ -32,7 +31,6 @@
       margin-top: 20px;
       display: flex;
       flex-direction: column;
-      width: 27%;
       border-radius: 10px;
       background: white;
       width: 32%;
@@ -61,7 +59,7 @@
       margin-top: 20px;
       border-radius: 10px;
       background: white;
-      width: 43.5%;
+      width: 66%;
 
 
       .top_views {
@@ -99,23 +97,6 @@
         font-size: 20px;
         line-height: 24px;
         letter-spacing: 0.01em;
-        color: #333951;
-      }
-    }
-
-    .visit {
-      margin-top: 20px;
-      border-radius: 10px;
-      background: white;
-      width: 21%;
-
-      h1 {
-        padding: 5px 50px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 22px;
-        line-height: 27px;
         color: #333951;
       }
     }

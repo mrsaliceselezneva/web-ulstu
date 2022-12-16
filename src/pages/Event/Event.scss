@@ -1,243 +1,72 @@
-@mixin text($a, $b, $c, $d) {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: $a;
-  font-size: $b;
-  line-height: $c;
-  color: $d;
-}
+.event {
 
-@mixin input-button($delt) {
-  height: 45px;
-  width: 100% + $delt;
-  border-radius: 8px;
-  border: none;
-}
-
-@mixin input-block() {
-  @include input-button(-13%);
+  width: 82vw;
+  min-width: 720px;
+  background: #f8f8fb;
+  margin: 0 20px;
+  border-radius: 12px;
   display: flex;
-  flex-direction: row;
+  min-width: 720px;
+  min-height: 88vh;
 
-  background-color: rgba(245, 248, 254);
-  border: none;
-  margin-bottom: 5%;
-  padding: 2% 7% 2% 7%;
+  &__container {
 
-  .input {
-    @include input-button(-2%);
-    @include text(400, 16px, 19px, #798d96);
-    background-color: rgba(245, 248, 254);
-    margin-bottom: 5%;
-  }
+    height: 60%;
+    width: 100%;
+    padding: 30px;
 
-  input:focus {
-    outline: none !important;
-    border: none;
-  }
-
-  .login-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #798d96;
-    cursor: pointer;
-    width: 22px;
-    height: 22px;
-    margin-top: 5%;
-  }
-}
-
-@mixin input-block-hover() {
-  .login-icon {
-    color: #5a9cff;
-  }
-
-  .input {
-    @include text(400, 16px, 19px, #5a9cff);
-  }
-}
-
-.icon-delete {
-  display: flex;
-  align-items: center;
-  color: #fd6374;
-  border-radius: 100%;
-  background-color: rgba(253, 99, 116, 0.1);
-  cursor: pointer;
-}
-
-%icon-add {
-  color: #c7cbd5;
-  width: 2vw;
-  height: 2vw;
-  margin-left: auto;
-  margin-right: 0;
-  cursor: pointer;
-}
-%icon-add-hover {
-  color: #5a9cff;
-}
-
-.project {
-  display: flex;
-  flex-direction: row;
-  $project-back-ground-color: #f8f8fb;
-
-  %block {
-    background-color: $project-back-ground-color;
-    border-radius: 18px;
-    padding: 10px;
-  }
-
-  %project-title {
-    display: flex;
-    align-items: center;
-    @include text(700, 24px, 26px, #333539);
-  }
-
-  .main {
-    width: 60vw;
-    margin-right: 2vw;
-
-    .main-top-section {
+    &__image {
+      width: auto;
+      margin: auto;
+      min-width: 540px;
       display: flex;
-      flex-direction: row;
-      @extend %block;
-
-      .image {
-      }
-
-      .info {
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-
-        .name {
-          @include text(600, 36px, 44px, #333951);
-        }
-
-        .fio {
-          display: flex;
-          align-items: center;
-          @include text(400, 16px, 20px, #585268);
-
-          .project-icon-user {
-            border: solid 1px;
-            border-radius: 100%;
-            margin-right: 0.5vw;
-          }
-        }
-
-        .date {
-          display: flex;
-          align-items: center;
-          @include text(500, 14px, 14px, #585268);
-
-          .project-icon-date {
-            margin-right: 0.5vw;
-          }
-        }
-
-        .description {
-          @include text(400, 15px, 18px, #6b6b6b);
-          padding-top: 16px;
-        }
-      }
-    }
-    .main-bottom-section {
-      display: flex;
-      flex-direction: column;
-
-      .requirements-section {
-        display: flex;
-        flex-direction: column;
-        @extend %block;
-        margin-top: 16px;
-
-        .requirements-title {
-          @extend %project-title;
-
-          .input-block {
-            @include input-block();
-          }
-
-          .input-block:hover {
-            @include input-block-hover();
-          }
-
-          .icon-add-block {
-            @extend %icon-add;
-          }
-          .icon-add-block:hover {
-            @extend %icon-add-hover;
-          }
-        }
-
-        .requirements-list {
-          display: flex;
-          flex-direction: row;
-        }
-      }
-
-      .commits-list {
-        display: flex;
-        flex-direction: column;
-        margin-top: 16px;
-        @extend %block;
-
-        .commits-title {
-          @extend %project-title;
-          .input-block {
-            @include input-block();
-          }
-
-          .input-block:hover {
-            @include input-block-hover();
-          }
-
-          .icon-add-block {
-            @extend %icon-add;
-          }
-          .icon-add-block:hover {
-            @extend %icon-add-hover;
-          }
-        }
-      }
-    }
-  }
-  .participants {
-    display: flex;
-    flex-direction: column;
-    @extend %block;
-    width: 20vw;
-
-    .participants-title {
-      display: flex;
-      flex-direction: row;
+      justify-content: center;
       align-items: center;
-      @extend %project-title;
+      float: left;
 
-      .project-icon-participants {
-        color: #5a9cff;
-        background-color: rgba(90, 156, 255, 0.2);
-        border-radius: 8px;
-        width: 2vw;
-        height: 2vw;
-        margin-right: 10px;
-      }
-
-      .icon-add-participant {
-        @extend %icon-add;
-      }
-      .icon-add-participant:hover {
-        @extend %icon-add-hover;
+      img {
+        width: 540px;
+        height: 360px;
+        object-fit: cover;
+        border-radius: 12px;
       }
     }
 
-    .participants-list {
+    &__info {
+
+
+      min-width: 540px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      padding: 0 20px;
+
+      &__header {
+
+        span {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 48px;
+          line-height: 44px;
+        }
+      }
+
+      &__description {
+
+        min-width: 540px;
+
+        p {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 18px;
+          color: #6B6B6B;
+        }
+      }
     }
+
   }
+
 }

@@ -55,7 +55,7 @@ function Projects() {
             name={value.name}
             author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
             description={value.description}
-            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
             id={value.id}
         />);
 
