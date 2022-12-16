@@ -1,16 +1,25 @@
 import './Notification.scss';
+import Requirement from '../Requirement/Requirement';
+import { FiUser } from 'react-icons/fi';
 
-function Notification({ icon, notificationName, projectName, notificationText, add, del}) {
+function Notification({ icon, userName, projectName, notificationText, add, del}) {
     return (
         <div className='notification-block'>
             {projectName}
             <div className='notification-user'>
+                <Requirement
+                    icon={<FiUser className='requirement-icon-user' />}
+                    requirementText={userName}
+                />
                 {icon}
-                {notificationName}
-                {add}
-                {del}
+                <div className='add-del'>
+                    {add}
+                    {del}
+                </div>
             </div>
-            {notificationText}
+            <div className="notification-text">
+                {notificationText}
+            </div>
         </div>
     )
 };

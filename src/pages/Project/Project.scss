@@ -84,9 +84,6 @@
       flex-direction: row;
       @extend %block;
 
-      .image {
-      }
-
       .info {
         display: flex;
         flex-direction: column;
@@ -94,28 +91,6 @@
 
         .name {
           @include text(600, 36px, 44px, #333951);
-        }
-
-        .fio {
-          display: flex;
-          align-items: center;
-          @include text(400, 16px, 20px, #585268);
-
-          .project-icon-user {
-            border: solid 1px;
-            border-radius: 100%;
-            margin-right: 0.5vw;
-          }
-        }
-
-        .date {
-          display: flex;
-          align-items: center;
-          @include text(500, 14px, 14px, #585268);
-
-          .project-icon-date {
-            margin-right: 0.5vw;
-          }
         }
 
         .description {

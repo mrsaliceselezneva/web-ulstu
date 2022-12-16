@@ -1,28 +1,52 @@
-.list-block {
+@mixin user($color) {
+  color: $color;
+  height: 24px;
+  width: 24px;
+  margin-left: 6px;
+}
+
+@mixin text($a, $b, $c, $d) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+  color: $d;
+}
+
+.notification-block {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-
-  height: 48px;
-  padding-left: 8px;
-  padding-right: 8px;
-  margin-top: 16px;
-
+  flex-direction: column;
+  padding: 8px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 15px;
+  width: 400px;
   border: solid 1px rgba(90, 156, 255, 0.2);
+  @include text(700, 24px, 26px, #333539);
 
-  .list-block-icon {
+  .notification-user {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    margin-right: 1vw;
-    padding: 5px;
-    background-color: rgba(90, 156, 255, 0.2);
-    color: #5a9cff;
-    border-radius: 8px;
-    width: 27px;
-    height: 27px;
+
+    .del-user {
+      @include user(#fd6374);
+    }
+
+    .del-user:hover {
+      color: #5a9cff;
+    }
+
+    .add-user {
+      @include user(#33d69f);
+    }
+
+    .add-user:hover {
+      color: #5a9cff;
+    }
+  }
+
+  .notification-text {
+    @include text(400, 15px, 18px, #6b6b6b);
   }
 }

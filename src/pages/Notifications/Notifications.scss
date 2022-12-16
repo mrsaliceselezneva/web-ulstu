@@ -1,27 +1,4 @@
 .notifications-list {
   display: flex;
   flex-direction: column;
-
-  @mixin user($color) {
-    color: $color;
-    height: 24px;
-    width: 24px;
-    margin-left: 1vw;
-  }
-
-  .del-user {
-    @include user(#fd6374);
-  }
-
-  .del-user:hover {
-    color: #5a9cff;
-  }
-
-  .add-user {
-    @include user(#33d69f);
-  }
-
-  .add-user:hover {
-    color: #5a9cff;
-  }
 }

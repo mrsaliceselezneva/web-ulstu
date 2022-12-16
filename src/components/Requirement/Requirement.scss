@@ -1,20 +1,34 @@
-.requirement-block {
-  background-color: rgba(90, 156, 255, 0.2);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+@mixin text($a, $b, $c, $d) {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+  color: $d;
+}
+
+.requirement-block {
+  display: flex;
+  align-items: center;
+  background-color: rgba(90, 156, 255, 0.2);
+  border-radius: 8px;
+  margin: 3px auto 3px 0px;
+  @include text(400, 16px, 20px, #585268);
   color: #5a9cff;
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 6px;
   padding-right: 6px;
-  margin: 3px;
+
+  .requirement-icon-user {
+    border: solid 1px;
+    border-radius: 100%;
+    margin-right: 7px;
+  }
+
+  .requirement-icon-date {
+    margin-right: 7px;
+  }
 
   .icon-delete {
     display: flex;

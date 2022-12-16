@@ -131,26 +131,20 @@ function Project(){
                     <img src={defaultBackground} className='image' alt='defaultBackground' />
                     <div className='info'>
                         <div className='name'>{name}</div>
-                        <div className='fio'>
-                            <Requirement
-                                icon={<FiUser className='project-icon-user' />}
-                                requirementText={author}
-                            />
-
-                        </div>
-                        <div className='date'>
-                            <Requirement
-                                icon={<FiCalendar className='project-icon-date' />}
-                                requirementText={"01.01.2023"}
-                            />
-                        </div>
+                        <Requirement
+                            icon={<FiUser className='requirement-icon-user' />}
+                            requirementText={author}
+                        />
+                        <Requirement
+                            icon={<FiCalendar className='requirement-icon-date' />}
+                            requirementText={"01.01.2023"}
+                        />
                         {authorEmail === email ? 
-                            <div className='date' onClick={() => deleteProject()}>
-                                <DeleteProject
-                                    icon={<FiXCircle className='project-icon-date' />}
-                                    deleteText={"удалить проект"}
-                                />
-                            </div>
+                            <DeleteProject
+                                icon={<FiXCircle className='project-icon-date' />}
+                                deleteText={"удалить проект"}
+                                onClick={() => deleteProject()}
+                            />
                             :
                             <></>
                         }
