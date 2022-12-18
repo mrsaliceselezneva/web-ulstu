@@ -19,7 +19,8 @@ function create(name, description, token){
     axios
       .post(`${process.env.REACT_APP_API_URL}/project`, data, { headers })
       .then((response) => {
-        window.location.assign(`${process.env.REACT_APP_URL}/projects`);
+        console.log(response.data);
+        // window.location.assign(`${process.env.REACT_APP_URL}/projects`);
       })
       .catch((error) => {
       });
@@ -31,18 +32,16 @@ function CreateProject() {
   const [description, setDescription] = useState('');
 
   return (
-    <div className='create'>
-      <input className='name' placeholder='Название проекта'
+    <div className='create-project'>
+      <textarea className='textarea-create-project' placeholder='Название проекта'
         onChange={(event) => {
           setName(event.target.value);
         }} />
-      <input className='description' placeholder='Описание проекта'
+      <textarea className='textarea-create-project' placeholder='Описание проекта'
         onChange={(event) => {
           setDescription(event.target.value);
         }} />
-      <div className='requirements'>
-      </div>
-      <button className='create' onClick={() => {
+      <button className='create-project-button' onClick={() => {
         create(name, description, token, firstName, lastName, futherName)
       }}>Создать</button>
     </div>
