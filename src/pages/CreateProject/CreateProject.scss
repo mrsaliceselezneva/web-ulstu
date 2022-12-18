@@ -14,7 +14,7 @@
   flex-direction: column;
   width: 100%;
 
-  $width: 500px;
+  $width: 400px;
 
   .textarea-create-project {
     width: $width;
@@ -39,7 +39,7 @@
 
   button {
     height: 45px;
-    width: 500px;
+    width: $width;
     border-radius: 8px;
     border: none;
     @include text(700, 18px, 22px, #ffffff);
