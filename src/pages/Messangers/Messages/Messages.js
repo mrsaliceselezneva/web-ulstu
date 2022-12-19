@@ -5,7 +5,7 @@ import classNames from "classnames"
 import './messages.scss'
 
 const Messages = ({ blockRef, isLoading, items }) => {
-
+    
     return (
 
         <div ref={blockRef}
@@ -15,7 +15,7 @@ const Messages = ({ blockRef, isLoading, items }) => {
 
             ) : items && !isLoading ? (
                 items.length > 0 ? (
-                    items.map(item => <Message {...item} />)
+                    items.map(item => <Message {...item} key={item.id}/>)
 
                 ) : (
                     <Empty image={null} description="Диалог пуст" />

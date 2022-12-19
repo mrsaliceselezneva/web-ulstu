@@ -53,7 +53,13 @@ function Main() {
 
                     </div>
 
-                    <div className="status">
+                    <div className="answers">
+                        <h1>Прогресс</h1>
+                        <Progress />
+                    </div>
+
+
+                    {/* <div className="status">
                         {
                             data.map(val => (
                                 <Status
@@ -63,22 +69,18 @@ function Main() {
                                 />
                             ))
                         }
-                    </div>
+                    </div> */}
 
                 </div>
 
-                <div className="productive">
-                    <div className='h1'>Продуктивность обучения</div>
-                    <Productive />
-                </div>
+
 
             </div>
 
             <div className="footer_container">
-
-                <div className="answers">
-                    <h1>Прогресс</h1>
-                    <Progress/>
+                <div className="productive">
+                    <div className='h1'>Продуктивность обучения</div>
+                    <Productive />
                 </div>
 
                 <div className="rating">

@@ -1,0 +1,129 @@
+.answers_item {
+  border-bottom: 2px solid #EFF4F6;
+  margin: 5px 30px 0 30px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+}
+
+@media screen and (width: 1920px) {
+  .answers_item {
+    margin: 5px 70px 0 70px;
+    padding: 30px 0;
+    height: 50px;
+  }
+}
+
+.answers_item .answer_icon {
+  width: 70px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+}
+
+.answers_item .answer_icon img {
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 72px;
+  height: 45px;
+}
+
+.answers_item .answer_teacher {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: white;
+  width: 200px;
+  text-align: center;
+  background: #5A9CFF;
+  border-radius: 8px;
+  height: 25px;
+}
+
+@media screen and (width: 1920px) {
+  .answers_item .answer_teacher {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: white;
+    width: 200px;
+    text-align: center;
+    background: #5A9CFF;
+    border-radius: 8px;
+    height: 40px;
+  }
+}
+
+.answers_item .answer_date {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 20px;
+  color: #000000;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  width: 15%;
+  height: 40px;
+  margin-left: 10px;
+  border: 3px solid #5A9CFF;
+  border-radius: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (width: 1920px) {
+  .answers_item .answer_date {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 20px;
+    color: #000000;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    width: 15%;
+    height: 40px;
+    margin-left: 10px;
+    border: 3px solid #5A9CFF;
+    border-radius: 10px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+/*# sourceMappingURL=teacherAnswers.css.map */

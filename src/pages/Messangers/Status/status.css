@@ -1,0 +1,23 @@
+.status {
+  font-size: 13px;
+  display: inline-block;
+  color: #bfbfbf;
+  position: relative;
+}
+
+.status::before {
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: -11px;
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 30px;
+  background-color: #d3d3d3;
+}
+
+.status--online::before {
+  background-color: #00c980;
+}
+/*# sourceMappingURL=status.css.map */

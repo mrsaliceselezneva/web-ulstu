@@ -8,6 +8,7 @@
         display: flex;
         flex-direction: row;
         max-width: 50%;
+        margin-right: 15px;
     }
 
     &__avatar {
@@ -15,11 +16,13 @@
         flex-direction: column;
 
 
-        img {
+        svg {
             border-radius: 50px;
             width: 40px;
             height: 40px;
             margin-right: 10px;
+            color: #5a9cff;
+            background-color: rgba(90, 156, 255, 0.2);
         }
     }
 

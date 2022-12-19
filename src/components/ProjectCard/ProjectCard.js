@@ -1,6 +1,21 @@
 import './ProjectCard.scss';
 
 const ProjectCard = ({ subject, image, icon, teacher, content }) => {
+
+    const [avatar, setAvatar] = useState("")
+
+    useEffect(() => {
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/files?id=${previewId}`, { headers, responseType: 'blob' })
+            .then((response) => {
+                const url = window.URL.createObjectURL(response.data);
+                setAvatar(url);
+            })
+
+    }, [])
     return (
         <div className='card__container'
             onClick={() => {
@@ -9,7 +24,7 @@ const ProjectCard = ({ subject, image, icon, teacher, content }) => {
                 );
             }}>
             <div className='card__header'>
-                <img src={image} alt="Subjects" />
+                <img src={avatar} alt="Subjects" />
             </div>
 
             <div className='card__body'>

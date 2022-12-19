@@ -1,0 +1,14 @@
+.response__container {
+  padding: 20px 50px;
+}
+
+.response__container__title h1 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 26px;
+  letter-spacing: 0.166667px;
+  color: black;
+}
+/*# sourceMappingURL=ResponseList.css.map */

@@ -1,17 +1,14 @@
 .messages {
     height: 100%;
-    padding: 20px;
     padding-bottom: 0;
     overflow: auto;
-
-
+    width: 100%;
     .ant-empty {
         display: flex;
+        justify-content: center;
         align-items: center;
         height: 100%;
     }
-
-
     &--loading {
         display: flex;
         align-items: center;

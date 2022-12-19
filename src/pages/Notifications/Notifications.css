@@ -1,0 +1,94 @@
+.notifications-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 20px;
+}
+
+.notifications-list .notification-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  margin-top: 10px;
+  height: 50px;
+  border-radius: 12px;
+}
+
+.notifications-list .notification-block__name {
+  width: 20%;
+  min-width: 110px;
+  margin: 0 10px;
+  background: #5a9cff;
+  height: 25px;
+  min-height: 25px;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.notifications-list .notification-block__name span {
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+}
+
+.notifications-list .notification-block .notification-user {
+  width: 15%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 20px;
+}
+
+.notifications-list .notification-block__button {
+  width: 10%;
+  min-width: 70px;
+}
+
+.notifications-list .notification-block__message {
+  width: 55%;
+  margin: 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notifications-list .del-user {
+  color: #fd6374;
+  height: 24px;
+  width: 24px;
+  margin-left: 1vw;
+}
+
+.notifications-list .del-user:hover {
+  color: #5a9cff;
+}
+
+.notifications-list .add-user {
+  color: #33d69f;
+  height: 24px;
+  width: 24px;
+  margin-left: 1vw;
+}
+
+.notifications-list .add-user:hover {
+  color: #5a9cff;
+}
+/*# sourceMappingURL=Notifications.css.map */

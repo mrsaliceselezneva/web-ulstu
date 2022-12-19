@@ -1,0 +1,77 @@
+.create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.create__content {
+  margin-top: 10px;
+  min-width: 360px;
+  width: 360px;
+  background: white;
+  height: 360px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.create__content__header {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  color: #333951;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.create__content .name {
+  margin: 10px;
+  width: 80%;
+  height: 40px;
+  border-radius: 6px;
+  border: none;
+  background: #e6f0ff;
+}
+
+.create__content .description {
+  margin: 20px;
+  width: 80%;
+  height: 180px;
+  border-radius: 6px;
+  border: none;
+  background: #e6f0ff;
+  max-height: 180px;
+  max-width: 280px;
+  min-height: 30px;
+}
+
+.create__content .create__button {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background: linear-gradient(237.26deg, #88DDFF 8.37%, #4364F7 95.2%);
+  border-radius: 4px;
+  height: 30px;
+  width: 50%;
+  color: white;
+}
+/*# sourceMappingURL=CreateProject.css.map */

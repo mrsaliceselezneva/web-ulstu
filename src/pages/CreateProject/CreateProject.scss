@@ -1,6 +1,66 @@
 .create {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
   width: 100%;
+
+
+
+  &__content {
+
+    &__header {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 31px;
+      
+      color: #333951;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+    margin-top: 10px;
+    min-width: 360px;
+    width: 360px;
+    background: white;
+    height: 360px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .name {
+      margin: 10px;
+      width: 80%;
+      height: 40px;
+      border-radius: 6px;
+      border: none;
+      background: #e6f0ff;
+  
+    }
+
+    .description {
+      margin: 20px;
+      width: 80%;
+      height: 180px;
+      border-radius: 6px;
+      border: none;
+      background: #e6f0ff;
+      max-height: 180px;
+      max-width: 280px;
+      min-height: 30px;
+    }
+
+    .create__button {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      background: linear-gradient(237.26deg, #88DDFF 8.37%, #4364F7 95.2%);
+      border-radius: 4px;
+      height: 30px;
+      width: 50%;
+      color: white;
+      
+    }
+  }
 }

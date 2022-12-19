@@ -3,14 +3,15 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import Time from '../../../components/Time/Time'
 import IconReaded from '../IconReaded/IconReaded'
-
+import { FiUser } from 'react-icons/fi';
 
 const Message = ({
     avatar,
+    innterviewer_user,
     user,
     text,
     date,
-    isMe,
+    for_you,
     isReaded,
     attachments,
     isTyping
@@ -19,7 +20,7 @@ const Message = ({
     return (
         <div className={classNames('message',
             {
-                'message--isme': isMe,
+                'message--isme': !for_you,
                 "message--is-typing": isTyping,
                 "message--image": attachments && attachments.length === 1
             })}>
@@ -27,7 +28,7 @@ const Message = ({
             <div className='message__content'>
 
                 <div className='message__avatar'>
-                    <img src={user.avatar} alt="avatar" />
+                    <FiUser />
                 </div>
 
                 <div className='message__info'>
@@ -43,11 +44,11 @@ const Message = ({
 
                         {date && <div className='message__date'>
                             <Time date={date} />
-                            <IconReaded isMe={isMe} isReaded={isReaded} />
+                            <IconReaded isMe={!for_you} isReaded={isReaded} />
                         </div>}
                     </div>}
 
-                    <div className='message__attachments'>
+                    {/* <div className='message__attachments'>
 
                         {attachments &&
                             attachments.map((item, index) => (
@@ -57,7 +58,7 @@ const Message = ({
                             ))
 
                         }
-                    </div>
+                    </div> */}
                 </div>
 
 

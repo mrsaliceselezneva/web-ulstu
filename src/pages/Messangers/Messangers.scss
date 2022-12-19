@@ -5,8 +5,13 @@
   width: 78vw;
   min-width: 720px;
   padding: 0 20px;
+  margin-top: 20px;
+  overflow-y: hidden;
+  position: fixed;
+  
 
   .chat {
+    
     background: white;
     width: 100%;
     min-width: 720px;
@@ -81,12 +86,9 @@
 
       &-messages {
         margin: 0 5px 0 0;
-        padding: 20px 0 0;
-        background-size: contain;
-        //background-image: url('../assets/images/repeat-background.png');
+        padding: 0 0 0 20px;
         background-color: #f8f8fb;
-        height: calc(100% - 20vh);
-        min-width: 400px;
+        height: calc(100% - 18vh);
         display: flex;
         justify-content: center;
         align-items: center;

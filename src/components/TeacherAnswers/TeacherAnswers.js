@@ -25,10 +25,10 @@ const TeacherAnswers = ({ name, countViews, previewId }) => {
 
     return (
         <div className="answers_item">
-
+{/* 
             <div className="answer_icon">
                 <img src={avatar} alt="avatar" />
-            </div>
+            </div> */}
 
             <div className="answer_teacher">{name}</div>
 

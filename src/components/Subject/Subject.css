@@ -1,0 +1,208 @@
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 11vh;
+  width: 9.8vw;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.card .color-lab, .card .color-lec {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  height: 11vh;
+  width: 0.4vw;
+}
+
+.card .color-lab {
+  background-color: #25ced1;
+}
+
+.card .color-lec {
+  background-color: #ffa45a;
+}
+
+.card .main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0.5vh 0.5vw 0.5vh 0.5vw;
+  height: 10vh;
+  width: 8.4vw;
+}
+
+.card .main .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  height: 5vh;
+  width: 7.6vw;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.8vw;
+  line-height: 10px;
+  color: #333951;
+}
+
+.card .main .body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 5vh;
+  margin: 0;
+  padding: 0;
+}
+
+.card .main .body .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  height: 5vh;
+  margin-right: 0.2vw;
+}
+
+.card .main .body .icons .icon-lab {
+  color: #25ced1;
+}
+
+.card .main .body .icons .icon-lec {
+  color: #ffa45a;
+}
+
+.card .main .body .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 7.6vw;
+  height: 5vh;
+}
+
+.card .main .body .info .teacher, .card .main .body .info .location-type .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2.5vh;
+  text-align: left;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.7vw;
+  line-height: 0px;
+  color: #9598a8;
+}
+
+.card .main .body .info .teacher {
+  width: 6.6vw;
+  height: 2.5vh;
+}
+
+.card .main .body .info .location-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 6.6vw;
+  height: 2.5vh;
+}
+
+.card .main .body .info .location-type .location {
+  width: 3.6vw;
+  height: 2.5vh;
+}
+
+.card .main .body .info .location-type .type-lab, .card .main .body .info .location-type .type-lec {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 3vw;
+  height: 1.8vh;
+  border-radius: 4px;
+}
+
+.card .main .body .info .location-type .type-lab {
+  background-color: #f1fcfc;
+}
+
+.card .main .body .info .location-type .type-lab .type-text-lab {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.7vw;
+  line-height: 14px;
+  color: #25ced1;
+}
+
+.card .main .body .info .location-type .type-lec {
+  background-color: #fef6f0;
+}
+
+.card .main .body .info .location-type .type-lec .type-text-lec {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.7vw;
+  line-height: 14px;
+  color: #ffa45a;
+}
+/*# sourceMappingURL=Subject.css.map */

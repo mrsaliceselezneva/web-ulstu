@@ -60,8 +60,8 @@ function Autorization() {
         <img src={logoUlstu} alt="альтернативный текст" />
         <div>Learn.Ulstu</div>
       </div>
-      <div className='text-hello'>Добро пожаловать в Learn.Ulstu! </div>
-      <div className='text-info'>Веб-приложение для стартаперов</div>
+      <div className='text-hello'>Веб-приложение для стартаперов </div>
+      {/* <div className='text-info'></div> */}
       <div className='login'>
         <div className='text-title'>Создание аккаунта</div>
 
@@ -106,7 +106,6 @@ function Autorization() {
               name="radio"
             />
             <label className="input">жен</label>
-            <FiUser className='login-icon' />
           </div>
 
           {/* телефон */}
@@ -117,16 +116,6 @@ function Autorization() {
             /> 
             <FiPhone className='login-icon' />
           </div>
-
-          {/* группа */}
-          <div className='input-block'>
-            <div 
-              onChange={(event) => setGroupId(event.target.value)} 
-              className="input"
-            >{groupName}</div>
-            <FiList className='login-icon' onClick={() => setShowListGroup(!showListGroup)} />
-          </div>
-
           {/* список групп */}
           {showListGroup ? 
               <div className="list">
@@ -166,7 +155,8 @@ function Autorization() {
           </div>
 
           <button onClick={Check}>Создать</button>
-          <div className='text-bottom'>Есть аккаунт?<a href='/' className='href'>Войти</a></div>
+          <div className='text-bottom'>
+            <span>Есть аккаунт?</span><a href='/' className='href'>Войти</a></div>
         </div>
     </div>
   );

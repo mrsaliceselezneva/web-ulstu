@@ -11,7 +11,8 @@ import MessagesCont from '../../containers/MessagesCont';
 
 
 function Messangers() {
-    const { firstName, lastName } = useSelector(state => state.userReducer);
+
+    const items = useSelector(state => state.messages.items)
     return (
         <div className='messangers'>
 
@@ -26,9 +27,6 @@ function Messangers() {
                         </div>
                         <FormOutlined />
                     </div>
-
-
-
 
                     <div className='chat__sidebar__dialogs'>
                         <DialogsCont
@@ -48,11 +46,11 @@ function Messangers() {
                         <div className='chat__dialog-haeder-center'>
 
                             <b className='chat__dialog-haeder-username'>
-                                {firstName} {lastName}
+                                {items?.innterviewer_user?.username}
                             </b>
-                            <div className='chat__dialog-haeder-status'>
+                            {/* <div className='chat__dialog-haeder-status'>
                                 <Status online />
-                            </div>
+                            </div> */}
                         </div>
                         <EllipsisOutlined style={{ fontSize: "36px", opacity: ".5" }} />
                     </div>
@@ -62,7 +60,7 @@ function Messangers() {
                     </div>
 
                     <div className='chat__dialog-input'>
-                        <ChatInput />
+                        <ChatInput/>
                     </div>
                 </div>
             </div>

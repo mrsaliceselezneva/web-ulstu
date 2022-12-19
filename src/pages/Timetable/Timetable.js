@@ -171,7 +171,7 @@ function Timetable() {
     React.useEffect(() => {
         if (group !== 'unauthorized') {
             axios
-                .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=${group}`)
+                .get(`${process.env.REACT_APP_API_URL}/schedule?nameGroup=ИВТАПбд-41`)
                 .then((response) => {
                     setTable(response.data);
                     setCurrentWeek(response.data.currentWeek % 2 ? 1 : 2);

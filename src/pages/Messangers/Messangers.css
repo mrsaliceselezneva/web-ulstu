@@ -1,0 +1,120 @@
+.messangers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 78vw;
+  min-width: 720px;
+  padding: 0 20px;
+  margin-top: 20px;
+  overflow-y: hidden;
+  position: fixed;
+}
+
+.messangers .chat {
+  background: white;
+  width: 100%;
+  min-width: 720px;
+  height: 83vh;
+  border-radius: 18px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.messangers .chat__sidebar {
+  width: 320px;
+  min-width: 320px;
+  height: 100%;
+  border-right: 2px solid #ecf5fd;
+}
+
+.messangers .chat__sidebar__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px;
+  border-bottom: 2px solid #ecf5fd;
+}
+
+.messangers .chat__sidebar__header span {
+  opacity: 0.7;
+  -webkit-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.messangers .chat__sidebar__header span:hover {
+  opacity: 1;
+}
+
+.messangers .chat__sidebar__header span:active {
+  opacity: 0.8;
+}
+
+.messangers .chat__sidebar__header-info span {
+  display: inline-block;
+  margin-right: 10px;
+  opacity: 0.7;
+}
+
+.messangers .chat__sidebar__dialogs .dialogs {
+  height: 75vh;
+}
+
+.messangers .chat__dialog {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 360px;
+}
+
+.messangers .chat__dialog-haeder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  border-bottom: 2px solid #ecf5fd;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.messangers .chat__dialog-haeder-center {
+  text-align: center;
+}
+
+.messangers .chat__dialog-haeder-center-username {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.messangers .chat__dialog-messages {
+  margin: 0 5px 0 0;
+  padding: 0 0 0 20px;
+  background-color: #f8f8fb;
+  height: calc(100% - 18vh);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=Messangers.css.map */

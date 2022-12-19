@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACK,AAAD,oBAAY,CAAC;EACT,OAAO,EAAE,SAAS;CAcrB;;AAZI,AACG,2BADI,CACJ,EAAE,CAAC;EACC,WAAW,EAAE,OAAO;EACpB,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,cAAc,EAAE,UAAU;EAC1B,KAAK,EAAE,KAAK;CACf",
+    "sources": [
+        "ResponseList.scss"
+    ],
+    "names": [],
+    "file": "ResponseList.css"
+}

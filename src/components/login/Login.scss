@@ -8,11 +8,11 @@ body {
   margin-top: 10%;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
+  overflow-x: hidden;
 
   %text {
-    margin-left: auto;
-    margin-right: auto;
+  
   }
 
   @mixin text-style($w, $s, $l, $c) {
@@ -64,19 +64,13 @@ body {
     box-sizing: border-box;
     padding: 3%;
     min-width: 25%;
-    // min-width: 350px;
-
-    // @media screen and (max-width: 800px) {
-    //   min-width: 200px;
-    // }
-    /*$margin: 37%;*/
-
-    margin: 5vh auto;
+    margin: 4vh auto;
     background: #ffffff;
     border: 1px solid rgba(183, 210, 229, 0.8);
     box-shadow: 0px 1px 4px rgba(44, 64, 90, 0.209409), inset 0px -1px 0px #7e95a7;
     border-radius: 8px;
     transform: rotate(-0.32deg);
+    
 
     .text-title {
       width: 100%;
@@ -91,6 +85,14 @@ body {
 
     .text-bottom {
       @include text-style(400, 14px, 17px, #798d96);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      span{
+        opacity: .8;
+        font-size: 12px;
+      }
     }
 
     @mixin input-button($delt) {
@@ -126,6 +128,7 @@ body {
       @include input-button(-13%);
       display: flex;
       flex-direction: row;
+      justify-content: center;
 
       background-color: rgba(245, 248, 254);
       border: none;
@@ -137,6 +140,9 @@ body {
         @include text-style(400, 16px, 19px, #798d96);
         background-color: rgba(245, 248, 254);
         margin-bottom: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       input:focus {
@@ -190,6 +196,9 @@ body {
     .href {
       text-decoration: none;
       @include text-style(400, 16px, 19px, #5a9cff);
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: normal;
     }
 
     .href:hover {

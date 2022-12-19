@@ -8,11 +8,6 @@ const actions = {
         payload: items
     }),
 
-    // setLastMess: items => ({
-    //     type: 'DIALOGS:LAST_MESS',
-    //     payload: items
-    // }),
-
     setCurrentDialogId: id => ({
 
         type: 'DIALOGS:SET_CURRENT_DIALOG_ID',
@@ -22,15 +17,9 @@ const actions = {
 
     fetchDialogs: () => dispatch => {
         dialogsAPI.getAll().then(({ data }) => {
-            dispatch(actions.setDialogs(data))
+            dispatch(actions.setDialogs(data.map(val => JSON.parse(val))))
         })
-    },
-
-    // fetchLastMess: () => dispatch => {
-    //     lastmessAPI.getLastMessage().then(({ data }) => {
-    //         dispatch(actions.setLastMess(data))
-    //     })
-    // }
+    }
 }
 
 export default actions

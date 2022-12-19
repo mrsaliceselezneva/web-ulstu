@@ -1,0 +1,153 @@
+.projects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.projects-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: top;
+      -ms-flex-align: top;
+          align-items: top;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: 0.8vw;
+  margin-right: 1.2vw;
+  height: 48px;
+}
+
+.projects-menu .switch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 18px;
+  background-color: white;
+  width: 4vw;
+  height: 32px;
+}
+
+.projects-menu .switch .switch-icon {
+  width: 2vw;
+  height: 2vw;
+  color: #c7cbd5;
+}
+
+.projects-menu .switch:hover .switch-icon {
+  color: #5a9cff;
+}
+
+.projects-menu .choose {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.projects-menu .choose .choose-projects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  width: 4vw;
+  background-color: white;
+  height: 32px;
+}
+
+.projects-menu .choose .choose-projects:hover {
+  color: white;
+  background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+}
+
+.projects-menu .choose .select-choose-projects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  width: 4vw;
+  height: 32px;
+  color: white;
+  background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
+}
+
+.projects-menu .choose .add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 18px;
+  background-color: white;
+  width: 4vw;
+  height: 32px;
+}
+
+.projects-menu .choose .add .add-icon {
+  width: 1.7vw;
+  height: 1.7vw;
+  color: #c7cbd5;
+}
+
+.projects-menu .choose .add:hover .add-icon {
+  color: #5a9cff;
+}
+
+.list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  max-width: 1280px;
+}
+/*# sourceMappingURL=Projects.css.map */

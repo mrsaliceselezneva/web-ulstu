@@ -4,25 +4,25 @@ import './CreateProject.scss';
 import { useSelector } from "react-redux";
 import format from "date-fns/format";
 
-function create(name, description, token){
-    const headers = {
-        Authorization: `Bearer ${token}`,
-    };
-    var data = {
-        description: description,
-        // developmentStartDate: format(new Date().getTime(), 'dd.mm.yyyy'),
-        documentId: null,
-        name: name,
-        previewId: null,
-        requiredInvestment: true,
-    };
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/project`, data, { headers })
-      .then((response) => {
-        window.location.assign(`${process.env.REACT_APP_URL}/projects`);
-      })
-      .catch((error) => {
-      });
+function create(name, description, token) {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  var data = {
+    description: description,
+    // developmentStartDate: format(new Date().getTime(), 'dd.mm.yyyy'),
+    documentId: null,
+    name: name,
+    previewId: null,
+    requiredInvestment: true,
+  };
+  axios
+    .post(`${process.env.REACT_APP_API_URL}/project`, data, { headers })
+    .then((response) => {
+      window.location.assign(`${process.env.REACT_APP_URL}/projects`);
+    })
+    .catch((error) => {
+    });
 }
 
 function CreateProject() {
@@ -32,19 +32,32 @@ function CreateProject() {
 
   return (
     <div className='create'>
-      <input className='name' placeholder='Название проекта'
-        onChange={(event) => {
-          setName(event.target.value);
-        }} />
-      <input className='description' placeholder='Описание проекта'
-        onChange={(event) => {
-          setDescription(event.target.value);
-        }} />
-      <div className='requirements'>
+
+    
+
+      <div className='create__content'>
+
+      <div className='create__content__header'>
+        <span>
+          Форма создания проекта
+        </span>
       </div>
-      <button className='create' onClick={() => {
-        create(name, description, token, firstName, lastName, futherName)
-      }}>Создать</button>
+
+        <input className='name' placeholder='Название проекта'
+          onChange={(event) => {
+            setName(event.target.value);
+          }} />
+        <textarea className='description' placeholder='Описание проекта'
+          onChange={(event) => {
+            setDescription(event.target.value);
+          }} />
+        <div className='requirements'>
+        </div>
+        <button className='create__button' onClick={() => {
+          create(name, description, token, firstName, lastName, futherName)
+        }}>Создать</button>
+      </div>
+
     </div>
   );
 }

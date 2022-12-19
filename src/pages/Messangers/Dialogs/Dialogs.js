@@ -8,7 +8,7 @@ import { Input, Empty } from "antd"
 import { useSelector, useDispatch } from "react-redux";
 import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginToken } from "../../../redux/slices/userSlice";
 
-const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelectDialog }) => {
+const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelectDialog}) => {
 
 
     const { token, firstName, lastName, futherName, group } = useSelector(state => state.userReducer);
@@ -28,16 +28,16 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
 
             <div className="dialogs__itembar">
                 {items.length ? (
-                    orderBy(items, ["created_at"], ["desc"]).map(item => (
+                    orderBy(items, ["datetime"], ["desc"]).map(item => (
                         <DialogItem
                             onSelect={onSelectDialog}
-                            key={item.id}
+                            key={item.last_message_for_you ? item.from_.id : item.to_.id}
                             // isMe={item.user.id === userId}
                             userId={userId}
-                            message={item}
+                            // message={item}
                             unreaded={0}
                             user={item.user}
-                            currentDialogId={currentDialogId}
+                            // currentDialogId={currentDialogId}
                             {...item}
                         />
                     ))) :

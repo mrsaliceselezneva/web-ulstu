@@ -9,7 +9,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+ 
 }
 
 a {
@@ -23,7 +24,7 @@ $sidebar-text: 1.1vw;
 $logo-img: 48px;
 $icon: 40px;
 
-$sidebar-height: 320px;
+$sidebar-height: 100vh;
 $sidebar-cnt: 5;
 
 .top-section {
@@ -33,6 +34,8 @@ $sidebar-cnt: 5;
   background-color: white;
   width: 100vw;
   height: 64px;
+  position: fixed;
+  z-index: 100;
 
   .logo {
     display: flex;
@@ -40,11 +43,9 @@ $sidebar-cnt: 5;
     text-align: center;
     background-image: linear-gradient(to right, #4364f7 0%, #88ddff 51%, #4364f7 100%);
     background-size: 200% auto;
-    border-radius: 18px;
     width: $width;
     max-width: $max-width;
     height: 56px;
-    margin: 5px;
     cursor: pointer;
 
     .logo-img {
@@ -55,7 +56,6 @@ $sidebar-cnt: 5;
       justify-content: center;
       margin-left: 10px;
     }
-
     p {
       display: flex;
       align-items: center;
@@ -63,6 +63,12 @@ $sidebar-cnt: 5;
       margin-left: 8px;
       @include text(900, $logo-text, 18px);
     }
+    @media screen and (min-width:1920px) {
+      p{
+        font-size: 18px;
+        padding: 10px;
+      }
+  }
   }
 
   .profile {
@@ -153,11 +159,22 @@ $sidebar-cnt: 5;
 .body {
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  width: 100vw;
+  overflow-x: hidden;
 
   .central {
     width: 85vw;
-    max-width: 85vw;
+    height: 100vh;
+    margin-top: 65px;
+    margin-left: 240px;
+    z-index: 0;
+  }
+
+  @media screen and (min-width: 1920px) {
+    .central {
+      width: 85vw;
+      padding: 0 30px;
+    }
   }
 }
 
@@ -166,8 +183,9 @@ $sidebar-cnt: 5;
   color: white;
   width: $width;
   max-width: $max-width;
-  border-radius: 18px;
+  margin-top: 64px;
 }
+
 
 .sidebar-button {
   @extend %general-sidebar;
@@ -185,7 +203,7 @@ $sidebar-cnt: 5;
   @extend %general-sidebar;
   width: 100%;
   height: $sidebar-height;
-
+  position: fixed;
   %general-icon {
     display: flex;
     align-items: center;
@@ -202,10 +220,11 @@ $sidebar-cnt: 5;
     margin-left: 1vw;
   }
 
+
   .link {
     display: flex;
     align-items: center;
-    height: $sidebar-height / $sidebar-cnt;
+    height: 60px;
     padding-left: 10px;
 
     .icon {
@@ -218,7 +237,12 @@ $sidebar-cnt: 5;
       @extend %general-link-text;
       color: #ffffff;
     }
-
+    @media screen and (min-width: 1920px) {
+      .link-text {
+        font-size: 16px;
+      }
+    }
+  
     .select-icon {
       @extend %general-icon;
       color: #5a9cff;
@@ -229,13 +253,17 @@ $sidebar-cnt: 5;
       @extend %general-link-text;
       color: #5a9cff;
     }
+    @media screen and (min-width: 1920px) {
+      .select-link-text {
+        font-size: 16px;
+      }
+    }
   }
 
   .link:hover {
     opacity: 0.9;
     background: #3a4f6e;
-    border-radius: 18px;
-
+    
     .icon {
       background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
     }

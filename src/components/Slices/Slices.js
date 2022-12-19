@@ -75,7 +75,7 @@ const Slices = ({ chartRootName, data }) => {
 
     }, [data]);
 
-    return <div id={chartRootName} style={{ width: '100%', minHeight: '332px' }}></div>;
+    return <div id={chartRootName} style={{ width: '100%', minHeight: '332px'}}></div>;
 };
 
 export default Slices;

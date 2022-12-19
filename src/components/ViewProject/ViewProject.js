@@ -29,7 +29,7 @@ function ViewProject({ previewId, id, name, author, description, date }) {
         }}
         >
             <div className='card__header'>
-                <img src={defaultBackground} className='image' alt='defaultBackground' />
+                <img src={previewId ? avatar : defaultBackground} className='image' alt='defaultBackground' />
             </div>
 
             <div className='card__body'>
