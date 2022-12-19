@@ -13,11 +13,38 @@ import CreateProject from "./pages/CreateProject/CreateProject";
 
 import Drawer from "./components/Drawer/Drawer";
 
-import { useSelector } from "react-redux";
 import ResponseList from "./pages/ResponseList/ResponseList";
 
+import React from "react";
+import axios from "axios";
+
+import { useSelector, useDispatch } from "react-redux";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "./redux/slices/userSlice";
+
 function App() {
+  const dispatch = useDispatch();
   const token = useSelector(state => state.userReducer.token);
+
+  React.useEffect(() => {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    axios
+        .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
+        .then((response) => {
+        })
+        .catch((error) => {
+            console.log('check not success');
+                dispatch(loginToken('unauthorized'));
+                dispatch(loginFirstName('unauthorized'));
+                dispatch(loginLastName('unauthorized'));
+                dispatch(loginFutherName('unauthorized'));
+                dispatch(loginEmail('unauthorized'));
+                dispatch(loginGroup('unauthorized'));
+                dispatch(loginToken('unauthorized'));
+                localStorage.clear();
+        });
+    }, []);
 
   if (token === 'unauthorized') {
     return (

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Project.scss';
 import Requirement from '../../components/Requirement/Requirement';
 import DeleteProject from '../../components/DeleteProject/DeleteProject';
+import ModalDeleteProject from "../../components/ModalDeleteProject/ModalDeleteProject";
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
 import defaultBackground from '../../components/assets/images/default_project_background.png';
@@ -16,6 +17,8 @@ function Project(){
     const [description, setDescription] = useState('');
     const [author, setAuthor] = useState('');
     const [authorEmail, setAuthorEmail] = useState('');
+
+    const [showModal, setShowModal] = useState(false);
 
     const [requirementsList, setRequirementsList] = useState([]);
     const [participants, setParticipants] = useState([]);
@@ -96,7 +99,6 @@ function Project(){
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        const data = {ids: commit.id}
         axios
         .delete(`${process.env.REACT_APP_API_URL}/project/state?ids=${commit.id}`, { headers })
         .then((response) => {
@@ -112,6 +114,7 @@ function Project(){
 
     function deleteProject(){
         console.log('delete-project');
+        setShowModal(false);
         const headers = {
             Authorization: `Bearer ${token}`,
         };
@@ -126,6 +129,11 @@ function Project(){
 
     return (
         <div className='project'>
+            <ModalDeleteProject 
+                deleteProjectButton={() => deleteProject()} 
+                saveProjectButton={() => setShowModal(false)}
+                showModalDeleteProject={showModal} 
+            /> 
             <div className='main'>
                 <div className='main-top-section'>
                     <img src={defaultBackground} className='image' alt='defaultBackground' />
@@ -140,11 +148,12 @@ function Project(){
                             requirementText={"01.01.2023"}
                         />
                         {authorEmail === email ? 
-                            <DeleteProject
-                                icon={<FiXCircle className='project-icon-date' />}
-                                deleteText={"удалить проект"}
-                                onClick={() => deleteProject()}
-                            />
+                            <div onClick={() => setShowModal(true)}>
+                                <DeleteProject
+                                    icon={<FiXCircle className='delete-project-icon' />}
+                                    deleteText={"удалить проект"}
+                                />
+                            </div>
                             :
                             <></>
                         }

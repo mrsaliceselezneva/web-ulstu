@@ -1,5 +1,4 @@
 .delete-project-block {
-  background-color: rgba(90, 156, 255, 0.2);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -14,7 +13,11 @@
   padding-bottom: 3px;
   padding-left: 6px;
   padding-right: 6px;
-  margin: 3px;
+  margin: 3px auto 3px 0px;
   background-color: rgba(253, 99, 116, 0.1);
   cursor: pointer;
+
+  .delete-project-icon {
+    margin-right: 7px;
+  }
 }

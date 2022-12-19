@@ -23,6 +23,7 @@ function Drawer({ central, page }) {
         const headers = {
             Authorization: `Bearer ${token}`,
         };
+        console.log(token);
         axios
             .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
             .then((response) => {
@@ -42,7 +43,7 @@ function Drawer({ central, page }) {
                         console.log('get fio success');
                     })
                     .catch((error) => {
-                        console.log('get fio not success');
+                        console.log('get group not success');
                     });
                 axios
                     .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
@@ -53,53 +54,13 @@ function Drawer({ central, page }) {
             })
             .catch((error) => {
                 console.log('get fio not success');
-            });
-
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
-            .then((response) => {
-                localStorage.setItem('firstName', response.data.firstName);
-                localStorage.setItem('lastName', response.data.lastName);
-                localStorage.setItem('futherName', response.data.patronymic);
-                localStorage.setItem('email', response.data.email);
-                dispatch(loginFirstName(response.data.firstName));
-                dispatch(loginLastName(response.data.lastName));
-                dispatch(loginFutherName(response.data.patronymic));
-                dispatch(loginEmail(response.data.email));
-
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
-                    .then((response) => {
-                        dispatch(loginGroup(response.data.name));
-                        localStorage.setItem('group', response.data.name);
-                        console.log('get fio success');
-                    })
-                    .catch((error) => {
-                        console.log('get fio not success');
-                    });
-
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
-                    .then((response) => {
-                        // const url = window.URL.createObjectURL(response.data);
-                        // setAvatar(url);
-                    })
-                    .catch((error) => {
-                        console.log('get avatar not success');
-                    });
-
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
-                    .then((response) => {
-                        localStorage.setItem('notifications', response.data.length);
-                        dispatch(getNotifications(response.data.length));
-                    })
-                    .catch((error) => {
-                        console.log('get responce not success');
-                    });
-            })
-            .catch((error) => {
-                console.log('get fio not success');
+                dispatch(loginToken('unauthorized'));
+                dispatch(loginFirstName('unauthorized'));
+                dispatch(loginLastName('unauthorized'));
+                dispatch(loginFutherName('unauthorized'));
+                dispatch(loginGroup('unauthorized'));
+                dispatch(loginToken('unauthorized'));
+                localStorage.clear();
             });
     }, []);
 
@@ -130,8 +91,6 @@ function Drawer({ central, page }) {
             icon: <FiBriefcase />
         },
     ];
-
-
 
     return (
         <div className="container">

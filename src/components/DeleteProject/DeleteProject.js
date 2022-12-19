@@ -1,11 +1,11 @@
+
 import './DeleteProject.scss';
 
-function DeleteProject({ icon, deleteText, del }) {
+function DeleteProject({ icon, deleteText }) {
     return (
         <div className='delete-project-block'>
             {icon}
             {deleteText}
-            {del}
         </div>
     )
 };
