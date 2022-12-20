@@ -4,6 +4,7 @@ import './Project.scss';
 import Requirement from '../../components/Requirement/Requirement';
 import DeleteProject from '../../components/DeleteProject/DeleteProject';
 import ModalDeleteProject from "../../components/ModalDeleteProject/ModalDeleteProject";
+import ModalRequirement from "../../components/ModalRequirement/ModalRequirement";
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
 import defaultBackground from '../../components/assets/images/default_project_background.png';
@@ -19,7 +20,9 @@ function Project(){
     const [authorEmail, setAuthorEmail] = useState('');
 
     const [showModal, setShowModal] = useState(false);
+    const [showModalRequirement, setShowModalRequirement] = useState(false);
 
+    const [projectRequirementsList, setProjectRequirementsList] = useState([]);
     const [requirementsList, setRequirementsList] = useState([]);
     const [participants, setParticipants] = useState([]);
     const [commits, setCommits] = useState([]);
@@ -40,15 +43,37 @@ function Project(){
                 setDescription(response.data.description);
                 setAuthor(`${response.data.author.lastName} ${response.data.author.firstName[0]}.${response.data.author.patronymic[0]}.`);
                 setAuthorEmail(response.data.author.email);
-                setRequirementsList(response.data.competences);
+                setProjectRequirementsList(response.data.competences);
                 setParticipants(response.data.projectParticipants);
                 setCommits(response.data.projectStates);
             });
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/competence/list`)
+            .then((response) => {
+                setRequirementsList(response.data);
+            });  
     }, []);
 
-    function addRequirement() {
+
+    function addRequirement(requirementId) {
+        console.log(requirementId);
         console.log('add-requirement');
-        
+
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            competenceId: requirementId,
+            projectId: projectId,
+            }
+            ;
+        axios
+            .post(`${process.env.REACT_APP_API_URL}/project/competence`, data, { headers })
+            .then((response) => {
+                
+            })
+            .catch((error) => {
+            });
     }
 
     function addCommit() {
@@ -83,15 +108,29 @@ function Project(){
         axios
         .post(`${process.env.REACT_APP_API_URL}/project/response`, data, { headers })
         .then((response) => {
-            
         })
         .catch((error) => {
-            console.log(error);
         });
     }
 
-    function deleteRequirement() {
+    function deleteRequirement(requirementId) {
+        console.log(requirementId);
         console.log('delete-requirement');
+
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            projectId: projectId,
+        };
+        axios
+            .delete(`${process.env.REACT_APP_API_URL}/project/competence?ids=${requirementId}`, { headers })
+            .then((response) => {
+                
+            })
+            .catch((error) => {
+            });
+        
     }
 
     function deleteCommit(commit) {
@@ -127,12 +166,24 @@ function Project(){
           });
     }
 
+    const searchRequirements =
+        requirementsList.map((value) => <Requirement
+            requirementText={value.name}
+            del={< FiPlusCircle className='icon-add' onClick={() => addRequirement(value.id)} />}
+        />);
+
     return (
         <div className='project'>
             <ModalDeleteProject 
                 deleteProjectButton={() => deleteProject()} 
                 saveProjectButton={() => setShowModal(false)}
-                showModalDeleteProject={showModal} 
+                showModalDeleteProject={showModal}
+            /> 
+            <ModalRequirement 
+                titleModalRequirement={'Требования'} 
+                onClose={() => {setShowModalRequirement(false); window.location.reload();}}
+                showModalRequirement={showModalRequirement}
+                modalRequirements={searchRequirements}
             /> 
             <div className='main'>
                 <div className='main-top-section'>
@@ -168,25 +219,19 @@ function Project(){
                             Требования
                             {authorEmail === email ? 
                                 <div className='input-block-project'>
-                                    <input 
-                                        onChange={(event) => {
-                                        setRequirementInput(event.target.value);
-                                        }}
-                                        className="input" type="text" placeholder='требования'
-                                    />
-                                    <FiPlusCircle className='icon-add-block' onClick={() => addRequirement()} /> 
+                                    <FiPlusCircle className='icon-add-block' onClick={() =>  setShowModalRequirement(true)} /> 
                                 </div>: 
                                 <></>
                             }
                         </div>
                         <div className='requirements-list'>
                             {
-                                requirementsList.map((requirement, id) => (
+                                projectRequirementsList.map((requirement, id) => (
                                     <Requirement
-                                        requirementText={requirement}
+                                        requirementText={requirement.name}
 
                                         del={authorEmail === email ?
-                                            <FiXCircle  onClick={() => deleteRequirement()} /> :
+                                            <FiXCircle  className='icon-delete' onClick={() => deleteRequirement(requirement)} /> :
                                             <></>
                                         }
                                     />

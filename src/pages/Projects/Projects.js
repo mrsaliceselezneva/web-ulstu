@@ -17,6 +17,7 @@ function Projects() {
 
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
+    const [other, setOther] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [projects, setProjects] = useState([]);
 
@@ -24,7 +25,6 @@ function Projects() {
         axios
             .get(`${process.env.REACT_APP_API_URL}/project/list`)
             .then((response) => {
-                console.log(response.data)
                 setProjects(response.data);
             });
     }, []);
@@ -38,6 +38,7 @@ function Projects() {
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
             id={value.id}
+            myProject={value.author.email === email}
         />);
 
     const myProjects =
@@ -49,8 +50,27 @@ function Projects() {
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}
+            myProject={true}
         />);
 
+    const otherProjects =
+        projects.filter((value) => {
+            return (!value.author.email.includes(email))
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+            myProject={false}
+        />);
+
+    
+        function filterProjects(){
+            if (all) return searchProjects.map((project, id) => (project));
+            if (my) return myProjects.map((project, id) => (project));
+            if (other) return otherProjects.map((project, id) => (project));
+        }
 
     return (
 
@@ -67,23 +87,31 @@ function Projects() {
                 <div className='choose'>
                     <>
                         <div onClick={() => {
-                            if (!all) {
-                                setMy(!my);
-                                setAll(!all);
-                            }
+                            setMy(false);
+                            setAll(true);
+                            setOther(false);
                         }}
                             className={all ? 'select-choose-projects' : 'choose-projects'}>
                             Все
                         </div>
                         <div onClick={() => {
-                            if (!my) {
-                                setMy(!my);
-                                setAll(!all);
-                            }
+                            setMy(true);
+                            setAll(false);
+                            setOther(false);
 
                         }} className={my ? 'select-choose-projects' : 'choose-projects'}>
                             {/* сортировка по создателю */}
                             Мои
+                        </div>
+
+                        <div onClick={() => {
+                            setMy(false);
+                            setAll(false);
+                            setOther(true);
+
+                        }} className={other ? 'select-choose-projects' : 'choose-projects'}>
+                            {/* сортировка по создателю */}
+                            Чужие
                         </div>
                     </>
 
@@ -102,12 +130,7 @@ function Projects() {
             </div>
             <div className='list'>
 
-                {my ?
-                    myProjects.map((project, id) => (project))
-                    :
-                    searchProjects.map((project, id) => (project))
-
-                }
+                {filterProjects()}
             </div>
         </div>
     );

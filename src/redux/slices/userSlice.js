@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     token: localStorage.getItem('token') || 'unauthorized',
+    userId: localStorage.getItem('userId') || 'unauthorized',
     firstName: localStorage.getItem('firstName') || 'unauthorized',
     lastName: localStorage.getItem('lastName') || 'unauthorized',
     futherName: localStorage.getItem('futherName') || 'unauthorized',
@@ -16,6 +17,9 @@ const userSlice = createSlice({
     reducers: {
         loginToken(state, action) {
             state.token = action.payload;
+        },
+        loginUserId(state, action) {
+            state.userId = action.payload;
         },
         loginFirstName(state, action) {
             state.firstName = action.payload;
@@ -36,6 +40,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { loginToken, loginFirstName, loginLastName, loginFutherName, loginEmail, loginGroup, messagesSetItems } = userSlice.actions;
+export const { loginToken, loginUserId, loginFirstName, loginLastName, loginFutherName, loginEmail, loginGroup, messagesSetItems } = userSlice.actions;
 
 export default userSlice.reducer;

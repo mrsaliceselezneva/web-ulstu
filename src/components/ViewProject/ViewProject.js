@@ -4,10 +4,9 @@ import { FiUser } from 'react-icons/fi'; import { useEffect, useState } from "re
 import { useSelector } from "react-redux";
 import axios from 'axios'
 
-function ViewProject({ previewId, id, name, author, description, date }) {
-
+function ViewProject({ previewId, id, name, author, description, date, myProject}) {
     const { token } = useSelector(state => state.userReducer);
-    const [avatar, setAvatar] = useState("")
+    const [avatar, setAvatar] = useState("");
 
     useEffect(() => {
         const headers = {
@@ -22,11 +21,9 @@ function ViewProject({ previewId, id, name, author, description, date }) {
 
     }, [])
     return (
-        <div className='card__container' onClick={() => {
-            window.location.assign(
-                `${process.env.REACT_APP_URL}/projects/project/?id=${id}`
-            );
-        }}
+        <div className={myProject ? 'card__container_my' : 'card__container_other'} onClick={() => {
+                window.location.assign(`${process.env.REACT_APP_URL}/projects/project/?id=${id}`);
+            }}
         >
             <div className='card__header'>
                 <img src={avatar} className='image' alt='defaultBackground' />

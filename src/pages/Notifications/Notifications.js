@@ -15,13 +15,13 @@ function Notifications(){
             Authorization: `Bearer ${token}`,
         };
         axios
-        .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
-        .then((response) => {
-            setNotifications(response.data);
-        })
-        .catch((error) => {
-            console.log('get responce not success');
-        });
+            .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
+            .then((response) => {
+                setNotifications(response.data);
+            })
+            .catch((error) => {
+                console.log('get responce not success');
+            });
     }, []);
 
     function delUser(id){

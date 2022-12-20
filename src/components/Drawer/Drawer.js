@@ -10,12 +10,12 @@ import repeatBackground from '../assets/images/repeat-background.png';
 import avatar from '../assets/images/avatar.png';
 
 import { useSelector, useDispatch } from "react-redux";
-import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
-import { getNotifications} from "../../redux/slices/notificationsSlice";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken, loginUserId } from "../../redux/slices/userSlice";
+import { getNotifications } from "../../redux/slices/notificationsSlice";
 
 function Drawer({ central, page }) {
     const dispatch = useDispatch();
-    const { token, firstName, lastName, group } = useSelector(state => state.userReducer);
+    const { token, firstName, lastName, group, userId } = useSelector(state => state.userReducer);
     const { notifications } = useSelector(state => state.notificationsReducer);
     const [avatar, setAvatar] = useState("");
 
@@ -23,7 +23,6 @@ function Drawer({ central, page }) {
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        console.log(token);
         axios
             .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
             .then((response) => {
@@ -31,10 +30,12 @@ function Drawer({ central, page }) {
                 localStorage.setItem('lastName', response.data.lastName);
                 localStorage.setItem('futherName', response.data.patronymic);
                 localStorage.setItem('email', response.data.email);
+                localStorage.setItem('userId', response.data.id);
                 dispatch(loginFirstName(response.data.firstName));
                 dispatch(loginLastName(response.data.lastName));
                 dispatch(loginFutherName(response.data.patronymic));
                 dispatch(loginEmail(response.data.email));
+                dispatch(loginUserId(response.data.id));
                 axios
                     .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
                     .then((response) => {
@@ -50,7 +51,16 @@ function Drawer({ central, page }) {
                     .then((response) => {
                         // const url = window.URL.createObjectURL(response.data);
                         // setAvatar(url);
+                    });
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
+                    .then((response) => {
+                        localStorage.setItem('notifications', response.datalength);
+                        dispatch(getNotifications(response.data.length));
                     })
+                    .catch((error) => {
+                        console.log('get responce not success');
+                    });
             })
             .catch((error) => {
                 console.log('get fio not success');
@@ -107,7 +117,7 @@ function Drawer({ central, page }) {
                     <img className='logo-img' src='/images/logo.svg' alt="logo" />
                     <p>learn.UlSTU</p>
                 </a>
-                <div className='profile'>
+                <div className='profile' onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/profile?id=${userId}`)}>
                     <div className='short-info'>
                         <div className='name'>
                             {firstName} {lastName}

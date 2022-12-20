@@ -10,6 +10,7 @@ import Events from "./pages/Events/Events";
 import Event from "./pages/Event/Event";
 import Notifications from "./pages/Notifications/Notifications";
 import CreateProject from "./pages/CreateProject/CreateProject";
+import Profile from "./pages/Profile/Profile";
 
 import Drawer from "./components/Drawer/Drawer";
 
@@ -71,6 +72,8 @@ function App() {
         <Route exact path="/events/event/*" element={<Drawer central={<Event />} page={4} />} />
 
         <Route exact path="/notifications" element={<Drawer central={<Notifications />} page={5} />} />
+
+        <Route exact path="/profile" element={<Drawer central={<Profile />} page={6} />} />
 
         <Route exact path="/*" element={<Drawer central={<Main />} page={0} />} />
       </Routes>
