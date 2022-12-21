@@ -1,5 +1,5 @@
 .card {
-  &__container_other {
+  @mixin card-container($col) {
     width: 280px;
     min-width: 280px;
     height: 360px;
@@ -7,20 +7,23 @@
     border-radius: 14px;
     background: white;
     margin: 10px;
-    border: 5px solid #fd6374;
+    padding: 5px;
     cursor: pointer;
+    border-left: 5px solid $col;
+    border-right: 1px solid $col;
+    border-top: 1px solid $col;
+    border-bottom: 1px solid $col;
+  }
+  &__container_other {
+    @include card-container(#e997a0);
   }
 
   &__container_my {
-    width: 280px;
-    min-width: 280px;
-    height: 360px;
-    min-height: 360px;
-    border-radius: 14px;
-    background: white;
-    margin: 10px;
-    border: 5px solid #33d69f;
-    cursor: pointer;
+    @include card-container(#85bba9);
+  }
+
+  &__container_member {
+    @include card-container(#729bd8);
   }
 
   &__header {
@@ -49,6 +52,11 @@
         line-height: 24px;
         color: #333539;
       }
+    }
+
+    &__requirements {
+      display: flex;
+      flex-direction: row;
     }
 
     &__teacher {

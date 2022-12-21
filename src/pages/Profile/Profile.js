@@ -36,7 +36,7 @@ function Profile(){
         axios
             .get(`${process.env.REACT_APP_API_URL}/user/?id=${localUserId}`)
             .then((response) => {
-                setUserRequirementsList(response.data.competenceIds);
+                setUserRequirementsList(response.data.competences);
                 setLocalFirstName(response.data.firstName);
                 setLocalLastName(response.data.lastName);
                 setLocalFutherName(response.data.patronymic);
@@ -64,15 +64,14 @@ function Profile(){
         axios
             .post(`${process.env.REACT_APP_API_URL}/user/competence`, data, { headers })
             .then((response) => {
-                
+                console.log(response.data);
             })
             .catch((error) => {
-                console.log(error);
             });
 
         window.location.reload();
     }
-
+    
     function deleteRequirement(requirementId) {
         console.log('delete-requirement');
         console.log(requirementId);
@@ -88,6 +87,15 @@ function Profile(){
             });
     }
 
+    userRequirementsList.map((requirement, id) => (
+        <Requirement
+            requirementText={requirement}
+            del={localEmail === email ?
+                <FiXCircle  className='icon-delete' onClick={() => deleteRequirement(requirement.name)} /> :
+                null
+            }
+        />
+    ))
 
     return (
         <div className='project'>
@@ -120,9 +128,9 @@ function Profile(){
                             {
                                 userRequirementsList.map((requirement, id) => (
                                     <Requirement
-                                        requirementText={requirement}
+                                        requirementText={requirement.name}
                                         del={localEmail === email ?
-                                            <FiXCircle  className='icon-delete' onClick={() => deleteRequirement(requirement)} /> :
+                                            <FiXCircle  className='icon-delete' onClick={() => deleteRequirement(requirement.id)} /> :
                                             null
                                         }
                                     />

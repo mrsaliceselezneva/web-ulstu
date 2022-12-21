@@ -23,7 +23,8 @@ function Drawer({ central, page }) {
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        axios
+        setInterval(() => {
+            axios
             .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
             .then((response) => {
                 localStorage.setItem('firstName', response.data.firstName);
@@ -72,6 +73,7 @@ function Drawer({ central, page }) {
                 dispatch(loginToken('unauthorized'));
                 localStorage.clear();
             });
+          }, 5000);
     }, []);
 
     const routes = [
@@ -79,11 +81,6 @@ function Drawer({ central, page }) {
             path: "/",
             name: "Главная",
             icon: <FiHome />
-        },
-        {
-            path: "/timetable",
-            name: "Расписание",
-            icon: <FiCalendar />
         },
         {
             path: "/messangers",
@@ -117,8 +114,8 @@ function Drawer({ central, page }) {
                     <img className='logo-img' src='/images/logo.svg' alt="logo" />
                     <p>learn.UlSTU</p>
                 </a>
-                <div className='profile' onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/profile?id=${userId}`)}>
-                    <div className='short-info'>
+                <div className='profile'>
+                    <div className='short-info' onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/profile?id=${userId}`)}>
                         <div className='name'>
                             {firstName} {lastName}
                         </div>

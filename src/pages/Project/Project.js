@@ -4,6 +4,7 @@ import './Project.scss';
 import Requirement from '../../components/Requirement/Requirement';
 import DeleteProject from '../../components/DeleteProject/DeleteProject';
 import ModalDeleteProject from "../../components/ModalDeleteProject/ModalDeleteProject";
+import ModalAddParticipant from "../../components/ModalAddParticipant/ModalAddParticipant";
 import ModalRequirement from "../../components/ModalRequirement/ModalRequirement";
 import ListBlock from '../../components/ListBlock/ListBlock';
 import Commit from '../../components/Commit/Commit';
@@ -21,13 +22,13 @@ function Project(){
 
     const [showModal, setShowModal] = useState(false);
     const [showModalRequirement, setShowModalRequirement] = useState(false);
+    const [showModalAddParticipant, setShowModalAddParticipant] = useState(false);
 
     const [projectRequirementsList, setProjectRequirementsList] = useState([]);
     const [requirementsList, setRequirementsList] = useState([]);
     const [participants, setParticipants] = useState([]);
     const [commits, setCommits] = useState([]);
 
-    const [requirementInput, setRequirementInput] = useState('');
     const [commitInput, setCommitInput] = useState('');
     const [participantInput, setParticipantInput] = useState('');
 
@@ -98,11 +99,12 @@ function Project(){
 
     function addParticipant() {
         console.log('add-participant');
+        setShowModalAddParticipant(false);
         const headers = {
             Authorization: `Bearer ${token}`,
         };
         var data = {
-            comment: participantInput,
+            comment: 'Хочу в проект! ' + participantInput,
             projectId: projectId,
         };
         axios
@@ -184,6 +186,13 @@ function Project(){
                 onClose={() => {setShowModalRequirement(false); window.location.reload();}}
                 showModalRequirement={showModalRequirement}
                 modalRequirements={searchRequirements}
+            /> 
+             <ModalAddParticipant 
+                titleModalAddParticipant={'Почему вас стоит взять в проект?'}
+                addParticipant={() => addParticipant()} 
+                onClose={() => setShowModalAddParticipant(false)}
+                showModalAddParticipant={showModalAddParticipant}
+                setParticipantInput={setParticipantInput}
             /> 
             <div className='main'>
                 <div className='main-top-section'>
@@ -271,23 +280,15 @@ function Project(){
                 </div>
             </div>
             <div className='participants'>
+
+                <div className='participants-title'>
+                    Участники
+                </div> 
                 {
                     authorEmail !== email ?
-                    <div className='participants-title2'>
-                        <div className="add-title">
-                            Участники
-                            <FiUserPlus className='icon-add-participant' onClick={() => addParticipant()} />
-                        </div>
-                        <textarea 
-                            onChange={(event) => {
-                                setParticipantInput(event.target.value);
-                            }}
-                            className="participant-input" type="text" placeholder='почему вас стоит взять проект?'
-                        />
-                    </div> :
-                    <div className='participants-title'>
-                        Участники
-                    </div> 
+                        <button onClick={() => setShowModalAddParticipant(true)}>Хочу в проект!</button>
+                        :
+                         null
                 }
                 <div className='participants-list'>
                     <ListBlock

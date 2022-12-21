@@ -14,12 +14,13 @@ import { useSelector } from "react-redux";
 function Projects() {
     const { email } = useSelector(state => state.userReducer);
 
-
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
     const [other, setOther] = useState(false);
     const [searchValue, setSearchValue] = useState('');
+    const [showAllProjects, setShowAllProjects] = useState(false);
     const [projects, setProjects] = useState([]);
+    const [projectParticipants, setProjectParticipants] = useState([]);
 
     React.useEffect(() => {
         axios
@@ -29,16 +30,25 @@ function Projects() {
             });
     }, []);
 
+    function findMember(participants){
+        let answer = false;
+        console.log(participants);
+        participants.map((participant) => 
+            {if (participant.email === email)
+                answer = true;}
+        );
+        return answer;
+    }
+
     const searchProjects =
-        projects.filter((value) => {
-            return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
-        }).map((value) => <ViewProject
+        projects.map((value) => <ViewProject
             name={value.name}
             author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
             id={value.id}
             myProject={value.author.email === email}
+            member={findMember(value.projectParticipants)}
         />);
 
     const myProjects =
@@ -65,16 +75,29 @@ function Projects() {
             myProject={false}
         />);
 
+    const memberProjects =
+        projects.filter((value) => {
+            return (findMember(value.projectParticipants))
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+            myProject={false}
+        />);
+
+
     
-        function filterProjects(){
-            if (all) return searchProjects.map((project, id) => (project));
-            if (my) return myProjects.map((project, id) => (project));
-            if (other) return otherProjects.map((project, id) => (project));
-        }
+    function filterProjects(){
+        if (all) return searchProjects.map((project, id) => (project));
+        if (my) return myProjects.map((project, id) => (project));
+        if (other) return otherProjects.map((project, id) => (project));
+    }
 
     return (
 
-        <div className='projects'>
+        <div className='projects' onClick={() => setShowAllProjects(true)}>
             <div className='projects-menu'>
                 <Search
                     width={20}
@@ -82,6 +105,9 @@ function Projects() {
                     placeholder="Поиск проектов"
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
+                    setProjects={setProjects}
+                    showAllProjects={showAllProjects}
+                    setShowAllProjects={setShowAllProjects}
                 />
 
                 <div className='choose'>
