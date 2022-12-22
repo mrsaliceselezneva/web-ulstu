@@ -23,7 +23,6 @@ function Drawer({ central, page }) {
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        setInterval(() => {
             axios
             .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
             .then((response) => {
@@ -73,7 +72,6 @@ function Drawer({ central, page }) {
                 dispatch(loginToken('unauthorized'));
                 localStorage.clear();
             });
-          }, 5000);
     }, []);
 
     const routes = [

@@ -56,7 +56,9 @@
 
     &__requirements {
       display: flex;
-      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: hidden;
+      height: 30px;
     }
 
     &__teacher {
@@ -92,7 +94,7 @@
     }
 
     &__content {
-      margin-bottom: 5px;
+      margin-bottom: 2px;
       font-style: normal;
       font-weight: 400;
       font-size: 14px;

@@ -36,6 +36,8 @@
       }
       .modal-body {
         margin: 10px;
+        display: flex;
+        flex-wrap: wrap;
         @include text(400, 15px, 18px, #6b6b6b);
       }
       .modal-footer {

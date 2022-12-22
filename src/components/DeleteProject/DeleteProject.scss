@@ -1,22 +1,25 @@
-.delete-project-block {
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+@mixin text($a, $b, $c, $d) {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+  color: $d;
+}
+
+.delete-project-block {
+  display: flex;
+  align-items: center;
+  background-color: rgba(253, 99, 116, 0.1);
+  border-radius: 8px;
+  margin: 3px auto 3px 0px;
+  @include text(400, 16px, 20px, #585268);
   color: #fd6374;
+  width: auto;
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 6px;
   padding-right: 6px;
-  margin: 3px auto 3px 0px;
-  background-color: rgba(253, 99, 116, 0.1);
-  cursor: pointer;
-
   .delete-project-icon {
     margin-right: 7px;
   }
