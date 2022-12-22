@@ -44,6 +44,11 @@
     justify-content: space-between;
 
     &__title {
+      overflow: hidden;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 22px;
       span {
         font-family: 'Inter';
         font-style: normal;

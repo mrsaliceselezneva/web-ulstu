@@ -43,7 +43,7 @@ function Projects() {
     const searchProjects =
         projects.map((value) => <ViewProject
             name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            author={`${value.author.lastName} ${value.author.firstName}`}
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
             id={value.id}
@@ -56,7 +56,7 @@ function Projects() {
             return (value.author.email.includes(email))
         }).map((value) => <ViewProject
             name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            author={`${value.author.lastName} ${value.author.firstName}`}
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}
@@ -68,7 +68,7 @@ function Projects() {
             return (!value.author.email.includes(email))
         }).map((value) => <ViewProject
             name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            author={`${value.author.lastName} ${value.author.firstName}`}
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}
@@ -80,7 +80,7 @@ function Projects() {
             return (findMember(value.projectParticipants))
         }).map((value) => <ViewProject
             name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            author={`${value.author.lastName} ${value.author.firstName}`}
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}

@@ -42,7 +42,7 @@ function Project(){
             .then((response) => {
                 setName(response.data.name);
                 setDescription(response.data.description);
-                setAuthor(`${response.data.author.lastName} ${response.data.author.firstName[0]}.${response.data.author.patronymic[0]}.`);
+                setAuthor(`${response.data.author.lastName} ${response.data.author.firstName}`);
                 setAuthorEmail(response.data.author.email);
                 setProjectRequirementsList(response.data.competences);
                 setParticipants(response.data.projectParticipants);
@@ -302,8 +302,7 @@ function Project(){
                                 icon={<FiUser className='list-block-icon' />}
                                 listBlockText={`
                                     ${participant.lastName} 
-                                    ${participant.firstName[0]}.
-                                    ${participant.patronymic[0]}.
+                                    ${participant.firstName}
                                 `}
                                 del={authorEmail === email ?
                                     <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> :
