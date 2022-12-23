@@ -5,8 +5,7 @@ import './CreateProject.scss';
 import { useSelector } from "react-redux";
 import format from "date-fns/format";
 import DescriptionProject from '../../components/DescriptionProject/DescriptionProject';
-
-
+import { FiFilePlus } from 'react-icons/fi';
 
 function CreateProject() {
   const { token, firstName, lastName, futherName } = useSelector(state => state.userReducer);
@@ -20,7 +19,7 @@ function CreateProject() {
     const headers = {
         Authorization: `Bearer ${token}`,
     };
-    if (description.length > 40 && name.length > 0){
+    if (description.length > 30 && name.length > 0){
       var data = {
           description: description,
           // developmentStartDate: format(new Date().getTime(), 'dd.mm.yyyy'),
@@ -59,6 +58,15 @@ function CreateProject() {
         onChange={(event) => {
           setDescription(event.target.value);
         }} />
+      <div class="upload-file-create-project">
+        <input name="file" type="file" id="input__file" class="input-upload-file-create-project" multiple />
+        <label for="input__file" class="input__file-button">
+            <span class="input__file-icon-wrapper">
+              <FiFilePlus />
+              </span>
+            <span class="input__file-button-text">Выберите файл</span>
+        </label>
+      </div>
       <button className='create-project-button' onClick={() => {
         create(name, description, token, firstName, lastName, futherName)
       }}>Создать</button>

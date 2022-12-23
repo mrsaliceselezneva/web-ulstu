@@ -104,7 +104,7 @@ function Project(){
             Authorization: `Bearer ${token}`,
         };
         var data = {
-            comment: 'Хочу в проект! ' + participantInput,
+            comment: 'Возьмите меня в проект потому что: ' + participantInput,
             projectId: projectId,
         };
         axios
@@ -173,6 +173,7 @@ function Project(){
         requirementsList.filter((value) => !projectRequirementsList.find(item => item.name === value.name)).map((value) => <Requirement
             requirementText={value.name}
             del={< FiPlusCircle className='icon-add' onClick={() => addRequirement(value.id)} />}
+            canAdd={true}
         />);
 
     return (
@@ -288,15 +289,12 @@ function Project(){
                 </div> 
                 {
                     authorEmail !== email ?
-                        <button onClick={() => setShowModalAddParticipant(true)}>Хочу в проект!</button>
-                        :
-                         null
+                        <button onClick={() => setShowModalAddParticipant(true)}>Хочу в проект!</button> : null
                 }
                 <div className='participants-list'>
                     <ListBlock
                         icon={<FiUser className='list-block-icon' />}
                         listBlockText={author}
-                        del={<></>}
                     />
                     {
                         participants.map((participant, id) => (
@@ -307,8 +305,7 @@ function Project(){
                                     ${participant.firstName}
                                 `}
                                 del={authorEmail === email ?
-                                    <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> :
-                                    <></>
+                                    <FiXCircle className='icon-delete' onClick={() => deleteParticipant()} /> : null
                                 }
                             />
                         ))

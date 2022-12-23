@@ -35,10 +35,13 @@
         margin-bottom: 10px;
       }
       .modal-body {
+        display: flex;
+        flex-direction: column;
         margin: 10px;
         @include text(400, 15px, 18px, #6b6b6b);
 
         textarea {
+          padding: 10px;
           resize: none;
         }
         textarea:focus {

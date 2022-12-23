@@ -7,14 +7,27 @@
   color: $d;
 }
 
-.requirement-block {
+@mixin icon-delete-add($color, $background-color) {
   display: flex;
   align-items: center;
-  background-color: rgba(90, 156, 255, 0.2);
+  margin-left: 5px;
+  margin-right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: $background-color;
+  color: $color;
+  cursor: pointer;
+}
+
+@mixin requirement-block($block-color, $block-background-color) {
+  display: flex;
+  align-items: center;
+  background-color: $block-background-color;
+  color: $block-color;
   border-radius: 8px;
-  margin: 3px auto 3px 0px;
-  @include text(400, 16px, 20px, #585268);
-  color: #5a9cff;
+  margin: 3px auto 3px 3px;
+  @include text(400, 16px, 20px, $block-color);
   width: auto;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -32,28 +45,18 @@
   }
 
   .icon-delete {
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-    margin-right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(253, 99, 116, 0.1);
-    color: #fd6374;
-    border-radius: 100%;
-    cursor: pointer;
+    @include icon-delete-add(#fd6374, rgba(253, 99, 116, 0.1));
   }
 
   .icon-add {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(253, 99, 116, 0.1);
-    color: #fd6374;
-    border-radius: 100%;
-    cursor: pointer;
+    @include icon-delete-add(#fd6374, rgba(253, 99, 116, 0.1));
   }
+}
+
+.requirement-block-not-select {
+  @include requirement-block(#5a9cff, rgba(90, 156, 255, 0.2));
+}
+
+.requirement-block-select {
+  @include requirement-block(#6bd3a3, rgba(107, 211, 163, 0.2));
 }

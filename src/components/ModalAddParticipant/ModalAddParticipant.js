@@ -16,9 +16,10 @@ function ModalAddParticipant(props) {
                             {props.titleModalAddParticipant}
                         </div>
                         <div className='modal-body'>
+                            Возьмите меня в проект потому что:
                             <textarea 
                                 onChange={(event) => {props.setParticipantInput(event.target.value)}}
-                                className="participant-input" type="text" placeholder='Почему вас стоит взять проект?'
+                                className="participant-input" type="text" placeholder='Пару слов о ваших достоинствах'
                             /> 
                         </div>
                         <div className='modal-footer'>

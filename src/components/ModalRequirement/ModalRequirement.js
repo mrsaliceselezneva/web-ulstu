@@ -9,16 +9,16 @@ function ModalRequirement(props) {
     }
     else{
         return (
-            <div className='modal' onClick={props.onClose}>
-                <div className='modal-content' onClick={e => e.stopPropagation()}>
-                    <div className='modal-content'>
-                        <div className='modal-title'> 
+            <div className='modal-requirement' onClick={props.onClose}>
+                <div className='modal-requirement-content' onClick={e => e.stopPropagation()}>
+                    <div className='modal-requirement-content'>
+                        <div className='modal-requirement-title'> 
                             {props.titleModalRequirement}
                         </div>
-                        <div className='modal-body'>
+                        <div className='modal-requirement-body'>
                             {props.modalRequirements}
                         </div>
-                        <div className='modal-footer'>
+                        <div className='modal-requirement-footer'>
                             <button className='button' onClick={props.onClose}>Закрыть</button>
                         </div>
                     </div>

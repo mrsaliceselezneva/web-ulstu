@@ -4,8 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import './Drawer.scss';
 
-import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser } from 'react-icons/fi';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FiLogOut, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser, FiChevronsLeft } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 import avatar from '../assets/images/avatar.png';
 
@@ -18,6 +18,7 @@ function Drawer({ central, page }) {
     const { token, firstName, lastName, group, userId } = useSelector(state => state.userReducer);
     const { notifications } = useSelector(state => state.notificationsReducer);
     const [avatar, setAvatar] = useState("");
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         const headers = {
@@ -148,8 +149,11 @@ function Drawer({ central, page }) {
                             <div className={id === page ? 'select-icon' : 'icon'}>{route.icon}</div>
                             <div className={id === page ? 'select-link-text' : 'link-text'}>{route.name}</div>
                         </NavLink>
-
                     ))}
+                    <div className="link" onClick={() => navigate(-1)}>
+                        <div className={5 === page ? 'select-icon' : 'icon'}><FiChevronsLeft /></div>
+                        <div className={5 === page ? 'select-link-text' : 'link-text'}>Назад</div>
+                    </div>
                 </div>
                 <div className='central'>
                     {central}

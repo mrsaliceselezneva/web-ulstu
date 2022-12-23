@@ -43,7 +43,7 @@ function Profile(){
                 setRequirementsList(response.data);
             });   
     }, []); 
-    
+
     const searchRequirements =
         requirementsList.filter((value) => !userRequirementsList.find(item => item.name === value.name)).map((value) => <Requirement
             requirementText={value.name}
@@ -129,11 +129,13 @@ function Profile(){
                     </div>
                 </div>
             </div>
-            <div className='participants'>
-                <div className='participants-title'>
+            <div className='profile-all-requirements'>
+                <div className='profile-all-requirements-title'>
                     Все навыки
                 </div>
-                {searchRequirements}
+                <div className="profile-all-requirements-list">
+                    {searchRequirements}
+                </div>
             </div>
         </div>
     );

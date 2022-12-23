@@ -161,7 +161,7 @@
       }
     }
   }
-  .participants {
+  .profile-all-requirements {
     display: flex;
     flex-direction: column;
     background-color: $project-back-ground-color;
@@ -169,48 +169,16 @@
     padding: 10px;
     width: 20vw;
 
-    .participants-title2 {
+    .profile-all-requirements-title {
       display: flex;
       flex-direction: column;
       @include text(700, 24px, 26px, #333539);
-
-      .add-title {
-        display: flex;
-        flex-direction: row;
-
-        .icon-add-participant {
-          @extend %icon-add;
-        }
-        .icon-add-participant:hover {
-          @extend %icon-add-hover;
-        }
-      }
-
-      textarea {
-        resize: none;
-      }
-      textarea:focus {
-        outline: none !important;
-      }
-      .participant-input {
-        display: flex;
-        flex-direction: column;
-        height: 42px;
-        margin-top: 10px;
-        border-radius: 8px;
-        border: solid 1px rgba(90, 156, 255, 0.2);
-        @include text(400, 16px, 19px, #798d96);
-        background-color: white;
-      }
-
-      .participant-input:hover {
-        @include text(400, 16p x, 19px, #5a9cff);
-      }
     }
 
-    .participants-list {
+    .profile-all-requirements-list {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 }

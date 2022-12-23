@@ -7,7 +7,7 @@
   color: $d;
 }
 
-.modal {
+.modal-requirement {
   position: fixed;
   left: 0;
   top: 0;
@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
 
-  .modal-content {
+  .modal-requirement-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,18 +29,17 @@
     border-radius: 18px;
     padding: 10px;
 
-    .modal-content {
-      .modal-title {
+    .modal-requirement-content {
+      .modal-requirement-title {
         @include text(700, 24px, 26px, #333539);
         margin-bottom: 10px;
       }
-      .modal-body {
-        margin: 10px;
+      .modal-requirement-body {
         display: flex;
         flex-wrap: wrap;
         @include text(400, 15px, 18px, #6b6b6b);
       }
-      .modal-footer {
+      .modal-requirement-footer {
         .button {
           text-align: center;
           width: 100px;
