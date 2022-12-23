@@ -40,7 +40,7 @@ function ViewProject({ previewId, id, name, author, description, date, myProject
         if (myProject)
             return 'card__container_my';
         if (member)
-        return 'card__container_member';
+            return 'card__container_member';
         return 'card__container_other';
     }
     

@@ -167,9 +167,10 @@ function Project(){
           .catch((error) => {
           });
     }
+    
 
     const searchRequirements =
-        requirementsList.map((value) => <Requirement
+        requirementsList.filter((value) => !projectRequirementsList.find(item => item.name === value.name)).map((value) => <Requirement
             requirementText={value.name}
             del={< FiPlusCircle className='icon-add' onClick={() => addRequirement(value.id)} />}
         />);
@@ -193,6 +194,7 @@ function Project(){
                 onClose={() => setShowModalAddParticipant(false)}
                 showModalAddParticipant={showModalAddParticipant}
                 setParticipantInput={setParticipantInput}
+                projectRequirementsList={projectRequirementsList}
             /> 
             <div className='main'>
                 <div className='main-top-section'>

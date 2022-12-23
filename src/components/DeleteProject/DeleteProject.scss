@@ -15,11 +15,14 @@
   margin: 3px auto 3px 0px;
   @include text(400, 16px, 20px, #585268);
   color: #fd6374;
-  width: auto;
+  // width: auto;
+  width: 148px;
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 6px;
   padding-right: 6px;
+  cursor: pointer;
+
   .delete-project-icon {
     margin-right: 7px;
   }

@@ -61,6 +61,7 @@ function Projects() {
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}
             myProject={true}
+            member={findMember(value.projectParticipants)}
         />);
 
     const otherProjects =
@@ -73,20 +74,8 @@ function Projects() {
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}
             myProject={false}
+            member={findMember(value.projectParticipants)}
         />);
-
-    const memberProjects =
-        projects.filter((value) => {
-            return (findMember(value.projectParticipants))
-        }).map((value) => <ViewProject
-            name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName}`}
-            description={value.description}
-            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
-            id={value.id}
-            myProject={false}
-        />);
-
 
     
     function filterProjects(){

@@ -21,13 +21,6 @@ function Profile(){
 
     const [requirementInput, setRequirementInput] = useState('');
 
-
-    const searchRequirements =
-        requirementsList.map((value) => <Requirement
-            requirementText={value.name}
-            del={< FiPlusCircle className='icon-add' onClick={() => addRequirement(value.id)} />}
-        />);
-
     let { search } = useLocation();
     const params = new URLSearchParams(search);
     const localUserId = params.get('id');
@@ -50,6 +43,12 @@ function Profile(){
                 setRequirementsList(response.data);
             });   
     }, []); 
+    
+    const searchRequirements =
+        requirementsList.filter((value) => !userRequirementsList.find(item => item.name === value.name)).map((value) => <Requirement
+            requirementText={value.name}
+            del={< FiPlusCircle className='icon-add' onClick={() => addRequirement(value.id)} />}
+        />);
     
     function addRequirement(requirementId) {
         console.log('add-requirement');
@@ -86,16 +85,6 @@ function Profile(){
             .catch((error) => {
             });
     }
-
-    userRequirementsList.map((requirement, id) => (
-        <Requirement
-            requirementText={requirement}
-            del={localEmail === email ?
-                <FiXCircle  className='icon-delete' onClick={() => deleteRequirement(requirement.name)} /> :
-                null
-            }
-        />
-    ))
 
     return (
         <div className='project'>
