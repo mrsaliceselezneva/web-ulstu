@@ -150,12 +150,13 @@ function Drawer({ central, page }) {
                             <div className={id === page ? 'select-link-text' : 'link-text'}>{route.name}</div>
                         </NavLink>
                     ))}
-                    <div className="link" onClick={() => navigate(-1)}>
+                    {/* <div className="link" onClick={() => navigate(-1)}>
                         <div className={5 === page ? 'select-icon' : 'icon'}><FiChevronsLeft /></div>
                         <div className={5 === page ? 'select-link-text' : 'link-text'}>Назад</div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='central'>
+                    <FiChevronsLeft className='navigate-back' onClick={() => navigate(-1)}/>
                     {central}
                 </div>
             </div>

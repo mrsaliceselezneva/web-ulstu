@@ -49,58 +49,41 @@
   }
 
   .upload-file-create-project {
-    width: 100%;
-    position: relative;
-    margin: 15px 0;
-    text-align: center;
+    display: flex;
+    margin-top: 0;
+    width: $width;
+    height: 70px;
 
     .input-upload-file-create-project {
       opacity: 0;
-      visibility: hidden;
-      position: absolute;
+      height: 0;
     }
 
-    .input__file-icon-wrapper {
-      height: 60px;
-      width: 60px;
+    .icon-create-project {
+      height: 30px;
+      width: 45px;
       margin-right: 15px;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
       justify-content: center;
       border-right: 1px solid #fff;
     }
 
-    .input__file-button-text {
+    .button-text-create-project {
       line-height: 1;
-      margin-top: 1px;
     }
 
-    .input__file-button {
-      width: 100%;
-      max-width: 290px;
-      height: 60px;
-      background: #1bbc9b;
+    .button-create-project {
+      width: 200px;
+      height: 45px;
+      @include text(700, 18px, 22px, #ffffff);
+      background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
       color: #fff;
-      font-size: 1.125rem;
-      font-weight: 700;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      border-radius: 3px;
+      border-radius: 10px;
+      margin-bottom: 15px;
       cursor: pointer;
-      margin: 0 auto;
     }
   }
 
@@ -110,7 +93,6 @@
     border-radius: 8px;
     border: none;
     @include text(700, 18px, 22px, #ffffff);
-
     background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
     background-size: 200% auto;
     transition: 0.5s;

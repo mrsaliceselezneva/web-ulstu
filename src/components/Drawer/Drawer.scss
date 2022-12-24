@@ -24,7 +24,16 @@ $logo-img: 48px;
 $icon: 40px;
 
 $sidebar-height: 320px;
-$sidebar-cnt: 5;
+$sidebar-cnt: 4;
+
+%general-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  width: $icon;
+  height: $icon;
+}
 
 .top-section {
   display: flex;
@@ -190,15 +199,6 @@ $sidebar-cnt: 5;
   width: 100%;
   height: $sidebar-height;
 
-  %general-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    width: $icon;
-    height: $icon;
-  }
-
   %general-link-text {
     display: block;
     @include text(400, $sidebar-text, 18px);
@@ -254,4 +254,12 @@ $sidebar-cnt: 5;
       color: #ffffff;
     }
   }
+}
+
+.navigate-back {
+  position: absolute;
+  left: $width;
+  @extend %general-icon;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }

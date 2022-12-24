@@ -9,6 +9,9 @@ import { FiFilePlus } from 'react-icons/fi';
 
 function CreateProject() {
   const { token, firstName, lastName, futherName } = useSelector(state => state.userReducer);
+  const [fileProject, setFileProject] = useState(null);
+  const [fileName, setFileName] = useState('Выберите файл');
+  const [fileId, setFileId] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -21,9 +24,23 @@ function CreateProject() {
     };
     if (description.length > 30 && name.length > 0){
       var data = {
+        file: fileProject,
+      };
+      const formData = new FormData();
+      formData.append( 'file', fileProject);
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/files`, formData, { headers })
+        .then((response) => {
+          console.log(response.data);
+          setFileId(response.data.id);
+        })
+        .catch((error) => {
+          console.log('upload file error');
+      });
+      var data = {
           description: description,
           // developmentStartDate: format(new Date().getTime(), 'dd.mm.yyyy'),
-          documentId: null,
+          documentId: fileId,
           name: name,
           previewId: null,
           requiredInvestment: true,
@@ -58,13 +75,16 @@ function CreateProject() {
         onChange={(event) => {
           setDescription(event.target.value);
         }} />
-      <div class="upload-file-create-project">
-        <input name="file" type="file" id="input__file" class="input-upload-file-create-project" multiple />
-        <label for="input__file" class="input__file-button">
-            <span class="input__file-icon-wrapper">
-              <FiFilePlus />
-              </span>
-            <span class="input__file-button-text">Выберите файл</span>
+      <div className="upload-file-create-project">
+        <input name="file" type="file" id="input__file" className="input-upload-file-create-project" multiple 
+          onChange={(event) => {
+            setFileProject(event.target.files[0]);
+            setFileName(event.target.files[0].name);
+          }}
+        />
+        <label htmlFor="input__file" className="button-create-project">
+              <FiFilePlus className='icon-create-project'/>
+            <span className="button-text-create-project">{fileName}</span>
         </label>
       </div>
       <button className='create-project-button' onClick={() => {
