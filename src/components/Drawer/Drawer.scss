@@ -258,8 +258,18 @@ $sidebar-cnt: 4;
 
 .navigate-back {
   position: absolute;
-  left: $width;
+  left: $width + 5px;
   @extend %general-icon;
+  width: $icon;
   color: #ffffff;
-  border: 1px solid #ffffff;
+  border-radius: 0;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  // border-right: 1px solid #ffffff;
+  background: #2c405a;
+  cursor: pointer;
+}
+
+.navigate-back:hover {
+  background: linear-gradient(237.26deg, #88ddff 8.37%, #4364f7 95.2%);
 }
