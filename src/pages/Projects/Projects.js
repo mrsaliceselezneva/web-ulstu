@@ -32,14 +32,12 @@ function Projects() {
 
     function findMember(participants){
         let answer = false;
-        console.log(participants);
         participants.map((participant) => 
             {if (participant.email === email)
                 answer = true;}
         );
         return answer;
     }
-
     const searchProjects =
         projects.map((value) => <ViewProject
             name={value.name}

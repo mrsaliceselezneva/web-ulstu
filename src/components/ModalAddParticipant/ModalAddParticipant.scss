@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
 
-  .modal-content {
+  .modal-add-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,62 +28,64 @@
     background-color: white;
     border-radius: 18px;
     padding: 10px;
+    .modal-title {
+      @include text(700, 24px, 26px, #333539);
+      margin-bottom: 10px;
+    }
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      @include text(400, 15px, 18px, #6b6b6b);
 
-    .modal-content {
-      .modal-title {
-        @include text(700, 24px, 26px, #333539);
-        margin-bottom: 10px;
+      .my-projects-list {
+        height: 100px;
+        overflow-y: auto;
       }
-      .modal-body {
+
+      textarea {
+        padding: 10px;
+        resize: none;
+      }
+      textarea:focus {
+        outline: none !important;
+      }
+      .participant-input {
         display: flex;
         flex-direction: column;
-        margin: 10px;
-        @include text(400, 15px, 18px, #6b6b6b);
-
-        textarea {
-          padding: 10px;
-          resize: none;
-        }
-        textarea:focus {
-          outline: none !important;
-        }
-        .participant-input {
-          display: flex;
-          flex-direction: column;
-          height: 50px;
-          width: 300px;
-          margin-top: 10px;
-          padding: 5px;
-          border-radius: 8px;
-          border: solid 1px rgba(90, 156, 255, 0.2);
-          @include text(400, 16px, 19px, #798d96);
-          background-color: white;
-        }
-
-        .participant-input:hover {
-          @include text(400, 16px, 19px, #5a9cff);
-        }
+        height: 50px;
+        width: 300px;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+        border: solid 1px rgba(90, 156, 255, 0.2);
+        @include text(400, 16px, 19px, #798d96);
+        background-color: white;
       }
-      .modal-footer {
-        .button {
-          text-align: center;
-          width: 100px;
-          margin-left: 5px;
-          margin-right: 5px;
-          @include text(500, 18px, 22px, #ffffff);
-          margin-bottom: 5%;
-          border: none;
-          border-radius: 8px;
-          padding: 2px;
 
-          background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
-          background-size: 200% auto;
-          transition: 0.5s;
-        }
+      .participant-input:hover {
+        @include text(400, 16px, 19px, #5a9cff);
+      }
+    }
+    .modal-footer {
+      .button {
+        text-align: center;
+        width: 100px;
+        margin-left: 5px;
+        margin-right: 5px;
+        @include text(500, 18px, 22px, #ffffff);
+        margin-bottom: 5%;
+        border: none;
+        border-radius: 8px;
+        padding: 2px;
 
-        button:hover {
-          background-position: right center;
-        }
+        background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+        background-size: 200% auto;
+        transition: 0.5s;
+      }
+
+      button:hover {
+        background-position: right center;
       }
     }
   }

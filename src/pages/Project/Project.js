@@ -195,7 +195,7 @@ function Project(){
                 onClose={() => setShowModalAddParticipant(false)}
                 showModalAddParticipant={showModalAddParticipant}
                 setParticipantInput={setParticipantInput}
-                projectRequirementsList={projectRequirementsList}
+                preface={' Возьмите меня в проект потому что:'}
             /> 
             <div className='main'>
                 <div className='main-top-section'>

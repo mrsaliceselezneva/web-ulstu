@@ -1,7 +1,7 @@
 import './Requirement.scss';
 import React, { useState } from 'react';
 
-function Requirement({icon, requirementText, del, canAdd}) {
+function Requirement({icon, requirementText, del, canAdd, setSelectProject}) {
     
     const [selectedColor, setSelectedColor] = useState('requirement-block-not-select');
 
@@ -24,7 +24,7 @@ function Requirement({icon, requirementText, del, canAdd}) {
     }
     else{
         return (
-            <div className='requirement-block-not-select'>
+            <div className='requirement-block-not-select' onClick={setSelectProject}>
                 {icon}
                 {requirementText}
                 {del}

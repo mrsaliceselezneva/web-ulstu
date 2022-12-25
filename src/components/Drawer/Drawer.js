@@ -7,7 +7,7 @@ import './Drawer.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser, FiChevronsLeft } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
-import avatar from '../assets/images/avatar.png';
+import ModalAddParticipant from "../ModalAddParticipant/ModalAddParticipant";
 
 import { useSelector, useDispatch } from "react-redux";
 import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken, loginUserId } from "../../redux/slices/userSlice";
@@ -18,6 +18,9 @@ function Drawer({ central, page }) {
     const { token, firstName, lastName, group, userId } = useSelector(state => state.userReducer);
     const { notifications } = useSelector(state => state.notificationsReducer);
     const [avatar, setAvatar] = useState("");
+
+    const [showModalAddParticipant, setShowModalAddParticipant] = useState(false);
+    const [participantInput, setParticipantInput] = useState('');
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -98,6 +101,28 @@ function Drawer({ central, page }) {
         },
     ];
 
+    function addParticipant() {
+        const userId = 0; 
+        // тут надо id пользователя соответсвенно
+        console.log('add-participant');
+        setShowModalAddParticipant(false);
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            comment: 'Не хочешь в мой проект? ' + participantInput,
+            projectId: 0,
+            userId: userId,
+        };
+        axios
+        .post(`${process.env.REACT_APP_API_URL}/project/response/invite`, data, { headers })
+        .then((response) => {
+            window.location.reload();
+        })
+        .catch((error) => {
+        });
+    }
+    
     return (
         <div className="container">
             <style>
@@ -107,12 +132,21 @@ function Drawer({ central, page }) {
             </style>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
             <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-
+            <ModalAddParticipant 
+                titleModalAddParticipant={'Почему вас стоит взять в проект?'}
+                addParticipant={() => addParticipant()} 
+                onClose={() => setShowModalAddParticipant(false)}
+                showModalAddParticipant={showModalAddParticipant}
+                setParticipantInput={setParticipantInput}
+                invite={true}
+                preface={'Почему стоит вступить в ваш проект?'}
+            /> 
             <div className='top-section'>
                 <a href='/' className='logo'>
                     <img className='logo-img' src='/images/logo.svg' alt="logo" />
                     <p>learn.UlSTU</p>
                 </a>
+                <button onClick={() => setShowModalAddParticipant(true)}>пригласить в проект</button>
                 <div className='profile'>
                     <div className='short-info' onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/profile?id=${userId}`)}>
                         <div className='name'>
