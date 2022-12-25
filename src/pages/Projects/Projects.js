@@ -27,6 +27,7 @@ function Projects() {
             .get(`${process.env.REACT_APP_API_URL}/project/list`)
             .then((response) => {
                 setProjects(response.data);
+                console.log(response.data);
             });
     }, []);
 

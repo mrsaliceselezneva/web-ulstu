@@ -20,6 +20,7 @@ function Drawer({ central, page }) {
     const [avatar, setAvatar] = useState("");
 
     const [showModalAddParticipant, setShowModalAddParticipant] = useState(false);
+    const [selectProject, setSelectProject] = useState('Проект не выбран');
     const [participantInput, setParticipantInput] = useState('');
     const navigate = useNavigate();
 
@@ -110,7 +111,7 @@ function Drawer({ central, page }) {
             Authorization: `Bearer ${token}`,
         };
         var data = {
-            comment: 'Не хочешь в мой проект? ' + participantInput,
+            comment: `Не хочешь в мой проект "${selectProject}"? ` + participantInput,
             projectId: 0,
             userId: userId,
         };
@@ -133,13 +134,15 @@ function Drawer({ central, page }) {
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
             <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
             <ModalAddParticipant 
-                titleModalAddParticipant={'Почему вас стоит взять в проект?'}
+                titleModalAddParticipant={'Почему стоит присоединиться к проекту?'}
                 addParticipant={() => addParticipant()} 
                 onClose={() => setShowModalAddParticipant(false)}
                 showModalAddParticipant={showModalAddParticipant}
                 setParticipantInput={setParticipantInput}
                 invite={true}
-                preface={'Почему стоит вступить в ваш проект?'}
+                preface={'Почему стоит вступить в проект?'}
+                selectProject={selectProject} 
+                setSelectProject={setSelectProject}
             /> 
             <div className='top-section'>
                 <a href='/' className='logo'>
@@ -184,15 +187,8 @@ function Drawer({ central, page }) {
                             <div className={id === page ? 'select-link-text' : 'link-text'}>{route.name}</div>
                         </NavLink>
                     ))}
-                    {/* <div className="link" onClick={() => navigate(-1)}>
-                        <div className={5 === page ? 'select-icon' : 'icon'}><FiChevronsLeft /></div>
-                        <div className={5 === page ? 'select-link-text' : 'link-text'}>Назад</div>
-                    </div> */}
                 </div>
-                <div className='central'>
-                    <FiChevronsLeft className='navigate-back' onClick={() => navigate(-1)}/>
-                    {central}
-                </div>
+                {central}
             </div>
         </div>
     )

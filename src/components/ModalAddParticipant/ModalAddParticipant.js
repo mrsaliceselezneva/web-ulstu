@@ -6,7 +6,6 @@ import { produceWithPatches } from 'immer';
 
 function ModalAddParticipant(props) {
     const [myProjectsList, setMyProjectsList] = useState([]);
-    const [selectProject, setSelectProject] = useState('Проект не выбран');
         
     React.useEffect(() => {
         if (props.invite){
@@ -34,13 +33,13 @@ function ModalAddParticipant(props) {
                         {props.invite ? 
                             <div>
                                 Выберите проект:
-                                <div className='select-project'>{selectProject}</div>
+                                <div className='select-project'>{props.selectProject}</div>
                                 <div className='my-projects-list'>
                                     {
                                         myProjectsList.map((requirement, id) => (
                                             <Requirement
                                                 requirementText={requirement.name}
-                                                setSelectProject={() => setSelectProject(requirement.name)}
+                                                setSelectProject={() => props.setSelectProject(requirement.name)}
                                             />
                                         ))
                                     }
