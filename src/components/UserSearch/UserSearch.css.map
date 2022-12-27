@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,8BAA8B,CAAA;EAC1B,UAAU,EAAE,KAAK;EACjB,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,GAAG;EACX,OAAO,EAAE,KAAK;CAEjB;;AAKD,AAAA,sBAAsB,CAAA;EAClB,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "UserSearch.scss"
+    ],
+    "names": [],
+    "file": "UserSearch.css"
+}

@@ -3,6 +3,7 @@ import userReducer from './slices/userSlice';
 import notificationsReducer from './slices/notificationsSlice';
 import dialogs from '../reduxMessage/reducers/dialogs';
 import messages from '../reduxMessage/reducers/messages';
+import users from '../reduxMessage/reducers/users';
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     notificationsReducer,
     dialogs,
     messages,
+    users
 
   },
 })

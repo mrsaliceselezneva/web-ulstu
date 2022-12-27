@@ -9,60 +9,96 @@ import { FiPlusCircle, FiLayout } from 'react-icons/fi';
 import format from "date-fns/format";
 
 import { useSelector } from "react-redux";
-import Pagination from "../../components/Pagination/Pagination";
 
 
 function Projects() {
-    const { email } = useSelector(state => state.userReducer);
-
+    const { userId } = useSelector(state => state.userReducer);
 
     const [all, setAll] = useState(true);
     const [my, setMy] = useState(false);
+    const [other, setOther] = useState(false);
     const [searchValue, setSearchValue] = useState('');
+    const [showAllProjects, setShowAllProjects] = useState(false);
     const [projects, setProjects] = useState([]);
-
-    const [dairyPage, setDairyPage] = useState(1)
-    const [dairyPerPage] = useState(8)
-    const lastDairyIndex = dairyPage * dairyPerPage
-    const firstDairyPage = lastDairyIndex - dairyPerPage
-    const currentDairy = projects.slice(firstDairyPage, lastDairyIndex)
-    const paginate = pageNumber => setDairyPage(pageNumber)
+    const [projectParticipants, setProjectParticipants] = useState([]);
+    console.log(userId);
 
     React.useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API_URL}/project/list`)
             .then((response) => {
-                console.log(response.data)
                 setProjects(response.data);
             });
     }, []);
 
+    // function findMember(participants){
+    //     let answer = false;
+    //     // console.log(participants);
+    //     // participants.map((participant) => 
+    //     //     {if (participant.email === email)
+    //     //         answer = true;}
+    //     // );
+    //     return answer;
+    // }
+
     const searchProjects =
-        currentDairy.filter((value) => {
-            return (value.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
-        }).map((value) => <ViewProject
+        projects.map((value) => <ViewProject
             name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.`}
             description={value.description}
             date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
             id={value.id}
+            myProject={value.author.id === userId}
+            // member={findMember(value.projectParticipants)}
         />);
 
     const myProjects =
         projects.filter((value) => {
-            return (value.author.email.includes(email))
+            return (value.author.id === userId)
         }).map((value) => <ViewProject
             name={value.name}
-            author={`${value.author.lastName} ${value.author.firstName[0]}.${value.author.patronymic[0]}.`}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.`}
             description={value.description}
-            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.MM.yyyy')}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
             id={value.id}
+            myProject={true}
         />);
 
+    const otherProjects =
+        projects.filter((value) => {
+            return (value.author.id !== userId)
+        }).map((value) => <ViewProject
+            name={value.name}
+            author={`${value.author.lastName} ${value.author.firstName[0]}.`}
+            description={value.description}
+            date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+            id={value.id}
+            myProject={false}
+        />);
+
+    // const memberProjects =
+    //     projects.filter((value) => {
+    //         return (findMember(value.projectParticipants))
+    //     }).map((value) => <ViewProject
+    //         name={value.name}
+    //         author={`${value.author.lastName} ${value.author.firstName[0]}`}
+    //         description={value.description}
+    //         date={format(new Date(value.registrationDate * 1000).getTime(), 'dd.mm.yyyy')}
+    //         id={value.id}
+    //         myProject={false}
+    //     />);
+
+
+    
+    function filterProjects(){
+        if (all) return searchProjects.map((project, id) => (project));
+        if (my) return myProjects.map((project, id) => (project));
+        if (other) return otherProjects.map((project, id) => (project));
+    }
 
     return (
 
-        <div className='projects'>
+        <div className='projects' onClick={() => setShowAllProjects(true)}>
             <div className='projects-menu'>
                 <Search
                     width={20}
@@ -70,28 +106,39 @@ function Projects() {
                     placeholder="Поиск проектов"
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
+                    setProjects={setProjects}
+                    showAllProjects={showAllProjects}
+                    setShowAllProjects={setShowAllProjects}
                 />
 
                 <div className='choose'>
                     <>
                         <div onClick={() => {
-                            if (!all) {
-                                setMy(!my);
-                                setAll(!all);
-                            }
+                            setMy(false);
+                            setAll(true);
+                            setOther(false);
                         }}
                             className={all ? 'select-choose-projects' : 'choose-projects'}>
                             Все
                         </div>
                         <div onClick={() => {
-                            if (!my) {
-                                setMy(!my);
-                                setAll(!all);
-                            }
+                            setMy(true);
+                            setAll(false);
+                            setOther(false);
 
                         }} className={my ? 'select-choose-projects' : 'choose-projects'}>
                             {/* сортировка по создателю */}
                             Мои
+                        </div>
+
+                        <div onClick={() => {
+                            setMy(false);
+                            setAll(false);
+                            setOther(true);
+
+                        }} className={other ? 'select-choose-projects' : 'choose-projects'}>
+                            {/* сортировка по создателю */}
+                            Чужие
                         </div>
                     </>
 
@@ -110,15 +157,8 @@ function Projects() {
             </div>
             <div className='list'>
 
-                {my ?
-                    myProjects.map((project, id) => (project))
-                    :
-                    searchProjects.map((project, id) => (project))
-
-                }
+                {filterProjects()}
             </div>
-
-            <Pagination />
         </div>
     );
 }

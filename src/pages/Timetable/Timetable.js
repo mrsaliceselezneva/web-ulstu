@@ -199,7 +199,7 @@ function Timetable() {
                 <div className='reduction-date'>
                     {nameMonth[date.getMonth()]} {date.getFullYear()}
                 </div>
-                <div className='select'>
+                {/* <div className='select'>
                     <select className='week'>
                         <option>Неделя {currentWeek % 2 ? 1 : 2}</option>
                         <option>Неделя {currentWeek % 2 ? 2 : 1}</option>
@@ -207,7 +207,7 @@ function Timetable() {
                     <select className='group'>
                         <option>{group}</option>
                     </select>
-                </div>
+                </div> */}
             </div>
             <div className='desk'>
                 <div className='week-date'>

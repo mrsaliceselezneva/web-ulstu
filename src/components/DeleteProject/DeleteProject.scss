@@ -1,0 +1,27 @@
+@mixin text($a, $b, $c, $d) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+  color: $d;
+}
+
+.delete-project-block {
+  display: flex;
+  align-items: center;
+  background-color: rgba(253, 99, 116, 0.1);
+  border-radius: 8px;
+  margin: 3px auto 3px 0px;
+  @include text(400, 16px, 20px, #585268);
+  color: #fd6374;
+  width: 150px;
+  min-width: 150px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  .delete-project-icon {
+    margin-right: 7px;
+  }
+}

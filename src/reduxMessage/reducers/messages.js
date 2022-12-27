@@ -1,5 +1,5 @@
 const initialState = {
-    items: {},
+    items: [],
     isLoading: false,
 
 }
@@ -16,6 +16,13 @@ export default (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 isLoading: payload
+            }
+        case 'MESSAGES:SET_ITEM':
+            const checkItems = state.items
+            checkItems.messages.push(payload)
+            return{
+                ...state,
+                items: checkItems
             }
         default:
             return state

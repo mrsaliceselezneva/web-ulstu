@@ -1,4 +1,4 @@
-.create {
+.create-project-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,15 +9,10 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
+  margin-top: 75px;
 }
 
-.create__content {
-  margin-top: 10px;
-  min-width: 360px;
-  width: 360px;
-  background: white;
-  height: 360px;
-  border-radius: 10px;
+.create-project-container .create-project {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,47 +26,76 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 560px;
+  border-radius: 18px;
+  padding: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #f8f8fb;
 }
 
-.create__content__header {
+.create-project-container .create-project .create-project-title {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 24px;
-  line-height: 31px;
-  color: #333951;
+  line-height: 26px;
+  color: #333539;
   margin-bottom: 20px;
-  margin-top: 20px;
 }
 
-.create__content .name {
-  margin: 10px;
-  width: 80%;
-  height: 40px;
-  border-radius: 6px;
+.create-project-container .create-project .textarea-create-project {
+  width: 380px;
+  height: 60px;
+  border-radius: 8px;
+  padding: 10px;
+  border: solid 1px rgba(90, 156, 255, 0.2);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #798d96;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.create-project-container .create-project textarea {
+  resize: none;
+}
+
+.create-project-container .create-project textarea:focus {
+  outline: none !important;
+}
+
+.create-project-container .create-project .textarea-create-project:hover {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #5a9cff;
+}
+
+.create-project-container .create-project button {
+  height: 45px;
+  width: 400px;
+  border-radius: 8px;
   border: none;
-  background: #e6f0ff;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#88ddff), color-stop(51%, #4364f7), to(#88ddff));
+  background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+  background-size: 200% auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-.create__content .description {
-  margin: 20px;
-  width: 80%;
-  height: 180px;
-  border-radius: 6px;
-  border: none;
-  background: #e6f0ff;
-  max-height: 180px;
-  max-width: 280px;
-  min-height: 30px;
-}
-
-.create__content .create__button {
-  margin-top: 5px;
-  margin-bottom: 10px;
-  background: linear-gradient(237.26deg, #88DDFF 8.37%, #4364F7 95.2%);
-  border-radius: 4px;
-  height: 30px;
-  width: 50%;
-  color: white;
+.create-project-container .create-project button:hover {
+  background-position: right center;
 }
 /*# sourceMappingURL=CreateProject.css.map */

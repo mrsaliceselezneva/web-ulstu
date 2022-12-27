@@ -1,0 +1,28 @@
+.delete-project-block {
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fd6374;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 3px auto 3px 0px;
+  background-color: rgba(253, 99, 116, 0.1);
+  cursor: pointer;
+}
+
+.delete-project-block .delete-project-icon {
+  margin-right: 7px;
+}
+/*# sourceMappingURL=DeleteProject.css.map */

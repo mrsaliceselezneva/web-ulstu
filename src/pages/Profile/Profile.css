@@ -1,0 +1,273 @@
+.project .main .main-bottom-section .requirements-section .requirements-title .input-block-project, .project .main .main-bottom-section .commits-list .commits-title .input-block-project {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 48px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-title .input-block-project .input, .project .main .main-bottom-section .commits-list .commits-title .input-block-project .input {
+  width: 100%;
+  height: 80%;
+  margin-right: 2%;
+  border-radius: 8px;
+  border: solid 1px rgba(90, 156, 255, 0.2);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #798d96;
+  background-color: white;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-title .input-block-project input:focus, .project .main .main-bottom-section .commits-list .commits-title .input-block-project input:focus {
+  outline: none !important;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-title .input-block-project:hover .input, .project .main .main-bottom-section .commits-list .commits-title .input-block-project:hover .input {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #5a9cff;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-title .icon-add-block, .project .main .main-bottom-section .commits-list .commits-title .icon-add-block, .project .participants .participants-title2 .add-title .icon-add-participant {
+  color: #c7cbd5;
+  width: 2vw;
+  height: 2vw;
+  margin-left: auto;
+  margin-right: 0;
+  cursor: pointer;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-title .icon-add-block:hover, .project .main .main-bottom-section .commits-list .commits-title .icon-add-block:hover, .project .participants .participants-title2 .add-title .icon-add-participant:hover {
+  color: #5a9cff;
+}
+
+.project {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.project .main .main-top-section, .project .main .main-bottom-section .requirements-section, .project .main .main-bottom-section .commits-list {
+  background-color: #f8f8fb;
+  border-radius: 18px;
+  padding: 10px;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-title, .project .main .main-bottom-section .commits-list .commits-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  color: #333539;
+}
+
+.project .main {
+  width: 60vw;
+  margin-right: 2vw;
+}
+
+.project .main .main-top-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.project .main .main-top-section .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5px;
+}
+
+.project .main .main-top-section .info .name {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  color: #333951;
+}
+
+.project .main .main-top-section .info .description {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #6b6b6b;
+  padding-top: 16px;
+}
+
+.project .main .main-bottom-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.project .main .main-bottom-section .requirements-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%;
+  margin-top: 16px;
+}
+
+.project .main .main-bottom-section .requirements-section .requirements-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100%;
+}
+
+.project .main .main-bottom-section .commits-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 16px;
+}
+
+.project .participants {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #f8f8fb;
+  border-radius: 18px;
+  padding: 10px;
+  width: 20vw;
+}
+
+.project .participants .participants-title2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  color: #333539;
+}
+
+.project .participants .participants-title2 .add-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.project .participants .participants-title2 textarea {
+  resize: none;
+}
+
+.project .participants .participants-title2 textarea:focus {
+  outline: none !important;
+}
+
+.project .participants .participants-title2 .participant-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 42px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: solid 1px rgba(90, 156, 255, 0.2);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #798d96;
+  background-color: white;
+}
+
+.project .participants .participants-title2 .participant-input:hover {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16p x;
+  line-height: 19px;
+  color: #5a9cff;
+}
+
+.project .participants .participants-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+/*# sourceMappingURL=Profile.css.map */

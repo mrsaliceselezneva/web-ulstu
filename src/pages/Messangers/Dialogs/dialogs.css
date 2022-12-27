@@ -54,8 +54,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 10px;
-  padding: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ECF5FD;
+  padding: 0 5px;
 }
 
 .dialogs__item:hover {
@@ -73,9 +76,15 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50px;
           flex: 0 0 50px;
-  width: 50px;
-  height: 50px;
   margin-right: 10px;
+}
+
+.dialogs__item-avatar svg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #5a9cff;
+  background-color: rgba(90, 156, 255, 0.2);
 }
 
 .dialogs__item-avatar img {
@@ -111,6 +120,7 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  margin-left: 5px;
 }
 
 .dialogs__item-info-top {
@@ -120,17 +130,18 @@
 }
 
 .dialogs__item-info-top-name {
+  margin-top: 10px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   font-weight: 900;
   font-size: 14px;
-  margin-bottom: 4px;
 }
 
 .dialogs__item-info-top span {
+  margin-top: 10px;
   opacity: .5;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .dialogs__item-info-bottom {

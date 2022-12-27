@@ -1,0 +1,64 @@
+@mixin text($a, $b, $c, $d) {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: $a;
+    font-size: $b;
+    line-height: $c;
+    color: $d;
+  }
+  
+  .modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .modal-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 600px;
+      height: 200px;
+      background-color: white;
+      border-radius: 18px;
+      padding: 10px;
+  
+      .modal-content {
+        .modal-title {
+          @include text(700, 24px, 26px, #333539);
+          margin-bottom: 10px;
+        }
+        .modal-body {
+          margin: 10px;
+          @include text(400, 15px, 18px, #6b6b6b);
+        }
+        .modal-footer {
+          .button {
+            text-align: center;
+            width: 100px;
+            margin-left: 5px;
+            margin-right: 5px;
+            @include text(500, 18px, 22px, #ffffff);
+            margin-bottom: 5%;
+            border: none;
+            border-radius: 8px;
+            padding: 2px;
+  
+            background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+          }
+  
+          button:hover {
+            background-position: right center;
+          }
+        }
+      }
+    }
+  }

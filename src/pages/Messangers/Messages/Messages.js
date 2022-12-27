@@ -4,7 +4,7 @@ import Message from '../Message/Message';
 import classNames from "classnames"
 import './messages.scss'
 
-const Messages = ({ blockRef, isLoading, items }) => {
+const Messages = ({ blockRef, isLoading, items, userId }) => {
     
     return (
 
@@ -15,10 +15,10 @@ const Messages = ({ blockRef, isLoading, items }) => {
 
             ) : items && !isLoading ? (
                 items.length > 0 ? (
-                    items.map(item => <Message {...item} key={item.id}/>)
+                    items.map(item => <Message {...item} key={item.id} userId={userId}/>)
 
                 ) : (
-                    <Empty image={null} description="Диалог пуст" />
+                    <Empty image={null} description="Начните диалог" />
                 )) : (
                 <Empty image={null} description="Начните диалог" />
             )

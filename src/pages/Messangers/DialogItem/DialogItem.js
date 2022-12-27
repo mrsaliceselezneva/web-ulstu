@@ -7,20 +7,20 @@ import { AvatarGenerator } from 'random-avatar-generator';
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import axios from 'axios'
+import { FiUser } from 'react-icons/fi';
 
 
-const generator = new AvatarGenerator();
 
 const getMessageTime = (created_at) => {
-    if (isToday(new Date(created_at))) {
-        return format(new Date(created_at) - new Date().getTimezoneOffset() * 60000, 'HH:mm')
+    if (isToday(new Date(created_at * 1000))) {
+        return format(new Date(created_at * 1000) - new Date().getTimezoneOffset() * 6000, 'HH:mm')
         
     } else {
-        return format(new Date(created_at), 'dd.MM.yyyy')
+        return format(new Date(created_at * 1000), 'dd.MM.yyyy')
     }
 }
 
-const DialogItem = ({ id, user, message, unreaded, isMe, onSelect, datetime, text, from_, to_, last_message_for_you }) => {
+const DialogItem = ({id, avatarId, firstName, lastName, lastMessage,unreaded, isMe, onSelect }) => {
 
 
     return (
@@ -29,27 +29,27 @@ const DialogItem = ({ id, user, message, unreaded, isMe, onSelect, datetime, tex
             //     'dialogs__item--online': user.isOnline,
             //     'dialogs__item--selected': currentDialogId === id
             // })}
-            onClick={onSelect.bind(this, last_message_for_you ? from_.id : to_.id)}
+            onClick={onSelect.bind(this, id)}
+          
         >
 
             <div className="dialogs__item-avatar">
-                {``}
+            <FiUser />
             </div>
 
             <div className="dialogs__item-info">
 
                 <div className="dialogs__item-info-top">
-                    <b className='dialogs__item-info-top-name'>{
-                        last_message_for_you ? from_.username : to_.username
-                    }</b>
+                    <b className='dialogs__item-info-top-name'>
+                        {firstName} {lastName}</b>
                     <span>
-                        {getMessageTime(datetime)}
+                        {getMessageTime(lastMessage.createDateTime)}
                     </span>
                 </div>
 
                 <div className="dialogs__item-info-bottom">
 
-                    <p>{text}</p>
+                    <p>{lastMessage.message}</p>
 
                     {isMe && <IconReaded isMe={true} isReaded={false} />}
                     {unreaded > 0 &&

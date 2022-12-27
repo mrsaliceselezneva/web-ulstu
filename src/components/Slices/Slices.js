@@ -28,27 +28,26 @@ const Slices = ({ chartRootName, data }) => {
             })
         );
 
-
 // Define data
-        let data = [{
-            competence: "Обычный",
-            count: 350
-        }, {
-            competence: "Подтверждён документально",
-            count: 301
-        }, {
-            competence: "Подтверждён специалистом",
-            count: 201
-        }, {
-            competence: "Подтверждён\nнаучными источниками",
-            count: 165
-        }];
+//         let data = [{
+//             verification_level: "Обычный",
+//             count: 350
+//         }, {
+//             verification_level: "Подтверждён документально",
+//             count: 301
+//         }, {
+//             verification_level: "Подтверждён специалистом",
+//             count: 201
+//         }, {
+//             verification_level: "Подтверждён\nнаучными источниками",
+//             count: 165
+//         }];
 
 // Create series
         let series = chart.series.push(
             am5percent.PieSeries.new(root, {
                 valueField: "count",
-                categoryField: "competence"
+                categoryField: "verification_level"
             })
         );
         series.labels.template.set("forceHidden", true);

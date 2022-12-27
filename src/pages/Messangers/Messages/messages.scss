@@ -3,11 +3,13 @@
     padding-bottom: 0;
     overflow: auto;
     width: 100%;
+    padding-right: 10px;
     .ant-empty {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
+    
     }
     &--loading {
         display: flex;

@@ -1,5 +1,4 @@
 import { dialogsAPI } from "../../utils/api";
-import { lastmessAPI } from "../../utils/api";
 
 const actions = {
 
@@ -17,7 +16,7 @@ const actions = {
 
     fetchDialogs: () => dispatch => {
         dialogsAPI.getAll().then(({ data }) => {
-            dispatch(actions.setDialogs(data.map(val => JSON.parse(val))))
+            dispatch(actions.setDialogs(data))
         })
     }
 }

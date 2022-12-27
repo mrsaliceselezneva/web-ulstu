@@ -1,0 +1,23 @@
+.sponsorTerms__list {
+    margin: 20px 10px;
+    display: flex;
+    flex-direction: column;
+
+    &__name {
+
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 15px;
+        color: black;
+    }
+
+    &__desc {
+        margin: 20px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 15px;
+        color: #A6ACBE;
+    }
+}

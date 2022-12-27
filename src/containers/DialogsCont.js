@@ -11,8 +11,9 @@ const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items,
     const onChangeInput = value => {
 
         setFiltredItems(
-            items.filter(dialog => dialog.username.toLowerCase().indexOf(value.toLowerCase()) >= 0)
+            items.filter(dialog => dialog.firstName.toLowerCase().indexOf(value.toLowerCase()) >= 0)
         )
+        console.log(value)
         setValue(value)
     }
 
@@ -20,7 +21,7 @@ const DialogsCont = ({ fetchDialogs, currentDialogId, setCurrentDialogId, items,
        
         if (!items.length) {
             fetchDialogs()
-            console.log(items)
+            
         } else {
             setFiltredItems(items)
         }

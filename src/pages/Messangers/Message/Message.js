@@ -8,34 +8,35 @@ import { FiUser } from 'react-icons/fi';
 const Message = ({
     avatar,
     innterviewer_user,
-    user,
-    text,
+    id,
+    senderId,
+    userId,
     date,
-    for_you,
     isReaded,
     attachments,
-    isTyping
+    isTyping,
+    message
 }) => {
 
     return (
         <div className={classNames('message',
-            {
-                'message--isme': !for_you,
+            {   
+                'message--isme': userId === senderId,
                 "message--is-typing": isTyping,
                 "message--image": attachments && attachments.length === 1
             })}>
 
             <div className='message__content'>
-
+            {console.log(userId)}
                 <div className='message__avatar'>
                     <FiUser />
                 </div>
 
                 <div className='message__info'>
 
-                    {(text || isTyping) && < div className='message__bubble'>
+                    {(message || isTyping) && < div className='message__bubble'>
 
-                        {text && <p className='message__text'>{text}</p>}
+                        {message && <p className='message__text'>{message}</p>}
                         {isTyping && <div className='message__typing'>
                             <span />
                             <span />
@@ -44,7 +45,7 @@ const Message = ({
 
                         {date && <div className='message__date'>
                             <Time date={date} />
-                            <IconReaded isMe={!for_you} isReaded={isReaded} />
+                            <IconReaded isMe={userId !== senderId} isReaded={isReaded} />
                         </div>}
                     </div>}
 

@@ -1,16 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import LineChart from "../LineChart/LineChart";
 
-const Progress = () => {
+const Progress = ({ data }) => {
+    const [dataChart, setDataChart] = useState([]);
+    useEffect(() => {
+        setDataChart(data.map((value, index) => {return {value: index + 1, date: Date.parse(value.created)}}));
+    }, [data])
+
     return (
-        <LineChart chartRootName="chart1" data={
-            [
-                { value: 1, date: new Date(2022, 10, 20).getTime() },
-                { value: 2, date: new Date(2022, 10, 30).getTime() },
-                { value: 3, date: new Date(2022, 11, 7).getTime() },
-                { value: 4, date: new Date(2022, 11, 15).getTime() }
-            ]
-        }/>
+        <LineChart chartRootName="chart1" data={dataChart}/>
     );
 };
 

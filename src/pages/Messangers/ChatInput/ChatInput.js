@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
+import { useEffect } from "react";
 
 const uploader = Uploader({
     // Get production API keys from Upload.io
@@ -15,36 +16,60 @@ const uploader = Uploader({
 
 const ChatInput = () => {
 
-    const [message, setMessage] = useState('')
-    const innterviewer_id = useSelector(state => state.dialogs.currentDialogId)
+
+    const recipientDialogId = useSelector(state => state.dialogs.currentDialogId)
+    const recipientUserId = useSelector(state => state.users.currentDialogId)
+
     const dispatch = useDispatch()
 
-    const addMessage = () => {
+    const [recipientId, setRecipientId] = useState(recipientDialogId)
 
-        axios.get(`${process.env.REACT_APP_API_URL}/chat/send-message?token=${window.localStorage.token}&innterviewer_id=${innterviewer_id}&message=${message}`, { headers: { Authorization: null } })
-            .then(response => {
-                axios.get(`${process.env.REACT_APP_API_URL}/chat/get-chat?token=${window.localStorage.token}&innterviewer_id=${innterviewer_id}`, { headers: { Authorization: null } })
-                    .then(({ data }) => {
-                        dispatch({
-                            type: 'MESSAGES:SET_ITEMS',
-                            payload: data
-                        }.setMessages(data));
-                    })
-            })
-        // let message = {
-        //     datetime: new Date(),
-        //     for_you: false,
-        //     text: message,
-        //     is_read: false,
-        //     comment: ''
-        // }        
+    useEffect(() => {
+        setRecipientId(recipientDialogId)
+    }, [recipientDialogId])
+
+    useEffect(() => {
+        setRecipientId(recipientUserId)
+    }, [recipientUserId])
+
+    const [message, setMessage] = useState('')
+    const addMessage = async () => {
+        if (message !== '') {
+
+            axios.post(`${process.env.REACT_APP_API_URL}/dialog/${recipientId}?message=${message}`,
+            )
+                .then(response => {
+                    axios.get(`${process.env.REACT_APP_API_URL}/dialog/${recipientId}`)
+                        .then(({ data }) => {
+                            dispatch({
+                                type: 'MESSAGES:SET_ITEMS',
+                                payload: data
+                            })
+                        })
+                    setMessage('')
+                    console.log(message)
+                })
+            // window.location.reload ()
+        }
+
+
     }
 
     return (
-        <div className="chat-input">
+
+
+        <div className="chat-input" >
+
             <SmileOutlined />
+
             <input placeholder="Введите сообщение"
                 onChange={e => setMessage(e.target.value)}
+                onKeyDown={e => {
+                    if (e.keyCode == 13) {
+                        addMessage()
+                    }
+                }}
+                value={message}
             />
             <div className="chat-input__actions">
 

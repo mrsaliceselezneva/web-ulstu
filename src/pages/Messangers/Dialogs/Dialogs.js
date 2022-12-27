@@ -4,7 +4,7 @@ import axios from "axios";
 import "./dialogs.scss"
 import orderBy from 'lodash/orderBy'
 import { SearchOutlined } from "@ant-design/icons"
-import { Input, Empty } from "antd"
+import { Input, Empty, Search } from "antd"
 import { useSelector, useDispatch } from "react-redux";
 import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginToken } from "../../../redux/slices/userSlice";
 
@@ -18,9 +18,9 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
         <div className='dialogs'>
 
             <div className="dialogs__search">
-                <Input
+                <input
                     placeholder="Поиск чата"
-                    onChange={e => onSearch(e.target.value)}
+                    onChange={event => onSearch(event.target.value)}
                     value={inputValue}
                 />
                 <SearchOutlined />
@@ -31,12 +31,12 @@ const Dialogs = ({ items, userId, inputValue, onSearch, currentDialogId, onSelec
                     orderBy(items, ["datetime"], ["desc"]).map(item => (
                         <DialogItem
                             onSelect={onSelectDialog}
-                            key={item.last_message_for_you ? item.from_.id : item.to_.id}
+                            key={item.id}
                             // isMe={item.user.id === userId}
                             userId={userId}
                             // message={item}
                             unreaded={0}
-                            user={item.user}
+                            // user={item.user}
                             // currentDialogId={currentDialogId}
                             {...item}
                         />

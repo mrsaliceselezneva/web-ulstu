@@ -3,6 +3,7 @@
   padding-bottom: 0;
   overflow: auto;
   width: 100%;
+  padding-right: 10px;
 }
 
 .messages .ant-empty {

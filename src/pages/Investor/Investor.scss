@@ -1,0 +1,83 @@
+.investor {
+    width: 78vw;
+    min-width: 720px;
+    background: #f8f8fb;
+    margin: 5px 20px;
+    border-radius: 12px;
+    min-width: 720px;
+    min-height: 88vh;
+
+    .backlink {
+        padding: 40px 0 0 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #A6ACBE;
+
+
+        .icon {
+            display: flex;
+            align-items: center;
+        }
+
+        span {
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #A6ACBE;
+        }
+
+        :hover {
+            color: #5a9cff;
+        }
+    }
+
+    &__container {
+        margin: 30px;
+        display: flex;
+        flex-direction: row;
+
+        &__info {
+            padding: 15px;
+
+            &__name {
+                span {
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 48px;
+                    line-height: 44px;
+                }
+            }
+
+            &__description {
+                margin: 10px 0;
+                padding: 20px 0;
+
+                span {
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 18px;
+                    color: #6B6B6B;
+                }
+            }
+        }
+
+        &__terms {
+            margin: 40px;
+            &__title{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 42px;
+                line-height: 44px;
+            }
+        }
+    }
+    
+
+}

@@ -1,0 +1,36 @@
+.userList {
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ECF5FD;
+    &:hover {
+        background-color: #ECF5FD;
+        cursor: pointer;
+    }
+
+    &--selected,
+    &--selected:hover {
+        background-color: #5A9CFF;
+        color: white !important
+    }
+
+    &__avatar {
+        svg {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #5a9cff;
+            background-color: rgba(90, 156, 255, 0.2)
+        }
+    }
+
+    &__info {
+        margin: 10px;
+        span {
+            margin-top: 10px;
+            font-weight: 900;
+            font-size: 14px;
+        }
+    }
+}

@@ -35,7 +35,6 @@
         width: 100%;
         overflow-y: scroll;
 
-
     }
 
     .ant-empty-desription {
@@ -45,8 +44,9 @@
 
     &__item {
         display: flex;
-        margin-bottom: 10px;
-        padding: 5px;
+        align-items: center;
+        border-bottom: 1px solid #ECF5FD;
+        padding: 0 5px;
         $item: &;
 
         &:hover {
@@ -63,18 +63,24 @@
 
 
         &-avatar {
+            svg {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                color: #5a9cff;
+                background-color: rgba(90, 156, 255, 0.2)
+            }
+
             position: relative;
             flex: 0 0 50px;
-            width: 50px;
-            height: 50px;
             margin-right: 10px;
+
 
 
             img {
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
-
             }
 
         }
@@ -101,22 +107,23 @@
             flex-direction: column;
             justify-content: center;
             flex: 1;
+            margin-left: 5px;
 
             &-top {
                 display: flex;
 
                 &-name {
+                    margin-top: 10px;
                     flex: 1;
                     font-weight: 900;
                     font-size: 14px;
-                    margin-bottom: 4px;
+
                 }
 
                 span {
+                    margin-top: 10px;
                     opacity: .5;
-                    font-size: 12px;
-
-
+                    font-size: 14px;
                 }
             }
 

@@ -1,0 +1,17 @@
+.usersearch__container {
+
+    background: white;
+    width: 310px;
+    min-width: 310px;
+    overflow-y: scroll;
+    height: 80%;
+    margin: 5px;
+    width: 100%;
+
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+    }
+}

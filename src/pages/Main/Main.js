@@ -21,21 +21,21 @@ function Main() {
 
     ]
 
-
-    const { token } = useSelector(state => state.userReducer);
     const [rating, setRating] = useState([])
+    const [competence, setCompetence] = useState([])
 
 
     useEffect(() => {
-        const headers = {
-            Authorization: `Bearer ${token}`,
-        };
         axios
-            .get(`${process.env.REACT_APP_API_URL}/project/top-views`, { headers })
+            .get(`${process.env.REACT_APP_API_URL}/project/top-views`)
             .then((response) => {
                 setRating(response.data)
             });
-
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/verification/api/metrics/v1/q/?userId=1`)
+            .then((response) => {
+                setCompetence(response.data)
+            });
     }, [])
 
     return (
@@ -55,17 +55,18 @@ function Main() {
 
                     <div className="answers">
                         <h1>Прогресс</h1>
-                        <Progress />
+                        <Progress data={competence} />
                     </div>
 
 
                     {/* <div className="status">
                         {
-                            data.map(val => (
+                            data.map((value, index) => (
                                 <Status
-                                    count={val.count}
-                                    status={val.status}
-                                    imgUrl={val.imgUrl}
+                                    key={index}
+                                    count={value.count}
+                                    status={value.status}
+                                    imgUrl={value.imgUrl}
                                 />
                             ))
                         }
@@ -73,14 +74,12 @@ function Main() {
 
                 </div>
 
-
-
             </div>
 
             <div className="footer_container">
                 <div className="productive">
                     <div className='h1'>Продуктивность обучения</div>
-                    <Productive />
+                    <Productive data={competence} />
                 </div>
 
                 <div className="rating">
@@ -90,12 +89,21 @@ function Main() {
 
                         {
                             rating.length > 0 ?
-                                rating.map((item) => <TeacherAnswers
+                                rating.map((item) => <TeacherAnswers key={item.id}
                                     {...item} />)
                                 :
                                 <>
                                     <img alt="emoji" src={emoji} />
                                     <span>У Вас нет своих проектов</span>
+                                    <div className='no_projects__button'
+                                        onClick={() => {
+                                            window.location.assign(
+                                                `${process.env.REACT_APP_URL}/projects/create-project`
+                                            );
+                                        }}
+                                    >
+                                        Создать проект
+                                    </div>
                                 </>
                         }
                     </div>

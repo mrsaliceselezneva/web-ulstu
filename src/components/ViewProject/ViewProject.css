@@ -1,10 +1,24 @@
-.card__container {
-  width: 2400px;
-  min-width: 240px;
-  height: 340px;
-  min-height: 340px;
+.card__container_other {
+  width: 280px;
+  min-width: 280px;
+  height: 360px;
+  min-height: 360px;
   border-radius: 14px;
   background: white;
+  margin: 10px;
+  border: 5px solid #fd6374;
+  cursor: pointer;
+}
+
+.card__container_my {
+  width: 280px;
+  min-width: 280px;
+  height: 360px;
+  min-height: 360px;
+  border-radius: 14px;
+  background: white;
+  margin: 10px;
+  border: 5px solid #33d69f;
   cursor: pointer;
 }
 
@@ -23,7 +37,7 @@
 }
 
 .card__body {
-  width: 220px;
+  width: 250px;
   height: 38%;
   padding: 0 15px;
   max-width: 260px;
@@ -94,7 +108,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 15px;
-  color: #A6ACBE;
+  color: #a6acbe;
 }
 
 .card__body__content p {

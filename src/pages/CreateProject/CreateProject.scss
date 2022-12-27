@@ -1,66 +1,75 @@
-.create {
+@mixin text($a, $b, $c, $d) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: $a;
+  font-size: $b;
+  line-height: $c;
+  color: $d;
+}
+
+.create-project-container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 75px;
 
-
-
-  &__content {
-
-    &__header {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 31px;
-      
-      color: #333951;
-      margin-bottom: 20px;
-      margin-top: 20px;
-    }
-    margin-top: 10px;
-    min-width: 360px;
-    width: 360px;
-    background: white;
-    height: 360px;
-    border-radius: 10px;
+  .create-project {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 560px;
+    border-radius: 18px;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #f8f8fb;
 
-    .name {
-      margin: 10px;
-      width: 80%;
-      height: 40px;
-      border-radius: 6px;
-      border: none;
-      background: #e6f0ff;
-  
+    $width: 400px;
+
+    .create-project-title {
+      @include text(700, 24px, 26px, #333539);
+      margin-bottom: 20px;
     }
 
-    .description {
-      margin: 20px;
-      width: 80%;
-      height: 180px;
-      border-radius: 6px;
-      border: none;
-      background: #e6f0ff;
-      max-height: 180px;
-      max-width: 280px;
-      min-height: 30px;
+    .textarea-create-project {
+      width: $width - 20px;
+      height: 60px;
+      border-radius: 8px;
+      padding: 10px;
+      border: solid 1px rgba(90, 156, 255, 0.2);
+      @include text(400, 16px, 19px, #798d96);
+      background-color: white;
+      margin-bottom: 20px;
     }
 
-    .create__button {
-      margin-top: 5px;
-      margin-bottom: 10px;
-      background: linear-gradient(237.26deg, #88DDFF 8.37%, #4364F7 95.2%);
-      border-radius: 4px;
-      height: 30px;
-      width: 50%;
-      color: white;
-      
+    textarea {
+      resize: none;
+    }
+
+    textarea:focus {
+      outline: none !important;
+    }
+
+    .textarea-create-project:hover {
+      @include text(400, 16px, 19px, #5a9cff);
+    }
+
+    button {
+      height: 45px;
+      width: $width;
+      border-radius: 8px;
+      border: none;
+      @include text(700, 18px, 22px, #ffffff);
+
+      background-image: linear-gradient(to right, #88ddff 0%, #4364f7 51%, #88ddff 100%);
+      background-size: 200% auto;
+      transition: 0.5s;
+    }
+
+    button:hover {
+      background-position: right center;
     }
   }
 }

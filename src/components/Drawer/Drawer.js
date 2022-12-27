@@ -4,20 +4,26 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import './Drawer.scss';
 
-import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiCalendar, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser } from 'react-icons/fi';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FiLogOut, FiBriefcase, FiHome, FiMessageSquare, FiBell, FiLayout, FiUser, FiWatch, FiDollarSign, FiUserPlus } from 'react-icons/fi';
 import repeatBackground from '../assets/images/repeat-background.png';
 import avatar from '../assets/images/avatar.png';
-
+import ModalAddParticipant from "../ModalAddParticipant/ModalAddParticipant";
 import { useSelector, useDispatch } from "react-redux";
-import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken } from "../../redux/slices/userSlice";
-import { getNotifications} from "../../redux/slices/notificationsSlice";
+import { loginFirstName, loginLastName, loginFutherName, loginGroup, loginEmail, loginToken, loginUserId } from "../../redux/slices/userSlice";
+import { getNotifications } from "../../redux/slices/notificationsSlice";
 
 function Drawer({ central, page }) {
     const dispatch = useDispatch();
-    const { token, firstName, lastName, group } = useSelector(state => state.userReducer);
+    const { token, firstName, lastName, group, userId } = useSelector(state => state.userReducer);
     const { notifications } = useSelector(state => state.notificationsReducer);
     const [avatar, setAvatar] = useState("");
+
+    const [showModalAddParticipant, setShowModalAddParticipant] = useState(false);
+    const [selectProject, setSelectProject] = useState('Проект не выбран');
+    const [participantInput, setParticipantInput] = useState('');
+    const navigate = useNavigate();
+
 
     React.useEffect(() => {
         const headers = {
@@ -30,10 +36,12 @@ function Drawer({ central, page }) {
                 localStorage.setItem('lastName', response.data.lastName);
                 localStorage.setItem('futherName', response.data.patronymic);
                 localStorage.setItem('email', response.data.email);
+                localStorage.setItem('userId', response.data.id);
                 dispatch(loginFirstName(response.data.firstName));
                 dispatch(loginLastName(response.data.lastName));
                 dispatch(loginFutherName(response.data.patronymic));
                 dispatch(loginEmail(response.data.email));
+                dispatch(loginUserId(response.data.id));
                 axios
                     .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
                     .then((response) => {
@@ -42,56 +50,18 @@ function Drawer({ central, page }) {
                         console.log('get fio success');
                     })
                     .catch((error) => {
-                        console.log('get fio not success');
+                        console.log('get group not success');
                     });
                 axios
                     .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
                     .then((response) => {
                         // const url = window.URL.createObjectURL(response.data);
                         // setAvatar(url);
-                    })
-            })
-            .catch((error) => {
-                console.log('get fio not success');
-            });
-
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
-            .then((response) => {
-                localStorage.setItem('firstName', response.data.firstName);
-                localStorage.setItem('lastName', response.data.lastName);
-                localStorage.setItem('futherName', response.data.patronymic);
-                localStorage.setItem('email', response.data.email);
-                dispatch(loginFirstName(response.data.firstName));
-                dispatch(loginLastName(response.data.lastName));
-                dispatch(loginFutherName(response.data.patronymic));
-                dispatch(loginEmail(response.data.email));
-
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
-                    .then((response) => {
-                        dispatch(loginGroup(response.data.name));
-                        localStorage.setItem('group', response.data.name);
-                        console.log('get fio success');
-                    })
-                    .catch((error) => {
-                        console.log('get fio not success');
                     });
-
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
-                    .then((response) => {
-                        // const url = window.URL.createObjectURL(response.data);
-                        // setAvatar(url);
-                    })
-                    .catch((error) => {
-                        console.log('get avatar not success');
-                    });
-
                 axios
                     .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
                     .then((response) => {
-                        localStorage.setItem('notifications', response.data.length);
+                        localStorage.setItem('notifications', response.datalength);
                         dispatch(getNotifications(response.data.length));
                     })
                     .catch((error) => {
@@ -100,6 +70,13 @@ function Drawer({ central, page }) {
             })
             .catch((error) => {
                 console.log('get fio not success');
+                dispatch(loginToken('unauthorized'));
+                dispatch(loginFirstName('unauthorized'));
+                dispatch(loginLastName('unauthorized'));
+                dispatch(loginFutherName('unauthorized'));
+                dispatch(loginGroup('unauthorized'));
+                dispatch(loginToken('unauthorized'));
+                localStorage.clear();
             });
     }, []);
 
@@ -108,11 +85,6 @@ function Drawer({ central, page }) {
             path: "/",
             name: "Главная",
             icon: <FiHome />
-        },
-        {
-            path: "/timetable",
-            name: "Расписание",
-            icon: <FiCalendar />
         },
         {
             path: "/messangers",
@@ -129,9 +101,39 @@ function Drawer({ central, page }) {
             name: "Мероприятия",
             icon: <FiBriefcase />
         },
+        {
+            path: "/sponsors",
+            name: "Спонсоры",
+            icon: <FiDollarSign />
+        },
+        {
+            path: "/timetable",
+            name: "Планирование",
+            icon: <FiWatch />
+        },
     ];
 
-
+    function addParticipant() {
+        const userId = 0;
+        // тут надо id пользователя соответсвенно
+        console.log('add-participant');
+        setShowModalAddParticipant(false);
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            comment: `Не хочешь в мой проект "${selectProject}"? ` + participantInput,
+            projectId: 0,
+            userId: userId,
+        };
+        axios
+            .post(`${process.env.REACT_APP_API_URL}/project/response/invite`, data, { headers })
+            .then((response) => {
+                window.location.reload();
+            })
+            .catch((error) => {
+            });
+    }
 
     return (
         <div className="container">
@@ -142,14 +144,27 @@ function Drawer({ central, page }) {
             </style>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
             <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+            <ModalAddParticipant
+                titleModalAddParticipant={'Почему стоит присоединиться к проекту?'}
+                addParticipant={() => addParticipant()}
+                onClose={() => setShowModalAddParticipant(false)}
+                showModalAddParticipant={showModalAddParticipant}
+                setParticipantInput={setParticipantInput}
+                invite={true}
+                preface={'Почему стоит вступить в проект?'}
+                selectProject={selectProject}
+                setSelectProject={setSelectProject}
+            />
 
             <div className='top-section'>
                 <a href='/' className='logo'>
                     <img className='logo-img' src='/images/logo.svg' alt="logo" />
                     <p>learn.UlSTU</p>
                 </a>
+ 
+
                 <div className='profile'>
-                    <div className='short-info'>
+                    <div className='short-info' onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/profile?id=${userId}`)}>
                         <div className='name'>
                             {firstName} {lastName}
                         </div>
@@ -157,13 +172,14 @@ function Drawer({ central, page }) {
                             {group}
                         </div>
                     </div>
-                    {true ? 
-                        <FiUser className="no-avatar"/> : 
-                        <img className='avatar' src={avatar} alt = "avatar" />
+                    {true ?
+                        <FiUser className="no-avatar" /> :
+                        <img className='avatar' src={avatar} alt="avatar" />
                     }
                     <div className='notice-exit'>
+                        <FiUserPlus className='exit' onClick={() => setShowModalAddParticipant(true)}/>
                         <FiBell className={notifications > 0 ? 'red-notice' : 'notice'}
-                        onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
+                            onClick={() => window.location.assign(`${process.env.REACT_APP_URL}/notifications`)}
 
                         />
                         <FiLogOut className='exit' onClick={() => {
@@ -173,6 +189,7 @@ function Drawer({ central, page }) {
                             dispatch(loginGroup('unauthorized'));
                             dispatch(loginToken('unauthorized'));
                             localStorage.clear();
+                            window.location.reload()
                         }} />
                     </div>
                 </div>
@@ -184,8 +201,8 @@ function Drawer({ central, page }) {
                             <div className={id === page ? 'select-icon' : 'icon'}>{route.icon}</div>
                             <div className={id === page ? 'select-link-text' : 'link-text'}>{route.name}</div>
                         </NavLink>
-
                     ))}
+
                 </div>
                 <div className='central'>
                     {central}

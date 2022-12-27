@@ -9,10 +9,31 @@ import { TeamOutlined, FormOutlined, EllipsisOutlined } from "@ant-design/icons"
 import DialogsCont from '../../containers/DialogsCont';
 import MessagesCont from '../../containers/MessagesCont';
 
+import { useEffect, useState } from 'react';
+import UserSearch from '../../components/UserSearch/UserSearch';
+import UserSearchCont from '../../containers/UserSearchCont';
+
 
 function Messangers() {
 
-    const items = useSelector(state => state.messages.items)
+
+    const [modalActive, setModalActive] = useState(true)
+    const { items, currentDialogId } = useSelector(state => state.dialogs);
+    const users = useSelector(state => state.users)
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        if (items) {
+            setUser(items.filter((item) => item.id === currentDialogId)[0])
+        }
+    }, [currentDialogId])
+    
+
+    useEffect(() => {
+        if (users.items) {
+            setUser(users.items.filter((item) => item.id === users.currentDialogId)[0])
+        }
+    }, [ users.currentDialogId])
     return (
         <div className='messangers'>
 
@@ -25,18 +46,28 @@ function Messangers() {
                             <TeamOutlined />
                             <span>Список чатов</span>
                         </div>
-                        <FormOutlined />
+                        <FormOutlined
+                            onClick={() => setModalActive(!modalActive)} />
                     </div>
+                    {/* <UserSearch
+                            userSearchActive={modalActive}
+                            setUserSearchActive={setModalActive}
+                        /> */}
+                    {
+                        modalActive
 
-                    <div className='chat__sidebar__dialogs'>
-                        <DialogsCont
-                            userId={0}
-                        />
+                            ? <div className='chat__sidebar__dialogs'>
+                                <DialogsCont />
 
-                    </div>
+                            </div>
+                            :
+                            <div className='chat__sidebar__users'>
+
+                                <UserSearchCont />
+                            </div>
+                    }
 
                 </div>
-
 
                 <div className='chat__dialog'>
 
@@ -46,7 +77,7 @@ function Messangers() {
                         <div className='chat__dialog-haeder-center'>
 
                             <b className='chat__dialog-haeder-username'>
-                                {items?.innterviewer_user?.username}
+                                {user?.firstName} {user?.lastName}
                             </b>
                             {/* <div className='chat__dialog-haeder-status'>
                                 <Status online />
@@ -60,7 +91,8 @@ function Messangers() {
                     </div>
 
                     <div className='chat__dialog-input'>
-                        <ChatInput/>
+                        <ChatInput />
+
                     </div>
                 </div>
             </div>

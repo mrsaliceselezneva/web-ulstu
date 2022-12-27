@@ -1,0 +1,12 @@
+.userSearch__container__active {
+  background: white;
+  width: 310px;
+  min-width: 310px;
+  height: 95%;
+  padding: 0 3px;
+}
+
+.userSearch__container {
+  display: none;
+}
+/*# sourceMappingURL=UserSearch.css.map */
