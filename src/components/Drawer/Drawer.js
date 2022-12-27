@@ -28,55 +28,55 @@ function Drawer({ central, page }) {
         const headers = {
             Authorization: `Bearer ${token}`,
         };
+        axios
+        .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
+        .then((response) => {
+            localStorage.setItem('firstName', response.data.firstName);
+            localStorage.setItem('lastName', response.data.lastName);
+            localStorage.setItem('futherName', response.data.patronymic);
+            localStorage.setItem('email', response.data.email);
+            localStorage.setItem('userId', response.data.id);
+            dispatch(loginFirstName(response.data.firstName));
+            dispatch(loginLastName(response.data.lastName));
+            dispatch(loginFutherName(response.data.patronymic));
+            dispatch(loginEmail(response.data.email));
+            dispatch(loginUserId(response.data.id));
             axios
-            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
-            .then((response) => {
-                localStorage.setItem('firstName', response.data.firstName);
-                localStorage.setItem('lastName', response.data.lastName);
-                localStorage.setItem('futherName', response.data.patronymic);
-                localStorage.setItem('email', response.data.email);
-                localStorage.setItem('userId', response.data.id);
-                dispatch(loginFirstName(response.data.firstName));
-                dispatch(loginLastName(response.data.lastName));
-                dispatch(loginFutherName(response.data.patronymic));
-                dispatch(loginEmail(response.data.email));
-                dispatch(loginUserId(response.data.id));
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
-                    .then((response) => {
-                        dispatch(loginGroup(response.data.name));
-                        localStorage.setItem('group', response.data.name);
-                        console.log('get fio success');
-                    })
-                    .catch((error) => {
-                        console.log('get group not success');
-                    });
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
-                    .then((response) => {
-                        // const url = window.URL.createObjectURL(response.data);
-                        // setAvatar(url);
-                    });
-                axios
-                    .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
-                    .then((response) => {
-                        localStorage.setItem('notifications', response.datalength);
-                        dispatch(getNotifications(response.data.length));
-                    })
-                    .catch((error) => {
-                        console.log('get responce not success');
-                    });
-            })
-            .catch((error) => {
-                console.log('get fio not success');
-                dispatch(loginToken('unauthorized'));
-                dispatch(loginFirstName('unauthorized'));
-                dispatch(loginLastName('unauthorized'));
-                dispatch(loginFutherName('unauthorized'));
-                dispatch(loginGroup('unauthorized'));
-                dispatch(loginToken('unauthorized'));
-                localStorage.clear();
-            });
+                .get(`${process.env.REACT_APP_API_URL}/study-group?id=${response.data.studyGroupId}`, { headers })
+                .then((response) => {
+                    dispatch(loginGroup(response.data.name));
+                    localStorage.setItem('group', response.data.name);
+                    console.log('get fio success');
+                })
+                .catch((error) => {
+                    console.log('get group not success');
+                });
+            axios
+                .get(`${process.env.REACT_APP_API_URL}/files?id=${response.data.avatarId}`, { headers, responseType: 'blob' })
+                .then((response) => {
+                    // const url = window.URL.createObjectURL(response.data);
+                    // setAvatar(url);
+                });
+            axios
+                .get(`${process.env.REACT_APP_API_URL}/project/response/list`, { headers })
+                .then((response) => {
+                    localStorage.setItem('notifications', response.datalength);
+                    dispatch(getNotifications(response.data.length));
+                })
+                .catch((error) => {
+                    console.log('get responce not success');
+                });
+        })
+        .catch((error) => {
+            console.log('get fio not success');
+            dispatch(loginToken('unauthorized'));
+            dispatch(loginFirstName('unauthorized'));
+            dispatch(loginLastName('unauthorized'));
+            dispatch(loginFutherName('unauthorized'));
+            dispatch(loginGroup('unauthorized'));
+            dispatch(loginToken('unauthorized'));
+            localStorage.clear();
+        });
     }, []);
 
     const routes = [
@@ -101,6 +101,26 @@ function Drawer({ central, page }) {
             icon: <FiBriefcase />
         },
     ];
+
+    setInterval(() => {
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/user`, { headers })
+            .then((response) => {
+            })
+            .catch((error) => {
+                localStorage.clear();
+                dispatch(loginToken('unauthorized'));
+                dispatch(loginFirstName('unauthorized'));
+                dispatch(loginLastName('unauthorized'));
+                dispatch(loginFutherName('unauthorized'));
+                dispatch(loginGroup('unauthorized'));
+                dispatch(loginToken('unauthorized'));
+                localStorage.clear();
+            });}, 5000
+    );
 
     function addParticipant() {
         const userId = 0; 
@@ -175,6 +195,7 @@ function Drawer({ central, page }) {
                             dispatch(loginGroup('unauthorized'));
                             dispatch(loginToken('unauthorized'));
                             localStorage.clear();
+                            window.location.reload();
                         }} />
                     </div>
                 </div>
