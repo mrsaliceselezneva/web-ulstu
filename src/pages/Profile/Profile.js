@@ -2,7 +2,10 @@ import axios from "axios";
 import React, { useState } from 'react';
 import './Profile.scss';
 import Requirement from '../../components/Requirement/Requirement';
-import { FiUser, FiPlusCircle, FiXCircle, FiEdit, FiMail, FiPhone } from 'react-icons/fi';
+import UpdateProfile from "../../components/UpdateProfile/UpdateProfile";
+import ProjectPreview from "../../components/ProjectPreview/ProjectPreview";
+import { FiPlusCircle, FiXCircle, FiEdit3, FiMail, FiPhone } from 'react-icons/fi';
+import emoji from '../../components/assets/images/emoji.png';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
@@ -11,19 +14,20 @@ function Profile(){
     const [searchValue, setSearchValue] = useState('');
     const [localFirstName, setLocalFirstName] = useState('');
     const [localLastName, setLocalLastName] = useState('');
-    const [localFutherName, setLocalFutherName] = useState('');
+    const [localAvatarId, setLocalAvatarId] = useState('');
+    const [localAvatar, setLocalAvatar] = useState(null);
     const [localEmail, setLocalEmail] = useState('');
     const [localPhone, setLocalPhone] = useState('');
 
+    const [showUpdateProfile, setShowUpdateProfile] = useState(false);
 
     const [userRequirementsList, setUserRequirementsList] = useState([]);
     const [requirementsList, setRequirementsList] = useState([]);
 
-    const [requirementInput, setRequirementInput] = useState('');
-
     let { search } = useLocation();
     const params = new URLSearchParams(search);
     const localUserId = params.get('id');
+    const [rating, setRating] = useState([]);
 
     React.useEffect(() => {
         axios
@@ -32,7 +36,7 @@ function Profile(){
                 setUserRequirementsList(response.data.competences);
                 setLocalFirstName(response.data.firstName);
                 setLocalLastName(response.data.lastName);
-                setLocalFutherName(response.data.patronymic);
+                setLocalAvatarId(response.data.avatarId);
                 setLocalEmail(response.data.email);
                 setLocalPhone(response.data.phone);
             });
@@ -42,7 +46,23 @@ function Profile(){
             .then((response) => {
                 setRequirementsList(response.data);
             });   
-    }, []); 
+
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/files?id=${localAvatarId}`, { headers, responseType: 'blob' })
+            .then((response) => {
+                const url = window.URL.createObjectURL(response.data);
+                setLocalAvatar(url);
+            });
+        
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/project/top-views`, { headers })
+            .then((response) => {
+                setRating(response.data);
+            });
+    }, [localAvatarId]); 
 
     const searchRequirements =
         requirementsList.filter((value) => !userRequirementsList.find(item => item.name === value.name)).map((value) => <Requirement
@@ -88,14 +108,18 @@ function Profile(){
 
     return (
         <div className='project'>
+            <UpdateProfile 
+                titleModalRequirement={'Навыки'} 
+                onClose={() => {setShowUpdateProfile(false); window.location.reload();}}
+                showUpdateProfile={showUpdateProfile}
+            />
             <div className='main'>
                 <div className='main-top-section'>
+                    <img className="avatar" src={localAvatar} alt="avatar" /> 
                     <div className='info'>
-                        <div className='name'>{''}</div>
-                        <Requirement
-                            icon={<FiUser className='requirement-icon-user' />}
-                            requirementText={localFirstName + ' ' + localLastName}
-                        />
+                        <div className='name'>
+                            {localFirstName + ' ' + localLastName}
+                        </div>
                         <Requirement
                             icon={<FiPhone className='requirement-icon-date' />}
                             requirementText={localPhone}
@@ -107,11 +131,15 @@ function Profile(){
                         <div className='description'>
                         </div>
                     </div>
+                    <FiEdit3 className="icon-update" onClick={() => setShowUpdateProfile(true)}/>
                 </div>
                 <div className='main-bottom-section'>
                     <div className='requirements-section'>
                         <div className='requirements-title'>
                             Мои навыки
+                            <div className='input-block-project'>
+                                    <FiPlusCircle className='icon-add-block' onClick={() =>  setShowUpdateProfile(true)} /> 
+                                </div>
                         </div>
                         <div className='requirements-list'>
                             {
@@ -131,11 +159,21 @@ function Profile(){
             </div>
             <div className='profile-all-requirements'>
                 <div className='profile-all-requirements-title'>
-                    Все навыки
+                    Рейтинг проектов
                 </div>
-                <div className="profile-all-requirements-list">
-                    {searchRequirements}
-                </div>
+                    <div className={rating.length > 0 ? "top_views" : "no_projects"}>
+
+                        {
+                            rating.length > 0 ?
+                                rating.map((item) => <ProjectPreview
+                                    {...item} />)
+                                :
+                                <>
+                                    <img src={emoji} />
+                                    <span>У Вас нет своих проектов</span>
+                                </>
+                        }
+                    </div>
             </div>
         </div>
     );
