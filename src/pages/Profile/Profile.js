@@ -19,6 +19,10 @@ function Profile(){
     const [localEmail, setLocalEmail] = useState('');
     const [localPhone, setLocalPhone] = useState('');
 
+    const [updatePassword, setUpdatePassword] = useState('');
+    const [updateEmail, setUpdateEmail] = useState('');
+    const [updatePhone, setUpdatePhone] = useState('');
+
     const [showUpdateProfile, setShowUpdateProfile] = useState(false);
 
     const [userRequirementsList, setUserRequirementsList] = useState([]);
@@ -39,6 +43,9 @@ function Profile(){
                 setLocalAvatarId(response.data.avatarId);
                 setLocalEmail(response.data.email);
                 setLocalPhone(response.data.phone);
+
+                setUpdateEmail(response.data.email);
+                setUpdatePhone(response.data.phone);
             });
 
         axios
@@ -106,12 +113,37 @@ function Profile(){
             });
     }
 
+    function updateProfile(){
+        console.log('lol');
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        var data = {
+            email: updateEmail,
+            phone: updatePhone,
+        };
+        console.log(data);
+        axios
+            .put(`${process.env.REACT_APP_API_URL}/user`, data, { headers })
+            .then((response) => {
+                
+            })
+            .catch((error) => {
+            });
+    }
+
     return (
         <div className='project'>
             <UpdateProfile 
-                titleModalRequirement={'Навыки'} 
                 onClose={() => {setShowUpdateProfile(false); window.location.reload();}}
+                updateProfile={() => {updateProfile(); window.location.reload();}}
                 showUpdateProfile={showUpdateProfile}
+                updatePassword={updatePassword}
+                setUpdatePassword={setUpdatePassword}
+                updateEmail={updateEmail}
+                setUpdateEmail={setUpdateEmail}
+                updatePhone={updatePhone}
+                setUpdatePhone={setUpdatePhone}
             />
             <div className='main'>
                 <div className='main-top-section'>
