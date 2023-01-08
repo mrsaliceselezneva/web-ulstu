@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Profile.scss';
 import Requirement from '../../components/Requirement/Requirement';
 import UpdateProfile from "../../components/UpdateProfile/UpdateProfile";
+import ModalRequirement from "../../components/ModalRequirement/ModalRequirement";
 import ProjectPreview from "../../components/ProjectPreview/ProjectPreview";
 import { FiPlusCircle, FiXCircle, FiEdit3, FiMail, FiPhone } from 'react-icons/fi';
 import emoji from '../../components/assets/images/emoji.png';
@@ -24,6 +25,7 @@ function Profile(){
     const [updatePhone, setUpdatePhone] = useState('');
 
     const [showUpdateProfile, setShowUpdateProfile] = useState(false);
+    const [showModalRequirement, setShowModalRequirement] = useState(false);
 
     const [userRequirementsList, setUserRequirementsList] = useState([]);
     const [requirementsList, setRequirementsList] = useState([]);
@@ -135,7 +137,7 @@ function Profile(){
     return (
         <div className='project'>
             <UpdateProfile 
-                onClose={() => {setShowUpdateProfile(false); window.location.reload();}}
+                onClose={() => {setShowUpdateProfile(false);}}
                 updateProfile={() => {updateProfile(); window.location.reload();}}
                 showUpdateProfile={showUpdateProfile}
                 updatePassword={updatePassword}
@@ -144,6 +146,13 @@ function Profile(){
                 setUpdateEmail={setUpdateEmail}
                 updatePhone={updatePhone}
                 setUpdatePhone={setUpdatePhone}
+            />
+            
+            <ModalRequirement 
+                titleModalRequirement={'Навыки'} 
+                onClose={() => {setShowModalRequirement(false); window.location.reload();}}
+                showModalRequirement={showModalRequirement}
+                modalRequirements={searchRequirements}
             />
             <div className='main'>
                 <div className='main-top-section'>
@@ -170,7 +179,7 @@ function Profile(){
                         <div className='requirements-title'>
                             Мои навыки
                             <div className='input-block-project'>
-                                    <FiPlusCircle className='icon-add-block' onClick={() =>  setShowUpdateProfile(true)} /> 
+                                    <FiPlusCircle className='icon-add-block' onClick={() =>  setShowModalRequirement(true)} /> 
                                 </div>
                         </div>
                         <div className='requirements-list'>

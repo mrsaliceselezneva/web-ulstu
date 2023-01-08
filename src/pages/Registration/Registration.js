@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from 'react';
+import validator from 'validator';
 import logoUlstu from '../../components/assets/images/logo-ulstu.png';
+import ModalCheckRegistration from "../../components/ModalCheckRegistration/ModalCheckRegistration";
 import { FiMail, FiEye, FiEyeOff, FiPhone, FiUser, FiList } from 'react-icons/fi';
 
 import '../../components/Login/Login.scss';
@@ -18,6 +20,8 @@ function Autorization() {
   const [showListGroup, setShowListGroup] = useState(false);
   const [groupId, setGroupId] = useState(0);
   const [groupName, setGroupName] = useState('Группа');
+  const [showModalCheckRegistration, setShowModalCheckRegistration] = useState(false);
+  const [textCheckRegistration, setTextCheckRegistration] = useState('Неправильно введены данные');
 
   React.useEffect(() => {
     axios
@@ -29,6 +33,32 @@ function Autorization() {
 
 
   function Check(){
+    if (firstName.length < 3 && !isNaN(+firstName)){
+      console.log('lol');
+      setTextCheckRegistration('Неверно введено имя');
+      setShowModalCheckRegistration(true);
+    }
+    else if (lastName.length < 3 && !isNaN(+lastName)){
+      setTextCheckRegistration('Неверно введена фамилия');
+      setShowModalCheckRegistration(true);
+    }
+    else if (futherName.length < 3 && !isNaN(+futherName)){
+      setTextCheckRegistration('Неверно введено отчество');
+      setShowModalCheckRegistration(true);
+    }
+    else if (phone.length === 11 && isNaN(+phone) && validator.isMobilePhone(phone)){
+      setTextCheckRegistration('Неверно введен номер');
+      setShowModalCheckRegistration(true);
+    }
+    else if (!validator.isEmail(email)){
+      setTextCheckRegistration('Неверно введена почта');
+      setShowModalCheckRegistration(true);
+    }
+    else if(!validator.isStrongPassword(password) && password.length < 6){
+      setTextCheckRegistration('Слабый пароль');
+      setShowModalCheckRegistration(true);
+    }
+    else{
       axios
       .post(`http://asus.russianitgroup.ru/api//registration`, {
         email: email,
@@ -38,12 +68,12 @@ function Autorization() {
         password: password,
         patronymic: futherName,
         phone: phone,
-        studyGroupId: groupId,
       })
       .then((response) => {
         console.log('registration success');
         window.location.assign(`${process.env.REACT_APP_URL}/`);
       });
+    }
   };
 
 
@@ -54,15 +84,22 @@ function Autorization() {
         Check();
     }}
       className='autinfication'>
+       
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" />
       <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
       <div className='text-logo'>
         <img src={logoUlstu} alt="альтернативный текст" />
-        <div>Learn.Ulstu</div>
+        <div>Simple.Start</div>
       </div>
-      <div className='text-hello'>Добро пожаловать в Learn.Ulstu! </div>
-      <div className='text-info'>Веб-приложение для автоматизации обучения в УлГТУ</div>
+      <div className='text-hello'>Добро пожаловать в Simple.Start! </div>
+      <div className='text-info'>Веб-приложение для удобной работы со своими проектами</div>
+      
       <div className='login'>
+      <ModalCheckRegistration
+      showModalCheckRegistration={showModalCheckRegistration}
+      textCheckRegistration={textCheckRegistration}
+      onClose={() => setShowModalCheckRegistration(false)}
+    />
         <div className='text-title'>Создание аккаунта</div>
 
           {/* фамилия */}
@@ -113,34 +150,10 @@ function Autorization() {
           <div className='input-block'>
             <input 
               onChange={(event) => setPhone(event.target.value)} 
-              className="input" type="text" placeholder='8 (888) 888-88-88'
+              className="input" type="text" placeholder='88888888888'
             /> 
             <FiPhone className='login-icon' />
           </div>
-
-          {/* группа */}
-          <div className='input-block'>
-            <div 
-              onChange={(event) => setGroupId(event.target.value)} 
-              className="input"
-            >{groupName}</div>
-            <FiList className='login-icon' onClick={() => setShowListGroup(!showListGroup)} />
-          </div>
-
-          {/* список групп */}
-          {showListGroup ? 
-              <div className="list">
-                {listGroup.map((group, id) => 
-                (<div 
-                  className='list-block' 
-                  key={group.name} 
-                  onClick={() => {setGroupId(group.id); setGroupName(group.name); setShowListGroup(!showListGroup)}}
-                >
-                  {group.name}
-                </div>))}
-              </div> :
-              <></>
-            }
 
           {/* почта */}
           <div className='input-block'>
